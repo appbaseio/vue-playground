@@ -1,0 +1,30 @@
+{
+  "name": "vue-playground",
+  "version": "1.0.0",
+  "description": "Reactive<x> storybook playground",
+  "main": "index.js",
+  "scripts": {
+    "storybook": "start-storybook -p 9001 -c .storybook",
+    "build-storybook": "build-storybook",
+    "deploy-storybook": "storybook-to-ghpages"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/appbaseio/vue-playground.git"
+  },
+  "author": "Kuldeep Saxena <kuldepsaxena155@gmail.com>",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/appbaseio/vue-playground/issues"
+  },
+  "homepage": "https://github.com/appbaseio/vue-playground#readme",
+  "devDependencies": {
+    "@storybook/vue": "^3.4.11",
+    "babel-core": "^6.26.3",
+    "vue-loader": "^15.4.2",
+    "vue-template-compiler": "^2.5.17"
+  },
+  "dependencies": {
+    "@appbaseio/vue-reactivesearch": "^1.0.0"
+  }
+}
