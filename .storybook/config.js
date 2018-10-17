@@ -1,8 +1,10 @@
-import { configure } from "@storybook/vue";
+import { configure } from '@storybook/vue';
+import Vue from 'vue';
+import VueRS from '@appbaseio/vue-reactivesearch';
 
+Vue.use(VueRS);
 function loadStories() {
-  // You can require as many stories as you need.
-  require("../stories");
+  require('../stories');
 }
 
 configure(loadStories, module);
