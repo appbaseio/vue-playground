@@ -200,6 +200,13 @@ storiesOf('Result Components/Reactive List', module)
     template: '<base-reactive-list/>',
   }))
   .add('With Pagination', () => ({
+    // methods: {
+    //   onPageChange: (page, total) => {
+    //     console.log('Called page change', page, total);
+    //   },
+    // },
     components: { BaseReactiveList },
     template: '<base-reactive-list :subProps="{ pagination: true }"/>',
+    // template:
+    //   '<base-reactive-list :subProps="{ pagination: true }" :subEvents="{ pageChange: onPageChange }"/>',
   }));

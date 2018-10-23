@@ -8,6 +8,7 @@
     :size="5"
     :react="{and: ['BookSensor']}"
     v-bind='subProps'
+    v-on='subEvents'
   >
       <div slot="onData" slot-scope="{ item }">
       <div class="flex book-content" key="item._id">
@@ -38,7 +39,8 @@
 export default {
   name: 'BaseReactiveList',
   props: {
-      subProps: Object
-  }
+      subProps: Object,
+      subEvents: Object,
+  },
 }
 </script>
