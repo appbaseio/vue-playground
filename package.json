@@ -25,6 +25,6 @@
     "vue-template-compiler": "^2.5.17"
   },
   "dependencies": {
-    "@appbaseio/vue-reactivesearch": "^1.0.0-alpha.1"
+    "@appbaseio/vue-reactivesearch": "^1.0.0-alpha.2"
   }
 }
