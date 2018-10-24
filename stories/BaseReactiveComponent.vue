@@ -21,7 +21,7 @@
 								},
 							})"
 						>
-						<div slot="data" slot-scope="{ aggregations, setQuery }">
+						<div slot-scope="{ aggregations, setQuery }">
 							<CustomComponent :aggregations="aggregations" :setQuery="setQuery"/>
 						</div>
 						</ReactiveComponent>
