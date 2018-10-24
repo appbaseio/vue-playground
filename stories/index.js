@@ -1,6 +1,7 @@
 // eslint-disable-next-line
 import { storiesOf } from '@storybook/vue';
 import BaseReactiveList from './BaseReactiveList.vue';
+import BaseReactiveComponent from './BaseReactiveComponent.vue';
 import './styles.css';
 
 storiesOf('Range Components', module).add('RangeList', () => ({
@@ -210,3 +211,8 @@ storiesOf('Result Components/Reactive List', module)
     // template:
     //   '<base-reactive-list :subProps="{ pagination: true }" :subEvents="{ pageChange: onPageChange }"/>',
   }));
+
+storiesOf('Base components/ReactiveComponent', module).add('A custom component', () => ({
+  components: { BaseReactiveComponent },
+  template: '<base-reactive-component :subProps="{ pagination: true }"/>',
+}));
