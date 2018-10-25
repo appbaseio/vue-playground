@@ -1,206 +1,115 @@
 // eslint-disable-next-line
 import { storiesOf } from '@storybook/vue';
 import BaseReactiveList from './BaseReactiveList.vue';
+import BaseDataSearch from './BaseDataSearch.vue';
+import BaseMultiList from './BaseMultiList.vue';
+import BaseSingleList from './BaseSingleList.vue';
+import BaseSingleRange from './BaseSingleRange.vue';
 import BaseReactiveComponent from './BaseReactiveComponent.vue';
 import './styles.css';
 
-storiesOf('Range Components', module).add('RangeList', () => ({
-  template: `<ReactiveBase app="good-books-ds" credentials="nY6NNTZZ6:27b76b9f-18ea-456c-bc5e-3a5263ebc63d" >
-              <div class="row">
-                <div class="col">
-                <SingleRange
-                  componentId="BookSensor"
-                  dataField="average_rating"
-                  :data="[{ 'start': 0, 'end': 3, 'label': 'Rating < 3' },
-                      { 'start': 3, 'end': 4, 'label': 'Rating 3 to 4' },
-                      { 'start': 4, 'end': 5, 'label': 'Rating > 4' }]"
-                />
-                </div>
+storiesOf('Range Components/SingleRange', module)
+  .add('Basic', () => ({
+    components: { BaseSingleRange },
+    template: '<base-single-range/>',
+  }))
+  .add('with title', () => ({
+    components: { BaseSingleRange },
+    template: '<base-single-range :subProps="{title: \'Books Filter\'}"/>',
+  }))
+  .add('with defaultSelected', () => ({
+    components: { BaseSingleRange },
+    template: '<base-single-range :subProps="{defaultSelected: \'Rating 3 to 4\'}"/>',
+  }))
+  .add('without showRadio', () => ({
+    components: { BaseSingleRange },
+    template: '<base-single-range :subProps="{showRadio: false}"/>',
+  }));
 
-                <div class="col">
-                <ReactiveList
-                  componentId="SearchResult"
-                  dataField="original_title.raw"
-                  className="result-list-container"
-                  :pagination="true"
-                  :from="0"
-                  :size="5"
-                  :react="{and: ['BookSensor']}"
-                >
-                  <div slot="onData" slot-scope="{ item }">
-                  <div class="flex book-content" key="item._id">
-                    <img :src="item.image" alt="Book Cover" class="book-image" />
-                    <div class="flex column justify-center ml20">
-                      <div class="book-header">{{ item.original_title }}</div>
-                      <div class="flex column justify-space-between">
-                        <div>
-                          <div>
-                            by <span class="authors-list">{{ item.authors }}</span>
-                          </div>
-                          <div class="ratings-list flex align-center">
-                            <span class="stars">
-                              <i v-for="(item, index) in Array(item.average_rating_rounded).fill('x')" class="fas fa-star" :key="index" />
-                            </span>
-                            <span class="avg-rating">({{item.average_rating}} avg)</span>
-                          </div>
-                        </div>
-                        <span class="pub-year">Pub {{item.original_publication_year}}</span>
-                      </div>
-                    </div>
-                    </div>
-                  </div>
-              </ReactiveList>
-                </div>
-              </div>
-              </ReactiveBase>`,
-}));
-storiesOf('List Components', module).add('SingleList', () => ({
-  template: `<ReactiveBase app="good-books-ds" credentials="nY6NNTZZ6:27b76b9f-18ea-456c-bc5e-3a5263ebc63d" >
-  <div class="row">
-    <div class="col">
-      <SingleList
-        componentId="BookSensor"
-        dataField="original_series.raw"
-        :size="100"
-      />
-    </div>
+storiesOf('List Components/SingleList', module)
+  .add('Basic', () => ({
+    components: { BaseSingleList },
+    template: '<base-single-list/>',
+  }))
+  .add('with title', () => ({
+    components: { BaseSingleList },
+    template: '<base-single-list :subProps="{ title: \'Authors Search\' }"/>',
+  }))
+  .add('without showSearch', () => ({
+    components: { BaseSingleList },
+    template: '<base-single-list :subProps="{ showSearch: false }"/>',
+  }))
+  .add('without showCount', () => ({
+    components: { BaseSingleList },
+    template: '<base-single-list :subProps="{ showCount: false }"/>',
+  }))
+  .add('with placeholder', () => ({
+    components: { BaseSingleList },
+    template: '<base-single-list :subProps="{ placeholder: \'Search for Authors\' }"/>',
+  }))
+  .add('without showRadio', () => ({
+    components: { BaseSingleList },
+    template: '<base-single-list :subProps="{ showRadio: false }"/>',
+  }))
+  .add('with sortBy', () => ({
+    components: { BaseSingleList },
+    template: '<base-single-list :subProps="{ sortBy: \'asc\' }"/>',
+  }));
 
-    <div class="col">
-    <ReactiveList
-      componentId="SearchResult"
-      dataField="original_title.raw"
-      className="result-list-container"
-      :pagination="true"
-      :from="0"
-      :size="5"
-      :react="{and: ['BookSensor']}"
-    >
-      <div slot="onData" slot-scope="{ item }">
-      <div class="flex book-content" key="item._id">
-        <img :src="item.image" alt="Book Cover" class="book-image" />
-        <div class="flex column justify-center ml20">
-          <div class="book-header">{{ item.original_title }}</div>
-          <div class="flex column justify-space-between">
-            <div>
-              <div>
-                by <span class="authors-list">{{ item.authors }}</span>
-              </div>
-              <div class="ratings-list flex align-center">
-                <span class="stars">
-                  <i v-for="(item, index) in Array(item.average_rating_rounded).fill('x')" class="fas fa-star" :key="index" />
-                </span>
-                <span class="avg-rating">({{item.average_rating}} avg)</span>
-              </div>
-            </div>
-            <span class="pub-year">Pub {{item.original_publication_year}}</span>
-          </div>
-        </div>
-        </div>
-      </div>
-  </ReactiveList>
-    </div>
-  </div>
-  </ReactiveBase>`,
-}));
+storiesOf('List Components/MulitList', module)
+  .add('Basic', () => ({
+    components: { BaseMultiList },
+    template: '<base-multi-list/>',
+  }))
+  .add('with title', () => ({
+    components: { BaseMultiList },
+    template: '<base-multi-list :subProps="{ title: \'Authors Search\' }"/>',
+  }))
+  .add('without showSearch', () => ({
+    components: { BaseMultiList },
+    template: '<base-multi-list :subProps="{ showSearch: false }"/>',
+  }))
+  .add('without showCount', () => ({
+    components: { BaseMultiList },
+    template: '<base-multi-list :subProps="{ showCount: false }"/>',
+  }))
+  .add('with selectAllLabel', () => ({
+    components: { BaseMultiList },
+    template: '<base-multi-list :subProps="{ selectAllLabel: \'All Authors\' }"/>',
+  }))
+  .add('with placeholder', () => ({
+    components: { BaseMultiList },
+    template: '<base-multi-list :subProps="{ placeholder: \'Search for Authors\' }"/>',
+  }))
+  .add('without showCheckbox', () => ({
+    components: { BaseMultiList },
+    template: '<base-multi-list :subProps="{ showCheckbox: false }"/>',
+  }))
+  .add('with sortBy', () => ({
+    components: { BaseMultiList },
+    template: '<base-multi-list :subProps="{ sortBy: \'asc\' }"/>',
+  }));
 
-storiesOf('List Components', module).add('MultiList', () => ({
-  template: `<ReactiveBase app="good-books-ds" credentials="nY6NNTZZ6:27b76b9f-18ea-456c-bc5e-3a5263ebc63d" >
-              <div class="row">
-                <div class="col">
-                <MultiList
-                  componentId="BookSensor"
-                  dataField="original_series.raw"
-                  :size="100"
-                />
-                </div>
-
-                <div class="col">
-                <ReactiveList
-                  componentId="SearchResult"
-                  dataField="original_title.raw"
-                  className="result-list-container"
-                  :pagination="true"
-                  :from="0"
-                  :size="5"
-                  :react="{and: ['BookSensor']}"
-                >
-                  <div slot="onData" slot-scope="{ item }">
-                  <div class="flex book-content" key="item._id">
-                    <img :src="item.image" alt="Book Cover" class="book-image" />
-                    <div class="flex column justify-center ml20">
-                      <div class="book-header">{{ item.original_title }}</div>
-                      <div class="flex column justify-space-between">
-                        <div>
-                          <div>
-                            by <span class="authors-list">{{ item.authors }}</span>
-                          </div>
-                          <div class="ratings-list flex align-center">
-                            <span class="stars">
-                              <i v-for="(item, index) in Array(item.average_rating_rounded).fill('x')" class="fas fa-star" :key="index" />
-                            </span>
-                            <span class="avg-rating">({{item.average_rating}} avg)</span>
-                          </div>
-                        </div>
-                        <span class="pub-year">Pub {{item.original_publication_year}}</span>
-                      </div>
-                    </div>
-                    </div>
-                  </div>
-              </ReactiveList>
-                </div>
-              </div>
-              </ReactiveBase>`,
-}));
-
-storiesOf('Search Components', module).add('Data Search', () => ({
-  template: `<ReactiveBase app="good-books-ds" credentials="nY6NNTZZ6:27b76b9f-18ea-456c-bc5e-3a5263ebc63d" >
-  <DataSearch
-    className="result-list-container"
-    categoryField="authors.raw"
-    componentId="BookSensor"
-    :dataField="['original_title', 'original_title.search']"
-  />
-  <ReactiveList
-  componentId="SearchResult"
-  dataField="original_title.raw"
-  className="result-list-container"
-  :pagination="true"
-  :from="0"
-  :size="5"
-  :react="{and: ['BookSensor']}"
->
-    <div slot="onData" slot-scope="{ item }">
-    <div class="flex book-content" key="item._id">
-      <img :src="item.image" alt="Book Cover" class="book-image" />
-      <div class="flex column justify-center ml20">
-        <div class="book-header">{{ item.original_title }}</div>
-        <div class="flex column justify-space-between">
-          <div>
-            <div>
-              by <span class="authors-list">{{ item.authors }}</span>
-            </div>
-            <div class="ratings-list flex align-center">
-              <span class="stars">
-                <i v-for="(item, index) in Array(item.average_rating_rounded).fill('x')" class="fas fa-star" :key="index" />
-              </span>
-              <span class="avg-rating">({{item.average_rating}} avg)</span>
-            </div>
-          </div>
-          <span class="pub-year">Pub {{item.original_publication_year}}</span>
-        </div>
-      </div>
-      </div>
-    </div>
-</ReactiveList>
-  </ReactiveBase>`,
-}));
+storiesOf('Search Components/DataSearch', module)
+  .add('Basic', () => ({
+    components: { BaseDataSearch },
+    template: '<base-data-search/>',
+  }))
+  .add('with iconPosition', () => ({
+    components: { BaseDataSearch },
+    template: '<base-data-search :subProps="{ iconPosition: \'right\' }"/>',
+  }))
+  .add('with defaultSelected', () => ({
+    components: { BaseDataSearch },
+    template: '<base-data-search :subProps="{ defaultSelected: \'Harry Potter\' }"/>',
+  }));
 
 storiesOf('Result Components/Reactive List', module)
   .add('Basic', () => ({
     components: { BaseReactiveList },
     template: '<base-reactive-list/>',
   }))
-  .add('With Pagination', () => ({
+  .add('With pagination', () => ({
     // methods: {
     //   onPageChange: (page, total) => {
     //     console.log('Called page change', page, total);
@@ -210,6 +119,26 @@ storiesOf('Result Components/Reactive List', module)
     template: '<base-reactive-list :subProps="{ pagination: true }"/>',
     // template:
     //   '<base-reactive-list :subProps="{ pagination: true }" :subEvents="{ pageChange: onPageChange }"/>',
+  }))
+  .add('With Infinite Loading', () => ({
+    components: { BaseReactiveList },
+    template: '<base-reactive-list/>',
+  }))
+  .add('With sortBy', () => ({
+    components: { BaseReactiveList },
+    template: '<base-reactive-list :subProps="{ sortBy: \'asc\' }"/>',
+  }))
+  .add('With pagination at top', () => ({
+    components: { BaseReactiveList },
+    template: '<base-reactive-list :subProps="{ pagination: true, paginationAt: \'top\' }"/>',
+  }))
+  .add('Without resultStats', () => ({
+    components: { BaseReactiveList },
+    template: '<base-reactive-list :subProps="{ showResultStats: false }"/>',
+  }))
+  .add('With custom number of pages', () => ({
+    components: { BaseReactiveList },
+    template: '<base-reactive-list :subProps="{ pagination: true, pages: 10 }"/>',
   }));
 
 storiesOf('Base components/ReactiveComponent', module).add('A custom component', () => ({
