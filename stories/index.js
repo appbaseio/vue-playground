@@ -5,6 +5,7 @@ import BaseDataSearch from './BaseDataSearch.vue';
 import BaseMultiList from './BaseMultiList.vue';
 import BaseSingleList from './BaseSingleList.vue';
 import BaseSingleRange from './BaseSingleRange.vue';
+import BaseReactiveComponent from './BaseReactiveComponent.vue';
 import './styles.css';
 
 storiesOf('Range Components/SingleRange', module)
@@ -139,3 +140,8 @@ storiesOf('Result Components/Reactive List', module)
     components: { BaseReactiveList },
     template: '<base-reactive-list :subProps="{ pagination: true, pages: 10 }"/>',
   }));
+
+storiesOf('Base components/ReactiveComponent', module).add('A custom component', () => ({
+  components: { BaseReactiveComponent },
+  template: '<base-reactive-component :subProps="{ pagination: true }"/>',
+}));
