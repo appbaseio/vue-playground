@@ -1,3 +1,3 @@
 # vue-playground
 
-A storybook playground for `vue-reactivesearch`.
+A storybook playground for `reactivesearch-vue`.

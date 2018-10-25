@@ -1,6 +1,6 @@
 import { configure } from '@storybook/vue';
 import Vue from 'vue';
-import VueRS from '@appbaseio/vue-reactivesearch';
+import VueRS from '@appbaseio/reactivesearch-vue';
 
 Vue.use(VueRS);
 function loadStories() {
