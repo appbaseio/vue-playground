@@ -12,15 +12,15 @@ storiesOf('Range Components/SingleRange', module)
     components: { BaseSingleRange },
     template: '<base-single-range/>',
   }))
-  .add('With Title', () => ({
+  .add('with title', () => ({
     components: { BaseSingleRange },
     template: '<base-single-range :subProps="{title: \'Books Filter\'}"/>',
   }))
-  .add('With defaultSelected', () => ({
+  .add('with defaultSelected', () => ({
     components: { BaseSingleRange },
     template: '<base-single-range :subProps="{defaultSelected: \'Rating 3 to 4\'}"/>',
   }))
-  .add('Without Radio', () => ({
+  .add('without showRadio', () => ({
     components: { BaseSingleRange },
     template: '<base-single-range :subProps="{showRadio: false}"/>',
   }));
@@ -30,27 +30,27 @@ storiesOf('List Components/SingleList', module)
     components: { BaseSingleList },
     template: '<base-single-list/>',
   }))
-  .add('With Title', () => ({
+  .add('with title', () => ({
     components: { BaseSingleList },
     template: '<base-single-list :subProps="{ title: \'Authors Search\' }"/>',
   }))
-  .add('Without Search', () => ({
+  .add('without showSearch', () => ({
     components: { BaseSingleList },
     template: '<base-single-list :subProps="{ showSearch: false }"/>',
   }))
-  .add('Without Count', () => ({
+  .add('without showCount', () => ({
     components: { BaseSingleList },
     template: '<base-single-list :subProps="{ showCount: false }"/>',
   }))
-  .add('With custom Placeholder', () => ({
+  .add('with placeholder', () => ({
     components: { BaseSingleList },
     template: '<base-single-list :subProps="{ placeholder: \'Search for Authors\' }"/>',
   }))
-  .add('Without Radio', () => ({
+  .add('without showRadio', () => ({
     components: { BaseSingleList },
     template: '<base-single-list :subProps="{ showRadio: false }"/>',
   }))
-  .add('With sortBy', () => ({
+  .add('with sortBy', () => ({
     components: { BaseSingleList },
     template: '<base-single-list :subProps="{ sortBy: \'asc\' }"/>',
   }));
@@ -60,31 +60,31 @@ storiesOf('List Components/MulitList', module)
     components: { BaseMultiList },
     template: '<base-multi-list/>',
   }))
-  .add('With Title', () => ({
+  .add('with title', () => ({
     components: { BaseMultiList },
     template: '<base-multi-list :subProps="{ title: \'Authors Search\' }"/>',
   }))
-  .add('Without Search', () => ({
+  .add('without showSearch', () => ({
     components: { BaseMultiList },
     template: '<base-multi-list :subProps="{ showSearch: false }"/>',
   }))
-  .add('Without Count', () => ({
+  .add('without showCount', () => ({
     components: { BaseMultiList },
     template: '<base-multi-list :subProps="{ showCount: false }"/>',
   }))
-  .add('With SelectAll Label', () => ({
+  .add('with selectAllLabel', () => ({
     components: { BaseMultiList },
     template: '<base-multi-list :subProps="{ selectAllLabel: \'All Authors\' }"/>',
   }))
-  .add('With custom Placeholder', () => ({
+  .add('with placeholder', () => ({
     components: { BaseMultiList },
     template: '<base-multi-list :subProps="{ placeholder: \'Search for Authors\' }"/>',
   }))
-  .add('Without Checkbox', () => ({
+  .add('without showCheckbox', () => ({
     components: { BaseMultiList },
     template: '<base-multi-list :subProps="{ showCheckbox: false }"/>',
   }))
-  .add('With sortBy', () => ({
+  .add('with sortBy', () => ({
     components: { BaseMultiList },
     template: '<base-multi-list :subProps="{ sortBy: \'asc\' }"/>',
   }));
@@ -94,11 +94,11 @@ storiesOf('Search Components/DataSearch', module)
     components: { BaseDataSearch },
     template: '<base-data-search/>',
   }))
-  .add('With Icon Position', () => ({
+  .add('with iconPosition', () => ({
     components: { BaseDataSearch },
     template: '<base-data-search :subProps="{ iconPosition: \'right\' }"/>',
   }))
-  .add('With defaultSelected', () => ({
+  .add('with defaultSelected', () => ({
     components: { BaseDataSearch },
     template: '<base-data-search :subProps="{ defaultSelected: \'Harry Potter\' }"/>',
   }));
@@ -108,7 +108,7 @@ storiesOf('Result Components/Reactive List', module)
     components: { BaseReactiveList },
     template: '<base-reactive-list/>',
   }))
-  .add('With Pagination', () => ({
+  .add('With pagination', () => ({
     // methods: {
     //   onPageChange: (page, total) => {
     //     console.log('Called page change', page, total);
