@@ -95,6 +95,10 @@ storiesOf('Search Components/DataSearch', module)
     components: { BaseDataSearch },
     template: '<base-data-search/>',
   }))
+  .add('with title', () => ({
+    components: { BaseDataSearch },
+    template: "<base-data-search :subProps=\"{ iconPosition: 'right', title: 'Book Store'}\"/>",
+  }))
   .add('with iconPosition', () => ({
     components: { BaseDataSearch },
     template: '<base-data-search :subProps="{ iconPosition: \'right\' }"/>',
@@ -110,15 +114,8 @@ storiesOf('Result Components/Reactive List', module)
     template: '<base-reactive-list/>',
   }))
   .add('With pagination', () => ({
-    // methods: {
-    //   onPageChange: (page, total) => {
-    //     console.log('Called page change', page, total);
-    //   },
-    // },
     components: { BaseReactiveList },
     template: '<base-reactive-list :subProps="{ pagination: true }"/>',
-    // template:
-    //   '<base-reactive-list :subProps="{ pagination: true }" :subEvents="{ pageChange: onPageChange }"/>',
   }))
   .add('With Infinite Loading', () => ({
     components: { BaseReactiveList },
