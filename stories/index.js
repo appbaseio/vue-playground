@@ -93,19 +93,23 @@ storiesOf('List Components/MulitList', module)
 storiesOf('Search Components/DataSearch', module)
   .add('Basic', () => ({
     components: { BaseDataSearch },
-    template: '<base-data-search/>',
+    template: '<base-data-search :subProps="{ showFilter: false }"/>',
   }))
   .add('with title', () => ({
     components: { BaseDataSearch },
-    template: "<base-data-search :subProps=\"{ iconPosition: 'right', title: 'Book Store'}\"/>",
+    template: "<base-data-search :subProps=\"{ iconPosition: 'right', title: 'Book Store', showFilter: false}\"/>",
   }))
   .add('with iconPosition', () => ({
     components: { BaseDataSearch },
-    template: '<base-data-search :subProps="{ iconPosition: \'right\' }"/>',
+    template: '<base-data-search :subProps="{ iconPosition: \'right\', showFilter: false }"/>',
   }))
   .add('with defaultSelected', () => ({
     components: { BaseDataSearch },
-    template: '<base-data-search :subProps="{ defaultSelected: \'Harry Potter\' }"/>',
+    template: '<base-data-search :subProps="{ defaultSelected: \'Harry Potter\', showFilter: false }"/>',
+  }))
+  .add('with Filters', () => ({
+    components: { BaseDataSearch },
+    template: '<base-data-search :subProps="{ showFilter: true }"/>',
   }));
 
 storiesOf('Result Components/Reactive List', module)

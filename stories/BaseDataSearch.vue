@@ -8,6 +8,7 @@
     v-bind='subProps'
     v-on='subEvents'
   />
+  <SelectedFilters componentId="BookSensor" />
   <ReactiveList
   componentId="SearchResult"
   dataField="original_title.raw"
