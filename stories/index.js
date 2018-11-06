@@ -6,6 +6,7 @@ import BaseMultiList from './BaseMultiList.vue';
 import BaseSingleList from './BaseSingleList.vue';
 import BaseSingleRange from './BaseSingleRange.vue';
 import BaseReactiveComponent from './BaseReactiveComponent.vue';
+import BaseSingleDropdownList from './BaseSingleDropdownList.vue';
 import './styles.css';
 
 storiesOf('Range Components/SingleRange', module)
@@ -89,6 +90,12 @@ storiesOf('List Components/MulitList', module)
     components: { BaseMultiList },
     template: '<base-multi-list :subProps="{ sortBy: \'asc\' }"/>',
   }));
+
+storiesOf('List Components/SingleDropdownList', module)
+  .add('Basic', () => ({
+    components: { BaseSingleDropdownList },
+    template: '<base-single-dropdown-list/>',
+  }))
 
 storiesOf('Search Components/DataSearch', module)
   .add('Basic', () => ({
