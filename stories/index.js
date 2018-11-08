@@ -75,7 +75,7 @@ storiesOf('List Components/MulitList', module)
   }))
   .add('with filter', () => ({
     components: { BaseMultiList },
-    template: '<base-multi-list :subProps="{ showFilter: true, filterLabel: Books filter }" />',
+    template: '<base-multi-list :subProps="{ showFilter: true, filterLabel: \'Books filter\' }" />',
   }))
 
   .add('without showSearch', () => ({
