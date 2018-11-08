@@ -123,6 +123,39 @@ storiesOf('Search Components/DataSearch', module)
     components: { BaseDataSearch },
     template: "<base-data-search :subProps=\"{ iconPosition: 'right', title: 'Book Store', showFilter: false}\"/>",
   }))
+  .add('without search icon', () => ({
+    components: { BaseDataSearch },
+    template: "<base-data-search :subProps=\"{ showIcon: false, showFilter: false}\"/>",
+  }))
+  .add('with show clear', () => ({
+    components: { BaseDataSearch },
+    template: "<base-data-search :subProps=\"{ showClear: true, clearIcon: X, showFilter: false}\"/>",
+  }))
+  .add('with debounce', () => ({
+    components: { BaseDataSearch },
+    template: "<base-data-search :subProps=\"{ debounce: 300, showFilter: false}\"/>",
+  }))
+  .add('With strictSelection', () => ({
+    components: { BaseDataSearch },
+    template: "<base-data-search :subProps=\"{ strictSelection: true, showFilter: false}\"/>",
+  }))
+  .add('Without autosuggest', () => ({
+    components: { BaseDataSearch },
+    template: "<base-data-search :subProps=\"{ autosuggest: false, showFilter: false}\"/>",
+  }))
+  .add('With fuzziness as a number', () => ({
+    components: { BaseDataSearch },
+    template: "<base-data-search :subProps=\"{ fuzziness: 1, showFilter: false}\"/>",
+  }))
+  .add('With fuzziness as AUTO', () => ({
+    components: { BaseDataSearch },
+    template: "<base-data-search :subProps=\"{ fuzziness: AUTO, showFilter: false}\"/>",
+  }))
+   .add('With highlight', () => ({
+    components: { BaseDataSearch },
+    template: "<base-data-search :subProps=\"{ highlight: true, showFilter: false}\"/>",
+  }))
+
   .add('with iconPosition', () => ({
     components: { BaseDataSearch },
     template: '<base-data-search :subProps="{ iconPosition: \'right\', showFilter: false }"/>',
