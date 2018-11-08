@@ -1,5 +1,7 @@
 // eslint-disable-next-line
 import { storiesOf } from '@storybook/vue';
+// import { withKnobs } from '@storybook/addon-knobs';
+
 import BaseReactiveList from './BaseReactiveList.vue';
 import BaseDataSearch from './BaseDataSearch.vue';
 import BaseMultiList from './BaseMultiList.vue';
@@ -58,6 +60,7 @@ storiesOf('List Components/SingleList', module)
   }));
 
 storiesOf('List Components/MulitList', module)
+  // .addDecorator(withKnobs)
   .add('Basic', () => ({
     components: { BaseMultiList },
     template: '<base-multi-list/>',
@@ -66,10 +69,24 @@ storiesOf('List Components/MulitList', module)
     components: { BaseMultiList },
     template: '<base-multi-list :subProps="{ title: \'Authors Search\' }"/>',
   }))
+  .add('with size', () => ({
+    components: { BaseMultiList },
+    template: '<base-multi-list :subProps="{ size: 10 }"/>',
+  }))
+  .add('with filter', () => ({
+    components: { BaseMultiList },
+    template: '<base-multi-list :subProps="{ showFilter: true, filterLabel: Books filter }" />',
+  }))
+
   .add('without showSearch', () => ({
     components: { BaseMultiList },
     template: '<base-multi-list :subProps="{ showSearch: false }"/>',
   }))
+  .add('Default Selected', () => ({
+    components: { BaseMultiList },
+    template: '<base-multi-list :subProps="{ defaultSelected: \'Nora Roberts\' }"/>',
+  }))
+  
   .add('without showCount', () => ({
     components: { BaseMultiList },
     template: '<base-multi-list :subProps="{ showCount: false }"/>',

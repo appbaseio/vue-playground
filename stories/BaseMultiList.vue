@@ -5,7 +5,6 @@
                 <MultiList
                     componentId="BookSensor"
                     dataField="authors.raw"
-                    :size="100"
                     v-bind='subProps'
                     v-on='subEvents'
                 />
