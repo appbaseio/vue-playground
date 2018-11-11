@@ -38,6 +38,10 @@ storiesOf('List Components/SingleList', module)
     components: { BaseSingleList },
     template: '<base-single-list :subProps="{ title: \'Authors Search\' }"/>',
   }))
+  .add('with size', () => ({
+    components: { BaseSingleList },
+    template: '<base-single-list :subProps="{ size: 10 }"/>',
+  }))
   .add('without showSearch', () => ({
     components: { BaseSingleList },
     template: '<base-single-list :subProps="{ showSearch: false }"/>',
@@ -53,6 +57,14 @@ storiesOf('List Components/SingleList', module)
   .add('without showRadio', () => ({
     components: { BaseSingleList },
     template: '<base-single-list :subProps="{ showRadio: false }"/>',
+  }))
+  .add('defaultSelected', () => ({
+    components: { BaseSingleList },
+    template: '<base-single-list :subProps="{ defaultSelected: \'Hercule Poirot\' }"/>',
+  }))
+  .add('With selectAllLabel', () => ({
+    components: { BaseSingleList },
+    template: '<base-single-list :subProps="{ selectAllLabel: \'All Books\'  }"/>',
   }))
   .add('with sortBy', () => ({
     components: { BaseSingleList },
