@@ -123,8 +123,34 @@ storiesOf('List Components/MulitList', module)
 storiesOf('List Components/SingleDropdownList', module)
   .add('Basic', () => ({
     components: { BaseSingleDropdownList },
-    template: '<base-single-dropdown-list/>',
+    template: '<base-single-dropdown-list :subProps="{showFilter: false}"/>',
   }))
+   .add('with size', () => ({
+    components: { BaseSingleDropdownList },
+    template: '<base-single-dropdown-list :subProps="{ size: 10 , showFilter: false}"/>',
+  }))
+   .add('with filter', () => ({
+    components: { BaseSingleDropdownList },
+    template: '<base-single-dropdown-list :subProps="{ showFilter: true}"/>',
+  }))
+    .add('without count', () => ({
+    components: { BaseSingleDropdownList },
+    template: '<base-single-dropdown-list :subProps="{ showCount: false, showFilter: false}"/>',
+  }))
+    .add('with search', () => ({
+    components: { BaseSingleDropdownList },
+    template: '<base-single-dropdown-list :subProps="{ showSearch: true, showFilter: false}"/>',
+  }))
+    .add('With Select All', () => ({
+    components: { BaseSingleDropdownList },
+    template: '<base-single-dropdown-list :subProps="{ selectAllLabel: \'All Books\', showFilter: false}"/>',
+  }))
+    .add('with defaultSelected', () => ({
+    components: { BaseSingleDropdownList },
+    template: '<base-single-dropdown-list :subProps="{ defaultSelected: \'Artemis Fowl\', showFilter: false}"/>',
+  }))
+
+
 
 storiesOf('Search Components/DataSearch', module)
   .add('Basic', () => ({

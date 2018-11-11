@@ -5,7 +5,6 @@
         <SingleDropdownList
           componentId="BookSensor"
           dataField="original_series.raw"
-          :size="100"
           v-bind='subProps'
           v-on='subEvents'
         />
