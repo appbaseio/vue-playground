@@ -9,6 +9,7 @@ import BaseSingleList from './BaseSingleList.vue';
 import BaseSingleRange from './BaseSingleRange.vue';
 import BaseReactiveComponent from './BaseReactiveComponent.vue';
 import BaseSingleDropdownList from './BaseSingleDropdownList.vue';
+import BaseMultiDropdownList from './BaseMultiDropdownList.vue';
 import './styles.css';
 
 storiesOf('Range Components/SingleRange', module)
@@ -157,7 +158,6 @@ storiesOf('List Components/SingleDropdownList', module)
     components: { BaseSingleDropdownList },
     template: '<base-single-dropdown-list :subProps="{ defaultSelected: \'Artemis Fowl\', showFilter: false}"/>',
   }))
-
 
 
 storiesOf('Search Components/DataSearch', module)
