@@ -1,6 +1,6 @@
 // eslint-disable-next-line
 import { storiesOf } from '@storybook/vue';
-// import { withKnobs } from '@storybook/addon-knobs';
+import { withKnobs, boolean } from '@storybook/addon-knobs';
 
 import BaseReactiveList from './BaseReactiveList.vue';
 import BaseDataSearch from './BaseDataSearch.vue';
@@ -12,6 +12,7 @@ import BaseSingleDropdownList from './BaseSingleDropdownList.vue';
 import './styles.css';
 
 storiesOf('Range Components/SingleRange', module)
+  .addDecorator(withKnobs)
   .add('Basic', () => ({
     components: { BaseSingleRange },
     template: '<base-single-range/>',
@@ -30,6 +31,7 @@ storiesOf('Range Components/SingleRange', module)
   }));
 
 storiesOf('List Components/SingleList', module)
+  .addDecorator(withKnobs)
   .add('Basic', () => ({
     components: { BaseSingleList },
     template: '<base-single-list/>',
@@ -72,7 +74,7 @@ storiesOf('List Components/SingleList', module)
   }));
 
 storiesOf('List Components/MulitList', module)
-  // .addDecorator(withKnobs)
+  .addDecorator(withKnobs)
   .add('Basic', () => ({
     components: { BaseMultiList },
     template: '<base-multi-list/>',
@@ -121,6 +123,7 @@ storiesOf('List Components/MulitList', module)
   }));
 
 storiesOf('List Components/SingleDropdownList', module)
+  .addDecorator(withKnobs)
   .add('Basic', () => ({
     components: { BaseSingleDropdownList },
     template: '<base-single-dropdown-list :subProps="{showFilter: false}"/>',
@@ -132,6 +135,11 @@ storiesOf('List Components/SingleDropdownList', module)
    .add('with filter', () => ({
     components: { BaseSingleDropdownList },
     template: '<base-single-dropdown-list :subProps="{ showFilter: true}"/>',
+  }))
+
+    .add('with custom sort', () => ({
+    components: { BaseSingleDropdownList },
+    template: '<base-single-dropdown-list :subProps="{ sortBy: \'asc\', showFilter: false}"/>',
   }))
     .add('without count', () => ({
     components: { BaseSingleDropdownList },
@@ -153,6 +161,7 @@ storiesOf('List Components/SingleDropdownList', module)
 
 
 storiesOf('Search Components/DataSearch', module)
+  .addDecorator(withKnobs)
   .add('Basic', () => ({
     components: { BaseDataSearch },
     template: '<base-data-search :subProps="{ showFilter: false }"/>',
@@ -208,6 +217,7 @@ storiesOf('Search Components/DataSearch', module)
   }));
 
 storiesOf('Result Components/Reactive List', module)
+  .addDecorator(withKnobs)
   .add('Basic', () => ({
     components: { BaseReactiveList },
     template: '<base-reactive-list/>',
