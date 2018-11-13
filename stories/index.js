@@ -159,6 +159,13 @@ storiesOf('List Components/SingleDropdownList', module)
     template: '<base-single-dropdown-list :subProps="{ defaultSelected: \'Artemis Fowl\', showFilter: false}"/>',
   }))
 
+storiesOf('List Components/MultiDropdownList', module)
+  .addDecorator(withKnobs)
+  .add('Basic', () => ({
+    components: { BaseMultiDropdownList },
+    template: '<base-multi-dropdown-list :subProps="{showFilter: false}"/>',
+  }))
+
 
 storiesOf('Search Components/DataSearch', module)
   .addDecorator(withKnobs)
