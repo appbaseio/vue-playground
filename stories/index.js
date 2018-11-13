@@ -29,37 +29,30 @@ storiesOf('Range Components/SingleRange', module)
   }))
   .add('with title', () => ({
     components: { BaseSingleRange },
-    methods: { text:(x,y) =>{
-      return text(x,y)
-    }},
+    methods: { text:(x,y) => text(x,y)
+    },
     template: '<base-single-range :subProps="{ title: text(\'title\',\' Books Filter \')}"/>',
   }))
   .add('with defaultSelected', () => ({
     components: { BaseSingleRange },
-    methods: { text:(x,y) =>{
-      return text(x,y)
-    }},
+    methods: { text:(x,y) => text(x,y)
+    },
     template: '<base-single-range :subProps="{defaultSelected: text(\'defaultSelected\',\'Rating 3 to 4\')}"/>',
   }))
    .add('with filter', () => ({
     components: { BaseSingleRange },
     methods: { 
-    text:(x,y) =>{
-      return text(x,y)
+    text:(x,y) => text(x,y),
+    boolean:(x) => boolean(x)
     },
-    boolean:(x) => {
-      return boolean(x)
-    }
-  },
     template: '<base-single-range :subProps="{ filterLabel: text(\'filterLabel\',\'Books filter\'), showFilter: boolean(\'showFilter\',true) }"/>',
   })) 
 
   .add('without showRadio', () => ({
     components: { BaseSingleRange },
-    methods: { boolean: (x) => {
-      return boolean(x)
-    }},
-    template: '<base-single-range :subProps="{showRadio: boolean(false)}"/>',
+    methods: { boolean: (x) => boolean(x)
+    },
+    template: '<base-single-range :subProps="{showRadio: boolean(\'showRadio\',false)}"/>',
   }));
 
 storiesOf('List Components/SingleList', module)
@@ -160,35 +153,83 @@ storiesOf('List Components/SingleDropdownList', module)
     components: { BaseSingleDropdownList },
     template: '<base-single-dropdown-list :subProps="{showFilter: false}"/>',
   }))
+  .add('title', () => ({
+    components: { BaseSingleDropdownList },
+    methods: { 
+      text:(x,y) => text(x,y)
+      },
+    template: '<base-single-dropdown-list :subProps="{title: text(\'title\',\' Good Books \') ,showFilter: false}"/>',
+  }))
    .add('with size', () => ({
     components: { BaseSingleDropdownList },
-    template: '<base-single-dropdown-list :subProps="{ size: 10 , showFilter: false}"/>',
+    methods:{
+      number: (x,y) => number(x,y)
+    },
+    template: '<base-single-dropdown-list :subProps="{ size: number(\'size\',10) , showFilter: false}"/>',
   }))
    .add('with filter', () => ({
     components: { BaseSingleDropdownList },
-    template: '<base-single-dropdown-list :subProps="{ showFilter: true}"/>',
+    methods: { 
+    text:(x,y) => text(x,y),
+    boolean:(x) => boolean(x)
+    },
+    template: '<base-single-dropdown-list :subProps="{ filterLabel: text(\'filterLabel\',\'Books filter\'), showFilter: boolean(\'showFilter\',true)}"/>',
   }))
 
     .add('with custom sort', () => ({
     components: { BaseSingleDropdownList },
-    template: '<base-single-dropdown-list :subProps="{ sortBy: \'asc\', showFilter: false}"/>',
+    methods:{
+      select: (x,y,z) => select(x,y,z)
+    },
+    template: '<base-single-dropdown-list :subProps="{ sortBy: select(\'sortBy\', { asc: \'asc\', description: \'desc\', count: \'count\'}, \'asc\' ), showFilter: false}"/>',
   }))
     .add('without count', () => ({
     components: { BaseSingleDropdownList },
-    template: '<base-single-dropdown-list :subProps="{ showCount: false, showFilter: false}"/>',
+    methods: { boolean: (x) => boolean(x)
+    },
+    template: '<base-single-dropdown-list :subProps="{ showCount: boolean(\'showCount\',false), showFilter: false}"/>',
   }))
     .add('with search', () => ({
     components: { BaseSingleDropdownList },
-    template: '<base-single-dropdown-list :subProps="{ showSearch: true, showFilter: false}"/>',
+    methods: { boolean: (x) => boolean(x) },
+    template: '<base-single-dropdown-list :subProps="{ showSearch: boolean(\'showSearch\',true), showFilter: false}"/>',
   }))
+
     .add('With Select All', () => ({
     components: { BaseSingleDropdownList },
-    template: '<base-single-dropdown-list :subProps="{ selectAllLabel: \'All Books\', showFilter: false}"/>',
+    methods: {
+      text:(x,y) => text(x,y)
+    },
+    template: '<base-single-dropdown-list :subProps="{ selectAllLabel: text(\'selectAllLabel\',\'All Books\'), showFilter: false}"/>',
   }))
+
     .add('with defaultSelected', () => ({
     components: { BaseSingleDropdownList },
-    template: '<base-single-dropdown-list :subProps="{ defaultSelected: \'Artemis Fowl\', showFilter: false}"/>',
+     methods: {
+      text:(x,y) => text(x,y)
+    },
+    template: '<base-single-dropdown-list :subProps="{ defaultSelected: text(\'defaultSelected\',\'Artemis Fowl\'), showFilter: false}"/>',
   }))
+
+    .add('With URLParams', () => ({
+    components: { BaseSingleDropdownList },
+     methods: {
+      boolean:(x) => boolean(x)
+    },
+    template: '<base-single-dropdown-list :subProps="{ URLParams: boolean(\'URLParams (not visible on storybook )\',false), showFilter: false}"/>',
+  }))
+
+    .add('Playground', () => ({
+    components: { BaseSingleDropdownList },
+     methods: {
+      boolean:(x) => boolean(x),
+      text:(x,y) => text(x,y),
+      number: (x,y) => number(x,y),
+      select: (x,y,z) => select(x,y,z)
+    },
+    template: '<base-single-dropdown-list :subProps="{ title: text(\'title\',\' Good Books \'),dataField: select(\'dataField\', [\'original_series.raw\', \'authors.raw\', \'language_code.raw\'], \'original_series.raw\'), size: number(\'size\',10),filterLabel: text(\'filterLabel\',\'Books filter\'), showFilter: boolean(\'showFilter\',true),sortBy: select(\'sortBy\', { asc: \'asc\', description: \'desc\', count: \'count\'}, \'asc\' ), showCount: boolean(\'showCount\',false), showSearch: boolean(\'showSearch\',true), selectAllLabel: text(\'selectAllLabel\',\'All Books\'), defaultSelected: text(\'defaultSelected\',\'Artemis Fowl\'),URLParams: boolean(\'URLParams (not visible on storybook )\',false), placeholder: text(\'placeholder\',\' Select a Book \')    }"/>',
+  }))
+
 
 storiesOf('List Components/MultiDropdownList ', module)
   .addDecorator(withKnobs)
