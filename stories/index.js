@@ -1,5 +1,7 @@
 // eslint-disable-next-line
 import { storiesOf } from '@storybook/vue';
+import { withKnobs, boolean } from '@storybook/addon-knobs';
+
 import BaseReactiveList from './BaseReactiveList.vue';
 import BaseDataSearch from './BaseDataSearch.vue';
 import BaseMultiList from './BaseMultiList.vue';
@@ -11,6 +13,7 @@ import BaseMultiDropdownList from './BaseMultiDropdownList.vue';
 import './styles.css';
 
 storiesOf('Range Components/SingleRange', module)
+  .addDecorator(withKnobs)
   .add('Basic', () => ({
     components: { BaseSingleRange },
     template: '<base-single-range/>',
@@ -29,6 +32,7 @@ storiesOf('Range Components/SingleRange', module)
   }));
 
 storiesOf('List Components/SingleList', module)
+  .addDecorator(withKnobs)
   .add('Basic', () => ({
     components: { BaseSingleList },
     template: '<base-single-list/>',
@@ -36,6 +40,10 @@ storiesOf('List Components/SingleList', module)
   .add('with title', () => ({
     components: { BaseSingleList },
     template: '<base-single-list :subProps="{ title: \'Authors Search\' }"/>',
+  }))
+  .add('with size', () => ({
+    components: { BaseSingleList },
+    template: '<base-single-list :subProps="{ size: 10 }"/>',
   }))
   .add('without showSearch', () => ({
     components: { BaseSingleList },
@@ -53,12 +61,21 @@ storiesOf('List Components/SingleList', module)
     components: { BaseSingleList },
     template: '<base-single-list :subProps="{ showRadio: false }"/>',
   }))
+  .add('defaultSelected', () => ({
+    components: { BaseSingleList },
+    template: '<base-single-list :subProps="{ defaultSelected: \'Hercule Poirot\' }"/>',
+  }))
+  .add('With selectAllLabel', () => ({
+    components: { BaseSingleList },
+    template: '<base-single-list :subProps="{ selectAllLabel: \'All Books\'  }"/>',
+  }))
   .add('with sortBy', () => ({
     components: { BaseSingleList },
     template: '<base-single-list :subProps="{ sortBy: \'asc\' }"/>',
   }));
 
 storiesOf('List Components/MulitList', module)
+  .addDecorator(withKnobs)
   .add('Basic', () => ({
     components: { BaseMultiList },
     template: '<base-multi-list/>',
@@ -67,10 +84,24 @@ storiesOf('List Components/MulitList', module)
     components: { BaseMultiList },
     template: '<base-multi-list :subProps="{ title: \'Authors Search\' }"/>',
   }))
+  .add('with size', () => ({
+    components: { BaseMultiList },
+    template: '<base-multi-list :subProps="{ size: 10 }"/>',
+  }))
+  .add('with filter', () => ({
+    components: { BaseMultiList },
+    template: '<base-multi-list :subProps="{ showFilter: true, filterLabel: \'Books filter\' }" />',
+  }))
+
   .add('without showSearch', () => ({
     components: { BaseMultiList },
     template: '<base-multi-list :subProps="{ showSearch: false }"/>',
   }))
+  .add('Default Selected', () => ({
+    components: { BaseMultiList },
+    template: '<base-multi-list :subProps="{ defaultSelected: \'Nora Roberts\' }"/>',
+  }))
+  
   .add('without showCount', () => ({
     components: { BaseMultiList },
     template: '<base-multi-list :subProps="{ showCount: false }"/>',
@@ -93,18 +124,44 @@ storiesOf('List Components/MulitList', module)
   }));
 
 storiesOf('List Components/SingleDropdownList', module)
+  .addDecorator(withKnobs)
   .add('Basic', () => ({
     components: { BaseSingleDropdownList },
-    template: '<base-single-dropdown-list/>',
+    template: '<base-single-dropdown-list :subProps="{showFilter: false}"/>',
+  }))
+   .add('with size', () => ({
+    components: { BaseSingleDropdownList },
+    template: '<base-single-dropdown-list :subProps="{ size: 10 , showFilter: false}"/>',
+  }))
+   .add('with filter', () => ({
+    components: { BaseSingleDropdownList },
+    template: '<base-single-dropdown-list :subProps="{ showFilter: true}"/>',
   }))
 
-storiesOf('List Components/MultiDropdownList', module)
-  .add('Basic', () => ({
-    components: { BaseMultiDropdownList },
-    template: '<base-multi-dropdown-list/>',
+    .add('with custom sort', () => ({
+    components: { BaseSingleDropdownList },
+    template: '<base-single-dropdown-list :subProps="{ sortBy: \'asc\', showFilter: false}"/>',
   }))
+    .add('without count', () => ({
+    components: { BaseSingleDropdownList },
+    template: '<base-single-dropdown-list :subProps="{ showCount: false, showFilter: false}"/>',
+  }))
+    .add('with search', () => ({
+    components: { BaseSingleDropdownList },
+    template: '<base-single-dropdown-list :subProps="{ showSearch: true, showFilter: false}"/>',
+  }))
+    .add('With Select All', () => ({
+    components: { BaseSingleDropdownList },
+    template: '<base-single-dropdown-list :subProps="{ selectAllLabel: \'All Books\', showFilter: false}"/>',
+  }))
+    .add('with defaultSelected', () => ({
+    components: { BaseSingleDropdownList },
+    template: '<base-single-dropdown-list :subProps="{ defaultSelected: \'Artemis Fowl\', showFilter: false}"/>',
+  }))
+
 
 storiesOf('Search Components/DataSearch', module)
+  .addDecorator(withKnobs)
   .add('Basic', () => ({
     components: { BaseDataSearch },
     template: '<base-data-search :subProps="{ showFilter: false }"/>',
@@ -113,6 +170,39 @@ storiesOf('Search Components/DataSearch', module)
     components: { BaseDataSearch },
     template: "<base-data-search :subProps=\"{ iconPosition: 'right', title: 'Book Store', showFilter: false}\"/>",
   }))
+  .add('without search icon', () => ({
+    components: { BaseDataSearch },
+    template: "<base-data-search :subProps=\"{ showIcon: false, showFilter: false}\"/>",
+  }))
+  .add('with show clear', () => ({
+    components: { BaseDataSearch },
+    template: "<base-data-search :subProps=\"{ showClear: true, clearIcon: X, showFilter: false}\"/>",
+  }))
+  .add('with debounce', () => ({
+    components: { BaseDataSearch },
+    template: "<base-data-search :subProps=\"{ debounce: 300, showFilter: false}\"/>",
+  }))
+  .add('With strictSelection', () => ({
+    components: { BaseDataSearch },
+    template: "<base-data-search :subProps=\"{ strictSelection: true, showFilter: false}\"/>",
+  }))
+  .add('Without autosuggest', () => ({
+    components: { BaseDataSearch },
+    template: "<base-data-search :subProps=\"{ autosuggest: false, showFilter: false}\"/>",
+  }))
+  .add('With fuzziness as a number', () => ({
+    components: { BaseDataSearch },
+    template: "<base-data-search :subProps=\"{ fuzziness: 1, showFilter: false}\"/>",
+  }))
+  .add('With fuzziness as AUTO', () => ({
+    components: { BaseDataSearch },
+    template: "<base-data-search :subProps=\"{ fuzziness: AUTO, showFilter: false}\"/>",
+  }))
+   .add('With highlight', () => ({
+    components: { BaseDataSearch },
+    template: "<base-data-search :subProps=\"{ highlight: true, showFilter: false}\"/>",
+  }))
+
   .add('with iconPosition', () => ({
     components: { BaseDataSearch },
     template: '<base-data-search :subProps="{ iconPosition: \'right\', showFilter: false }"/>',
@@ -127,6 +217,7 @@ storiesOf('Search Components/DataSearch', module)
   }));
 
 storiesOf('Result Components/Reactive List', module)
+  .addDecorator(withKnobs)
   .add('Basic', () => ({
     components: { BaseReactiveList },
     template: '<base-reactive-list/>',

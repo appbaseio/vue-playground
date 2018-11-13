@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/appbaseio/vue-playground#readme",
   "devDependencies": {
+    "@storybook/addon-knobs": "^3.4.11",
     "@storybook/vue": "^3.4.11",
     "babel-core": "^6.26.3",
     "vue-loader": "^15.4.2",
