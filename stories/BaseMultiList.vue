@@ -7,7 +7,13 @@
                     dataField="authors.raw"
                     v-bind='subProps'
                     v-on='subEvents'
-                />
+                >
+
+                   <div slot="renderListItem" slot-scope="{ label }">
+                    <span>{{ label }}frfr</span>
+                </div>
+
+                </MultiList>
             </div>
 
             <div class="col">
@@ -54,6 +60,7 @@ export default {
   props: {
     subProps: Object,
     subEvents: Object,
+    rawHtml: String
   },
 };
 </script>

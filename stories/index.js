@@ -12,6 +12,8 @@ import BaseSingleDropdownList from './BaseSingleDropdownList.vue';
 import BaseMultiDropdownList from './BaseMultiDropdownList.vue';
 import './styles.css';
 
+
+
 storiesOf('Range Components/SingleRange', module)
   .addDecorator(withKnobs)
   .add('Basic', () => ({
@@ -50,8 +52,10 @@ storiesOf('List Components/SingleList', module)
     template: '<base-single-list :subProps="{ showSearch: false }"/>',
   }))
   .add('without showCount', () => ({
-    components: { BaseSingleList },
-    template: '<base-single-list :subProps="{ showCount: false }"/>',
+    components: { BaseSingleList }, methods: { boolean: (x)  => {
+      return boolean(x)
+    }},
+    template: '<base-single-list :subProps="{ showCount: boolean(false) }"/>',
   }))
   .add('with placeholder', () => ({
     components: { BaseSingleList },
@@ -82,7 +86,7 @@ storiesOf('List Components/MulitList', module)
   }))
   .add('with title', () => ({
     components: { BaseMultiList },
-    template: '<base-multi-list :subProps="{ title: \'Authors Search\' }"/>',
+    template: '<base-multi-list rawHtml="<div>hey</div>":subProps="{ title: \'Authors Search\' }"/>',
   }))
   .add('with size', () => ({
     components: { BaseMultiList },

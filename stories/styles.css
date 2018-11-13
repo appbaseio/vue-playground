@@ -19,7 +19,13 @@
 }
 
 .result-list-container {
-  max-width: 800px;
+  width: 100%;
+  padding: 10px 40px;
+  overflow-y: scroll;
+  display: inline-flex;
+  flex-direction: column;
+  scroll-behavior: smooth;
+  transition: all ease 0.2s;
 }
 
 .row > .col:last-child {
@@ -147,4 +153,9 @@
 }
 .ml20 {
   margin-left: 20px;
+}
+
+.renderItem{
+  margin-left: 5px;
+  color: dodgerblue;
 }
