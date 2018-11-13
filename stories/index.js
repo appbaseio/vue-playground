@@ -1,6 +1,15 @@
 // eslint-disable-next-line
 import { storiesOf } from '@storybook/vue';
-import { withKnobs, boolean } from '@storybook/addon-knobs';
+
+import {
+  withKnobs,
+  text,
+  boolean,
+  number,
+  array,
+  select,
+  object
+} from "@storybook/addon-knobs";
 
 import BaseReactiveList from './BaseReactiveList.vue';
 import BaseDataSearch from './BaseDataSearch.vue';
@@ -20,15 +29,37 @@ storiesOf('Range Components/SingleRange', module)
   }))
   .add('with title', () => ({
     components: { BaseSingleRange },
-    template: '<base-single-range :subProps="{title: \'Books Filter\'}"/>',
+    methods: { text:(x,y) =>{
+      return text(x,y)
+    }},
+    template: '<base-single-range :subProps="{ title: text(\'title\',\' Books Filter \')}"/>',
   }))
   .add('with defaultSelected', () => ({
     components: { BaseSingleRange },
-    template: '<base-single-range :subProps="{defaultSelected: \'Rating 3 to 4\'}"/>',
+    methods: { text:(x,y) =>{
+      return text(x,y)
+    }},
+    template: '<base-single-range :subProps="{defaultSelected: text(\'defaultSelected\',\'Rating 3 to 4\')}"/>',
   }))
+   .add('with filter', () => ({
+    components: { BaseSingleRange },
+    methods: { 
+    text:(x,y) =>{
+      return text(x,y)
+    },
+    boolean:(x) => {
+      return boolean(x)
+    }
+  },
+    template: '<base-single-range :subProps="{ filterLabel: text(\'filterLabel\',\'Books filter\'), showFilter: boolean(\'showFilter\',true) }"/>',
+  })) 
+
   .add('without showRadio', () => ({
     components: { BaseSingleRange },
-    template: '<base-single-range :subProps="{showRadio: false}"/>',
+    methods: { boolean: (x) => {
+      return boolean(x)
+    }},
+    template: '<base-single-range :subProps="{showRadio: boolean(false)}"/>',
   }));
 
 storiesOf('List Components/SingleList', module)
@@ -157,6 +188,13 @@ storiesOf('List Components/SingleDropdownList', module)
     .add('with defaultSelected', () => ({
     components: { BaseSingleDropdownList },
     template: '<base-single-dropdown-list :subProps="{ defaultSelected: \'Artemis Fowl\', showFilter: false}"/>',
+  }))
+
+storiesOf('List Components/MultiDropdownList ', module)
+  .addDecorator(withKnobs)
+  .add('Basic', () => ({
+    components: { BaseMultiDropdownList },
+    template: '<base-multi-dropdown-list :subProps="{showFilter: false}"/>',
   }))
 
 

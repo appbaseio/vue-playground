@@ -26,7 +26,6 @@
               <img :src="item.image" alt="Book Cover" class="book-image" />
               <div class="flex column justify-center ml20">
                 <div class="book-header">{{ item.original_title }}</div>
-                 <div class="book-header" v-html="item.original_title"></div>
                 <div class="flex column justify-space-between">
                   <div>
                     <div>
