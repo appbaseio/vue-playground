@@ -237,6 +237,85 @@ storiesOf('List Components/MultiDropdownList ', module)
     components: { BaseMultiDropdownList },
     template: '<base-multi-dropdown-list :subProps="{showFilter: false}"/>',
   }))
+  .add('title', () => ({
+    components: { BaseMultiDropdownList },
+    methods: { 
+      text:(x,y) => text(x,y)
+      },
+    template: '<base-multi-dropdown-list :subProps="{title: text(\'title\',\' Good Books \') ,showFilter: false}"/>',
+  }))
+   .add('with size', () => ({
+    components: { BaseMultiDropdownList },
+    methods:{
+      number: (x,y) => number(x,y)
+    },
+    template: '<base-multi-dropdown-list :subProps="{ size: number(\'size\',10) , showFilter: false}"/>',
+  }))
+   .add('with filter', () => ({
+    components: { BaseMultiDropdownList },
+    methods: { 
+    text:(x,y) => text(x,y),
+    boolean:(x) => boolean(x)
+    },
+    template: '<base-multi-dropdown-list :subProps="{ filterLabel: text(\'filterLabel\',\'Books filter\'), showFilter: boolean(\'showFilter\',true)}"/>',
+  }))
+
+    .add('with custom sort', () => ({
+    components: { BaseMultiDropdownList },
+    methods:{
+      select: (x,y,z) => select(x,y,z)
+    },
+    template: '<base-multi-dropdown-list :subProps="{ sortBy: select(\'sortBy\', { asc: \'asc\', description: \'desc\', count: \'count\'}, \'asc\' ), showFilter: false}"/>',
+  }))
+    .add('without count', () => ({
+    components: { BaseMultiDropdownList },
+    methods: { boolean: (x) => boolean(x)
+    },
+    template: '<base-multi-dropdown-list :subProps="{ showCount: boolean(\'showCount\',false), showFilter: false}"/>',
+  }))
+    .add('with search', () => ({
+    components: { BaseMultiDropdownList },
+    methods: { boolean: (x) => boolean(x) },
+    template: '<base-multi-dropdown-list :subProps="{ showSearch: boolean(\'showSearch\',true), showFilter: false}"/>',
+  }))
+
+    .add('With Select All', () => ({
+    components: { BaseMultiDropdownList },
+    methods: {
+      text:(x,y) => text(x,y)
+    },
+    template: '<base-multi-dropdown-list :subProps="{ selectAllLabel: text(\'selectAllLabel\',\'All Books\'), showFilter: false}"/>',
+  }))
+
+    .add('with defaultSelected', () => ({
+    components: { BaseMultiDropdownList },
+     methods: {
+      text:(x,y) => text(x,y)
+    },
+    template: '<base-multi-dropdown-list :subProps="{ defaultSelected: text(\'defaultSelected\',\'Artemis Fowl\'), showFilter: false}"/>',
+  }))
+
+    .add('With URLParams', () => ({
+    components: { BaseMultiDropdownList },
+     methods: {
+      boolean:(x) => boolean(x)
+    },
+    template: '<base-multi-dropdown-list :subProps="{ URLParams: boolean(\'URLParams (not visible on storybook )\',false), showFilter: false}"/>',
+  }))
+
+    .add('Playground', () => ({
+    components: { BaseMultiDropdownList },
+     methods: {
+      boolean:(x) => boolean(x),
+      text:(x,y) => text(x,y),
+      number: (x,y) => number(x,y),
+      select: (x,y,z) => select(x,y,z)
+    },
+    template: '<base-multi-dropdown-list :subProps="{ title: text(\'title\',\' Good Books \'),dataField: select(\'dataField\', [\'original_series.raw\', \'authors.raw\', \'language_code.raw\'], \'original_series.raw\'), size: number(\'size\',10),filterLabel: text(\'filterLabel\',\'Books filter\'), showFilter: boolean(\'showFilter\',true),sortBy: select(\'sortBy\', { asc: \'asc\', description: \'desc\', count: \'count\'}, \'asc\' ), showCount: boolean(\'showCount\',false), showSearch: boolean(\'showSearch\',true), selectAllLabel: text(\'selectAllLabel\',\'All Books\'), defaultSelected: text(\'defaultSelected\',\'Artemis Fowl\'),URLParams: boolean(\'URLParams (not visible on storybook )\',false), placeholder: text(\'placeholder\',\' Select a Book \')    }"/>',
+  }))
+
+
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 
 storiesOf('Search Components/DataSearch', module)
