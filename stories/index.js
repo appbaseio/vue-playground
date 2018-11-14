@@ -3,15 +3,7 @@ import { storiesOf } from '@storybook/vue';
 
 import {
   withKnobs,
-  text,
-  boolean,
-  number,
-  array,
-  select,
-  object
 } from "@storybook/addon-knobs";
-
-import addons from './mixin.js';
 
 import BaseReactiveList from './BaseReactiveList.vue';
 import BaseDataSearch from './BaseDataSearch.vue';
@@ -31,23 +23,19 @@ storiesOf('Range Components/SingleRange', module)
   }))
   .add('with title', () => ({
     components: { BaseSingleRange },
-    mixins:[addons],
     template: '<base-single-range :subProps="{ title: text(\'title\',\' Books Filter \'), showFilter: false}"/>',
   }))
   .add('with defaultSelected', () => ({
     components: { BaseSingleRange },
-    mixins:[addons],
     template: '<base-single-range :subProps="{defaultSelected: text(\'defaultSelected\',\'Rating 3 to 4\'), showFilter: false}"/>',
   }))
    .add('with filter', () => ({
     components: { BaseSingleRange },
-    mixins:[addons],
     template: '<base-single-range :subProps="{ filterLabel: text(\'filterLabel\',\'Books filter\'),  showFilter: false }"/>',
   })) 
 
   .add('without showRadio', () => ({
     components: { BaseSingleRange },
-    mixins:[addons],
     template: '<base-single-range :subProps="{showRadio: boolean(\'showRadio\',false)}"/>',
   }));
 
@@ -151,57 +139,47 @@ storiesOf('List Components/SingleDropdownList', module)
   }))
   .add('title', () => ({
     components: { BaseSingleDropdownList },
-    mixins:[addons],
     template: '<base-single-dropdown-list :subProps="{title: text(\'title\',\' Good Books \') ,showFilter: false}"/>',
   }))
    .add('with size', () => ({
     components: { BaseSingleDropdownList },
-    mixins:[addons],
     template: '<base-single-dropdown-list :subProps="{ size: number(\'size\',10) , showFilter: false}"/>',
   }))
    .add('with filter', () => ({
     components: { BaseSingleDropdownList },
-    mixins:[addons],
     template: '<base-single-dropdown-list :subProps="{ filterLabel: text(\'filterLabel\',\'Books filter\'), showFilter: boolean(\'showFilter\',true)}"/>',
   }))
 
     .add('with custom sort', () => ({
     components: { BaseSingleDropdownList },
-    mixins:[addons],
     template: '<base-single-dropdown-list :subProps="{ sortBy: select(\'sortBy\', { asc: \'asc\', description: \'desc\', count: \'count\'}, \'asc\' ), showFilter: false}"/>',
   }))
     .add('without count', () => ({
     components: { BaseSingleDropdownList },
-    mixins:[addons],
     template: '<base-single-dropdown-list :subProps="{ showCount: boolean(\'showCount\',false), showFilter: false}"/>',
   }))
     .add('with search', () => ({
     components: { BaseSingleDropdownList },
-    mixins:[addons],
     template: '<base-single-dropdown-list :subProps="{ showSearch: boolean(\'showSearch\',true), showFilter: false}"/>',
   }))
 
     .add('With Select All', () => ({
     components: { BaseSingleDropdownList },
-    mixins:[addons],
     template: '<base-single-dropdown-list :subProps="{ selectAllLabel: text(\'selectAllLabel\',\'All Books\'), showFilter: false}"/>',
   }))
 
     .add('with defaultSelected', () => ({
     components: { BaseSingleDropdownList },
-    mixins:[addons],
     template: '<base-single-dropdown-list :subProps="{ defaultSelected: text(\'defaultSelected\',\'Artemis Fowl\'), showFilter: false}"/>',
   }))
 
     .add('With URLParams', () => ({
     components: { BaseSingleDropdownList },
-    mixins:[addons],
     template: '<base-single-dropdown-list :subProps="{ URLParams: boolean(\'URLParams (not visible on storybook )\',false), showFilter: false}"/>',
   }))
 
     .add('Playground', () => ({
     components: { BaseSingleDropdownList },
-    mixins:[addons],
     template: '<base-single-dropdown-list :subProps="{ title: text(\'title\',\' Good Books \'),dataField: select(\'dataField\', [\'original_series.raw\', \'authors.raw\', \'language_code.raw\'], \'original_series.raw\'), size: number(\'size\',10),filterLabel: text(\'filterLabel\',\'Books filter\'), showFilter: boolean(\'showFilter\',true),sortBy: select(\'sortBy\', { asc: \'asc\', description: \'desc\', count: \'count\'}, \'asc\' ), showCount: boolean(\'showCount\',false), showSearch: boolean(\'showSearch\',true), selectAllLabel: text(\'selectAllLabel\',\'All Books\'), defaultSelected: text(\'defaultSelected\',\'Artemis Fowl\'),URLParams: boolean(\'URLParams (not visible on storybook )\',false), placeholder: text(\'placeholder\',\' Select a Book \')    }"/>',
   }))
 
@@ -214,57 +192,50 @@ storiesOf('List Components/MultiDropdownList ', module)
   }))
   .add('title', () => ({
     components: { BaseMultiDropdownList },
-    mixins:[addons],
     template: '<base-multi-dropdown-list :subProps="{title: text(\'title\',\' Good Books \') ,showFilter: false}"/>',
   }))
    .add('with size', () => ({
     components: { BaseMultiDropdownList },
-    mixins:[addons],
     template: '<base-multi-dropdown-list :subProps="{ size: number(\'size\',10) , showFilter: false}"/>',
   }))
    .add('with filter', () => ({
     components: { BaseMultiDropdownList },
-    mixins:[addons],
     template: '<base-multi-dropdown-list :subProps="{ filterLabel: text(\'filterLabel\',\'Books filter\'), showFilter: boolean(\'showFilter\',true)}"/>',
   }))
 
     .add('with custom sort', () => ({
     components: { BaseMultiDropdownList },
-    mixins:[addons],
     template: '<base-multi-dropdown-list :subProps="{ sortBy: select(\'sortBy\', { asc: \'asc\', description: \'desc\', count: \'count\'}, \'asc\' ), showFilter: false}"/>',
   }))
     .add('without count', () => ({
     components: { BaseMultiDropdownList },
-    mixins:[addons],
     template: '<base-multi-dropdown-list :subProps="{ showCount: boolean(\'showCount\',false), showFilter: false}"/>',
   }))
     .add('with search', () => ({
     components: { BaseMultiDropdownList },
-    mixins:[addons],
     template: '<base-multi-dropdown-list :subProps="{ showSearch: boolean(\'showSearch\',true), showFilter: false}"/>',
   }))
 
     .add('With Select All', () => ({
     components: { BaseMultiDropdownList },
-    mixins:[addons],
     template: '<base-multi-dropdown-list :subProps="{ selectAllLabel: text(\'selectAllLabel\',\'All Books\'), showFilter: false}"/>',
   }))
 
     .add('with defaultSelected', () => ({
     components: { BaseMultiDropdownList },
-     mixins:[addons],
+
     template: '<base-multi-dropdown-list :subProps="{ defaultSelected: text(\'defaultSelected\',\'Artemis Fowl\'), showFilter: false}"/>',
   }))
 
     .add('With URLParams', () => ({
     components: { BaseMultiDropdownList },
-     mixins:[addons],
+
     template: '<base-multi-dropdown-list :subProps="{ URLParams: boolean(\'URLParams (not visible on storybook )\',false), showFilter: false}"/>',
   }))
 
     .add('Playground', () => ({
     components: { BaseMultiDropdownList },
-     mixins:[addons],
+
     template: '<base-multi-dropdown-list :subProps="{ title: text(\'title\',\' Good Books \'),dataField: select(\'dataField\', [\'original_series.raw\', \'authors.raw\', \'language_code.raw\'], \'original_series.raw\'), size: number(\'size\',10),filterLabel: text(\'filterLabel\',\'Books filter\'), showFilter: boolean(\'showFilter\',true),sortBy: select(\'sortBy\', { asc: \'asc\', description: \'desc\', count: \'count\'}, \'asc\' ), showCount: boolean(\'showCount\',false), showSearch: boolean(\'showSearch\',true), selectAllLabel: text(\'selectAllLabel\',\'All Books\'), defaultSelected: text(\'defaultSelected\',\'Artemis Fowl\'),URLParams: boolean(\'URLParams (not visible on storybook )\',false), placeholder: text(\'placeholder\',\' Select a Book \')    }"/>',
   }))
 
