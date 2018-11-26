@@ -27,9 +27,37 @@ storiesOf('Range Components/SingleRange', module)
     components: { BaseSingleRange },
     template: '<base-single-range :subProps="{defaultSelected: \'Rating 3 to 4\'}"/>',
   }))
+   .add('with filter', () => ({
+    components: { BaseSingleRange },
+    template: '<base-single-range :subProps="{ filterLabel: text(\'filterLabel\',\'Books filter\'),  showFilter: boolean(\'showFilter\',true) }"/>',
+  }))
   .add('without showRadio', () => ({
     components: { BaseSingleRange },
     template: '<base-single-range :subProps="{showRadio: false}"/>',
+  }));
+
+storiesOf('Range Components/MultiRange', module)
+  .addDecorator(withKnobs)
+  .add('Basic', () => ({
+    components: { BaseMultiRange },
+    template: '<base-multi-range :subProps="{ showFilter: false }"/>',
+  }))
+  .add('with title', () => ({
+    components: { BaseMultiRange },
+    template: '<base-multi-range :subProps="{ title: text(\'title\',\' Books Filter \'), showFilter: false}"/>',
+  }))
+  .add('with defaultSelected', () => ({
+    components: { BaseMultiRange },
+    template: '<base-multi-range :subProps="{defaultSelected: text(\'defaultSelected\',\'Rating 3 to 4\'), showFilter: false}"/>',
+  }))
+   .add('with filter', () => ({
+    components: { BaseMultiRange },
+    template: '<base-multi-range :subProps="{ filterLabel: text(\'filterLabel\',\'Books filter\'),  showFilter: boolean(\'showFilter\',true) }"/>',
+  })) 
+
+  .add('without showCheckbox', () => ({
+    components: { BaseMultiRange },
+    template: '<base-multi-range :subProps="{showCheckbox: boolean(\'showCheckbox\',false)}"/>',
   }));
 
 storiesOf('List Components/SingleList', module)
