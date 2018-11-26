@@ -13,6 +13,7 @@ import BaseSingleRange from './BaseSingleRange.vue';
 import BaseReactiveComponent from './BaseReactiveComponent.vue';
 import BaseSingleDropdownList from './BaseSingleDropdownList.vue';
 import BaseMultiDropdownList from './BaseMultiDropdownList.vue';
+import BaseMultiRange from './BaseMultiRange.vue'
 import './styles.css';
 
 storiesOf('Range Components/SingleRange', module)
