@@ -17,6 +17,7 @@
                 </div>
 
                 <div class="col">
+                <SelectedFilters />
                 <ReactiveList
                   componentId="SearchResult"
                   dataField="original_title.raw"
