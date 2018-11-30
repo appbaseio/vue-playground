@@ -14,6 +14,7 @@ import BaseReactiveComponent from './BaseReactiveComponent.vue';
 import BaseSingleDropdownList from './BaseSingleDropdownList.vue';
 import BaseMultiDropdownList from './BaseMultiDropdownList.vue';
 import BaseMultiRange from './BaseMultiRange.vue'
+import BaseRangeSlider from './BaseRangeSlider.vue';
 import './styles.css';
 
 storiesOf('Range Components/SingleRange', module)
@@ -62,6 +63,21 @@ storiesOf('Range Components/MultiRange', module)
     components: { BaseMultiRange },
     template: '<base-multi-range :subProps="{showCheckbox: boolean(\'showCheckbox\',false)}"/>',
   }));
+
+storiesOf('Range Components/RangeSlider', module)
+  .addDecorator(withKnobs)
+  .add('Basic', () => ({
+    components: { BaseRangeSlider },
+    template: '<base-range-slider :subProps="{ showFilter: false }"/>',
+  }))
+  .add('with title', () => ({
+    components: { BaseRangeSlider },
+    template: '<base-range-slider :subProps="{ title: text(\'title\',\'RangeSlider: Ratings \')}"/>',
+  }))
+   .add('with defaultSelected', () => ({
+    components: { BaseRangeSlider },
+    template: '<base-range-slider :subProps="{ defaultSelected: object(\'defaultSelected\', { start: 3000, end: 9000 }), showFilter: false}"/>',
+  }))
 
 storiesOf('List Components/SingleList', module)
   .addDecorator(withKnobs)
