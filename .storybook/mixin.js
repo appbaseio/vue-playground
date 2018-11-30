@@ -15,6 +15,7 @@ export default{
       boolean:(x) => boolean(x),
       text:(x,y) => text(x,y),
       number: (x,y) => number(x,y),
-      select: (x,y,z) => select(x,y,z)
+      select: (x,y,z) => select(x,y,z),
+      object: (x,y) => object(x,y)
   }
 }
