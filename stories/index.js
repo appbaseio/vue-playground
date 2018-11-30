@@ -14,6 +14,7 @@ import BaseReactiveComponent from './BaseReactiveComponent.vue';
 import BaseSingleDropdownList from './BaseSingleDropdownList.vue';
 import BaseMultiDropdownList from './BaseMultiDropdownList.vue';
 import BaseMultiRange from './BaseMultiRange.vue'
+import BaseResultList from './BaseResultList.vue'
 import './styles.css';
 
 storiesOf('Range Components/SingleRange', module)
@@ -33,7 +34,7 @@ storiesOf('Range Components/SingleRange', module)
    .add('with filter', () => ({
     components: { BaseSingleRange },
     template: '<base-single-range :subProps="{ filterLabel: text(\'filterLabel\',\'Books filter\'),  showFilter: false }"/>',
-  })) 
+  }))
 
   .add('without showRadio', () => ({
     components: { BaseSingleRange },
@@ -57,7 +58,7 @@ storiesOf('Range Components/MultiRange', module)
    .add('with filter', () => ({
     components: { BaseMultiRange },
     template: '<base-multi-range :subProps="{ filterLabel: text(\'filterLabel\',\'Books filter\'),  showFilter: boolean(\'showFilter\',true) }"/>',
-  })) 
+  }))
   .add('without showCheckbox', () => ({
     components: { BaseMultiRange },
     template: '<base-multi-range :subProps="{showCheckbox: boolean(\'showCheckbox\',false)}"/>',
@@ -133,7 +134,6 @@ storiesOf('List Components/MulitList', module)
     components: { BaseMultiList },
     template: '<base-multi-list :subProps="{ defaultSelected: \'Nora Roberts\' }"/>',
   }))
-  
   .add('without showCount', () => ({
     components: { BaseMultiList },
     template: '<base-multi-list :subProps="{ showCount: false }"/>',
@@ -263,8 +263,6 @@ storiesOf('List Components/MultiDropdownList ', module)
     template: '<base-multi-dropdown-list :subProps="{ title: text(\'title\',\' Good Books \'),dataField: select(\'dataField\', [\'original_series.raw\', \'authors.raw\', \'language_code.raw\'], \'original_series.raw\'), size: number(\'size\',10),filterLabel: text(\'filterLabel\',\'Books filter\'), showFilter: boolean(\'showFilter\',true),sortBy: select(\'sortBy\', { asc: \'asc\', description: \'desc\', count: \'count\'}, \'asc\' ), showCount: boolean(\'showCount\',false), showSearch: boolean(\'showSearch\',true), selectAllLabel: text(\'selectAllLabel\',\'All Books\'), defaultSelected: text(\'defaultSelected\',\'Artemis Fowl\'),URLParams: boolean(\'URLParams (not visible on storybook )\',false), placeholder: text(\'placeholder\',\' Select a Book \')    }"/>',
   }))
 
-
-
 storiesOf('Search Components/DataSearch', module)
   .addDecorator(withKnobs)
   .add('Basic', () => ({
@@ -350,7 +348,34 @@ storiesOf('Result Components/Reactive List', module)
   .add('With custom number of pages', () => ({
     components: { BaseReactiveList },
     template: '<base-reactive-list :subProps="{ pagination: true, pages: 10 }"/>',
-  }));
+	}));
+
+storiesOf('Result Components/ResultList', module)
+	.addDecorator(withKnobs)
+	.add('Basic', () => ({
+		components: { BaseResultList },
+		template: '<base-result-list/>',
+	}))
+	.add('With pagination', () => ({
+		components: { BaseResultList },
+		template: '<base-result-list :subProps="{ pagination: boolean(\'pagination\',false) }"/>',
+	}))
+	.add('With sortBy', () => ({
+		components: { BaseResultList },
+		template: '<base-result-list :subProps="{ sortBy: text(\'sortBy\',\'asc\') }"/>',
+	}))
+	.add('With paginationAt', () => ({
+		components: { BaseResultList },
+		template: '<base-result-list :subProps="{pagination: true, paginationAt: text(\'paginationAt\',\'top\') }"/>',
+	}))
+	.add('With showResultStats', () => ({
+		components: { BaseResultList },
+		template: '<base-result-list :subProps="{ showResultStats: boolean(\'showResultStats\', true) }"/>',
+	}))
+	.add('With custom number of pages', () => ({
+		components: { BaseResultList },
+		template: '<base-result-list :subProps="{ pagination: true, pages: number(\'pages\',2) }"/>',
+	}));
 
 storiesOf('Base components/ReactiveComponent', module).add('A custom component', () => ({
   components: { BaseReactiveComponent },
