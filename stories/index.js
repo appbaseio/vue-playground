@@ -14,6 +14,7 @@ import BaseReactiveComponent from './BaseReactiveComponent.vue';
 import BaseSingleDropdownList from './BaseSingleDropdownList.vue';
 import BaseMultiDropdownList from './BaseMultiDropdownList.vue';
 import BaseMultiRange from './BaseMultiRange.vue'
+import BaseResultCard from './BaseResultCard.vue'
 import './styles.css';
 
 storiesOf('Range Components/SingleRange', module)
@@ -33,7 +34,7 @@ storiesOf('Range Components/SingleRange', module)
    .add('with filter', () => ({
     components: { BaseSingleRange },
     template: '<base-single-range :subProps="{ filterLabel: text(\'filterLabel\',\'Books filter\'),  showFilter: false }"/>',
-  })) 
+  }))
 
   .add('without showRadio', () => ({
     components: { BaseSingleRange },
@@ -57,7 +58,7 @@ storiesOf('Range Components/MultiRange', module)
    .add('with filter', () => ({
     components: { BaseMultiRange },
     template: '<base-multi-range :subProps="{ filterLabel: text(\'filterLabel\',\'Books filter\'),  showFilter: boolean(\'showFilter\',true) }"/>',
-  })) 
+  }))
   .add('without showCheckbox', () => ({
     components: { BaseMultiRange },
     template: '<base-multi-range :subProps="{showCheckbox: boolean(\'showCheckbox\',false)}"/>',
@@ -133,7 +134,7 @@ storiesOf('List Components/MulitList', module)
     components: { BaseMultiList },
     template: '<base-multi-list :subProps="{ defaultSelected: \'Nora Roberts\' }"/>',
   }))
-  
+
   .add('without showCount', () => ({
     components: { BaseMultiList },
     template: '<base-multi-list :subProps="{ showCount: false }"/>',
@@ -350,7 +351,34 @@ storiesOf('Result Components/Reactive List', module)
   .add('With custom number of pages', () => ({
     components: { BaseReactiveList },
     template: '<base-reactive-list :subProps="{ pagination: true, pages: 10 }"/>',
-  }));
+	}));
+
+storiesOf('Result Components/ResultCard', module)
+	.addDecorator(withKnobs)
+	.add('Basic', () => ({
+		components: { BaseResultCard },
+		template: '<base-result-card/>',
+	}))
+	.add('With pagination', () => ({
+		components: { BaseResultCard },
+		template: '<base-result-card :subProps="{ pagination: boolean(\'pagination\',false) }"/>',
+	}))
+	.add('With sortBy', () => ({
+		components: { BaseResultCard },
+		template: '<base-result-card :subProps="{ sortBy: text(\'sortBy\',\'asc\') }"/>',
+	}))
+	.add('With paginationAt', () => ({
+		components: { BaseResultCard },
+		template: '<base-result-card :subProps="{pagination: true, paginationAt: text(\'paginationAt\',\'top\') }"/>',
+	}))
+	.add('With showResultStats', () => ({
+		components: { BaseResultCard },
+		template: '<base-result-card :subProps="{ showResultStats: boolean(\'showResultStats\', true) }"/>',
+	}))
+	.add('With custom number of pages', () => ({
+		components: { BaseResultCard },
+		template: '<base-result-card :subProps="{ pagination: true, pages: number(\'pages\',7) }"/>',
+	}));
 
 storiesOf('Base components/ReactiveComponent', module).add('A custom component', () => ({
   components: { BaseReactiveComponent },
