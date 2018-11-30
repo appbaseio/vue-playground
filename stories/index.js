@@ -390,7 +390,9 @@ storiesOf('Result Components/ResultList', module)
 	}))
 	.add('With custom number of pages', () => ({
 		components: { BaseResultList },
-		template: '<base-result-list :subProps="{ pagination: true, pages: number(\'pages\',2) }"/>',
+    template: '<base-result-list :subProps="{ pagination: true, pages: number(\'pages\',2) }"/>',
+  }));
+
 storiesOf('Result Components/ResultCard', module)
 	.addDecorator(withKnobs)
 	.add('Basic', () => ({
