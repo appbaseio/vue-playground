@@ -15,6 +15,7 @@ import BaseSingleDropdownList from './BaseSingleDropdownList.vue';
 import BaseMultiDropdownList from './BaseMultiDropdownList.vue';
 import BaseMultiRange from './BaseMultiRange.vue'
 import BaseResultList from './BaseResultList.vue'
+import BaseResultCard from './BaseResultCard.vue'
 import './styles.css';
 
 storiesOf('Range Components/SingleRange', module)
@@ -349,7 +350,6 @@ storiesOf('Result Components/Reactive List', module)
     components: { BaseReactiveList },
     template: '<base-reactive-list :subProps="{ pagination: true, pages: 10 }"/>',
 	}));
-
 storiesOf('Result Components/ResultList', module)
 	.addDecorator(withKnobs)
 	.add('Basic', () => ({
@@ -375,6 +375,31 @@ storiesOf('Result Components/ResultList', module)
 	.add('With custom number of pages', () => ({
 		components: { BaseResultList },
 		template: '<base-result-list :subProps="{ pagination: true, pages: number(\'pages\',2) }"/>',
+storiesOf('Result Components/ResultCard', module)
+	.addDecorator(withKnobs)
+	.add('Basic', () => ({
+		components: { BaseResultCard },
+		template: '<base-result-card/>',
+	}))
+	.add('With pagination', () => ({
+		components: { BaseResultCard },
+		template: '<base-result-card :subProps="{ pagination: boolean(\'pagination\',false) }"/>',
+	}))
+	.add('With sortBy', () => ({
+		components: { BaseResultCard },
+		template: '<base-result-card :subProps="{ sortBy: text(\'sortBy\',\'asc\') }"/>',
+	}))
+	.add('With paginationAt', () => ({
+		components: { BaseResultCard },
+		template: '<base-result-card :subProps="{pagination: true, paginationAt: text(\'paginationAt\',\'top\') }"/>',
+	}))
+	.add('With showResultStats', () => ({
+		components: { BaseResultCard },
+		template: '<base-result-card :subProps="{ showResultStats: boolean(\'showResultStats\', true) }"/>',
+	}))
+	.add('With custom number of pages', () => ({
+		components: { BaseResultCard },
+		template: '<base-result-card :subProps="{ pagination: true, pages: number(\'pages\',7) }"/>',
 	}));
 
 storiesOf('Base components/ReactiveComponent', module).add('A custom component', () => ({
