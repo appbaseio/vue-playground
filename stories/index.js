@@ -15,6 +15,7 @@ import BaseSingleDropdownList from './BaseSingleDropdownList.vue';
 import BaseMultiDropdownList from './BaseMultiDropdownList.vue';
 import BaseMultiRange from './BaseMultiRange.vue'
 import BaseRangeSlider from './BaseRangeSlider.vue';
+import BaseDynamicRangeSlider from './BaseDynamicRangeSlider.vue';
 import BaseResultList from './BaseResultList.vue'
 import BaseResultCard from './BaseResultCard.vue'
 import './styles.css';
@@ -79,7 +80,22 @@ storiesOf('Range Components/RangeSlider', module)
    .add('with defaultSelected', () => ({
     components: { BaseRangeSlider },
     template: '<base-range-slider :subProps="{ defaultSelected: object(\'defaultSelected\', { start: 3000, end: 9000 }), showFilter: false}"/>',
-  }))
+	}))
+
+storiesOf('Range Components/DynamicRangeSlider', module)
+	.addDecorator(withKnobs)
+	.add('Basic', () => ({
+		components: { BaseDynamicRangeSlider },
+		template: '<base-dynamic-range-slider :subProps="{ showFilter: false }"/>',
+	}))
+	.add('with title', () => ({
+		components: { BaseDynamicRangeSlider },
+		template: '<base-dynamic-range-slider :subProps="{ title: text(\'title\',\'DynamicRangeSlider: Ratings \')}"/>',
+	}))
+	.add('with defaultSelected', () => ({
+		components: { BaseDynamicRangeSlider },
+		template: '<base-dynamic-range-slider :subProps="{ defaultSelected: function(min, max){ return { start: min + 1000, end: max - 1000} }, showFilter: false}"/>',
+	}))
 
 storiesOf('List Components/SingleList', module)
   .addDecorator(withKnobs)
