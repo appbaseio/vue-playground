@@ -16,6 +16,7 @@ export default{
       text:(x,y) => text(x,y),
       number: (x,y) => number(x,y),
       select: (x,y,z) => select(x,y,z),
-      object: (x,y) => object(x,y)
+      object: (x,y) => object(x,y),
+      array: (x,y) => array(x,y)
   }
 }

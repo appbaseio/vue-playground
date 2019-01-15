@@ -13,11 +13,12 @@ import BaseSingleRange from './BaseSingleRange.vue';
 import BaseReactiveComponent from './BaseReactiveComponent.vue';
 import BaseSingleDropdownList from './BaseSingleDropdownList.vue';
 import BaseMultiDropdownList from './BaseMultiDropdownList.vue';
-import BaseMultiRange from './BaseMultiRange.vue'
+import BaseMultiRange from './BaseMultiRange.vue';
 import BaseRangeSlider from './BaseRangeSlider.vue';
 import BaseDynamicRangeSlider from './BaseDynamicRangeSlider.vue';
-import BaseResultList from './BaseResultList.vue'
-import BaseResultCard from './BaseResultCard.vue'
+import BaseResultList from './BaseResultList.vue';
+import BaseResultCard from './BaseResultCard.vue';
+import BaseToggleButton from './BaseToggleButton.vue';
 import './styles.css';
 
 storiesOf('Range Components/SingleRange', module)
@@ -440,3 +441,29 @@ storiesOf('Base components/ReactiveComponent', module).add('A custom component',
   components: { BaseReactiveComponent },
   template: '<base-reactive-component :subProps="{ pagination: true }"/>',
 }));
+storiesOf('Base components/ToggleButton', module)
+  .addDecorator(withKnobs)
+  .add('Basic', () => ({
+    components: { BaseToggleButton },
+    template: '<base-toggle-button :subProps="{ showFilter: false }"/>',
+  }))
+  .add('With title', () => ({
+    components: { BaseToggleButton },
+    template: '<base-toggle-button :subProps="{ showFilter: false, title: text(\'title\',\'ToggleButton: Topics\') }"/>',
+  }))
+  .add('With Default Selected', () => ({
+    components: { BaseToggleButton },
+    template: '<base-toggle-button :subProps="{ showFilter: false, defaultValue: array(\'defaultValue\',[\'Music\']) }"/>',
+  }))
+  .add('With filter', () => ({
+    components: { BaseToggleButton },
+    template: '<base-toggle-button :subProps="{ showFilter: boolean(\'showFilter\', true), filterLabel: text(\'filterLabel\', \'Topics filter\') }"/>',
+  }))
+  .add('Without multiSelect', () => ({
+    components: { BaseToggleButton },
+    template: '<base-toggle-button :subProps="{ showFilter: false, multiSelect: boolean(\'multiSelect\', false) }"/>',
+  }))
+  .add('With URLParams', () => ({
+    components: { BaseToggleButton },
+    template: '<base-toggle-button :subProps="{ showFilter: false, URLParams: boolean(\'URLParams (not visible on storybook)\', true) }"/>',
+  }))
