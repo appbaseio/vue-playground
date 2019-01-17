@@ -10,7 +10,7 @@
       v-bind='subProps'
       v-on='subEvents'
     >
-      <div slot="onData" slot-scope="{ item }">
+      <div slot="renderData" slot-scope="{ item }">
         <div class="flex book-content" key="item._id">
           <img :src="item.image" alt="Book Cover" class="book-image" />
           <div class="flex column justify-center ml20">

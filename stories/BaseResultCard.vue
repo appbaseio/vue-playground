@@ -5,7 +5,7 @@
             dataField="original_title.raw"
             :from="0"
             :size="5"
-            :onData="booksCard"
+            :renderData="booksCard"
             v-bind='subProps'
             v-on='subEvents'
         />
