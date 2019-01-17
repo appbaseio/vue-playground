@@ -351,6 +351,10 @@ storiesOf('Search Components/DataSearch', module)
   .add('with Filters', () => ({
     components: { BaseDataSearch },
     template: '<base-data-search :subProps="{ showFilter: true }"/>',
+  }))
+  .add('with renderNoSuggestion', () => ({
+    components: { BaseDataSearch },
+    template: '<base-data-search :subProps="{ showFilter: true, renderNoSuggestion: \'No Suggestions Found\' }"/>',
   }));
 
 storiesOf('Result Components/Reactive List', module)
