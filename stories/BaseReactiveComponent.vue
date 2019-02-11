@@ -1,7 +1,7 @@
 <template>
 	<ReactiveBase
-				app="car-store"
-				credentials="cf7QByt5e:d2d60548-82a9-43cc-8b40-93cbbe75c34c"
+				app="carstore-dataset"
+				credentials="4HWI27QmA:58c731f7-79ab-4f55-a590-7e15c7e36721"
 			>
 				<div class="row">
 					<div class="col">
@@ -9,9 +9,9 @@
 							componentId="CarSensor"
 							:defaultQuery="() => ({
 								aggs: {
-									'brand.raw': {
+									'brand.keyword': {
 										terms: {
-											field: 'brand.raw',
+											field: 'brand.keyword',
 											order: {
 												_count: 'desc',
 											},
@@ -40,7 +40,7 @@
 							}"
 						>
 						<div slot="renderData" slot-scope="{ item }">
-							<h2>{{item.name}}</h2>
+							<h2>{{item.model}}</h2>
 							<p>{{item.price}} - {{item.rating}} stars rated</p>
 						</div>
 						</ReactiveList>
