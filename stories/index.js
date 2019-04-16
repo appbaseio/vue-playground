@@ -132,10 +132,6 @@ storiesOf('List Components/SingleList', module)
     components: { BaseSingleList },
     template: '<base-single-list :subProps="{ defaultSelected: \'Hercule Poirot\' }"/>',
   }))
-  .add('With selectAllLabel', () => ({
-    components: { BaseSingleList },
-    template: '<base-single-list :subProps="{ selectAllLabel: \'All Books\'  }"/>',
-  }))
   .add('with sortBy', () => ({
     components: { BaseSingleList },
     template: '<base-single-list :subProps="{ sortBy: \'asc\' }"/>',
@@ -216,15 +212,6 @@ storiesOf('List Components/SingleDropdownList', module)
     components: { BaseSingleDropdownList },
     template: '<base-single-dropdown-list :subProps="{ showCount: boolean(\'showCount\',false), showFilter: false}"/>',
   }))
-    .add('with search', () => ({
-    components: { BaseSingleDropdownList },
-    template: '<base-single-dropdown-list :subProps="{ showSearch: boolean(\'showSearch\',true), showFilter: false}"/>',
-  }))
-
-    .add('With Select All', () => ({
-    components: { BaseSingleDropdownList },
-    template: '<base-single-dropdown-list :subProps="{ selectAllLabel: text(\'selectAllLabel\',\'All Books\'), showFilter: false}"/>',
-  }))
 
     .add('with defaultSelected', () => ({
     components: { BaseSingleDropdownList },
@@ -268,10 +255,6 @@ storiesOf('List Components/MultiDropdownList ', module)
     .add('without count', () => ({
     components: { BaseMultiDropdownList },
     template: '<base-multi-dropdown-list :subProps="{ showCount: boolean(\'showCount\',false), showFilter: false}"/>',
-  }))
-    .add('with search', () => ({
-    components: { BaseMultiDropdownList },
-    template: '<base-multi-dropdown-list :subProps="{ showSearch: boolean(\'showSearch\',true), showFilter: false}"/>',
   }))
 
     .add('With Select All', () => ({
