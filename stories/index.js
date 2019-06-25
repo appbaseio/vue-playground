@@ -2,7 +2,7 @@
 import { storiesOf } from '@storybook/vue';
 
 import {
-  withKnobs,
+  withKnobs
 } from "@storybook/addon-knobs";
 
 import BaseReactiveList from './BaseReactiveList.vue';
@@ -300,7 +300,7 @@ storiesOf('Search Components/DataSearch', module)
   }))
   .add('with debounce', () => ({
     components: { BaseDataSearch },
-    template: "<base-data-search :subProps=\"{ debounce: 300, showFilter: false}\"/>",
+    template: "<base-data-search :subProps=\"{ debounce: number(\'debounce\', 300), showFilter: false}\"/>",
   }))
   .add('With strictSelection', () => ({
     components: { BaseDataSearch },
