@@ -320,7 +320,7 @@ storiesOf('Search Components/DataSearch', module)
   }))
    .add('With highlight', () => ({
     components: { BaseDataSearch },
-    template: "<base-data-search :subProps=\"{ highlight: true, showFilter: false}\"/>",
+    template: "<base-data-search :subProps=\"{ highlight: boolean(\'highlight\',true), showFilter: false}\"/>",
   }))
 
   .add('with iconPosition', () => ({
