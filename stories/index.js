@@ -296,7 +296,7 @@ storiesOf('Search Components/DataSearch', module)
   }))
   .add('with show clear', () => ({
     components: { BaseDataSearch },
-    template: "<base-data-search :subProps=\"{ showClear: true, clearIcon: X, showFilter: false}\"/>",
+    template: "<base-data-search :subProps=\"{ showClear: boolean(\'showClear\',true), showFilter: false}\"/>",
   }))
   .add('with debounce', () => ({
     components: { BaseDataSearch },
@@ -316,7 +316,7 @@ storiesOf('Search Components/DataSearch', module)
   }))
   .add('With fuzziness as AUTO', () => ({
     components: { BaseDataSearch },
-    template: "<base-data-search :subProps=\"{ fuzziness: AUTO, showFilter: false}\"/>",
+    template: "<base-data-search :subProps=\"{ fuzziness: 'AUTO', showFilter: false}\"/>",
   }))
    .add('With highlight', () => ({
     components: { BaseDataSearch },
