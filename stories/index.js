@@ -312,7 +312,7 @@ storiesOf('Search Components/DataSearch', module)
   }))
   .add('With fuzziness as a number', () => ({
     components: { BaseDataSearch },
-    template: "<base-data-search :subProps=\"{ fuzziness: 1, showFilter: false}\"/>",
+    template: "<base-data-search :subProps=\"{ fuzziness: number(\'fuzziness'\, 1), showFilter: false}\"/>",
   }))
   .add('With fuzziness as AUTO', () => ({
     components: { BaseDataSearch },
