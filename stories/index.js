@@ -132,9 +132,9 @@ storiesOf('List Components/SingleList', module)
     components: { BaseSingleList },
     template: '<base-single-list :subProps="{ defaultSelected: \'Hercule Poirot\' }"/>',
   }))
-  .add('with sortBy', () => ({
+  .add('with custom sort', () => ({
     components: { BaseSingleList },
-    template: '<base-single-list :subProps="{ sortBy: \'asc\' }"/>',
+    template: '<base-single-list :subProps="{ sortBy: select(\'sortBy\', { asc: \'asc\', count: \'count\'}, \'asc\' ) }"/>',
   }));
 
 storiesOf('List Components/MulitList', module)
