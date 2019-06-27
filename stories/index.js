@@ -26,6 +26,28 @@ import BaseResultCard from './BaseResultCard.vue';
 import BaseToggleButton from './BaseToggleButton.vue';
 import './styles.css';
 
+// README
+// Range Components
+import SingleRangeReadme from '@appbaseio/reactive-manual-vue/content/docs/range-components/SingleRange.md';
+import MultiRangeReadme from '@appbaseio/reactive-manual-vue/content/docs/range-components/MultiRange.md';
+import RangeSliderReadme from '@appbaseio/reactive-manual-vue/content/docs/range-components/RangeSlider.md';
+import DynamicRangeSliderReadme from '@appbaseio/reactive-manual-vue/content/docs/range-components/DynamicRangeSlider.md';
+// List Components
+import SingleListReadme from '@appbaseio/reactive-manual-vue/content/docs/list-components/SingleList.md';
+import MultiListReadme from '@appbaseio/reactive-manual-vue/content/docs/list-components/MultiList.md';
+import SingleListDropdownReadme from '@appbaseio/reactive-manual-vue/content/docs/list-components/SingleDropdownList.md';
+import MultiListDropdownReadme from '@appbaseio/reactive-manual-vue/content/docs/list-components/MultiDropdownList.md';
+import ToggleButtonReadme from '@appbaseio/reactive-manual-vue/content/docs/list-components/ToggleButton.md';
+// Search components
+import DataSearchReadme from '@appbaseio/reactive-manual-vue/content/docs/search-components/DataSearch.md';
+// Result Components
+import ReactiveListReadme from '@appbaseio/reactive-manual-vue/content/docs/result-components/ReactiveList.md';
+import ResultCardReadme from '@appbaseio/reactive-manual-vue/content/docs/result-components/ResultCard.md';
+import ResultListReadme from '@appbaseio/reactive-manual-vue/content/docs/result-components/ResultList.md';
+// base components
+import ReactiveComponentReadme from '@appbaseio/reactive-manual-vue/content/docs/advanced/ReactiveComponent.md';
+
+
 const getKnobType = (value) => {
 	switch(typeof value) {
 		case 'object':
@@ -63,7 +85,19 @@ const showClear = (value = true) => getKnob('showClear', value);
 const highlight = (value = true) => getKnob('highlight', value);
 const showCheckbox = (value = true) => getKnob('showCheckbox', value);
 
+function removeFirstLine(str, number = 12) {
+  while (number--) {
+    str = str.substring(str.indexOf("\n") + 1);
+  }
+  return str;
+}
+
 storiesOf('Range Components/SingleRange', module)
+	.addParameters({
+		readme: {
+			sidebar: removeFirstLine(SingleRangeReadme),
+		},
+	})
   .addDecorator(withKnobs)
   .add('Basic', () => ({
     components: { BaseSingleRange },
@@ -96,6 +130,11 @@ storiesOf('Range Components/SingleRange', module)
   }));
 
 storiesOf('Range Components/MultiRange', module)
+	.addParameters({
+		readme: {
+			sidebar: removeFirstLine(MultiRangeReadme),
+		},
+	})
   .addDecorator(withKnobs)
   .add('Basic', () => ({
     components: { BaseMultiRange },
@@ -129,6 +168,11 @@ storiesOf('Range Components/MultiRange', module)
 
 
 storiesOf('Range Components/RangeSlider', module)
+	.addParameters({
+		readme: {
+			sidebar: removeFirstLine(RangeSliderReadme),
+		},
+	})
   .addDecorator(withKnobs)
   .add('Basic', () => ({
     components: { BaseRangeSlider },
@@ -146,6 +190,11 @@ storiesOf('Range Components/RangeSlider', module)
 	}))
 
 storiesOf('Range Components/DynamicRangeSlider', module)
+	.addParameters({
+		readme: {
+			sidebar: removeFirstLine(DynamicRangeSliderReadme),
+		},
+	})
 	.addDecorator(withKnobs)
 	.add('Basic', () => ({
 		components: { BaseDynamicRangeSlider },
@@ -162,6 +211,11 @@ storiesOf('Range Components/DynamicRangeSlider', module)
 	}))
 
 storiesOf('List Components/SingleList', module)
+	.addParameters({
+		readme: {
+			sidebar: removeFirstLine(SingleListReadme, 13),
+		},
+	})
   .addDecorator(withKnobs)
   .add('Basic', () => ({
     components: { BaseSingleList },
@@ -209,6 +263,11 @@ storiesOf('List Components/SingleList', module)
   }));
 
 storiesOf('List Components/MulitList', module)
+	.addParameters({
+		readme: {
+			sidebar: removeFirstLine(MultiListReadme, 15),
+		},
+	})
   .addDecorator(withKnobs)
   .add('Basic', () => ({
     components: { BaseMultiList },
@@ -267,6 +326,11 @@ storiesOf('List Components/MulitList', module)
   }));
 
 storiesOf('List Components/SingleDropdownList', module)
+	.addParameters({
+		readme: {
+			sidebar: removeFirstLine(SingleListDropdownReadme, 15),
+		},
+	})
   .addDecorator(withKnobs)
   .add('Basic', () => ({
     components: { BaseSingleDropdownList },
@@ -331,6 +395,11 @@ storiesOf('List Components/SingleDropdownList', module)
 
 
 storiesOf('List Components/MultiDropdownList ', module)
+	.addParameters({
+		readme: {
+			sidebar: removeFirstLine(MultiListDropdownReadme, 15),
+		},
+	})
   .addDecorator(withKnobs)
   .add('Basic', () => ({
     components: { BaseMultiDropdownList },
@@ -403,6 +472,11 @@ storiesOf('List Components/MultiDropdownList ', module)
   }))
 
 storiesOf('Search Components/DataSearch', module)
+	.addParameters({
+		readme: {
+			sidebar: removeFirstLine(DataSearchReadme),
+		},
+	})
   .addDecorator(withKnobs)
   .add('Basic', () => ({
     components: { BaseDataSearch },
@@ -475,6 +549,11 @@ storiesOf('Search Components/DataSearch', module)
   }));
 
 storiesOf('Result Components/Reactive List', module)
+	.addParameters({
+		readme: {
+			sidebar: removeFirstLine(ReactiveListReadme),
+		},
+	})
   .addDecorator(withKnobs)
   .add('Basic', () => ({
     components: { BaseReactiveList },
@@ -510,6 +589,11 @@ storiesOf('Result Components/Reactive List', module)
     template: '<base-reactive-list :subProps="{ pagination: true, pages }"/>',
 	}));
 storiesOf('Result Components/ResultList', module)
+	.addParameters({
+		readme: {
+			sidebar: removeFirstLine(ResultListReadme),
+		},
+	})
 	.addDecorator(withKnobs)
 	.add('Basic', () => ({
 		components: { BaseResultList },
@@ -542,6 +626,11 @@ storiesOf('Result Components/ResultList', module)
   }));
 
 storiesOf('Result Components/ResultCard', module)
+	.addParameters({
+		readme: {
+			sidebar: removeFirstLine(ResultCardReadme),
+		},
+	})
 	.addDecorator(withKnobs)
 	.add('Basic', () => ({
 		components: { BaseResultCard },
@@ -573,11 +662,23 @@ storiesOf('Result Components/ResultCard', module)
 		template: '<base-result-card :subProps="{ pagination: true, pages }"/>',
 	}));
 
-storiesOf('Base components/ReactiveComponent', module).add('A custom component', () => ({
-  components: { BaseReactiveComponent },
-  template: '<base-reactive-component :subProps="{ pagination: true }"/>',
-}));
+storiesOf('Base components/ReactiveComponent', module)
+	.addParameters({
+		readme: {
+			sidebar: removeFirstLine(ReactiveComponentReadme, 15),
+		},
+	})
+	.add('A custom component', () => ({
+		components: { BaseReactiveComponent },
+		template: '<base-reactive-component :subProps="{ pagination: true }"/>',
+	}));
+
 storiesOf('Base components/ToggleButton', module)
+	.addParameters({
+		readme: {
+			sidebar: removeFirstLine(ToggleButtonReadme, 15),
+		},
+	})
   .addDecorator(withKnobs)
   .add('Basic', () => ({
     components: { BaseToggleButton },
