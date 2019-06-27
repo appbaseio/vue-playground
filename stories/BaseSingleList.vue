@@ -11,6 +11,7 @@
       </div>
 
       <div class="col">
+        <selected-filters/>
         <ReactiveList
           componentId="SearchResult"
           data-field="original_title.raw"
