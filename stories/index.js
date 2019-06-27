@@ -202,7 +202,7 @@ storiesOf('List Components/SingleList', module)
     components: { BaseSingleList },
     template: '<base-single-list :subProps="{ defaultSelected, showFilter: true }"/>',
   }))
-  .add('with sortBy', () => ({
+  .add('with custom sort', () => ({
 		components: { BaseSingleList },
 		props: sortBy(),
     template: '<base-single-list :subProps="{ sortBy }"/>',
@@ -260,7 +260,7 @@ storiesOf('List Components/MulitList', module)
 		props: showCheckbox(false),
     template: '<base-multi-list :subProps="{ showCheckbox }"/>',
   }))
-  .add('with sortBy', () => ({
+  .add('with custom sort', () => ({
 		components: { BaseMultiList },
 		props: sortBy(),
     template: '<base-multi-list :subProps="{ sortBy }"/>',
@@ -489,7 +489,7 @@ storiesOf('Result Components/Reactive List', module)
     components: { BaseReactiveList },
     template: '<base-reactive-list/>',
   }))
-  .add('With sortBy', () => ({
+  .add('with custom sort', () => ({
 		components: { BaseReactiveList },
 		props: sortBy({ ascending: 'asc', descending: 'desc' }, 'asc'),
     template: '<base-reactive-list :subProps="{ sortBy }"/>',
@@ -520,7 +520,7 @@ storiesOf('Result Components/ResultList', module)
 		props: getKnob('pagination', true),
 		template: '<base-result-list :subProps="{ pagination }"/>',
 	}))
-	.add('With sortBy', () => ({
+	.add('with custom sort', () => ({
 		components: { BaseResultList },
 		props: sortBy({ ascending: 'asc', descending: 'desc' }, 'asc'),
 		template: '<base-result-list :subProps="{ sortBy }"/>',
@@ -552,7 +552,7 @@ storiesOf('Result Components/ResultCard', module)
 		props: getKnob('pagination', true),
 		template: '<base-result-card :subProps="{ pagination }"/>',
 	}))
-	.add('With sortBy', () => ({
+	.add('with custom sort', () => ({
 		components: { BaseResultCard },
 		props: sortBy({ ascending: 'asc', descending: 'desc' }, 'asc'),
 		template: '<base-result-card :subProps="{ sortBy }"/>',

@@ -2,30 +2,32 @@
 # yarn lockfile v1
 
 
-"@appbaseio/reactivecore@^6.0.4":
-  version "6.0.4"
-  resolved "https://registry.npmjs.org/@appbaseio/reactivecore/-/reactivecore-6.0.4.tgz#52a7a54efba2000ecce71fb650d2a4062d8a0189"
-  integrity sha512-c3yoAkVq6GseHrIy3K2u83hNBHsShMwWWfHHbltMfXHFHnYVD+Qtsgvl+Pk6DDVm4sTTRFQxSIc4pRkeOMaxXA==
+"@appbaseio/reactivecore@^8.2.7":
+  version "8.2.8"
+  resolved "https://registry.yarnpkg.com/@appbaseio/reactivecore/-/reactivecore-8.2.8.tgz#2bca2be83d36809e228de32f020bbdca312c3b85"
+  integrity sha512-sIi9zn6mMNPcLPOpIVbAaOSEJHfovaM/7qceuWm9rAGeVDhx5xDXwoluBQE9hSY1npFG2ThvmFV1lSpg9sBwTw==
   dependencies:
     prop-types "^15.6.0"
     redux "^4.0.0"
     redux-thunk "^2.3.0"
 
-"@appbaseio/reactivesearch-vue@^1.0.0-alpha.4":
-  version "1.0.0-alpha.4"
-  resolved "https://registry.npmjs.org/@appbaseio/reactivesearch-vue/-/reactivesearch-vue-1.0.0-alpha.4.tgz#e305cb6065bd818ed1ee656da1dba8f0490ff785"
-  integrity sha512-ae6QMoo/D3wVrfdDKtB8bvM/U32JrEY6y4xshGXFd4tnLvre6PbfGrhr9S6Q8sRFlcuOMoD8vjLG1zKEpuhn4Q==
+"@appbaseio/reactivesearch-vue@1.0.0-beta.15":
+  version "1.0.0-beta.15"
+  resolved "https://registry.yarnpkg.com/@appbaseio/reactivesearch-vue/-/reactivesearch-vue-1.0.0-beta.15.tgz#33438d3247205a22fe2e197d240c5833a89c09d0"
+  integrity sha512-r9Gw7h23xNv/IOlQArFfy7Dgxx2GN1p4dmq8VSlvAgfGGl1E3ylgoBFRR7p93nMYGbRsqIxkcRB9s9xI+64p+g==
   dependencies:
-    "@appbaseio/reactivecore" "^6.0.4"
-    appbase-js "^4.0.2-beta.2"
+    "@appbaseio/reactivecore" "^8.2.7"
+    appbase-js "^4.0.2-beta.06"
     babel-helper-vue-jsx-merge-props "^2.0.3"
     compute-scroll-into-view "^1.0.11"
-    emotion "^9.2.12"
+    emotion "9.2.12"
     polished "^2.2.0"
     redux "^4.0.0"
     url-search-params "^1.1.0"
     vue "^2.5.17"
-    vue-emotion "^0.4.2"
+    vue-emotion "0.4.2"
+    vue-no-ssr "^1.1.0"
+    vue-slider-component "^2.8.2"
     vue-types "^1.3.3"
 
 "@babel/helper-module-imports@^7.0.0":
@@ -449,17 +451,17 @@ anymatch@^2.0.0:
     micromatch "^3.1.4"
     normalize-path "^2.1.1"
 
-appbase-js@^4.0.2-beta.2:
-  version "4.0.2-beta.2"
-  resolved "https://registry.npmjs.org/appbase-js/-/appbase-js-4.0.2-beta.2.tgz#a01155ced48c9359be04e45df6c40a312483e5b8"
-  integrity sha512-tYr2Giu5IrhqFwEvWGPut6fSnnMZfcNOMC0UMG/U7Xg5nH0MY3pnHGcBJO195KnmAAWuF0w55B+B0zdUyIR3gg==
+appbase-js@^4.0.2-beta.06:
+  version "4.0.2-beta.6"
+  resolved "https://registry.yarnpkg.com/appbase-js/-/appbase-js-4.0.2-beta.6.tgz#fe2a9e4c9963edc6f8c0b9b5508a915a5b6d45d1"
+  integrity sha512-tnnXy4uX5A9QmW6Ve0EpqaPVnXBfKe/n1qX+6noGti9NF+9i80+EB0dh/N4Da+0oLSTmLbXaG7CmKaTejtgkRg==
   dependencies:
     cross-fetch "^2.2.2"
     json-stable-stringify "^1.0.1"
     querystring "^0.2.0"
     stream "^0.0.2"
     url-parser-lite "^0.1.0"
-    ws "^2.2.0"
+    ws "^6.1.2"
 
 aproba@^1.0.3, aproba@^1.1.1:
   version "1.2.0"
@@ -596,6 +598,11 @@ async-each@^1.0.0:
   version "1.0.1"
   resolved "https://registry.npmjs.org/async-each/-/async-each-1.0.1.tgz#19d386a1d9edc6e7c1c85d388aedbcc56d33602d"
   integrity sha1-GdOGodntxufByF04iu28xW0zYC0=
+
+async-limiter@~1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/async-limiter/-/async-limiter-1.0.0.tgz#78faed8c3d074ab81f22b4e985d79e8738f720f8"
+  integrity sha512-jp/uFnooOiO+L211eZOoSyzpOITMXx1rBITauYykG3BRYPu8h0UcxsPNB04RR5vo4Tyz3+ay17tR6JVf9qzYWg==
 
 async@^2.1.2:
   version "2.6.1"
@@ -2716,9 +2723,9 @@ emotion-utils@^9.1.0:
   resolved "https://registry.npmjs.org/emotion-utils/-/emotion-utils-9.1.0.tgz#7484dbf18f3b1dc1de68559d1ff35a74caa998dc"
   integrity sha512-Zdy9TiZzMDRsCufivL/ZhQ0JdfGGSOc20opRjaBOemF5h2kYI/MD/bLcXfAZgzYVL12WNQegZIme6l+N/JFE4Q==
 
-emotion@^9.2.12:
+emotion@9.2.12:
   version "9.2.12"
-  resolved "https://registry.npmjs.org/emotion/-/emotion-9.2.12.tgz#53925aaa005614e65c6e43db8243c843574d1ea9"
+  resolved "https://registry.yarnpkg.com/emotion/-/emotion-9.2.12.tgz#53925aaa005614e65c6e43db8243c843574d1ea9"
   integrity sha512-hcx7jppaI8VoXxIWEhxpDW7I+B4kq9RNzQLmsrF6LY8BGKqe2N+gFAQr0EfuFucFlPs2A9HM4+xNj4NeqEWIOQ==
   dependencies:
     babel-plugin-emotion "^9.2.11"
@@ -6122,11 +6129,6 @@ safe-buffer@5.1.2, safe-buffer@^5.0.1, safe-buffer@^5.1.0, safe-buffer@^5.1.1, s
   resolved "https://registry.npmjs.org/safe-buffer/-/safe-buffer-5.1.2.tgz#991ec69d296e0313747d59bdfd2b745c35f8828d"
   integrity sha512-Gd2UZBJDkXlY7GbJxfsE8/nvKkUEU1G38c1siN6QP6a9PT9MmHB8GnpscSmMJSoF8LOIrt8ud/wPtojys4G6+g==
 
-safe-buffer@~5.0.1:
-  version "5.0.1"
-  resolved "https://registry.npmjs.org/safe-buffer/-/safe-buffer-5.0.1.tgz#d263ca54696cd8a306b5ca6551e92de57918fbe7"
-  integrity sha1-0mPKVGls2KMGtcplUekt5XkY++c=
-
 safe-regex@^1.1.0:
   version "1.1.0"
   resolved "http://registry.npmjs.org/safe-regex/-/safe-regex-1.1.0.tgz#40a3669f3b077d1e943d44629e157dd48023bf2e"
@@ -6867,11 +6869,6 @@ uglifyjs-webpack-plugin@^1.2.4:
     webpack-sources "^1.1.0"
     worker-farm "^1.5.2"
 
-ultron@~1.1.0:
-  version "1.1.1"
-  resolved "https://registry.npmjs.org/ultron/-/ultron-1.1.1.tgz#9fe1536a10a664a65266a1e3ccf85fd36302bc9c"
-  integrity sha512-UIEXBNeYmKptWH6z8ZnqTeS8fV74zG0/eRU9VGkpzz+LIJNs8W/zM/L+7ctCkRrgbNnnR0xxw4bKOr0cW0N0Og==
-
 union-value@^1.0.0:
   version "1.0.0"
   resolved "https://registry.npmjs.org/union-value/-/union-value-1.0.0.tgz#5c71c34cb5bad5dcebe3ea0cd08207ba5aa1aea4"
@@ -7050,9 +7047,9 @@ vm-browserify@0.0.4:
   dependencies:
     indexof "0.0.1"
 
-vue-emotion@^0.4.2:
+vue-emotion@0.4.2:
   version "0.4.2"
-  resolved "https://registry.npmjs.org/vue-emotion/-/vue-emotion-0.4.2.tgz#df97359aadd49cc476eb23ba44b7d2962a669ced"
+  resolved "https://registry.yarnpkg.com/vue-emotion/-/vue-emotion-0.4.2.tgz#df97359aadd49cc476eb23ba44b7d2962a669ced"
   integrity sha1-35c1mq3UnMR26yO6RLfSlipmnO0=
   dependencies:
     emotion-utils "^9.1.0"
@@ -7073,6 +7070,16 @@ vue-loader@^15.4.2:
     loader-utils "^1.1.0"
     vue-hot-reload-api "^2.3.0"
     vue-style-loader "^4.1.0"
+
+vue-no-ssr@^1.1.0:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/vue-no-ssr/-/vue-no-ssr-1.1.1.tgz#875f3be6fb0ae41568a837f3ac1a80eaa137b998"
+  integrity sha512-ZMjqRpWabMPqPc7gIrG0Nw6vRf1+itwf0Itft7LbMXs2g3Zs/NFmevjZGN1x7K3Q95GmIjWbQZTVerxiBxI+0g==
+
+vue-slider-component@^2.8.2:
+  version "2.8.16"
+  resolved "https://registry.yarnpkg.com/vue-slider-component/-/vue-slider-component-2.8.16.tgz#b2036f816ed64fa4fcd6741219b80c5063b4fd60"
+  integrity sha512-06gDoheKMU8TdqjoofIJaYfXw3uuWOXF2I14d/F5yW/8iOxnoI4Ks9WSXy8RWY+gs62GBE6tQXHDSX/H6IOaAw==
 
 vue-style-loader@^4.1.0:
   version "4.1.2"
@@ -7257,13 +7264,12 @@ wrappy@1:
   resolved "https://registry.npmjs.org/wrappy/-/wrappy-1.0.2.tgz#b5243d8f3ec1aa35f1364605bc0d1036e30ab69f"
   integrity sha1-tSQ9jz7BqjXxNkYFvA0QNuMKtp8=
 
-ws@^2.2.0:
-  version "2.3.1"
-  resolved "https://registry.npmjs.org/ws/-/ws-2.3.1.tgz#6b94b3e447cb6a363f785eaf94af6359e8e81c80"
-  integrity sha1-a5Sz5EfLajY/eF6vlK9jWejoHIA=
+ws@^6.1.2:
+  version "6.2.1"
+  resolved "https://registry.yarnpkg.com/ws/-/ws-6.2.1.tgz#442fdf0a47ed64f59b6a5d8ff130f4748ed524fb"
+  integrity sha512-GIyAXC2cB7LjvpgMt9EKS2ldqr0MTrORaleiOno6TweZ6r3TKtoFQWay/2PceJ3RuBasOHzXNn5Lrw1X0bEjqA==
   dependencies:
-    safe-buffer "~5.0.1"
-    ultron "~1.1.0"
+    async-limiter "~1.0.0"
 
 xtend@^4.0.0, xtend@~4.0.1:
   version "4.0.1"
