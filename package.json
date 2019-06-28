@@ -22,6 +22,8 @@
         "@babel/core": "^7.4.5",
         "@storybook/addon-knobs": "^5.2.0-alpha.31",
         "@storybook/vue": "^5.2.0-alpha.31",
+        "babel-loader": "^8.0.6",
+        "babel-preset-vue": "^2.0.2",
         "storybook-readme": "^5.0.5",
         "vue-loader": "^15.4.2",
         "vue-template-compiler": "^2.5.17"
