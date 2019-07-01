@@ -222,43 +222,43 @@ storiesOf('List Components/SingleList', module)
     template: '<base-single-list/>',
   }))
   .add('with title', () => ({
-		props: titleKnob('Authors Search'),
+	props: titleKnob('Authors Search'),
     components: { BaseSingleList },
     template: '<base-single-list :subProps="{ title }"/>',
   }))
   .add('with size', () => ({
-		props: size(),
+	props: size(),
     components: { BaseSingleList },
     template: '<base-single-list :subProps="{ size }"/>',
   }))
   .add('without showSearch', () => ({
-		components: { BaseSingleList },
-		props: getKnob('showSearch', false),
+	components: { BaseSingleList },
+	props: getKnob('showSearch', false),
     template: '<base-single-list :subProps="{ showSearch }"/>',
   }))
   .add('without showCount', () => ({
-		props: showCount(false),
+	props: showCount(false),
     components: { BaseSingleList },
     template: '<base-single-list :subProps="{ showCount }"/>',
   }))
   .add('with placeholder', () => ({
-		props: getKnob('placeholder', 'Search for Authors'),
+	props: getKnob('placeholder', 'Search for Authors'),
     components: { BaseSingleList },
     template: '<base-single-list :subProps="{ placeholder }"/>',
   }))
   .add('without showRadio', () => ({
-		props: showRadio(false),
+	props: showRadio(false),
     components: { BaseSingleList },
     template: '<base-single-list :subProps="{ showRadio }"/>',
   }))
   .add('defaultSelected', () => ({
-		props: defaultSelected('Hercule Poirot'),
+	props: defaultSelected('Hercule Poirot'),
     components: { BaseSingleList },
     template: '<base-single-list :subProps="{ defaultSelected, showFilter: true }"/>',
   }))
   .add('with custom sort', () => ({
-		components: { BaseSingleList },
-		props: sortBy(),
+	components: { BaseSingleList },
+	props: sortBy(),
     template: '<base-single-list :subProps="{ sortBy }"/>',
   }));
 
@@ -691,7 +691,7 @@ storiesOf('Base components/ToggleButton', module)
   }))
   .add('with defaultSelected', () => ({
 		components: { BaseToggleButton },
-		props: getKnob('defaultSelected', 'Music'),
+		props: getKnob('defaultSelected', 'Music']),
     template: '<base-toggle-button :subProps="{ showFilter: false, defaultSelected }"/>',
   }))
   .add('With filter', () => ({
