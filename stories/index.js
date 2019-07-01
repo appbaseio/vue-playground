@@ -691,7 +691,7 @@ storiesOf('Base components/ToggleButton', module)
   }))
   .add('with defaultSelected', () => ({
 		components: { BaseToggleButton },
-		props: getKnob('defaultSelected', 'Music']),
+		props: getKnob('defaultSelected', ['Music']),
     template: '<base-toggle-button :subProps="{ showFilter: false, defaultSelected }"/>',
   }))
   .add('With filter', () => ({
