@@ -19,8 +19,8 @@
     },
     "homepage": "https://github.com/appbaseio/vue-playground#readme",
     "devDependencies": {
-		"@babel/core": "^7.4.5",
-		"babel-loader": "^7",
+        "@babel/core": "^7.4.5",
+        "babel-loader": "^7",
         "@storybook/addon-knobs": "^5.2.0-alpha.31",
         "@storybook/vue": "^5.2.0-alpha.31",
         "storybook-readme": "^5.0.5",
@@ -29,7 +29,7 @@
     },
     "dependencies": {
         "@appbaseio/reactive-manual-vue": "git://github.com/appbaseio/reactive-manual.git#v1-vue",
-        "@appbaseio/reactivesearch-vue": "1.0.0-beta.16",
+        "@appbaseio/reactivesearch-vue": "1.0.0-beta.17",
         "@storybook/theming": "^5.1.9"
     }
 }
