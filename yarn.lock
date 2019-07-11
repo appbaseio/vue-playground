@@ -64,10 +64,10 @@
     redux "^4.0.0"
     redux-thunk "^2.3.0"
 
-"@appbaseio/reactivesearch-vue@1.0.0-beta.16":
-  version "1.0.0-beta.16"
-  resolved "https://registry.npmjs.org/@appbaseio/reactivesearch-vue/-/reactivesearch-vue-1.0.0-beta.16.tgz#adfba8acb176a133248cf24d7d111c7d974d2376"
-  integrity sha512-Fgwl9nl2o36eKrM9Yj+JtGlbMsGayUmOS6qXfxkiLq7JFOK/3KuEZ+aVg7ezHCdweMwFgPjkYXyjq2xjc/lWNQ==
+"@appbaseio/reactivesearch-vue@1.0.0-beta.17":
+  version "1.0.0-beta.17"
+  resolved "https://registry.yarnpkg.com/@appbaseio/reactivesearch-vue/-/reactivesearch-vue-1.0.0-beta.17.tgz#52a0ca904fc6b6939b9065d7f48ddf6a78e321b8"
+  integrity sha512-kTqjP8UcJwjXSu8GVBfB4d+2J9OKQwq+XkWCkoxIsf0qPh/RpnQI54Be9/j6Uj4ThdB1A8QDvnIgyAVx6JAMhg==
   dependencies:
     "@appbaseio/reactivecore" "^8.2.8"
     appbase-js "^4.0.2-beta.06"
@@ -76,7 +76,7 @@
     emotion "9.2.12"
     polished "^2.2.0"
     redux "^4.0.0"
-    url-search-params "^1.1.0"
+    url-search-params-polyfill "^7.0.0"
     vue "^2.5.17"
     vue-emotion "0.4.2"
     vue-highlight-words "^1.2.0"
@@ -10098,9 +10098,9 @@ locate-path@^5.0.0:
     p-locate "^4.1.0"
 
 lodash-es@^4.2.1:
-  version "4.17.11"
-  resolved "https://registry.npmjs.org/lodash-es/-/lodash-es-4.17.11.tgz#145ab4a7ac5c5e52a3531fb4f310255a152b4be0"
-  integrity sha512-DHb1ub+rMjjrxqlB3H56/6MXtm1lSksDp2rA2cNWjG8mlDUYFhUj3Di2Zn5IwSU87xLv8tNIQ7sSwE/YOX/D/Q==
+  version "4.17.14"
+  resolved "https://registry.yarnpkg.com/lodash-es/-/lodash-es-4.17.14.tgz#12a95a963cc5955683cee3b74e85458954f37ecc"
+  integrity sha512-7zchRrGa8UZXjD/4ivUWP1867jDkhzTG2c/uj739utSd7O/pFFdxspCemIFKEEjErbcqRzn8nKnGsi7mvTgRPA==
 
 lodash-id@^0.14.0:
   version "0.14.0"
@@ -16683,10 +16683,10 @@ url-regex@^3.0.0:
   dependencies:
     ip-regex "^1.0.1"
 
-url-search-params@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.npmjs.org/url-search-params/-/url-search-params-1.1.0.tgz#865669a6e4e9e5543f86fc972b27c91485375326"
-  integrity sha512-XiO5GLAxmlZgdLob/RmKZRc2INHrssMbpwD6O46JkB1aEJO4fkV3x3mR6+CDX01ijfEUwvfwCiUQZrKqfm1ILw==
+url-search-params-polyfill@^7.0.0:
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/url-search-params-polyfill/-/url-search-params-polyfill-7.0.0.tgz#98b56ed29e67710588fdc3c361083b0f78303d95"
+  integrity sha512-0SEH3s+wCNbxEE/rWUalN004ICNi23Q74Ksc0gS2kG8EXnbayxGOrV97JdwnIVPKZ75Xk0hvKXvtIC4xReLMgg==
 
 url-to-options@^1.0.1:
   version "1.0.1"
