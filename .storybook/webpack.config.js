@@ -1,4 +1,3 @@
-const RuleSet = require('webpack/lib/RuleSet')
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 module.exports = async ({ config }) => {
