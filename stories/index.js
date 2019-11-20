@@ -24,6 +24,7 @@ import BaseDynamicRangeSlider from './BaseDynamicRangeSlider.vue';
 import BaseResultList from './BaseResultList.vue';
 import BaseResultCard from './BaseResultCard.vue';
 import BaseToggleButton from './BaseToggleButton.vue';
+import DataSearchWithRenderSlot from './DataSearchWithRenderSlot';
 import './styles.css';
 
 // README
@@ -546,7 +547,11 @@ storiesOf('Search Components/DataSearch', module)
 		components: { BaseDataSearch },
 		props: getKnob('renderNoSuggestion', 'No Suggestions Found'),
     template: '<base-data-search :subProps="{ showFilter: true, renderNoSuggestion }"/>',
-  }));
+  }))
+	.add('with render slot', () => ({
+		components: { DataSearchWithRenderSlot },
+		template: '<data-search-with-render-slot />'
+	}));
 
 storiesOf('Result Components/Reactive List', module)
 	.addParameters({
