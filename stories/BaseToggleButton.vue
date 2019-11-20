@@ -27,7 +27,7 @@
                     class="result-list-container"
                     :from="0"
                     :size="5"
-                    :renderData="meetupList"
+                    :renderItem="meetupList"
                     :innerClass="{
                         image: 'meetup-list-image'
                     }"

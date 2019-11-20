@@ -5,7 +5,7 @@
             dataField="original_title.raw"
             :from="0"
             :size="5"
-            :renderData="booksList"
+            :renderItem="booksList"
             v-bind='subProps'
             v-on='subEvents'
         />
