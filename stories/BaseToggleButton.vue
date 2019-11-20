@@ -19,15 +19,14 @@
             </div>
             <div class="col">
                 <SelectedFilters componentId="CitySensor" />
-                <ResultList
-                    componentId="SearchResult"
+                <ReactiveList
+					componentId="SearchResult"
                     dataField="group.group_topics.topic_name_raw"
                     title="Results"
                     sortBy="asc"
                     class="result-list-container"
                     :from="0"
                     :size="5"
-                    :renderItem="meetupList"
                     :innerClass="{
                         image: 'meetup-list-image'
                     }"
@@ -35,7 +34,29 @@
                     :react='{
                         and: ["CitySensor"]
                     }'
-                />
+				>
+					<div slot="render" slot-scope="{ data }">
+						<ResultListWrapper>
+							<ResultList
+								v-bind:key="result._id"
+								v-for="result in data"
+								:href="result.event.event_url"
+							>
+								<ResultListImage :small="true" :src="result.member.photo" />
+								<ResultListContent>
+									<ResultListTitle>
+										{{ result.member ? result.member.member_name : '' }} is
+										going to
+										{{ result.event ? result.event.event_name : '' }}
+									</ResultListTitle>
+									<ResultListDescription>
+										{{ result.group ? result.group.group_city : '' }}
+									</ResultListDescription>
+								</ResultListContent>
+							</ResultList>
+						</ResultListWrapper>
+					</div>
+				</ReactiveList>
             </div>
         </div>
     </ReactiveBase>
@@ -47,16 +68,5 @@ export default {
     subProps: Object,
     subEvents: Object,
   },
-  methods: {
-      meetupList(data) {
-        return {
-            title: `${data.member ? data.member.member_name : ""} is going to ${data.event ? data.event.event_name : ""}`,
-            image: data.member.photo,
-            image_size: 'small',
-            description: data.group ? data.group.group_city : "",
-            url: data.event.event_url
-        }
-      }
-  }
 };
 </script>

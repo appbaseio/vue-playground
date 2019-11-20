@@ -1,14 +1,38 @@
 <template>
     <ReactiveBase app="good-books-ds" credentials="nY6NNTZZ6:27b76b9f-18ea-456c-bc5e-3a5263ebc63d" >
-        <ResultCard
+        <ReactiveList
             componentId="SearchResult"
             dataField="original_title.raw"
             :from="0"
             :size="5"
-            :renderItem="booksCard"
             v-bind='subProps'
             v-on='subEvents'
-        />
+        >
+            <div slot="render" slot-scope="{ data }">
+                <ResultCardsWrapper>
+                    <ResultCard
+                        v-bind:key="result._id"
+                        v-for="result in data"
+                    >
+                        <ResultCardImage :src="result.image" />
+                        <ResultCardTitle>
+                            {{result.original_title}}
+                        </ResultCardTitle>
+                        <ResultCardDescription>
+                             <div>
+                                <p>
+                                    <em>by {{data.authors}}</em>
+                                </p>
+                                <p>
+                                    <b>{{data.average_rating}}</b> ⭐
+                                </p>
+                                <span>Pub {{data.original_publication_year}}</span>
+                            </div>
+                        </ResultCardDescription>
+                    </ResultCard>
+                </ResultCardsWrapper>
+            </div>
+        </ReactiveList>
     </ReactiveBase>
 </template>
 <script>
@@ -18,24 +42,5 @@
             subProps: Object,
             subEvents: Object,
         },
-        methods: {
-            booksCard(data) {
-                return {
-                    title: data.original_title,
-                    image: data.image,
-                    description: `
-                        <div>
-                            <p>
-                                <em>by ${data.authors}</em>
-                            </p>
-                            <p>
-                                <b>${data.average_rating}</b> ⭐
-                            </p>
-                            <span>Pub ${data.original_publication_year}</span>
-                        </div>
-                    `,
-                };
-            }
-        }
     }
 </script>
