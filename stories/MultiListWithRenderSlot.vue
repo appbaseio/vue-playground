@@ -18,7 +18,7 @@
 									};
 								})"
 								:key="suggestion._id"
-								v-on:click="handleChange({ target: suggestion })"
+								v-on:click="handleChange(suggestion.value)"
 							>
 								{{ suggestion.label }}
 							</li>
