@@ -25,6 +25,10 @@ import BaseResultList from './BaseResultList.vue';
 import BaseResultCard from './BaseResultCard.vue';
 import BaseToggleButton from './BaseToggleButton.vue';
 import DataSearchWithRenderSlot from './DataSearchWithRenderSlot';
+import SingleListWithRenderSlot from './SingleListWithRenderSlot';
+import MultiListWithRenderSlot from './MultiListWithRenderSlot';
+import SingleDropdownListWithRenderSlot from './SingleDropdownListWithRenderSlot';
+import MultiDropdownListWithRenderSlot from './MultiDropdownListWithRenderSlot';
 import './styles.css';
 
 // README
@@ -261,7 +265,11 @@ storiesOf('List Components/SingleList', module)
 	components: { BaseSingleList },
 	props: sortBy(),
     template: '<base-single-list :subProps="{ sortBy }"/>',
-  }));
+  }))
+	.add('with render slot', () => ({
+		components: { SingleListWithRenderSlot },
+		template: '<single-list-with-render-slot />'
+	}));
 
 storiesOf('List Components/MulitList', module)
 	.addParameters({
@@ -324,7 +332,11 @@ storiesOf('List Components/MulitList', module)
 		components: { BaseMultiList },
 		props: sortBy(),
     template: '<base-multi-list :subProps="{ sortBy }"/>',
-  }));
+  }))
+	.add('with render slot', () => ({
+		components: { MultiListWithRenderSlot },
+		template: '<multi-list-with-render-slot />'
+	}));
 
 storiesOf('List Components/SingleDropdownList', module)
 	.addParameters({
@@ -393,6 +405,10 @@ storiesOf('List Components/SingleDropdownList', module)
 		),
     template: '<base-single-dropdown-list :subProps="{ title, dataField, size, filterLabel, showFilter, sortBy, showCount, showSearch, selectAllLabel, defaultSelected, URLParams, placeholder }"/>',
   }))
+	.add('with render slot', () => ({
+		components: { SingleDropdownListWithRenderSlot },
+		template: '<single-dropdown-list-with-render-slot />'
+	}));
 
 
 storiesOf('List Components/MultiDropdownList ', module)
@@ -471,6 +487,10 @@ storiesOf('List Components/MultiDropdownList ', module)
 		),
     template: '<base-multi-dropdown-list :subProps="{ title, dataField, size, filterLabel, showFilter, sortBy, showCount, showSearch, selectAllLabel, defaultSelected, URLParams, placeholder }"/>',
   }))
+	.add('with render slot', () => ({
+		components: { MultiDropdownListWithRenderSlot },
+		template: '<multi-dropdown-list-with-render-slot />'
+	}));
 
 storiesOf('Search Components/DataSearch', module)
 	.addParameters({
