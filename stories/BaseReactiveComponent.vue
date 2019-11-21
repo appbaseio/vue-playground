@@ -39,7 +39,7 @@
 								and: 'CarSensor',
 							}"
 						>
-						<div slot="renderData" slot-scope="{ item }">
+						<div slot="renderItem" slot-scope="{ item }">
 							<h2>{{item.model}}</h2>
 							<p>{{item.price}} - {{item.rating}} stars rated</p>
 						</div>
