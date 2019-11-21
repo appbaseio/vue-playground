@@ -622,8 +622,8 @@ storiesOf('Result Components/Reactive List', module)
   }))
   .add('With custom number of pages', () => ({
 		components: { BaseReactiveList },
-		props: getKnob('pages', 10),
-    template: '<base-reactive-list :subProps="{ pagination: true, pages }"/>',
+		props: getKnob('currentPage', 10),
+    template: '<base-reactive-list :subProps="{ pagination: true, currentPage }"/>',
 	}));
 storiesOf('Result Components/ResultList', module)
 	.addParameters({
