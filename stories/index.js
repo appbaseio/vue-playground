@@ -24,6 +24,12 @@ import BaseDynamicRangeSlider from './BaseDynamicRangeSlider.vue';
 import BaseResultList from './BaseResultList.vue';
 import BaseResultCard from './BaseResultCard.vue';
 import BaseToggleButton from './BaseToggleButton.vue';
+import DataSearchWithRenderSlot from './DataSearchWithRenderSlot';
+import SingleListWithRenderSlot from './SingleListWithRenderSlot';
+import MultiListWithRenderSlot from './MultiListWithRenderSlot';
+import SingleDropdownListWithRenderSlot from './SingleDropdownListWithRenderSlot';
+import MultiDropdownListWithRenderSlot from './MultiDropdownListWithRenderSlot';
+import DataSearchWithParseSuggestion from './DataSearchWithParseSuggestion';
 import './styles.css';
 
 // README
@@ -260,7 +266,11 @@ storiesOf('List Components/SingleList', module)
 	components: { BaseSingleList },
 	props: sortBy(),
     template: '<base-single-list :subProps="{ sortBy }"/>',
-  }));
+  }))
+	.add('with render slot', () => ({
+		components: { SingleListWithRenderSlot },
+		template: '<single-list-with-render-slot />'
+	}));
 
 storiesOf('List Components/MulitList', module)
 	.addParameters({
@@ -323,7 +333,11 @@ storiesOf('List Components/MulitList', module)
 		components: { BaseMultiList },
 		props: sortBy(),
     template: '<base-multi-list :subProps="{ sortBy }"/>',
-  }));
+  }))
+	.add('with render slot', () => ({
+		components: { MultiListWithRenderSlot },
+		template: '<multi-list-with-render-slot />'
+	}));
 
 storiesOf('List Components/SingleDropdownList', module)
 	.addParameters({
@@ -357,6 +371,10 @@ storiesOf('List Components/SingleDropdownList', module)
 		props: sortBy(),
     template: '<base-single-dropdown-list :subProps="{ sortBy, showFilter: false}"/>',
   }))
+	.add('with renderLabel', () => ({
+		components: { BaseSingleDropdownList },
+		template: '<base-single-dropdown-list :subProps="{ renderLabel: function(value) {return `hello ${value}`} }" />',
+	}))
     .add('without count', () => ({
 		components: { BaseSingleDropdownList },
 		props: showCount(false),
@@ -392,6 +410,10 @@ storiesOf('List Components/SingleDropdownList', module)
 		),
     template: '<base-single-dropdown-list :subProps="{ title, dataField, size, filterLabel, showFilter, sortBy, showCount, showSearch, selectAllLabel, defaultSelected, URLParams, placeholder }"/>',
   }))
+	.add('with render slot', () => ({
+		components: { SingleDropdownListWithRenderSlot },
+		template: '<single-dropdown-list-with-render-slot />'
+	}));
 
 
 storiesOf('List Components/MultiDropdownList ', module)
@@ -426,6 +448,10 @@ storiesOf('List Components/MultiDropdownList ', module)
 		props: sortBy(),
     template: '<base-multi-dropdown-list :subProps="{ sortBy, showFilter: false}"/>',
   }))
+	.add('with renderLabel', () => ({
+		components: { BaseMultiDropdownList },
+		template: '<base-multi-dropdown-list :subProps="{ renderLabel: function(value) { return Object.keys(value).map(function (item) { return `hello ${item} ` } ) } }" />',
+	}))
     .add('without count', () => ({
 		components: { BaseMultiDropdownList },
 		props: showCount(false),
@@ -470,6 +496,10 @@ storiesOf('List Components/MultiDropdownList ', module)
 		),
     template: '<base-multi-dropdown-list :subProps="{ title, dataField, size, filterLabel, showFilter, sortBy, showCount, showSearch, selectAllLabel, defaultSelected, URLParams, placeholder }"/>',
   }))
+	.add('with render slot', () => ({
+		components: { MultiDropdownListWithRenderSlot },
+		template: '<multi-dropdown-list-with-render-slot />'
+	}));
 
 storiesOf('Search Components/DataSearch', module)
 	.addParameters({
@@ -542,11 +572,19 @@ storiesOf('Search Components/DataSearch', module)
 		props: filterLabel('Books Search'),
     template: '<base-data-search :subProps="{ showFilter, filterLabel }"/>',
   }))
+	.add('with parse suggestions', () => ({
+		components: { DataSearchWithParseSuggestion },
+		template: '<base-data-search :subProps="{ parseSuggestion: function(suggestion) { return { label: `hello ${suggestion.source.original_title}`, value: suggestion.source.original_title } } }"/>',
+	}))
   .add('with renderNoSuggestion', () => ({
 		components: { BaseDataSearch },
 		props: getKnob('renderNoSuggestion', 'No Suggestions Found'),
     template: '<base-data-search :subProps="{ showFilter: true, renderNoSuggestion }"/>',
-  }));
+  }))
+	.add('with render slot', () => ({
+		components: { DataSearchWithRenderSlot },
+		template: '<data-search-with-render-slot />'
+	}));
 
 storiesOf('Result Components/Reactive List', module)
 	.addParameters({
