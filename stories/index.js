@@ -29,6 +29,7 @@ import SingleListWithRenderSlot from './SingleListWithRenderSlot';
 import MultiListWithRenderSlot from './MultiListWithRenderSlot';
 import SingleDropdownListWithRenderSlot from './SingleDropdownListWithRenderSlot';
 import MultiDropdownListWithRenderSlot from './MultiDropdownListWithRenderSlot';
+import DataSearchWithParseSuggestion from './DataSearchWithParseSuggestion';
 import './styles.css';
 
 // README
@@ -571,6 +572,10 @@ storiesOf('Search Components/DataSearch', module)
 		props: filterLabel('Books Search'),
     template: '<base-data-search :subProps="{ showFilter, filterLabel }"/>',
   }))
+	.add('with parse suggestions', () => ({
+		components: { DataSearchWithParseSuggestion },
+		template: '<base-data-search :subProps="{ parseSuggestion: function(suggestion) { return { label: `hello ${suggestion.source.original_title}`, value: suggestion.source.original_title } } }"/>',
+	}))
   .add('with renderNoSuggestion', () => ({
 		components: { BaseDataSearch },
 		props: getKnob('renderNoSuggestion', 'No Suggestions Found'),
