@@ -370,6 +370,10 @@ storiesOf('List Components/SingleDropdownList', module)
 		props: sortBy(),
     template: '<base-single-dropdown-list :subProps="{ sortBy, showFilter: false}"/>',
   }))
+	.add('with renderLabel', () => ({
+		components: { BaseSingleDropdownList },
+		template: '<base-single-dropdown-list :subProps="{ renderLabel: function(value) {return `hello ${value}`} }" />',
+	}))
     .add('without count', () => ({
 		components: { BaseSingleDropdownList },
 		props: showCount(false),
@@ -443,6 +447,10 @@ storiesOf('List Components/MultiDropdownList ', module)
 		props: sortBy(),
     template: '<base-multi-dropdown-list :subProps="{ sortBy, showFilter: false}"/>',
   }))
+	.add('with renderLabel', () => ({
+		components: { BaseMultiDropdownList },
+		template: '<base-multi-dropdown-list :subProps="{ renderLabel: function(value) { return Object.keys(value).map(function (item) { return `hello ${item} ` } ) } }" />',
+	}))
     .add('without count', () => ({
 		components: { BaseMultiDropdownList },
 		props: showCount(false),
