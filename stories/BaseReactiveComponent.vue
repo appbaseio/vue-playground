@@ -20,6 +20,7 @@
 									},
 								},
 							})"
+							v-bind="subProps"
 						>
 						<div slot-scope="{ aggregations, setQuery }">
 							<CustomComponent :aggregations="aggregations" :setQuery="setQuery"/>
