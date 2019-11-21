@@ -22,12 +22,12 @@
                             <ResultListDescription>
                                  <div>
                                     <p>
-                                        <em>by {{data.authors}}</em>
+                                        <em>by {{result.authors}}</em>
                                     </p>
                                     <p>
-                                        <b>{{data.average_rating}}</b> ⭐
+                                        <b>{{result.average_rating}}</b> ⭐
                                     </p>
-                                    <span>Pub {{data.original_publication_year}}</span>
+                                    <span>Pub {{result.original_publication_year}}</span>
                                 </div>
                             </ResultListDescription>
                         </ResultListContent>
