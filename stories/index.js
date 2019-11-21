@@ -709,7 +709,12 @@ storiesOf('Base components/ReactiveComponent', module)
 	.add('A custom component', () => ({
 		components: { BaseReactiveComponent },
 		template: '<base-reactive-component :subProps="{ pagination: true }"/>',
+	}))
+	.add('ReactiveComponent with customQuery', () => ({
+		components: { BaseReactiveComponent },
+		template: '<base-reactive-component :subProps="{ customQuery:function() {return { query: {term: {[`brand.keyword`]: `Ford`}} } } }"/>',
 	}));
+
 
 storiesOf('Base components/ToggleButton', module)
 	.addParameters({
