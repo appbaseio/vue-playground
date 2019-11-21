@@ -15,19 +15,18 @@
 					class="suggestions"
 					slot="render"
 					slot-scope="{
-						suggestions,
-						isOpen,
-						highlightedIndex,
-						getItemProps,
-						getItemEvents,
+						error,
+						loading,
+						downshiftProps: { isOpen, highlightedIndex, getItemProps, getItemEvents },
+						data: suggestions,
 					}"
 				>
 					<ul v-if="isOpen">
 						<li
 							style="{ background-color: highlightedIndex ? 'grey' : 'transparent' }"
 							v-for="suggestion in (suggestions || []).map(s => ({
-								label: s._source.authors,
-								value: s._source.authors,
+								label: s.source.authors,
+								value: s.source.authors,
 								key: s._id,
 							}))"
 							v-bind="getItemProps({ item: suggestion })"
@@ -48,7 +47,7 @@
 				:size="5"
 				:react="{ and: ['BookSensor'] }"
 			>
-				<div slot="renderData" slot-scope="{ item }">
+				<div slot="renderItem" slot-scope="{ item }">
 					<div class="flex book-content" key="item._id">
 						<img :src="item.image" alt="Book Cover" class="book-image" />
 						<div class="flex column justify-center ml20">

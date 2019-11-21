@@ -9,7 +9,7 @@
 					><div
 						class="suggestions"
 						slot="render"
-						slot-scope="{ data, handleChange, downShiftProps: { isOpen } }"
+						slot-scope="{ data, handleChange, downshiftProps: { isOpen } }"
 					>
 						<ul v-if="isOpen">
 							<li
@@ -42,7 +42,7 @@
 					:size="5"
 					:react="{ and: ['BookSensor'] }"
 				>
-					<div slot="renderData" slot-scope="{ item }">
+					<div slot="renderItem" slot-scope="{ item }">
 						<div class="flex book-content" key="item._id">
 							<img :src="item.image" alt="Book Cover" class="book-image" />
 							<div class="flex column justify-center ml20">
