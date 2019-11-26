@@ -81,7 +81,7 @@ const size = (value = 10) => getKnob('size', value);
 const filterLabel = (value) => Object.assign({}, getKnob('filterLabel', value), getKnob('showFilter', true));
 const showRadio = (value = true) => getKnob('showRadio', value);
 const sortBy = (value = { ascending: 'asc', descending: 'desc', count: 'count' }, defaultValue = 'asc') => getKnob('sortBy', value, select, defaultValue);
-const URLParams = (value = false) => getKnob('URLParams (not visible on storybook )', value);
+const URLParams = (value = false) => getKnob('URLParams', value);
 const dataField = (value = ['original_series.raw', 'authors.raw', 'language_code.raw'], defaultValue = 'original_series.raw') => getKnob('dataField', value, select, defaultValue);
 const paginationAt = (value = ['top', 'bottom', 'both'], defaultValue = 'bottom') => getKnob('paginationAt', value, select, defaultValue);
 const selectAllLabel = (value) => getKnob('selectAllLabel', value);
