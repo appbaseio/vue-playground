@@ -76,7 +76,7 @@ const getKnob = (name, value, type, args) => ({
 })
 
 const titleKnob = value => getKnob('title', value);
-const defaultSelected = value => getKnob('defaultSelected', value);
+const defaultValue = value => getKnob('defaultValue', value);
 const size = (value = 10) => getKnob('size', value);
 const filterLabel = (value) => Object.assign({}, getKnob('filterLabel', value), getKnob('showFilter', true));
 const showRadio = (value = true) => getKnob('showRadio', value);
@@ -113,10 +113,10 @@ storiesOf('Range Components/SingleRange', module)
     components: { BaseSingleRange },
     template: '<base-single-range :subProps="{ title, showFilter: false}"/>',
   }))
-  .add('with defaultSelected', () => ({
-		props: defaultSelected('Rating < 3'),
+  .add('with defaultValue', () => ({
+		props: defaultValue('Rating < 3'),
     components: { BaseSingleRange },
-    template: '<base-single-range :subProps="{defaultSelected, showFilter: false}"/>',
+    template: '<base-single-range :subProps="{defaultValue, showFilter: false}"/>',
   }), {
 		knobs: {
 			escapeHTML: false
@@ -150,10 +150,10 @@ storiesOf('Range Components/MultiRange', module)
 		props: titleKnob('Books Filter'),
     template: '<base-multi-range :subProps="{ title, showFilter: false}"/>',
   }))
-  .add('with defaultSelected', () => ({
-		props: defaultSelected('Rating < 3'),
+  .add('with defaultValue', () => ({
+		props: defaultValue('Rating < 3'),
     components: { BaseMultiRange },
-    template: '<base-multi-range :subProps="{defaultSelected, showFilter: false}"/>',
+    template: '<base-multi-range :subProps="{defaultValue, showFilter: false}"/>',
   }), {
 		knobs: {
 			timestamps: true,
@@ -188,10 +188,10 @@ storiesOf('Range Components/RangeSlider', module)
     components: { BaseRangeSlider },
     template: '<base-range-slider :subProps="{ title}"/>',
   }))
-   .add('with defaultSelected', () => ({
+   .add('with defaultValue', () => ({
 		components: { BaseRangeSlider },
-		props: defaultSelected({ start: 3000, end: 9000 }),
-    template: '<base-range-slider :subProps="{ defaultSelected, showFilter: false}"/>',
+		props: defaultValue({ start: 3000, end: 9000 }),
+    template: '<base-range-slider :subProps="{ defaultValue, showFilter: false}"/>',
 	}))
 
 storiesOf('Range Components/DynamicRangeSlider', module)
@@ -210,9 +210,9 @@ storiesOf('Range Components/DynamicRangeSlider', module)
 		components: { BaseDynamicRangeSlider },
 		template: '<base-dynamic-range-slider :subProps="{ title }"/>',
 	}))
-	.add('with defaultSelected', () => ({
+	.add('with defaultValue', () => ({
 		components: { BaseDynamicRangeSlider },
-		template: '<base-dynamic-range-slider :subProps="{ defaultSelected: function(min, max){ return { start: min + 1000, end: max - 1000} }, showFilter: false}"/>',
+		template: '<base-dynamic-range-slider :subProps="{ defaultValue: function(min, max){ return { start: min + 1000, end: max - 1000} }, showFilter: false}"/>',
 	}))
 
 storiesOf('List Components/SingleList', module)
@@ -256,10 +256,10 @@ storiesOf('List Components/SingleList', module)
     components: { BaseSingleList },
     template: '<base-single-list :subProps="{ showRadio }"/>',
   }))
-  .add('defaultSelected', () => ({
-	props: defaultSelected('Hercule Poirot'),
+  .add('defaultValue', () => ({
+	props: defaultValue('Hercule Poirot'),
     components: { BaseSingleList },
-    template: '<base-single-list :subProps="{ defaultSelected, showFilter: true }"/>',
+    template: '<base-single-list :subProps="{ defaultValue, showFilter: true }"/>',
   }))
   .add('with custom sort', () => ({
 	components: { BaseSingleList },
@@ -303,10 +303,10 @@ storiesOf('List Components/MulitList', module)
 		props: getKnob('showSearch', false),
     template: '<base-multi-list :subProps="{ showSearch }"/>',
   }))
-  .add('Default Selected', () => ({
+  .add('with defaultValue', () => ({
 		components: { BaseMultiList },
-		props: defaultSelected(['Nora Roberts']),
-    template: '<base-multi-list :subProps="{ defaultSelected }"/>',
+		props: defaultValue(['Nora Roberts']),
+    template: '<base-multi-list :subProps="{ defaultValue }"/>',
   }))
   .add('without showCount', () => ({
 		props: showCount(false),
@@ -379,10 +379,10 @@ storiesOf('List Components/SingleDropdownList', module)
 		props: showCount(false),
     template: '<base-single-dropdown-list :subProps="{ showCount, showFilter: false}"/>',
   }))
-    .add('with defaultSelected', () => ({
-		props: defaultSelected('Artemis Fowl'),
+    .add('with defaultValue', () => ({
+		props: defaultValue('Artemis Fowl'),
     components: { BaseSingleDropdownList },
-    template: '<base-single-dropdown-list :subProps="{ defaultSelected, showFilter: false}"/>',
+    template: '<base-single-dropdown-list :subProps="{ defaultValue, showFilter: false}"/>',
   }))
 
     .add('With URLParams', () => ({
@@ -404,10 +404,10 @@ storiesOf('List Components/SingleDropdownList', module)
 			getKnob('showSearch', false),
 			getKnob('showCount', false),
 			getKnob('selectAllLabel', 'All Books'),
-			defaultSelected('Artemis Fowl'),
+			defaultValue('Artemis Fowl'),
 			URLParams()
 		),
-    template: '<base-single-dropdown-list :subProps="{ title, dataField, size, filterLabel, showFilter, sortBy, showCount, showSearch, selectAllLabel, defaultSelected, URLParams, placeholder }"/>',
+    template: '<base-single-dropdown-list :subProps="{ title, dataField, size, filterLabel, showFilter, sortBy, showCount, showSearch, selectAllLabel, defaultValue, URLParams, placeholder }"/>',
   }))
 	.add('with render slot', () => ({
 		components: { SingleDropdownListWithRenderSlot },
@@ -463,13 +463,13 @@ storiesOf('List Components/MultiDropdownList ', module)
     template: '<base-multi-dropdown-list :subProps="{ selectAllLabel, showFilter: false}"/>',
   }))
 
-    .add('with defaultSelected', () => ({
+    .add('with defaultValue', () => ({
     components: { BaseMultiDropdownList },
-		props: defaultSelected([
+		props: defaultValue([
 			"In Death",
 			"Discworld"
 		]),
-    template: '<base-multi-dropdown-list :subProps="{ defaultSelected, showFilter: false}"/>',
+    template: '<base-multi-dropdown-list :subProps="{ defaultValue, showFilter: false}"/>',
   }))
 
     .add('With URLParams', () => ({
@@ -490,10 +490,10 @@ storiesOf('List Components/MultiDropdownList ', module)
 			getKnob('showSearch', false),
 			getKnob('showCount', false),
 			selectAllLabel('All Books'),
-			defaultSelected('Artemis Fowl'),
+			defaultValue('Artemis Fowl'),
 			URLParams()
 		),
-    template: '<base-multi-dropdown-list :subProps="{ title, dataField, size, filterLabel, showFilter, sortBy, showCount, showSearch, selectAllLabel, defaultSelected, URLParams, placeholder }"/>',
+    template: '<base-multi-dropdown-list :subProps="{ title, dataField, size, filterLabel, showFilter, sortBy, showCount, showSearch, selectAllLabel, defaultValue, URLParams, placeholder }"/>',
   }))
 	.add('with render slot', () => ({
 		components: { MultiDropdownListWithRenderSlot },
@@ -561,10 +561,10 @@ storiesOf('Search Components/DataSearch', module)
 		props: getKnob('iconPosition', ['right', 'left'], select, 'right'),
     template: '<base-data-search :subProps="{ iconPosition, showFilter: false }"/>',
   }))
-  .add('with defaultSelected', () => ({
+  .add('with defaultValue', () => ({
 		components: { BaseDataSearch },
-		props: defaultSelected('Harry Potter'),
-    template: '<base-data-search :subProps="{ defaultSelected, showFilter: false }"/>',
+		props: defaultValue('Harry Potter'),
+    template: '<base-data-search :subProps="{ defaultValue, showFilter: false }"/>',
   }))
   .add('with Filters', () => ({
 		components: { BaseDataSearch },
@@ -731,10 +731,10 @@ storiesOf('Base components/ToggleButton', module)
     components: { BaseToggleButton },
     template: '<base-toggle-button :subProps="{ showFilter: false, title }"/>',
   }))
-  .add('with defaultSelected', () => ({
+  .add('with defaultValue', () => ({
 		components: { BaseToggleButton },
-		props: getKnob('defaultSelected', ['Music']),
-    template: '<base-toggle-button :subProps="{ showFilter: false, defaultSelected }"/>',
+		props: getKnob('defaultValue', ['Music']),
+    template: '<base-toggle-button :subProps="{ showFilter: false, defaultValue }"/>',
   }))
   .add('With filter', () => ({
 		components: { BaseToggleButton },
