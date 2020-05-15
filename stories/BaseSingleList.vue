@@ -5,6 +5,7 @@
       :enableAppbase="true"
   >
     <div class="row">
+      {{JSON.stringify(subProps)}}
       <div class="col">
         <SingleList
           componentId="BookSensor"
