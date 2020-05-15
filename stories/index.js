@@ -29,6 +29,7 @@ import SingleListWithRenderSlot from './SingleListWithRenderSlot';
 import MultiListWithRenderSlot from './MultiListWithRenderSlot';
 import SingleDropdownListWithRenderSlot from './SingleDropdownListWithRenderSlot';
 import MultiDropdownListWithRenderSlot from './MultiDropdownListWithRenderSlot';
+import DataSearchWithRenderQuerySuggestionsSlot from './DataSearchWithRenderQuerySuggestionsSlot';
 import './styles.css';
 
 // README
@@ -583,6 +584,14 @@ storiesOf('Search Components/DataSearch', module)
 	.add('with render slot', () => ({
 		components: { DataSearchWithRenderSlot },
 		template: '<data-search-with-render-slot />'
+	}))
+	.add('with enableQuerySuggestions', () => ({
+		components: { BaseDataSearch },
+		template: '<base-data-search :subProps="{ enableQuerySuggestions: true }"/>',
+	}))
+	.add('with renderQuerySuggestions', () => ({
+		components: { DataSearchWithRenderQuerySuggestionsSlot },
+		template: '<data-search-with-render-query-suggestions-slot />',
 	}));
 
 storiesOf('Result Components/Reactive List', module)
