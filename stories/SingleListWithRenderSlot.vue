@@ -1,11 +1,15 @@
 <template>
-	<ReactiveBase app="good-books-ds" credentials="nY6NNTZZ6:27b76b9f-18ea-456c-bc5e-3a5263ebc63d">
+	<ReactiveBase
+		app="good-books-ds"
+		url="https://1e47b838a035:767b5a1a-03cb-4c5f-a536-4f399c24134b@arc-cluster-appbase-tryout-k8dsnj.searchbase.io"
+		:enableAppbase="true"
+	>
 		<div class="row">
 			<div class="col">
 				<SingleList
 					:showSearch="false"
 					componentId="BookSensor"
-					data-field="original_series.raw"
+					data-field="original_series.keyword"
 					><div class="suggestions" slot="render" slot-scope="{ data, handleChange }">
 						<ul>
 							<li
@@ -31,7 +35,7 @@
 				<selected-filters />
 				<ReactiveList
 					componentId="SearchResult"
-					data-field="original_title.raw"
+					data-field="original_title.keyword"
 					class="result-list-container"
 					:pagination="true"
 					:from="0"
