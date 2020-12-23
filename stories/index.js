@@ -576,6 +576,11 @@ storiesOf('Search Components/DataSearch', module)
 		components: { BaseDataSearch },
 		template: '<base-data-search :subProps="{ parseSuggestion: function(suggestion) { return { label: `hello ${suggestion.source.original_title}`, value: suggestion.source.original_title } } }"/>',
 	}))
+	.add('with enablePredictiveSuggestions', () => ({
+		props: getKnob('enablePredictiveSuggestions', true),
+		components: { BaseDataSearch },
+		template: '<base-data-search :subProps="{ enablePredictiveSuggestions }"/>',
+	}))
   .add('with renderNoSuggestion', () => ({
 		components: { BaseDataSearch },
 		props: getKnob('renderNoSuggestion', 'No Suggestions Found'),
