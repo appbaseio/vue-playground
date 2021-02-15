@@ -30,6 +30,10 @@ import MultiListWithRenderSlot from './MultiListWithRenderSlot';
 import SingleDropdownListWithRenderSlot from './SingleDropdownListWithRenderSlot';
 import MultiDropdownListWithRenderSlot from './MultiDropdownListWithRenderSlot';
 import DataSearchWithRenderQuerySuggestionsSlot from './DataSearchWithRenderQuerySuggestionsSlot';
+import SingleListWithRenderNoResultsSlot from "./SingleListWithRenderNoResultsSlot.vue";
+import SingleDropdownListWithRenderNoResultsSlot from "./SingleDropdownListWithRenderNoResultsSlot";
+import MultiListWithRenderNoResultsSlot from "./MultiListWithRenderNoResultsSlot.vue";
+import MultiDropdownListWithRenderNoResultsSlot from "./MultiDropdownListWithRenderNoResultsSlot";
 import './styles.css';
 
 // README
@@ -267,10 +271,14 @@ storiesOf('List Components/SingleList', module)
 	props: sortBy(),
     template: '<base-single-list :subProps="{ sortBy }"/>',
   }))
-	.add('with render slot', () => ({
-		components: { SingleListWithRenderSlot },
-		template: '<single-list-with-render-slot />'
-	}));
+  .add('with render slot', () => ({
+	components: { SingleListWithRenderSlot },
+	template: '<single-list-with-render-slot />'
+  }))
+  .add('with renderNoResults', () => ({
+	components: { SingleListWithRenderNoResultsSlot },
+	template: '<single-list-with-render-no-results-slot />'
+  }));
 
 storiesOf('List Components/MulitList', module)
 	.addParameters({
@@ -334,10 +342,14 @@ storiesOf('List Components/MulitList', module)
 		props: sortBy(),
     template: '<base-multi-list :subProps="{ sortBy }"/>',
   }))
-	.add('with render slot', () => ({
-		components: { MultiListWithRenderSlot },
-		template: '<multi-list-with-render-slot />'
-	}));
+  .add('with render slot', () => ({
+	components: { MultiListWithRenderSlot },
+	template: '<multi-list-with-render-slot />'
+  }))
+  .add('with renderNoResults', () => ({
+	components: { MultiListWithRenderNoResultsSlot },
+	template: '<multi-list-with-render-no-results-slot />'
+  }));
 
 storiesOf('List Components/SingleDropdownList', module)
 	.addParameters({
@@ -413,6 +425,10 @@ storiesOf('List Components/SingleDropdownList', module)
 	.add('with render slot', () => ({
 		components: { SingleDropdownListWithRenderSlot },
 		template: '<single-dropdown-list-with-render-slot />'
+	}))
+	.add('with renderNoResults', () => ({
+		components: { SingleDropdownListWithRenderNoResultsSlot },
+		template: '<single-dropdown-list-with-render-no-results-slot />'
 	}));
 
 
@@ -499,6 +515,10 @@ storiesOf('List Components/MultiDropdownList ', module)
 	.add('with render slot', () => ({
 		components: { MultiDropdownListWithRenderSlot },
 		template: '<multi-dropdown-list-with-render-slot />'
+	}))
+	.add('with renderNoResults', () => ({
+		components: { MultiDropdownListWithRenderNoResultsSlot },
+		template: '<multi-dropdown-list-with-render-no-results-slot />'
 	}));
 
 storiesOf('Search Components/DataSearch', module)
