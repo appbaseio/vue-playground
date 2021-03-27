@@ -34,7 +34,7 @@ import SingleListWithRenderNoResultsSlot from "./SingleListWithRenderNoResultsSl
 import SingleDropdownListWithRenderNoResultsSlot from "./SingleDropdownListWithRenderNoResultsSlot";
 import MultiListWithRenderNoResultsSlot from "./MultiListWithRenderNoResultsSlot.vue";
 import MultiDropdownListWithRenderNoResultsSlot from "./MultiDropdownListWithRenderNoResultsSlot";
-import DataSearchWithCustomIcons from './DataSearchWithCustomIcons.vue';
+import DataSearchWithCustomSuggestionIcons from './DataSearchWithCustomSuggestionIcons.vue';
 import './styles.css';
 
 // README
@@ -548,9 +548,9 @@ storiesOf('Search Components/DataSearch', module)
 		props: showClear(false),
     template: "<base-data-search :subProps=\"{ showClear, showFilter: false}\"/>",
   }))
-  .add('with custom icons', () => ({
-		components: { DataSearchWithCustomIcons },
-		template: "<data-search-with-custom-icons/>",
+  .add('with custom suggestion icons', () => ({
+		components: { DataSearchWithCustomSuggestionIcons },
+		template: "<data-search-with-custom-suggestion-icons/>",
 	}))
   .add('with debounce', () => ({
 		components: { BaseDataSearch },

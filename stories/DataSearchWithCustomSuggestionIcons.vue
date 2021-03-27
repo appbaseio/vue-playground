@@ -61,7 +61,7 @@ import CustomPopularIcon from './CustomPopularIcon.vue';
 import CustomRecentIcon from './CustomRecentIcon.vue';
 export default {
   components: { CustomPopularIcon, CustomRecentIcon },
-  name: 'DataSearchWithCustomIcons',
+  name: 'DataSearchWithCustomSuggestionIcons',
   props: {
     subProps: Object,
     subEvents: Object,
