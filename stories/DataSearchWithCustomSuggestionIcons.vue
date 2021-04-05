@@ -72,12 +72,12 @@ export default {
     .recent-icon {
         height: 20px;
         width: 20px;
-        fill: royalblue;
+        fill: royalblue !important;
     }
 
     .popular-icon {
         height: 20px;
         width: 20px;
-        fill: rgb(253, 44, 16);
+        fill: rgb(253, 44, 16) !important;
     }
 </style>
