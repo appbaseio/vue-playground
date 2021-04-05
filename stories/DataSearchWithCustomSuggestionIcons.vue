@@ -14,8 +14,8 @@
     :enablePopularSuggestions="true"
     :enableRecentSearches="true"
     :innerClass="{
-        'recent-icon': 'recent-icon',
-        'popular-icon': 'popular-icon'
+        'recent-search-icon': 'recent-icon',
+        'popular-search-icon': 'popular-icon'
     }"
   >
   <custom-popular-icon slot="popularSearchesIcon" />
