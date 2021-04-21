@@ -35,6 +35,9 @@ import SingleDropdownListWithRenderNoResultsSlot from "./SingleDropdownListWithR
 import MultiListWithRenderNoResultsSlot from "./MultiListWithRenderNoResultsSlot.vue";
 import MultiDropdownListWithRenderNoResultsSlot from "./MultiDropdownListWithRenderNoResultsSlot";
 import DataSearchWithCustomSuggestionIcons from './DataSearchWithCustomSuggestionIcons.vue';
+import DataSearchWithDistictFieldProp from './DataSearchWithDistictFieldProp.vue';
+import ReactiveListWithDistinctFieldProp from './ReactiveListWithDistinctFieldProp.vue';
+import ReactiveComponentWithDistinctFieldProp from './ReactiveComponentWithDistinctFieldProp.vue';
 import './styles.css';
 
 // README
@@ -622,6 +625,10 @@ storiesOf('Search Components/DataSearch', module)
 	.add('with renderQuerySuggestions', () => ({
 		components: { DataSearchWithRenderQuerySuggestionsSlot },
 		template: '<data-search-with-render-query-suggestions-slot />',
+	}))
+	.add('with distinctField prop', () => ({
+		components: { DataSearchWithDistictFieldProp },
+		template: '<data-search-with-distict-field-prop />',
 	}));
 
 storiesOf('Result Components/Reactive List', module)
@@ -663,7 +670,12 @@ storiesOf('Result Components/Reactive List', module)
 		components: { BaseReactiveList },
 		props: getKnob('currentPage', 10),
     template: '<base-reactive-list :subProps="{ pagination: true, currentPage }"/>',
-	}));
+  }))
+  .add('With distinctField prop', () => ({
+	components: { ReactiveListWithDistinctFieldProp },
+	props: getKnob('currentPage', 10),
+	template: '<reactive-list-with-distinct-field-prop />',
+}));
 storiesOf('Result Components/ResultList', module)
 	.addParameters({
 		readme: {
@@ -751,6 +763,10 @@ storiesOf('Base components/ReactiveComponent', module)
 	.add('ReactiveComponent with customQuery', () => ({
 		components: { BaseReactiveComponent },
 		template: '<base-reactive-component :subProps="{ customQuery:function() {return { query: {term: {[`brand.keyword`]: `Ford`}} } } }"/>',
+	}))
+	.add('ReactiveComponent with distinctField Prop', () => ({
+		components: { ReactiveComponentWithDistinctFieldProp },
+		template: '<reactive-component-with-distinct-field-prop />',
 	}));
 
 
