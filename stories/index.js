@@ -35,8 +35,6 @@ import SingleDropdownListWithRenderNoResultsSlot from "./SingleDropdownListWithR
 import MultiListWithRenderNoResultsSlot from "./MultiListWithRenderNoResultsSlot.vue";
 import MultiDropdownListWithRenderNoResultsSlot from "./MultiDropdownListWithRenderNoResultsSlot";
 import DataSearchWithCustomSuggestionIcons from './DataSearchWithCustomSuggestionIcons.vue';
-import DataSearchWithDistictFieldProp from './DataSearchWithDistictFieldProp.vue';
-import ReactiveListWithDistinctFieldProp from './ReactiveListWithDistinctFieldProp.vue';
 import ReactiveComponentWithDistinctFieldProp from './ReactiveComponentWithDistinctFieldProp.vue';
 import './styles.css';
 
@@ -627,8 +625,14 @@ storiesOf('Search Components/DataSearch', module)
 		template: '<data-search-with-render-query-suggestions-slot />',
 	}))
 	.add('with distinctField prop', () => ({
-		components: { DataSearchWithDistictFieldProp },
-		template: '<data-search-with-distict-field-prop />',
+		components: { BaseDataSearch },
+		template: `<base-data-search :subProps="{ distinctField: 'authors.keyword', size: 3, distinctFieldConfig:
+		{ inner_hits: {
+			name: 'most_recent',
+			size: 5,
+			sort: [{ timestamp: 'asc' }],
+		},
+		max_concurrent_group_searches: 4, } }"/>`,
 	}));
 
 storiesOf('Result Components/Reactive List', module)
@@ -671,10 +675,15 @@ storiesOf('Result Components/Reactive List', module)
 		props: getKnob('currentPage', 10),
     template: '<base-reactive-list :subProps="{ pagination: true, currentPage }"/>',
   }))
-  .add('With distinctField prop', () => ({
-	components: { ReactiveListWithDistinctFieldProp },
-	props: getKnob('currentPage', 10),
-	template: '<reactive-list-with-distinct-field-prop />',
+  .add('with distinctField prop', () => ({
+	components: { BaseReactiveList },
+	template: `<base-reactive-list :subProps="{ distinctField: 'authors.keyword', size: 3, distinctFieldConfig:
+	{ inner_hits: {
+		name: 'most_recent',
+		size: 5,
+		sort: [{ timestamp: 'asc' }],
+	},
+	max_concurrent_group_searches: 4, } }"/>`,
 }));
 storiesOf('Result Components/ResultList', module)
 	.addParameters({
