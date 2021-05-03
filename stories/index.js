@@ -633,7 +633,12 @@ storiesOf('Search Components/DataSearch', module)
 			sort: [{ timestamp: 'asc' }],
 		},
 		max_concurrent_group_searches: 4, } }"/>`,
-	}));
+	}), {
+		knobs: {
+			distinctField: true,
+			distinctFieldConfig: true
+		}
+	});
 
 storiesOf('Result Components/Reactive List', module)
 	.addParameters({
@@ -684,7 +689,12 @@ storiesOf('Result Components/Reactive List', module)
 		sort: [{ timestamp: 'asc' }],
 	},
 	max_concurrent_group_searches: 4, } }"/>`,
-}));
+}), {
+	knobs: {
+		distinctField: true,
+		distinctFieldConfig: true
+	}
+});
 storiesOf('Result Components/ResultList', module)
 	.addParameters({
 		readme: {
@@ -776,7 +786,12 @@ storiesOf('Base components/ReactiveComponent', module)
 	.add('ReactiveComponent with distinctField Prop', () => ({
 		components: { ReactiveComponentWithDistinctFieldProp },
 		template: '<reactive-component-with-distinct-field-prop />',
-	}));
+	}), {
+		knobs: {
+			distinctField: true,
+			distinctFieldConfig: true
+		}
+	});
 
 
 storiesOf('Base components/ToggleButton', module)
