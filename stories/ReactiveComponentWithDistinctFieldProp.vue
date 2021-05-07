@@ -21,17 +21,9 @@
 									},
 								},
 							})"
-                            distinctField="brand.keyword"
-                            :distinctFieldConfig="{
-                                inner_hits: {
-                                    name: 'most_recent',
-                                    size: 5,
-                                    sort: [{ timestamp: 'asc' }],
-                                },
-                                max_concurrent_group_searches: 4,
-                            }"
                             :size="10"
-							v-bind="subProps"
+							v-bind='subProps'
+    						v-on='subEvents'
 						>
 						<div slot-scope="{ data, setQuery }">
 							<CustomComponentForDistinctProp :data="data" :setQuery="setQuery"/>

@@ -626,19 +626,23 @@ storiesOf('Search Components/DataSearch', module)
 	}))
 	.add('with distinctField prop', () => ({
 		components: { BaseDataSearch },
-		template: `<base-data-search :subProps="{ distinctField: 'authors.keyword', size: 3, distinctFieldConfig:
-		{ inner_hits: {
-			name: 'most_recent',
-			size: 5,
-			sort: [{ timestamp: 'asc' }],
+		props: {
+			distinctField: {
+				default: text('distinctField', 'authors.keyword'),
+			},
+			distinctFieldConfig: {
+				default: object('distinctFieldConfig', {
+					inner_hits:
+					{
+						name:'most_recent',
+						size:5,
+						sort:[{timestamp:'asc'}]
+					}
+				})
+			}
 		},
-		max_concurrent_group_searches: 4, } }"/>`,
-	}), {
-		knobs: {
-			distinctField: true,
-			distinctFieldConfig: true
-		}
-	});
+		template: `<base-data-search :subProps="{ distinctField, size: 3, distinctFieldConfig }"/>`,
+	}));
 
 storiesOf('Result Components/Reactive List', module)
 	.addParameters({
@@ -682,19 +686,23 @@ storiesOf('Result Components/Reactive List', module)
   }))
   .add('with distinctField prop', () => ({
 	components: { BaseReactiveList },
-	template: `<base-reactive-list :subProps="{ distinctField: 'authors.keyword', size: 3, distinctFieldConfig:
-	{ inner_hits: {
-		name: 'most_recent',
-		size: 5,
-		sort: [{ timestamp: 'asc' }],
+	props: {
+		distinctField: {
+			default: text('distinctField', 'authors.keyword'),
+		},
+		distinctFieldConfig: {
+			default: object('distinctFieldConfig', {
+				inner_hits:
+				{
+					name:'most_recent',
+					size:5,
+					sort:[{timestamp:'asc'}]
+				}
+			})
+		}
 	},
-	max_concurrent_group_searches: 4, } }"/>`,
-}), {
-	knobs: {
-		distinctField: true,
-		distinctFieldConfig: true
-	}
-});
+	template: `<base-reactive-list :subProps="{ distinctField, size: 3, distinctFieldConfig }"/>`,
+}));
 storiesOf('Result Components/ResultList', module)
 	.addParameters({
 		readme: {
@@ -775,6 +783,7 @@ storiesOf('Base components/ReactiveComponent', module)
 			sidebar: removeFirstLine(ReactiveComponentReadme, 15),
 		},
 	})
+	.addDecorator(withKnobs)
 	.add('A custom component', () => ({
 		components: { BaseReactiveComponent },
 		template: '<base-reactive-component :subProps="{ pagination: true }"/>',
@@ -785,13 +794,23 @@ storiesOf('Base components/ReactiveComponent', module)
 	}))
 	.add('ReactiveComponent with distinctField Prop', () => ({
 		components: { ReactiveComponentWithDistinctFieldProp },
-		template: '<reactive-component-with-distinct-field-prop />',
-	}), {
-		knobs: {
-			distinctField: true,
-			distinctFieldConfig: true
-		}
-	});
+		props: {
+			distinctField: {
+				default: text('distinctField', 'brand.keyword'),
+			},
+			distinctFieldConfig: {
+				default: object('distinctFieldConfig', {
+					inner_hits:
+					{
+						name:'most_recent',
+						size:5,
+						sort:[{timestamp:'asc'}]
+					}
+				})
+			}
+		},
+		template: '<reactive-component-with-distinct-field-prop :subProps="{ distinctField, distinctFieldConfig }" />',
+	}));
 
 
 storiesOf('Base components/ToggleButton', module)
