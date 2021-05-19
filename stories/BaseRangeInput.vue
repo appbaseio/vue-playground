@@ -41,7 +41,7 @@
                         :pagination="true"
                         :from="0"
                         :size="5"
-                        :react="{ and: ['BookSensor'] }"
+                        :react="{ and: ['RatingsSensor'] }"
                     >
                         <div slot="renderItem" slot-scope="{ item }">
                             <div class="flex book-content" key="item._id">
@@ -107,8 +107,8 @@ export default {
         },
         handleChange(value) {
             this.$data.currentValue = {
-                start: value.start + 200,
-                end: value.end - 100,
+                start: value.start,
+                end: value.end,
             };
         },
         validateInputChange(value) {
