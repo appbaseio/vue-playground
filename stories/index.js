@@ -35,6 +35,8 @@ import SingleDropdownListWithRenderNoResultsSlot from "./SingleDropdownListWithR
 import MultiListWithRenderNoResultsSlot from "./MultiListWithRenderNoResultsSlot.vue";
 import MultiDropdownListWithRenderNoResultsSlot from "./MultiDropdownListWithRenderNoResultsSlot";
 import DataSearchWithCustomSuggestionIcons from './DataSearchWithCustomSuggestionIcons.vue';
+import DataSearchWithIndexProp from './DataSearchWithIndexProp.vue';
+import MultiListWithIndexProp from './MultiListWithIndexProp.vue';
 import './styles.css';
 
 // README
@@ -350,6 +352,10 @@ storiesOf('List Components/MulitList', module)
   .add('with renderNoResults', () => ({
 	components: { MultiListWithRenderNoResultsSlot },
 	template: '<multi-list-with-render-no-results-slot />'
+  }))
+  .add('with index prop', () => ({
+	components: { MultiListWithIndexProp },
+	template: '<multi-list-with-index-prop />'
   }));
 
 storiesOf('List Components/SingleDropdownList', module)
@@ -622,6 +628,10 @@ storiesOf('Search Components/DataSearch', module)
 	.add('with renderQuerySuggestions', () => ({
 		components: { DataSearchWithRenderQuerySuggestionsSlot },
 		template: '<data-search-with-render-query-suggestions-slot />',
+	}))
+	.add('with index prop', () => ({
+		components: { DataSearchWithIndexProp },
+		template: '<data-search-with-index-prop />',
 	}));
 
 storiesOf('Result Components/Reactive List', module)
