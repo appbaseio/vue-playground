@@ -35,6 +35,7 @@ import SingleDropdownListWithRenderNoResultsSlot from "./SingleDropdownListWithR
 import MultiListWithRenderNoResultsSlot from "./MultiListWithRenderNoResultsSlot.vue";
 import MultiDropdownListWithRenderNoResultsSlot from "./MultiDropdownListWithRenderNoResultsSlot";
 import DataSearchWithCustomSuggestionIcons from './DataSearchWithCustomSuggestionIcons.vue';
+import BaseRangeInput from './BaseRangeInput.vue';
 import './styles.css';
 
 // README
@@ -43,6 +44,7 @@ import SingleRangeReadme from '@appbaseio/reactive-manual-vue/content/docs/range
 import MultiRangeReadme from '@appbaseio/reactive-manual-vue/content/docs/range-components/MultiRange.md';
 import RangeSliderReadme from '@appbaseio/reactive-manual-vue/content/docs/range-components/RangeSlider.md';
 import DynamicRangeSliderReadme from '@appbaseio/reactive-manual-vue/content/docs/range-components/DynamicRangeSlider.md';
+// import RangeInputReadme from '@appbaseio/reactive-manual-vue/content/docs/range-components/RangeInput.md';
 // List Components
 import SingleListReadme from '@appbaseio/reactive-manual-vue/content/docs/list-components/SingleList.md';
 import MultiListReadme from '@appbaseio/reactive-manual-vue/content/docs/list-components/MultiList.md';
@@ -198,6 +200,28 @@ storiesOf('Range Components/RangeSlider', module)
 		components: { BaseRangeSlider },
 		props: defaultValue({ start: 3000, end: 9000 }),
     template: '<base-range-slider :subProps="{ defaultValue, showFilter: false}"/>',
+	}))
+
+storiesOf('Range Components/RangeInput', module)
+	.addParameters({
+		readme: {
+			// sidebar: removeFirstLine(RangeInputReadme),
+		},
+	})
+  .addDecorator(withKnobs)
+  .add('Basic', () => ({
+    components: { BaseRangeInput },
+    template: '<base-range-input :subProps="{ showFilter: false }"/>',
+  }))
+  .add('with title', () => ({
+	props: titleKnob('RangeInput: Ratings'),
+    components: { BaseRangeInput },
+    template: '<base-range-input :subProps="{ title}"/>',
+  }))
+   .add('with defaultValue', () => ({
+	components: { BaseRangeInput },
+	props: defaultValue({ start: 3000, end: 9000 }),
+    template: '<base-range-input :subProps="{ defaultValue, showFilter: false}"/>',
 	}))
 
 storiesOf('Range Components/DynamicRangeSlider', module)
