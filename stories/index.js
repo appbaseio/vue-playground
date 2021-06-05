@@ -303,6 +303,11 @@ storiesOf('List Components/SingleList', module)
   .add('with renderNoResults', () => ({
 	components: { SingleListWithRenderNoResultsSlot },
 	template: '<single-list-with-render-no-results-slot />'
+  }))
+  .add('with enableStrictSelection', () => ({
+    components: { BaseSingleList },
+	props: getKnob('enableStrictSelection', true),
+    template: '<base-single-list :subProps="{ enableStrictSelection }"/>',
   }));
 
 storiesOf('List Components/MulitList', module)
