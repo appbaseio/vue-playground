@@ -36,6 +36,7 @@ import MultiListWithRenderNoResultsSlot from "./MultiListWithRenderNoResultsSlot
 import MultiDropdownListWithRenderNoResultsSlot from "./MultiDropdownListWithRenderNoResultsSlot";
 import DataSearchWithCustomSuggestionIcons from './DataSearchWithCustomSuggestionIcons.vue';
 import BaseRangeInput from './BaseRangeInput.vue';
+import BaseReactiveGoogleMap from './reactivemaps/BaseReactiveGoogleMap.vue';
 import './styles.css';
 
 // README
@@ -818,4 +819,80 @@ storiesOf('Base components/ToggleButton', module)
 		components: { BaseToggleButton },
 		props: URLParams(),
     template: '<base-toggle-button :subProps="{ showFilter: false, URLParams }"/>',
+  }))
+
+  storiesOf('Map components/ReactiveGoogleMap', module)
+	.addParameters({
+		readme: {
+			// sidebar: removeFirstLine(ToggleButtonReadme, 15),
+		},
+	})
+  .addDecorator(withKnobs)
+  .add('Basic', () => ({
+    components: { BaseReactiveGoogleMap },
+    template: '<base-reactive-google-map />',
+  }))
+  .add('With defaultPin', () => ({
+    components: { BaseReactiveGoogleMap },
+	props: getKnob('defaultPin', "./placeholder.png"),
+	template: '<base-reactive-google-map :subProps="{ defaultPin }"/>',
+  }))
+  .add('With showMarkerClusters', () => ({
+    components: { BaseReactiveGoogleMap },
+	props: getKnob('showMarkerClusters', true),
+	template: '<base-reactive-google-map :subProps="{ showMarkerClusters }"/>',
+  }))
+  .add('With autoCenter', () => ({
+    components: { BaseReactiveGoogleMap },
+	props: getKnob('autoCenter', true),
+	template: '<base-reactive-google-map :subProps="{ autoCenter }"/>',
+  }))
+  .add('With showSearchAsMove', () => ({
+    components: { BaseReactiveGoogleMap },
+	props: getKnob('showSearchAsMove', true),
+	template: '<base-reactive-google-map :subProps="{ showSearchAsMove }"/>',
+  }))
+  .add('With searchAsMove', () => ({
+    components: { BaseReactiveGoogleMap },
+	props: getKnob('searchAsMove', true),
+	template: '<base-reactive-google-map :subProps="{ searchAsMove }"/>',
+  }))
+  .add('With loader', () => ({
+    components: { BaseReactiveGoogleMap },
+	props: getKnob('loader', "Loading ..."),
+	template: '<base-reactive-google-map :subProps="{ loader }"/>',
+  }))
+  .add('With size', () => ({
+    components: { BaseReactiveGoogleMap },
+	props: getKnob('size', 100),
+	template: '<base-reactive-google-map :subProps="{ size }"/>',
+  }))
+  .add('With defaultZoom', () => ({
+    components: { BaseReactiveGoogleMap },
+	props: getKnob('defaultZoom', 4),
+	template: '<base-reactive-google-map :subProps="{ defaultZoom }"/>',
+  }))
+  .add('With defaultCenter', () => ({
+    components: { BaseReactiveGoogleMap },
+	props: getKnob('defaultCenter', {
+		lat: 40.7128,
+		lng: 74.0060
+	}),
+	template: '<base-reactive-google-map :subProps="{ defaultCenter }"/>',
+  }))
+  .add('Playground', () => ({
+    components: { BaseReactiveGoogleMap },
+	props: Object.assign({},
+		getKnob('showMarkerClusters', true),
+		getKnob('autoCenter', true),
+		getKnob('showSearchAsMove', true),
+		getKnob('searchAsMove', false),
+		getKnob('size', 100),
+		getKnob('defaultZoom', 4),
+		getKnob('defaultCenter', {
+			lat: 40.7128,
+			lng: 74.0060
+		}),
+	),
+	template: '<base-reactive-google-map :subProps="{ showMarkerClusters, autoCenter, showSearchAsMove, searchAsMove, size, defaultZoom, defaultCenter }"/>',
   }))

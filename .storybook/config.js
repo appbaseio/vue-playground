@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import VueRS from '@appbaseio/reactivesearch-vue';
+import { ReactiveGoogleMap } from '@appbaseio/reactivesearch-vue';
 import { configure, addParameters, addDecorator } from '@storybook/vue';
 import { addReadme } from 'storybook-readme/vue';
 import { create } from '@storybook/theming';
@@ -20,6 +21,11 @@ addParameters({
 addDecorator(addReadme);
 
 Vue.use(VueRS);
+
+Vue.use(ReactiveGoogleMap, {
+	key: NODE_ENV === 'production' ? 'AIzaSyAKz3UhgSuP872fb-Aw27oPRI7M0eXkA9U' : '',
+});
+
 Vue.mixin(addons)
 
 function loadStories() {
