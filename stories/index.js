@@ -35,6 +35,9 @@ import SingleDropdownListWithRenderNoResultsSlot from "./SingleDropdownListWithR
 import MultiListWithRenderNoResultsSlot from "./MultiListWithRenderNoResultsSlot.vue";
 import MultiDropdownListWithRenderNoResultsSlot from "./MultiDropdownListWithRenderNoResultsSlot";
 import DataSearchWithCustomSuggestionIcons from './DataSearchWithCustomSuggestionIcons.vue';
+import DataSearchWithAddonBeforeSlot from './DataSearchWithAddonBeforeSlot.vue';
+import DataSearchWithAddonAfterSlot from './DataSearchWithAddonAfterSlot.vue';
+import DataSearchWithAddonBeforeAfterSlots from './DataSearchWithAddonBeforeAfterSlots.vue';
 import BaseRangeInput from './BaseRangeInput.vue';
 import './styles.css';
 
