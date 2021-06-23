@@ -651,6 +651,34 @@ storiesOf('Search Components/DataSearch', module)
 	.add('with renderQuerySuggestions', () => ({
 		components: { DataSearchWithRenderQuerySuggestionsSlot },
 		template: '<data-search-with-render-query-suggestions-slot />',
+	}))
+.add('with autoFocus', () => ({
+		components: { BaseDataSearch },
+		props: getKnob('autoFocus', true),
+		template: '<base-data-search :subProps="{ autoFocus }"/>',
+	}))
+	.add('with focusShortcuts', () => ({
+		components: { BaseDataSearch },
+		props: getKnob('focusShortcuts', ['/', 'r', 'b']),
+		template: '<base-data-search :subProps="{ focusShortcuts }"/>',
+	}))
+	.add('with addonBefore', () => ({
+		components: { DataSearchWithAddonBeforeSlot },
+		template: '<data-search-with-addon-before-slot/>',
+	}))
+	.add('with addonAfter', () => ({
+		components: { DataSearchWithAddonAfterSlot },
+		template: '<data-search-with-addon-after-slot/>',
+	}))
+	.add('with addonBefore & addonAfter', () => ({
+		components: { DataSearchWithAddonBeforeAfterSlots },
+		template: '<data-search-with-addon-before-after-slots/>',
+	}))
+	.add('with expandSuggestionsContainer', () => ({
+		components: { DataSearchWithAddonBeforeAfterSlots },
+		props: getKnob('expandSuggestionsContainer', false),
+		template:
+			'<data-search-with-addon-before-after-slots :subProps="{ expandSuggestionsContainer }"/>',
 	}));
 
 storiesOf('Result Components/Reactive List', module)
