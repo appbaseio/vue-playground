@@ -35,6 +35,7 @@ import SingleDropdownListWithRenderNoResultsSlot from "./SingleDropdownListWithR
 import MultiListWithRenderNoResultsSlot from "./MultiListWithRenderNoResultsSlot.vue";
 import MultiDropdownListWithRenderNoResultsSlot from "./MultiDropdownListWithRenderNoResultsSlot";
 import DataSearchWithCustomSuggestionIcons from './DataSearchWithCustomSuggestionIcons.vue';
+import ReactiveComponentWithDistinctFieldProp from './ReactiveComponentWithDistinctFieldProp.vue';
 import DataSearchWithIndexProp from './DataSearchWithIndexProp.vue';
 import MultiListWithIndexProp from './MultiListWithIndexProp.vue';
 import DataSearchWithAddonBeforeSlot from './DataSearchWithAddonBeforeSlot.vue';
@@ -661,6 +662,25 @@ storiesOf('Search Components/DataSearch', module)
 		components: { DataSearchWithRenderQuerySuggestionsSlot },
 		template: '<data-search-with-render-query-suggestions-slot />',
 	}))
+	.add('with distinctField prop', () => ({
+		components: { BaseDataSearch },
+		props: {
+			distinctField: {
+				default: text('distinctField', 'authors.keyword'),
+			},
+			distinctFieldConfig: {
+				default: object('distinctFieldConfig', {
+					inner_hits:
+					{
+						name:'most_recent',
+						size:5,
+						sort:[{timestamp:'asc'}]
+					}
+				})
+			}
+		},
+		template: `<base-data-search :subProps="{ distinctField, size: 3, distinctFieldConfig }"/>`,
+	}))
 	.add('with index prop', () => ({
 		components: { DataSearchWithIndexProp },
 		template: '<data-search-with-index-prop />',
@@ -733,7 +753,26 @@ storiesOf('Result Components/Reactive List', module)
 		components: { BaseReactiveList },
 		props: getKnob('currentPage', 10),
     template: '<base-reactive-list :subProps="{ pagination: true, currentPage }"/>',
-	}));
+  }))
+  .add('with distinctField prop', () => ({
+	components: { BaseReactiveList },
+	props: {
+		distinctField: {
+			default: text('distinctField', 'authors.keyword'),
+		},
+		distinctFieldConfig: {
+			default: object('distinctFieldConfig', {
+				inner_hits:
+				{
+					name:'most_recent',
+					size:5,
+					sort:[{timestamp:'asc'}]
+				}
+			})
+		}
+	},
+	template: `<base-reactive-list :subProps="{ distinctField, size: 3, distinctFieldConfig }"/>`,
+}));
 storiesOf('Result Components/ResultList', module)
 	.addParameters({
 		readme: {
@@ -814,6 +853,7 @@ storiesOf('Base components/ReactiveComponent', module)
 			sidebar: removeFirstLine(ReactiveComponentReadme, 15),
 		},
 	})
+	.addDecorator(withKnobs)
 	.add('A custom component', () => ({
 		components: { BaseReactiveComponent },
 		template: '<base-reactive-component :subProps="{ pagination: true }"/>',
@@ -821,6 +861,25 @@ storiesOf('Base components/ReactiveComponent', module)
 	.add('ReactiveComponent with customQuery', () => ({
 		components: { BaseReactiveComponent },
 		template: '<base-reactive-component :subProps="{ customQuery:function() {return { query: {term: {[`brand.keyword`]: `Ford`}} } } }"/>',
+	}))
+	.add('ReactiveComponent with distinctField Prop', () => ({
+		components: { ReactiveComponentWithDistinctFieldProp },
+		props: {
+			distinctField: {
+				default: text('distinctField', 'brand.keyword'),
+			},
+			distinctFieldConfig: {
+				default: object('distinctFieldConfig', {
+					inner_hits:
+					{
+						name:'most_recent',
+						size:5,
+						sort:[{timestamp:'asc'}]
+					}
+				})
+			}
+		},
+		template: '<reactive-component-with-distinct-field-prop :subProps="{ distinctField, distinctFieldConfig }" />',
 	}));
 
 
