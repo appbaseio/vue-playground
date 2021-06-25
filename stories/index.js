@@ -36,6 +36,12 @@ import MultiListWithRenderNoResultsSlot from "./MultiListWithRenderNoResultsSlot
 import MultiDropdownListWithRenderNoResultsSlot from "./MultiDropdownListWithRenderNoResultsSlot";
 import DataSearchWithCustomSuggestionIcons from './DataSearchWithCustomSuggestionIcons.vue';
 import ReactiveComponentWithDistinctFieldProp from './ReactiveComponentWithDistinctFieldProp.vue';
+import DataSearchWithIndexProp from './DataSearchWithIndexProp.vue';
+import MultiListWithIndexProp from './MultiListWithIndexProp.vue';
+import DataSearchWithAddonBeforeSlot from './DataSearchWithAddonBeforeSlot.vue';
+import DataSearchWithAddonAfterSlot from './DataSearchWithAddonAfterSlot.vue';
+import DataSearchWithAddonBeforeAfterSlots from './DataSearchWithAddonBeforeAfterSlots.vue';
+import BaseRangeInput from './BaseRangeInput.vue';
 import './styles.css';
 
 // README
@@ -44,6 +50,7 @@ import SingleRangeReadme from '@appbaseio/reactive-manual-vue/content/docs/range
 import MultiRangeReadme from '@appbaseio/reactive-manual-vue/content/docs/range-components/MultiRange.md';
 import RangeSliderReadme from '@appbaseio/reactive-manual-vue/content/docs/range-components/RangeSlider.md';
 import DynamicRangeSliderReadme from '@appbaseio/reactive-manual-vue/content/docs/range-components/DynamicRangeSlider.md';
+// import RangeInputReadme from '@appbaseio/reactive-manual-vue/content/docs/range-components/RangeInput.md';
 // List Components
 import SingleListReadme from '@appbaseio/reactive-manual-vue/content/docs/list-components/SingleList.md';
 import MultiListReadme from '@appbaseio/reactive-manual-vue/content/docs/list-components/MultiList.md';
@@ -201,6 +208,28 @@ storiesOf('Range Components/RangeSlider', module)
     template: '<base-range-slider :subProps="{ defaultValue, showFilter: false}"/>',
 	}))
 
+storiesOf('Range Components/RangeInput', module)
+	.addParameters({
+		readme: {
+			// sidebar: removeFirstLine(RangeInputReadme),
+		},
+	})
+  .addDecorator(withKnobs)
+  .add('Basic', () => ({
+    components: { BaseRangeInput },
+    template: '<base-range-input :subProps="{ showFilter: false }"/>',
+  }))
+  .add('with title', () => ({
+	props: titleKnob('RangeInput: Ratings'),
+    components: { BaseRangeInput },
+    template: '<base-range-input :subProps="{ title}"/>',
+  }))
+   .add('with defaultValue', () => ({
+	components: { BaseRangeInput },
+	props: defaultValue({ start: 3000, end: 9000 }),
+    template: '<base-range-input :subProps="{ defaultValue, showFilter: false}"/>',
+	}))
+
 storiesOf('Range Components/DynamicRangeSlider', module)
 	.addParameters({
 		readme: {
@@ -280,6 +309,11 @@ storiesOf('List Components/SingleList', module)
   .add('with renderNoResults', () => ({
 	components: { SingleListWithRenderNoResultsSlot },
 	template: '<single-list-with-render-no-results-slot />'
+  }))
+  .add('with enableStrictSelection', () => ({
+    components: { BaseSingleList },
+	props: getKnob('enableStrictSelection', true),
+    template: '<base-single-list :subProps="{ enableStrictSelection }"/>',
   }));
 
 storiesOf('List Components/MulitList', module)
@@ -351,6 +385,10 @@ storiesOf('List Components/MulitList', module)
   .add('with renderNoResults', () => ({
 	components: { MultiListWithRenderNoResultsSlot },
 	template: '<multi-list-with-render-no-results-slot />'
+  }))
+  .add('with index prop', () => ({
+	components: { MultiListWithIndexProp },
+	template: '<multi-list-with-index-prop />'
   }));
 
 storiesOf('List Components/SingleDropdownList', module)
@@ -642,6 +680,38 @@ storiesOf('Search Components/DataSearch', module)
 			}
 		},
 		template: `<base-data-search :subProps="{ distinctField, size: 3, distinctFieldConfig }"/>`,
+	}))
+	.add('with index prop', () => ({
+		components: { DataSearchWithIndexProp },
+		template: '<data-search-with-index-prop />',
+	}))
+  .add('with autoFocus', () => ({
+		components: { BaseDataSearch },
+		props: getKnob('autoFocus', true),
+		template: '<base-data-search :subProps="{ autoFocus }"/>',
+	}))
+	.add('with focusShortcuts', () => ({
+		components: { BaseDataSearch },
+		props: getKnob('focusShortcuts', ['/', 'r', 'b']),
+		template: '<base-data-search :subProps="{ focusShortcuts }"/>',
+	}))
+	.add('with addonBefore', () => ({
+		components: { DataSearchWithAddonBeforeSlot },
+		template: '<data-search-with-addon-before-slot/>',
+	}))
+	.add('with addonAfter', () => ({
+		components: { DataSearchWithAddonAfterSlot },
+		template: '<data-search-with-addon-after-slot/>',
+	}))
+	.add('with addonBefore & addonAfter', () => ({
+		components: { DataSearchWithAddonBeforeAfterSlots },
+		template: '<data-search-with-addon-before-after-slots/>',
+	}))
+	.add('with expandSuggestionsContainer', () => ({
+		components: { DataSearchWithAddonBeforeAfterSlots },
+		props: getKnob('expandSuggestionsContainer', false),
+		template:
+			'<data-search-with-addon-before-after-slots :subProps="{ expandSuggestionsContainer }"/>',
 	}));
 
 storiesOf('Result Components/Reactive List', module)
