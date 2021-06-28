@@ -44,27 +44,33 @@ import DataSearchWithAddonBeforeAfterSlots from './DataSearchWithAddonBeforeAfte
 import BaseRangeInput from './BaseRangeInput.vue';
 import './styles.css';
 
-// README
-// Range Components
-import SingleRangeReadme from '@appbaseio/reactive-manual-vue/content/docs/range-components/SingleRange.md';
-import MultiRangeReadme from '@appbaseio/reactive-manual-vue/content/docs/range-components/MultiRange.md';
-import RangeSliderReadme from '@appbaseio/reactive-manual-vue/content/docs/range-components/RangeSlider.md';
-import DynamicRangeSliderReadme from '@appbaseio/reactive-manual-vue/content/docs/range-components/DynamicRangeSlider.md';
-// import RangeInputReadme from '@appbaseio/reactive-manual-vue/content/docs/range-components/RangeInput.md';
 // List Components
-import SingleListReadme from '@appbaseio/reactive-manual-vue/content/docs/list-components/SingleList.md';
-import MultiListReadme from '@appbaseio/reactive-manual-vue/content/docs/list-components/MultiList.md';
-import SingleListDropdownReadme from '@appbaseio/reactive-manual-vue/content/docs/list-components/SingleDropdownList.md';
-import MultiListDropdownReadme from '@appbaseio/reactive-manual-vue/content/docs/list-components/MultiDropdownList.md';
-import ToggleButtonReadme from '@appbaseio/reactive-manual-vue/content/docs/list-components/ToggleButton.md';
-// Search components
-import DataSearchReadme from '@appbaseio/reactive-manual-vue/content/docs/search-components/DataSearch.md';
+import SingleListReadme from "@appbaseio/docs/content/docs/reactivesearch/vue/list/SingleList.md";
+import MultiListReadme from "@appbaseio/docs/content/docs/reactivesearch/vue/list/MultiList.md";
+import SingleListDropdownReadme from "@appbaseio/docs/content/docs/reactivesearch/vue/list/SingleDropdownList.md";
+import MultiListDropdownReadme from "@appbaseio/docs/content/docs/reactivesearch/vue/list/MultiDropdownList.md";
+import ToggleButtonReadme from "@appbaseio/docs/content/docs/reactivesearch/vue/list/ToggleButton.md";
+
+
+// Range Components
+import SingleRangeReadme from "@appbaseio/docs/content/docs/reactivesearch/vue/range/SingleRange.md";
+import MultiRangeReadme from "@appbaseio/docs/content/docs/reactivesearch/vue/range/MultiRange.md";
+import RangeSliderReadme from "@appbaseio/docs/content/docs/reactivesearch/vue/range/RangeSlider.md";
+import DynamicRangeSliderReadme from "@appbaseio/docs/content/docs/reactivesearch/vue/range/DynamicRangeSlider.md";
+import RangeInputReadme from "@appbaseio/docs/content/docs/reactivesearch/vue/range/RangeInput.md";
+// Search Components
+import DataSearchReadme from "@appbaseio/docs/content/docs/reactivesearch/vue/search/DataSearch.md";
+
 // Result Components
-import ReactiveListReadme from '@appbaseio/reactive-manual-vue/content/docs/result-components/ReactiveList.md';
-import ResultCardReadme from '@appbaseio/reactive-manual-vue/content/docs/result-components/ResultCard.md';
-import ResultListReadme from '@appbaseio/reactive-manual-vue/content/docs/result-components/ResultList.md';
+import ResultCardReadme from "@appbaseio/docs/content/docs/reactivesearch/vue/result/ResultCard.md";
+import ResultListReadme from "@appbaseio/docs/content/docs/reactivesearch/vue/result/ResultList.md";
+import ReactiveListReadme from "@appbaseio/docs/content/docs/reactivesearch/vue/result/ReactiveList.md";
+
 // base components
-import ReactiveComponentReadme from '@appbaseio/reactive-manual-vue/content/docs/advanced/ReactiveComponent.md';
+// import SelectedFiltersReadme from "@appbaseio/reactive-manual-v3/content/docs/base-components/SelectedFilters.md";
+// Advanced components
+import ReactiveComponentReadme from "@appbaseio/docs/content/docs/reactivesearch/vue/advanced/ReactiveComponent.md";
+
 
 
 const getKnobType = (value) => {
@@ -211,7 +217,7 @@ storiesOf('Range Components/RangeSlider', module)
 storiesOf('Range Components/RangeInput', module)
 	.addParameters({
 		readme: {
-			// sidebar: removeFirstLine(RangeInputReadme),
+			sidebar: removeFirstLine(RangeInputReadme),
 		},
 	})
   .addDecorator(withKnobs)
