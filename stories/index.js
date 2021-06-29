@@ -35,31 +35,43 @@ import SingleDropdownListWithRenderNoResultsSlot from "./SingleDropdownListWithR
 import MultiListWithRenderNoResultsSlot from "./MultiListWithRenderNoResultsSlot.vue";
 import MultiDropdownListWithRenderNoResultsSlot from "./MultiDropdownListWithRenderNoResultsSlot";
 import DataSearchWithCustomSuggestionIcons from './DataSearchWithCustomSuggestionIcons.vue';
+import ReactiveComponentWithDistinctFieldProp from './ReactiveComponentWithDistinctFieldProp.vue';
+import DataSearchWithIndexProp from './DataSearchWithIndexProp.vue';
+import MultiListWithIndexProp from './MultiListWithIndexProp.vue';
+import DataSearchWithAddonBeforeSlot from './DataSearchWithAddonBeforeSlot.vue';
+import DataSearchWithAddonAfterSlot from './DataSearchWithAddonAfterSlot.vue';
+import DataSearchWithAddonBeforeAfterSlots from './DataSearchWithAddonBeforeAfterSlots.vue';
 import BaseRangeInput from './BaseRangeInput.vue';
 import BaseReactiveGoogleMap from './reactivemaps/BaseReactiveGoogleMap.vue';
 import './styles.css';
 
-// README
-// Range Components
-import SingleRangeReadme from '@appbaseio/reactive-manual-vue/content/docs/range-components/SingleRange.md';
-import MultiRangeReadme from '@appbaseio/reactive-manual-vue/content/docs/range-components/MultiRange.md';
-import RangeSliderReadme from '@appbaseio/reactive-manual-vue/content/docs/range-components/RangeSlider.md';
-import DynamicRangeSliderReadme from '@appbaseio/reactive-manual-vue/content/docs/range-components/DynamicRangeSlider.md';
-// import RangeInputReadme from '@appbaseio/reactive-manual-vue/content/docs/range-components/RangeInput.md';
 // List Components
-import SingleListReadme from '@appbaseio/reactive-manual-vue/content/docs/list-components/SingleList.md';
-import MultiListReadme from '@appbaseio/reactive-manual-vue/content/docs/list-components/MultiList.md';
-import SingleListDropdownReadme from '@appbaseio/reactive-manual-vue/content/docs/list-components/SingleDropdownList.md';
-import MultiListDropdownReadme from '@appbaseio/reactive-manual-vue/content/docs/list-components/MultiDropdownList.md';
-import ToggleButtonReadme from '@appbaseio/reactive-manual-vue/content/docs/list-components/ToggleButton.md';
-// Search components
-import DataSearchReadme from '@appbaseio/reactive-manual-vue/content/docs/search-components/DataSearch.md';
+import SingleListReadme from "@appbaseio/docs/content/docs/reactivesearch/vue/list/SingleList.md";
+import MultiListReadme from "@appbaseio/docs/content/docs/reactivesearch/vue/list/MultiList.md";
+import SingleListDropdownReadme from "@appbaseio/docs/content/docs/reactivesearch/vue/list/SingleDropdownList.md";
+import MultiListDropdownReadme from "@appbaseio/docs/content/docs/reactivesearch/vue/list/MultiDropdownList.md";
+import ToggleButtonReadme from "@appbaseio/docs/content/docs/reactivesearch/vue/list/ToggleButton.md";
+
+
+// Range Components
+import SingleRangeReadme from "@appbaseio/docs/content/docs/reactivesearch/vue/range/SingleRange.md";
+import MultiRangeReadme from "@appbaseio/docs/content/docs/reactivesearch/vue/range/MultiRange.md";
+import RangeSliderReadme from "@appbaseio/docs/content/docs/reactivesearch/vue/range/RangeSlider.md";
+import DynamicRangeSliderReadme from "@appbaseio/docs/content/docs/reactivesearch/vue/range/DynamicRangeSlider.md";
+import RangeInputReadme from "@appbaseio/docs/content/docs/reactivesearch/vue/range/RangeInput.md";
+// Search Components
+import DataSearchReadme from "@appbaseio/docs/content/docs/reactivesearch/vue/search/DataSearch.md";
+
 // Result Components
-import ReactiveListReadme from '@appbaseio/reactive-manual-vue/content/docs/result-components/ReactiveList.md';
-import ResultCardReadme from '@appbaseio/reactive-manual-vue/content/docs/result-components/ResultCard.md';
-import ResultListReadme from '@appbaseio/reactive-manual-vue/content/docs/result-components/ResultList.md';
+import ResultCardReadme from "@appbaseio/docs/content/docs/reactivesearch/vue/result/ResultCard.md";
+import ResultListReadme from "@appbaseio/docs/content/docs/reactivesearch/vue/result/ResultList.md";
+import ReactiveListReadme from "@appbaseio/docs/content/docs/reactivesearch/vue/result/ReactiveList.md";
+
 // base components
-import ReactiveComponentReadme from '@appbaseio/reactive-manual-vue/content/docs/advanced/ReactiveComponent.md';
+// import SelectedFiltersReadme from "@appbaseio/reactive-manual-v3/content/docs/base-components/SelectedFilters.md";
+// Advanced components
+import ReactiveComponentReadme from "@appbaseio/docs/content/docs/reactivesearch/vue/advanced/ReactiveComponent.md";
+
 
 
 const getKnobType = (value) => {
@@ -206,7 +218,7 @@ storiesOf('Range Components/RangeSlider', module)
 storiesOf('Range Components/RangeInput', module)
 	.addParameters({
 		readme: {
-			// sidebar: removeFirstLine(RangeInputReadme),
+			sidebar: removeFirstLine(RangeInputReadme),
 		},
 	})
   .addDecorator(withKnobs)
@@ -380,6 +392,10 @@ storiesOf('List Components/MulitList', module)
   .add('with renderNoResults', () => ({
 	components: { MultiListWithRenderNoResultsSlot },
 	template: '<multi-list-with-render-no-results-slot />'
+  }))
+  .add('with index prop', () => ({
+	components: { MultiListWithIndexProp },
+	template: '<multi-list-with-index-prop />'
   }));
 
 storiesOf('List Components/SingleDropdownList', module)
@@ -652,6 +668,57 @@ storiesOf('Search Components/DataSearch', module)
 	.add('with renderQuerySuggestions', () => ({
 		components: { DataSearchWithRenderQuerySuggestionsSlot },
 		template: '<data-search-with-render-query-suggestions-slot />',
+	}))
+	.add('with distinctField prop', () => ({
+		components: { BaseDataSearch },
+		props: {
+			distinctField: {
+				default: text('distinctField', 'authors.keyword'),
+			},
+			distinctFieldConfig: {
+				default: object('distinctFieldConfig', {
+					inner_hits:
+					{
+						name:'most_recent',
+						size:5,
+						sort:[{timestamp:'asc'}]
+					}
+				})
+			}
+		},
+		template: `<base-data-search :subProps="{ distinctField, size: 3, distinctFieldConfig }"/>`,
+	}))
+	.add('with index prop', () => ({
+		components: { DataSearchWithIndexProp },
+		template: '<data-search-with-index-prop />',
+	}))
+  .add('with autoFocus', () => ({
+		components: { BaseDataSearch },
+		props: getKnob('autoFocus', true),
+		template: '<base-data-search :subProps="{ autoFocus }"/>',
+	}))
+	.add('with focusShortcuts', () => ({
+		components: { BaseDataSearch },
+		props: getKnob('focusShortcuts', ['/', 'r', 'b']),
+		template: '<base-data-search :subProps="{ focusShortcuts }"/>',
+	}))
+	.add('with addonBefore', () => ({
+		components: { DataSearchWithAddonBeforeSlot },
+		template: '<data-search-with-addon-before-slot/>',
+	}))
+	.add('with addonAfter', () => ({
+		components: { DataSearchWithAddonAfterSlot },
+		template: '<data-search-with-addon-after-slot/>',
+	}))
+	.add('with addonBefore & addonAfter', () => ({
+		components: { DataSearchWithAddonBeforeAfterSlots },
+		template: '<data-search-with-addon-before-after-slots/>',
+	}))
+	.add('with expandSuggestionsContainer', () => ({
+		components: { DataSearchWithAddonBeforeAfterSlots },
+		props: getKnob('expandSuggestionsContainer', false),
+		template:
+			'<data-search-with-addon-before-after-slots :subProps="{ expandSuggestionsContainer }"/>',
 	}));
 
 storiesOf('Result Components/Reactive List', module)
@@ -693,7 +760,26 @@ storiesOf('Result Components/Reactive List', module)
 		components: { BaseReactiveList },
 		props: getKnob('currentPage', 10),
     template: '<base-reactive-list :subProps="{ pagination: true, currentPage }"/>',
-	}));
+  }))
+  .add('with distinctField prop', () => ({
+	components: { BaseReactiveList },
+	props: {
+		distinctField: {
+			default: text('distinctField', 'authors.keyword'),
+		},
+		distinctFieldConfig: {
+			default: object('distinctFieldConfig', {
+				inner_hits:
+				{
+					name:'most_recent',
+					size:5,
+					sort:[{timestamp:'asc'}]
+				}
+			})
+		}
+	},
+	template: `<base-reactive-list :subProps="{ distinctField, size: 3, distinctFieldConfig }"/>`,
+}));
 storiesOf('Result Components/ResultList', module)
 	.addParameters({
 		readme: {
@@ -774,6 +860,7 @@ storiesOf('Base components/ReactiveComponent', module)
 			sidebar: removeFirstLine(ReactiveComponentReadme, 15),
 		},
 	})
+	.addDecorator(withKnobs)
 	.add('A custom component', () => ({
 		components: { BaseReactiveComponent },
 		template: '<base-reactive-component :subProps="{ pagination: true }"/>',
@@ -781,6 +868,25 @@ storiesOf('Base components/ReactiveComponent', module)
 	.add('ReactiveComponent with customQuery', () => ({
 		components: { BaseReactiveComponent },
 		template: '<base-reactive-component :subProps="{ customQuery:function() {return { query: {term: {[`brand.keyword`]: `Ford`}} } } }"/>',
+	}))
+	.add('ReactiveComponent with distinctField Prop', () => ({
+		components: { ReactiveComponentWithDistinctFieldProp },
+		props: {
+			distinctField: {
+				default: text('distinctField', 'brand.keyword'),
+			},
+			distinctFieldConfig: {
+				default: object('distinctFieldConfig', {
+					inner_hits:
+					{
+						name:'most_recent',
+						size:5,
+						sort:[{timestamp:'asc'}]
+					}
+				})
+			}
+		},
+		template: '<reactive-component-with-distinct-field-prop :subProps="{ distinctField, distinctFieldConfig }" />',
 	}));
 
 
