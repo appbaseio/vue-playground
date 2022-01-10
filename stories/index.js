@@ -448,7 +448,14 @@ storiesOf('List Components/SingleDropdownList', module)
 		props: URLParams(),
     components: { BaseSingleDropdownList },
     template: '<base-single-dropdown-list :subProps="{ URLParams, showFilter: false}"/>',
-  }))
+	}))
+
+    .add('With show search and clear icon', () => ({
+		props: getKnob('showClear', true),
+    	components: { BaseSingleDropdownList },
+    	template: '<base-single-dropdown-list :subProps="{ showClear, showSearch: true}"/>',
+	}))
+
 
     .add('Playground', () => ({
 		components: { BaseSingleDropdownList },
@@ -461,12 +468,13 @@ storiesOf('List Components/SingleDropdownList', module)
 			filterLabel('Books Filter'),
 			sortBy(),
 			getKnob('showSearch', false),
+			getKnob('showClear', true),
 			getKnob('showCount', false),
 			getKnob('selectAllLabel', 'All Books'),
 			defaultValue('Artemis Fowl'),
 			URLParams()
 		),
-    template: '<base-single-dropdown-list :subProps="{ title, dataField, size, filterLabel, showFilter, sortBy, showCount, showSearch, selectAllLabel, defaultValue, URLParams, placeholder }"/>',
+    template: '<base-single-dropdown-list :subProps="{ title, dataField, size, filterLabel, showFilter, sortBy, showCount, showSearch, showClear, selectAllLabel, defaultValue, URLParams, placeholder }"/>',
   }))
 	.add('with render slot', () => ({
 		components: { SingleDropdownListWithRenderSlot },
@@ -541,6 +549,11 @@ storiesOf('List Components/MultiDropdownList ', module)
     template: '<base-multi-dropdown-list :subProps="{ URLParams, showFilter: false}"/>',
   }))
 
+    .add('With show search and clear icon', () => ({
+		props: getKnob('showClear', true),
+    	components: { BaseMultiDropdownList },
+    	template: '<base-multi-dropdown-list :subProps="{ showClear, showSearch: true}"/>',
+	}))
     .add('Playground', () => ({
     components: { BaseMultiDropdownList },
 		props: Object.keys(
@@ -551,12 +564,13 @@ storiesOf('List Components/MultiDropdownList ', module)
 			filterLabel('Books Filter'),
 			sortBy(),
 			getKnob('showSearch', false),
+			getKnob('showClear', true),
 			getKnob('showCount', false),
 			selectAllLabel('All Books'),
 			defaultValue('Artemis Fowl'),
 			URLParams()
 		),
-    template: '<base-multi-dropdown-list :subProps="{ title, dataField, size, filterLabel, showFilter, sortBy, showCount, showSearch, selectAllLabel, defaultValue, URLParams, placeholder }"/>',
+    template: '<base-multi-dropdown-list :subProps="{ title, dataField, size, filterLabel, showFilter, sortBy, showCount, showSearch, showClear, selectAllLabel, defaultValue, URLParams, placeholder }"/>',
   }))
 	.add('with render slot', () => ({
 		components: { MultiDropdownListWithRenderSlot },
