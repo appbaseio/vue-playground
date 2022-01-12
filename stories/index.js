@@ -748,105 +748,105 @@ storiesOf('Search Components/SearchBox', module)
 			sidebar: removeFirstLine(DataSearchReadme),
 		},
 	})
-  .addDecorator(withKnobs)
-  .add('Basic', () => ({
-    components: { BaseSearchBox },
-    template: '<base-search-box :subProps="{ showFilter: false }"/>',
-  }))
-  .add('with title', () => ({
+	.addDecorator(withKnobs)
+	.add('Basic', () => ({
+		components: { BaseSearchBox },
+		template: '<base-search-box :subProps="{ showFilter: false }"/>',
+	}))
+	.add('with title', () => ({
 		props: titleKnob('Book Store'),
-    components: { BaseSearchBox },
-    template: "<base-search-box :subProps=\"{ iconPosition: 'right', title, showFilter: false}\"/>",
-  }))
-  .add('without search icon', () => ({
+		components: { BaseSearchBox },
+		template: "<base-search-box :subProps=\"{ iconPosition: 'right', title, showFilter: false}\"/>",
+	}))
+	.add('without search icon', () => ({
 		props: getKnob('showIcon', false),
-    components: { BaseSearchBox },
-    template: "<base-search-box :subProps=\"{ showIcon, showFilter: false}\"/>",
-  }))
-  .add('with show clear', () => ({
+		components: { BaseSearchBox },
+		template: "<base-search-box :subProps=\"{ showIcon, showFilter: false}\"/>",
+	}))
+	.add('with show clear', () => ({
 		components: { BaseSearchBox },
 		props: showClear(false),
-    template: "<base-search-box :subProps=\"{ showClear, showFilter: false}\"/>",
-  }))
-  .add('with custom suggestion icons', () => ({
+		template: "<base-search-box :subProps=\"{ showClear, showFilter: false}\"/>",
+	}))
+	.add('with custom suggestion icons', () => ({
 		components: { SearchBoxWithCustomSuggestionIcons },
 		template: "<search-box-with-custom-suggestion-icons/>",
 	}))
-  .add('with debounce', () => ({
+	.add('with debounce', () => ({
 		components: { BaseSearchBox },
 		props: getKnob('debounce', 300),
-    template: "<base-search-box :subProps=\"{ debounce, showFilter: false}\"/>",
-  }))
-  .add('With strictSelection', () => ({
+		template: "<base-search-box :subProps=\"{ debounce, showFilter: false}\"/>",
+	}))
+	.add('With strictSelection', () => ({
 		components: { BaseSearchBox },
 		props: getKnob('strictSelection', true),
-    template: "<base-search-box :subProps=\"{ strictSelection, showFilter: false}\"/>",
-  }))
-  .add('Without autosuggest', () => ({
+		template: "<base-search-box :subProps=\"{ strictSelection, showFilter: false}\"/>",
+	}))
+	.add('Without autosuggest', () => ({
 		components: { BaseSearchBox },
 		props: getKnob('autosuggest', false),
-    template: "<base-search-box :subProps=\"{ autosuggest, showFilter: false}\"/>",
-  }))
-  .add('With fuzziness as a number', () => ({
+		template: "<base-search-box :subProps=\"{ autosuggest, showFilter: false}\"/>",
+	}))
+	.add('With fuzziness as a number', () => ({
 		components: { BaseSearchBox },
 		props: getKnob('fuzziness', 1),
-    template: "<base-search-box :subProps=\"{ fuzziness, showFilter: false}\"/>",
-  }))
-  .add('With fuzziness as AUTO', () => ({
-    components: { BaseSearchBox },
-    template: "<base-search-box :subProps=\"{ fuzziness: 'AUTO', showFilter: false}\"/>",
-  }))
-   .add('With highlight', () => ({
+		template: "<base-search-box :subProps=\"{ fuzziness, showFilter: false}\"/>",
+	}))
+	.add('With fuzziness as AUTO', () => ({
+		components: { BaseSearchBox },
+		template: "<base-search-box :subProps=\"{ fuzziness: 'AUTO', showFilter: false}\"/>",
+	}))
+	.add('With highlight', () => ({
 		components: { BaseSearchBox },
 		props: highlight(),
-    template: "<base-search-box :subProps=\"{ highlight, showFilter: false}\"/>",
-   }))
-   .add('With voice search', () => ({
+		template: "<base-search-box :subProps=\"{ highlight, showFilter: false}\"/>",
+	}))
+	.add('With voice search', () => ({
 		components: { BaseSearchBox },
 		props: getKnob('showVoiceSearch', true),
-    template: "<base-search-box :subProps=\"{ showVoiceSearch, showFilter: false}\"/>",
-  }))
-  .add('with iconPosition', () => ({
+		template: "<base-search-box :subProps=\"{ showVoiceSearch, showFilter: false}\"/>",
+	}))
+	.add('with iconPosition', () => ({
 		components: { BaseSearchBox },
 		props: getKnob('iconPosition', ['right', 'left'], select, 'right'),
-    template: '<base-search-box :subProps="{ iconPosition, showFilter: false }"/>',
-  }))
-  .add('with defaultValue', () => ({
+		template: '<base-search-box :subProps="{ iconPosition, showFilter: false }"/>',
+	}))
+	.add('with defaultValue', () => ({
 		components: { BaseSearchBox },
 		props: defaultValue('Harry Potter'),
-    template: '<base-search-box :subProps="{ defaultValue, showFilter: false }"/>',
-  }))
-  .add('with default Suggestions', () => ({
+		template: '<base-search-box :subProps="{ defaultValue, showFilter: false }"/>',
+	}))
+	.add('with default Suggestions', () => ({
 		components: { BaseSearchBox },
 		props: getKnob('defaultSuggestions', [
-          { label: "Sherlock Holmes", value: "Sherlock Holmes" },
-          { label: "The Lord of the Rings", value: "The Lord of the Rings" }
-        ]),
-    template: '<base-search-box :subProps="{ defaultSuggestions, showFilter: false }"/>',
-  }))
-  .add('with Filters', () => ({
+			{ label: "Sherlock Holmes", value: "Sherlock Holmes" },
+			{ label: "The Lord of the Rings", value: "The Lord of the Rings" }
+		]),
+		template: '<base-search-box :subProps="{ defaultSuggestions, showFilter: false }"/>',
+	}))
+	.add('with Filters', () => ({
 		components: { BaseSearchBox },
 		props: filterLabel('Books Search'),
-    template: '<base-search-box :subProps="{ showFilter, filterLabel }"/>',
-  }))
+		template: '<base-search-box :subProps="{ showFilter, filterLabel }"/>',
+	}))
 	.add('with enablePredictiveSuggestions', () => ({
 		props: getKnob('enablePredictiveSuggestions', true),
 		components: { BaseSearchBox },
 		template: '<base-search-box :subProps="{ enablePredictiveSuggestions }"/>',
 	}))
-  .add('with renderNoSuggestion', () => ({
+	.add('with renderNoSuggestion', () => ({
 		components: { BaseSearchBox },
 		props: getKnob('renderNoSuggestion', 'No Suggestions Found'),
-    template: '<base-search-box :subProps="{ showFilter: true, renderNoSuggestion }"/>',
-  }))
+		template: '<base-search-box :subProps="{ showFilter: true, renderNoSuggestion }"/>',
+	}))
 	.add('with render slot', () => ({
 		components: { SearchBoxWithRenderSlot },
 		template: '<search-box-with-render-slot />'
 	}))
-    .add('with renderItem slot', () => ({
-    	components: { SearchBoxWithRenderItemSlot },
-    	template: '<search-box-with-render-item-slot />'
-    }))
+	.add('with renderItem slot', () => ({
+		components: { SearchBoxWithRenderItemSlot },
+		template: '<search-box-with-render-item-slot />'
+	}))
 	.add('with distinctField prop', () => ({
 		components: { BaseSearchBox },
 		props: {
@@ -857,9 +857,9 @@ storiesOf('Search Components/SearchBox', module)
 				default: object('distinctFieldConfig', {
 					inner_hits:
 					{
-						name:'most_recent',
-						size:5,
-						sort:[{timestamp:'asc'}]
+						name: 'most_recent',
+						size: 5,
+						sort: [{ timestamp: 'asc' }]
 					}
 				})
 			}
@@ -870,7 +870,7 @@ storiesOf('Search Components/SearchBox', module)
 		components: { SearchBoxWithIndexProp },
 		template: '<search-box-with-index-prop />',
 	}))
-  .add('with autoFocus', () => ({
+	.add('with autoFocus', () => ({
 		components: { BaseSearchBox },
 		props: getKnob('autoFocus', true),
 		template: '<base-search-box :subProps="{ autoFocus }"/>',
@@ -903,10 +903,10 @@ storiesOf('Search Components/SearchBox', module)
 		props: Object.assign({},
 			getKnob('enableRecentSuggestions', true),
 			getKnob('recentSuggestionsConfig', {
-          		size: 3,
-          		minChars: 3,
-          		minHits:  2,
-          		index: 'good-books-ds'
+				size: 3,
+				minChars: 3,
+				minHits: 2,
+				index: 'good-books-ds'
 			})
 		),
 		template:
@@ -918,9 +918,9 @@ storiesOf('Search Components/SearchBox', module)
 			getKnob('enablePopularSuggestions', true),
 			getKnob('popularSuggestionsConfig', {
 				size: 3,
-				minChars:  3,
-          		index: 'good-books-ds',
-          		showGlobal: false
+				minChars: 3,
+				index: 'good-books-ds',
+				showGlobal: false
 			})
 		),
 		template:
