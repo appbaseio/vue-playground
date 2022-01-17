@@ -8,7 +8,7 @@
       <div class="col">
         <SingleDropdownList
           componentId="BookSensor"
-          data-field="original_series.keyword"
+          data-field="test.keyword"
           :renderNoResults="renderNoResults"
         />
       </div>
