@@ -108,6 +108,7 @@ const dataField = (value = ['original_series.keyword', 'authors.keyword', 'langu
 const paginationAt = (value = ['top', 'bottom', 'both'], defaultValue = 'bottom') => getKnob('paginationAt', value, select, defaultValue);
 const selectAllLabel = (value) => getKnob('selectAllLabel', value);
 const showCount = (value = true) => getKnob('showCount', value);
+const showSearch = (value = true) => getKnob('showSearch', value);
 const showClear = (value = true) => getKnob('showClear', value);
 const highlight = (value = true) => getKnob('highlight', value);
 const showCheckbox = (value = true) => getKnob('showCheckbox', value);
@@ -536,14 +537,17 @@ storiesOf('List Components/MultiDropdownList ', module)
 		components: { BaseMultiDropdownList },
 		props: showCount(false),
     template: '<base-multi-dropdown-list :subProps="{ showCount, showFilter: false}"/>',
-  }))
-
+  	}))
+    .add('with search', () => ({
+		components: { BaseMultiDropdownList },
+		props: showSearch(true),
+    template: '<base-multi-dropdown-list :subProps="{ showSearch, showFilter: false}"/>',
+  	}))
     .add('With Select All', () => ({
 		components: { BaseMultiDropdownList },
 		props: selectAllLabel('All Books'),
     template: '<base-multi-dropdown-list :subProps="{ selectAllLabel, showFilter: false}"/>',
-  }))
-
+  	}))
     .add('with defaultValue', () => ({
     components: { BaseMultiDropdownList },
 		props: defaultValue([
