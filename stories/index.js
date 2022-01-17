@@ -457,7 +457,7 @@ storiesOf('List Components/SingleDropdownList', module)
     template: '<base-single-dropdown-list :subProps="{ showSearch, showFilter: false}"/>',
   }))  
     .add('with defaultValue', () => ({
-		props: defaultValue('Artemis Fowl'),
+		props: defaultValue('Discworld'),
     components: { BaseSingleDropdownList },
     template: '<base-single-dropdown-list :subProps="{ defaultValue, showFilter: false}"/>',
   }))
