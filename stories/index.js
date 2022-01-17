@@ -27,6 +27,7 @@ import BaseToggleButton from './BaseToggleButton.vue';
 import DataSearchWithRenderSlot from './DataSearchWithRenderSlot';
 import SingleListWithRenderSlot from './SingleListWithRenderSlot';
 import MultiListWithRenderSlot from './MultiListWithRenderSlot';
+import MultiListWithRenderItemSlot from './MultiListWithRenderItemSlot.vue';
 import SingleDropdownListWithRenderSlot from './SingleDropdownListWithRenderSlot';
 import MultiDropdownListWithRenderSlot from './MultiDropdownListWithRenderSlot';
 import DataSearchWithRenderQuerySuggestionsSlot from './DataSearchWithRenderQuerySuggestionsSlot';
@@ -388,6 +389,10 @@ storiesOf('List Components/MulitList', module)
 	components: { MultiListWithRenderSlot },
 	template: '<multi-list-with-render-slot />'
   }))
+  .add('with renderItem slot', () => ({
+    components: { MultiListWithRenderItemSlot },
+    template: '<multi-list-with-render-item-slot />',
+  }))	
   .add('with renderNoResults', () => ({
 	components: { MultiListWithRenderNoResultsSlot },
 	template: '<multi-list-with-render-no-results-slot />'
