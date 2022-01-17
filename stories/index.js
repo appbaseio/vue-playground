@@ -26,6 +26,7 @@ import BaseResultCard from './BaseResultCard.vue';
 import BaseToggleButton from './BaseToggleButton.vue';
 import DataSearchWithRenderSlot from './DataSearchWithRenderSlot';
 import SingleListWithRenderSlot from './SingleListWithRenderSlot';
+import SingleListWithRenderItemSlot from './SingleListWithRenderItemSlot.vue';
 import MultiListWithRenderSlot from './MultiListWithRenderSlot';
 import MultiListWithRenderItemSlot from './MultiListWithRenderItemSlot.vue';
 import SingleDropdownListWithRenderSlot from './SingleDropdownListWithRenderSlot';
@@ -313,6 +314,10 @@ storiesOf('List Components/SingleList', module)
 	components: { SingleListWithRenderSlot },
 	template: '<single-list-with-render-slot />'
   }))
+  .add('with renderItem slot', () => ({
+	components: { SingleListWithRenderItemSlot },
+	template: '<single-list-with-render-item-slot />'
+  }))	
   .add('with renderNoResults', () => ({
 	components: { SingleListWithRenderNoResultsSlot },
 	template: '<single-list-with-render-no-results-slot />'
