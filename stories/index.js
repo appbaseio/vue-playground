@@ -31,6 +31,7 @@ import MultiListWithRenderSlot from './MultiListWithRenderSlot';
 import MultiListWithRenderItemSlot from './MultiListWithRenderItemSlot.vue';
 import SingleDropdownListWithRenderSlot from './SingleDropdownListWithRenderSlot';
 import MultiDropdownListWithRenderSlot from './MultiDropdownListWithRenderSlot';
+import MultiDropdownListWithRenderItemSlot from './MultiDropdownListWithRenderItemSlot.vue';
 import DataSearchWithRenderQuerySuggestionsSlot from './DataSearchWithRenderQuerySuggestionsSlot';
 import SingleListWithRenderNoResultsSlot from "./SingleListWithRenderNoResultsSlot.vue";
 import SingleDropdownListWithRenderNoResultsSlot from "./SingleDropdownListWithRenderNoResultsSlot";
@@ -590,6 +591,10 @@ storiesOf('List Components/MultiDropdownList ', module)
 		components: { MultiDropdownListWithRenderSlot },
 		template: '<multi-dropdown-list-with-render-slot />'
 	}))
+	.add('with renderItem slot', () => ({
+		components: { MultiDropdownListWithRenderItemSlot },
+		template: '<multi-dropdown-list-with-render-item-slot />'
+	}))	
 	.add('with renderNoResults', () => ({
 		components: { MultiDropdownListWithRenderNoResultsSlot },
 		template: '<multi-dropdown-list-with-render-no-results-slot />'
