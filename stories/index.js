@@ -30,6 +30,7 @@ import SingleListWithRenderItemSlot from './SingleListWithRenderItemSlot.vue';
 import MultiListWithRenderSlot from './MultiListWithRenderSlot';
 import MultiListWithRenderItemSlot from './MultiListWithRenderItemSlot.vue';
 import SingleDropdownListWithRenderSlot from './SingleDropdownListWithRenderSlot';
+import SingleDropdownListWithRenderItemSlot from './SingleDropdownListWithRenderItemSlot.vue';
 import MultiDropdownListWithRenderSlot from './MultiDropdownListWithRenderSlot';
 import MultiDropdownListWithRenderItemSlot from './MultiDropdownListWithRenderItemSlot.vue';
 import DataSearchWithRenderQuerySuggestionsSlot from './DataSearchWithRenderQuerySuggestionsSlot';
@@ -472,8 +473,10 @@ storiesOf('List Components/SingleDropdownList', module)
     	components: { BaseSingleDropdownList },
     	template: '<base-single-dropdown-list :subProps="{ showClear, showSearch: true}"/>',
 	}))
-
-
+	.add('with renderItem slot', () => ({
+		components: { SingleDropdownListWithRenderItemSlot },
+		template: '<single-dropdown-list-with-render-item-slot />'
+	}))	
     .add('Playground', () => ({
 		components: { BaseSingleDropdownList },
 		props: Object.keys(
