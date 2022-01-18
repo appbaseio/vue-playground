@@ -47,6 +47,7 @@ import DataSearchWithAddonAfterSlot from './DataSearchWithAddonAfterSlot.vue';
 import DataSearchWithAddonBeforeAfterSlots from './DataSearchWithAddonBeforeAfterSlots.vue';
 import BaseRangeInput from './BaseRangeInput.vue';
 import ReactiveListWithNoResultsSlot from './ReactiveListWithNoResultsSlot.vue';
+import ReactiveListWithCustomResultStatsSlot from './ReactiveListWithCustomResultStatsSlot.vue';
 import './styles.css';
 
 // List Components
@@ -864,7 +865,13 @@ storiesOf('Result Components/Reactive List', module)
 		components: { ReactiveListWithNoResultsSlot },
 		props: getKnob('renderNoResults', 'No Results Found!'),
 		template: `<reactive-list-with-no-results-slot :subProps="{ renderNoResults }"/>`,
+	}))
+	.add('With custom result stats message', () => ({
+		components: { ReactiveListWithCustomResultStatsSlot },
+		template: '<reactive-list-with-custom-result-stats-slot />',
 	}));
+
+
 storiesOf('Result Components/ResultList', module)
 	.addParameters({
 		readme: {
@@ -899,8 +906,8 @@ storiesOf('Result Components/ResultList', module)
 	.add('With custom number of pages', () => ({
 		components: { BaseResultList },
 		props: getKnob('pages', 2),
-    template: '<base-result-list :subProps="{ pagination: true, pages }"/>',
-  }));
+		template: '<base-result-list :subProps="{ pagination: true, pages }"/>',
+	}));
 
 storiesOf('Result Components/ResultCard', module)
 	.addParameters({
