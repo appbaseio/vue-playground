@@ -108,7 +108,7 @@ const showRadio = (value = true) => getKnob('showRadio', value);
 const sortBy = (value = { ascending: 'asc', descending: 'desc', count: 'count' }, defaultValue = 'asc') => getKnob('sortBy', value, select, defaultValue, String);
 const URLParams = (value = false) => getKnob('URLParams', value);
 const dataField = (value = ['original_series.keyword', 'authors.keyword', 'language_code.keyword'], defaultValue = 'original_series.keyword') => getKnob('dataField', value, select, defaultValue);
-const paginationAt = (value = ['top', 'bottom', 'both'], defaultValue = 'bottom') => getKnob('paginationAt', value, select, defaultValue);
+const paginationAt = (value = ['top', 'bottom', 'both'], defaultValue = 'top') => getKnob('paginationAt', value, select, defaultValue);
 const selectAllLabel = (value) => getKnob('selectAllLabel', value);
 const showCount = (value = true) => getKnob('showCount', value);
 const showSearch = (value = true) => getKnob('showSearch', value);
