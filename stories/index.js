@@ -46,6 +46,7 @@ import DataSearchWithAddonBeforeSlot from './DataSearchWithAddonBeforeSlot.vue';
 import DataSearchWithAddonAfterSlot from './DataSearchWithAddonAfterSlot.vue';
 import DataSearchWithAddonBeforeAfterSlots from './DataSearchWithAddonBeforeAfterSlots.vue';
 import BaseRangeInput from './BaseRangeInput.vue';
+import ReactiveListWithNoResultsSlot from './ReactiveListWithNoResultsSlot.vue';
 import './styles.css';
 
 // List Components
@@ -807,59 +808,63 @@ storiesOf('Result Components/Reactive List', module)
 			sidebar: removeFirstLine(ReactiveListReadme),
 		},
 	})
-  .addDecorator(withKnobs)
-  .add('Basic', () => ({
-    components: { BaseReactiveList },
-    template: '<base-reactive-list/>',
-  }))
-  .add('With pagination', () => ({
+	.addDecorator(withKnobs)
+	.add('Basic', () => ({
+		components: { BaseReactiveList },
+		template: '<base-reactive-list/>',
+	}))
+	.add('With pagination', () => ({
 		components: { BaseReactiveList },
 		props: getKnob('pagination', true),
-    template: '<base-reactive-list :subProps="{ pagination }"/>',
-  }))
-  .add('With Infinite Loading', () => ({
-    components: { BaseReactiveList },
-    template: '<base-reactive-list/>',
-  }))
-  .add('with custom sort', () => ({
+		template: '<base-reactive-list :subProps="{ pagination }"/>',
+	}))
+	.add('With Infinite Loading', () => ({
+		components: { BaseReactiveList },
+		template: '<base-reactive-list/>',
+	}))
+	.add('with custom sort', () => ({
 		components: { BaseReactiveList },
 		props: sortBy({ ascending: 'asc', descending: 'desc' }, 'asc'),
-    template: '<base-reactive-list :subProps="{ sortBy }"/>',
-  }))
-  .add('With pagination at top', () => ({
+		template: '<base-reactive-list :subProps="{ sortBy }"/>',
+	}))
+	.add('With pagination at top', () => ({
 		components: { BaseReactiveList },
 		props: paginationAt(),
-    template: '<base-reactive-list :subProps="{ pagination: true, paginationAt }"/>',
-  }))
-  .add('Without resultStats', () => ({
+		template: '<base-reactive-list :subProps="{ pagination: true, paginationAt }"/>',
+	}))
+	.add('Without resultStats', () => ({
 		components: { BaseReactiveList },
 		props: getKnob('showResultStats', false),
-    template: '<base-reactive-list :subProps="{ showResultStats }"/>',
-  }))
-  .add('With custom number of pages', () => ({
+		template: '<base-reactive-list :subProps="{ showResultStats }"/>',
+	}))
+	.add('With custom number of pages', () => ({
 		components: { BaseReactiveList },
 		props: getKnob('currentPage', 10),
-    template: '<base-reactive-list :subProps="{ pagination: true, currentPage }"/>',
-  }))
-  .add('with distinctField prop', () => ({
-	components: { BaseReactiveList },
-	props: {
-		distinctField: {
-			default: text('distinctField', 'authors.keyword'),
+		template: '<base-reactive-list :subProps="{ pagination: true, currentPage }"/>',
+	}))
+	.add('with distinctField prop', () => ({
+		components: { BaseReactiveList },
+		props: {
+			distinctField: {
+				default: text('distinctField', 'authors.keyword'),
+			},
+			distinctFieldConfig: {
+				default: object('distinctFieldConfig', {
+					inner_hits: {
+						name: 'most_recent',
+						size: 5,
+						sort: [{ timestamp: 'asc' }],
+					},
+				}),
+			},
 		},
-		distinctFieldConfig: {
-			default: object('distinctFieldConfig', {
-				inner_hits:
-				{
-					name:'most_recent',
-					size:5,
-					sort:[{timestamp:'asc'}]
-				}
-			})
-		}
-	},
-	template: `<base-reactive-list :subProps="{ distinctField, size: 3, distinctFieldConfig }"/>`,
-}));
+		template: `<base-reactive-list :subProps="{ distinctField, size: 3, distinctFieldConfig }"/>`,
+	}))
+	.add('with renderNoResults prop', () => ({
+		components: { ReactiveListWithNoResultsSlot },
+		props: getKnob('renderNoResults', 'No Results Found!'),
+		template: `<reactive-list-with-no-results-slot :subProps="{ renderNoResults }"/>`,
+	}));
 storiesOf('Result Components/ResultList', module)
 	.addParameters({
 		readme: {
