@@ -115,7 +115,7 @@ const showClear = (value = true) => getKnob('showClear', value);
 const highlight = (value = true) => getKnob('highlight', value);
 const showCheckbox = (value = true) => getKnob('showCheckbox', value);
 const rangeLabels = (value) => getKnob('rangeLabels', value);
-const showTooltip = (value) => getKnob('showTooltip', value, select);
+const showTooltip = (value) => getKnob('showTooltip', value, select, false);
 
 function removeFirstLine(str, number = 12) {
   while (number--) {
@@ -291,6 +291,16 @@ storiesOf('Range Components/DynamicRangeSlider', module)
 		components: { BaseDynamicRangeSlider },
 		template: '<base-dynamic-range-slider :subProps="{ defaultValue: function(min, max){ return { start: min + 1000, end: max - 1000} }, showFilter: false}"/>',
 	}))
+   .add('without tooltip', () => ({
+	components: { BaseDynamicRangeSlider },
+	   props: showTooltip(
+		   {
+                false: 'none',
+				true: 'always',
+				
+		}),
+    template: '<base-dynamic-range-slider :subProps="{ sliderOptions: { tooltip: showTooltip } }"/>',
+	}))			
 
 storiesOf('List Components/SingleList', module)
 	.addParameters({
