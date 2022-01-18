@@ -114,6 +114,7 @@ const showSearch = (value = true) => getKnob('showSearch', value);
 const showClear = (value = true) => getKnob('showClear', value);
 const highlight = (value = true) => getKnob('highlight', value);
 const showCheckbox = (value = true) => getKnob('showCheckbox', value);
+const rangeLabels = (value) => getKnob('rangeLabels', value);
 
 function removeFirstLine(str, number = 12) {
   while (number--) {
@@ -209,7 +210,7 @@ storiesOf('Range Components/RangeSlider', module)
     template: '<base-range-slider :subProps="{ showFilter: false }"/>',
   }))
   .add('with title', () => ({
-		props: titleKnob('RangeSlider: Ratings'),
+	props: titleKnob('RangeSlider: Ratings'),
     components: { BaseRangeSlider },
     template: '<base-range-slider :subProps="{ title}"/>',
   }))
@@ -240,6 +241,15 @@ storiesOf('Range Components/RangeInput', module)
 	props: defaultValue({ start: 3000, end: 9000 }),
     template: '<base-range-input :subProps="{ defaultValue, showFilter: false}"/>',
 	}))
+   .add('with range Labels', () => ({
+	components: { BaseRangeInput },
+	   props: rangeLabels(
+		   {
+                start: '3K',
+				end: '50K',
+		}),
+    template: '<base-range-input :subProps="{ rangeLabels }"/>',
+	}))	
 
 storiesOf('Range Components/DynamicRangeSlider', module)
 	.addParameters({
