@@ -219,6 +219,15 @@ storiesOf('Range Components/RangeSlider', module)
 		props: defaultValue({ start: 3000, end: 9000 }),
     template: '<base-range-slider :subProps="{ defaultValue, showFilter: false}"/>',
 	}))
+   .add('with range Labels', () => ({
+	components: { BaseRangeSlider },
+	   props: rangeLabels(
+		   {
+                start: '3K',
+				end: '50K',
+		}),
+    template: '<base-range-slider :subProps="{ rangeLabels }"/>',
+	}))	
 
 storiesOf('Range Components/RangeInput', module)
 	.addParameters({
@@ -249,7 +258,7 @@ storiesOf('Range Components/RangeInput', module)
 				end: '50K',
 		}),
     template: '<base-range-input :subProps="{ rangeLabels }"/>',
-	}))	
+	}))
 
 storiesOf('Range Components/DynamicRangeSlider', module)
 	.addParameters({
