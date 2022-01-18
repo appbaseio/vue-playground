@@ -48,6 +48,7 @@ import DataSearchWithAddonBeforeAfterSlots from './DataSearchWithAddonBeforeAfte
 import BaseRangeInput from './BaseRangeInput.vue';
 import ReactiveListWithNoResultsSlot from './ReactiveListWithNoResultsSlot.vue';
 import ReactiveListWithCustomResultStatsSlot from './ReactiveListWithCustomResultStatsSlot.vue';
+import BaseReactiveListCardLayout from './BaseReactiveListCardLayout.vue';
 import './styles.css';
 
 // List Components
@@ -869,6 +870,10 @@ storiesOf('Result Components/Reactive List', module)
 	.add('With custom result stats message', () => ({
 		components: { ReactiveListWithCustomResultStatsSlot },
 		template: '<reactive-list-with-custom-result-stats-slot />',
+	}))
+	.add('With card layout', () => ({
+		components: { BaseReactiveListCardLayout },
+		template: '<base-reactive-list-card-layout />',
 	}));
 
 
