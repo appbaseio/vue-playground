@@ -30,7 +30,7 @@
     },
     "dependencies": {
         "@appbaseio/docs": "git://github.com/appbaseio/Docs",
-        "@appbaseio/reactivesearch-vue": "1.25.0",
+        "@appbaseio/reactivesearch-vue": "1.26.0",
         "@storybook/theming": "5.1.9",
         "vue": "^2.6.10"
     },
