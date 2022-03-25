@@ -29,8 +29,8 @@
         "webpack": "4.38.0"
     },
     "dependencies": {
-        "@appbaseio/reactivesearch-vue": "1.16.0-alpha.45",
-        "@appbaseio/docs": "git://github.com/appbaseio/Docs",
+        "@appbaseio/reactivesearch-vue": "1.16.0-alpha.47",
+        "@appbaseio/docs": "appbaseio/Docs#dev",
         "@storybook/theming": "5.1.9",
         "vue": "^2.6.10"
     },
