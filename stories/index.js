@@ -12,6 +12,7 @@ import {
 
 import BaseReactiveList from './BaseReactiveList.vue';
 import BaseDataSearch from './BaseDataSearch.vue';
+import BaseSearchBox from './BaseSearchBox.vue';
 import BaseMultiList from './BaseMultiList.vue';
 import BaseSingleList from './BaseSingleList.vue';
 import BaseSingleRange from './BaseSingleRange.vue';
@@ -24,7 +25,9 @@ import BaseDynamicRangeSlider from './BaseDynamicRangeSlider.vue';
 import BaseResultList from './BaseResultList.vue';
 import BaseResultCard from './BaseResultCard.vue';
 import BaseToggleButton from './BaseToggleButton.vue';
-import DataSearchWithRenderSlot from './DataSearchWithRenderSlot';
+import DataSearchWithRenderSlot from './DataSearchWithRenderSlot.vue';
+import SearchBoxWithRenderSlot from './SearchBoxWithRenderSlot.vue';
+import SearchBoxWithRenderItemSlot from './SearchBoxWithRenderItemSlot.vue';
 import SingleListWithRenderSlot from './SingleListWithRenderSlot';
 import MultiListWithRenderSlot from './MultiListWithRenderSlot';
 import SingleDropdownListWithRenderSlot from './SingleDropdownListWithRenderSlot';
@@ -35,10 +38,15 @@ import SingleDropdownListWithRenderNoResultsSlot from "./SingleDropdownListWithR
 import MultiListWithRenderNoResultsSlot from "./MultiListWithRenderNoResultsSlot.vue";
 import MultiDropdownListWithRenderNoResultsSlot from "./MultiDropdownListWithRenderNoResultsSlot";
 import DataSearchWithCustomSuggestionIcons from './DataSearchWithCustomSuggestionIcons.vue';
+import SearchBoxWithCustomSuggestionIcons from './SearchBoxWithCustomSuggestionIcons.vue';
 import ReactiveComponentWithDistinctFieldProp from './ReactiveComponentWithDistinctFieldProp.vue';
 import DataSearchWithIndexProp from './DataSearchWithIndexProp.vue';
+import SearchBoxWithIndexProp from './SearchBoxWithIndexProp.vue';
 import MultiListWithIndexProp from './MultiListWithIndexProp.vue';
 import DataSearchWithAddonBeforeSlot from './DataSearchWithAddonBeforeSlot.vue';
+import SearchBoxWithAddonBeforeSlot from './SearchBoxWithAddonBeforeSlot.vue';
+import SearchBoxWithAddonAfterSlot from './SearchBoxWithAddonAfterSlot.vue';
+import SearchBoxWithAddonBeforeAfterSlots from './SearchBoxWithAddonBeforeAfterSlots.vue';
 import DataSearchWithAddonAfterSlot from './DataSearchWithAddonAfterSlot.vue';
 import DataSearchWithAddonBeforeAfterSlots from './DataSearchWithAddonBeforeAfterSlots.vue';
 import BaseRangeInput from './BaseRangeInput.vue';
@@ -733,6 +741,192 @@ storiesOf('Search Components/DataSearch', module)
 		template:
 			'<data-search-with-addon-before-after-slots :subProps="{ expandSuggestionsContainer }"/>',
 	}));
+
+storiesOf('Search Components/SearchBox', module)
+	.addParameters({
+		readme: {
+			sidebar: removeFirstLine(DataSearchReadme),
+		},
+	})
+	.addDecorator(withKnobs)
+	.add('Basic', () => ({
+		components: { BaseSearchBox },
+		template: '<base-search-box :subProps="{ showFilter: false }"/>',
+	}))
+	.add('with title', () => ({
+		props: titleKnob('Book Store'),
+		components: { BaseSearchBox },
+		template: "<base-search-box :subProps=\"{ iconPosition: 'right', title, showFilter: false}\"/>",
+	}))
+	.add('without search icon', () => ({
+		props: getKnob('showIcon', false),
+		components: { BaseSearchBox },
+		template: "<base-search-box :subProps=\"{ showIcon, showFilter: false}\"/>",
+	}))
+	.add('with show clear', () => ({
+		components: { BaseSearchBox },
+		props: showClear(false),
+		template: "<base-search-box :subProps=\"{ showClear, showFilter: false}\"/>",
+	}))
+	.add('with custom suggestion icons', () => ({
+		components: { SearchBoxWithCustomSuggestionIcons },
+		template: "<search-box-with-custom-suggestion-icons/>",
+	}))
+	.add('with debounce', () => ({
+		components: { BaseSearchBox },
+		props: getKnob('debounce', 300),
+		template: "<base-search-box :subProps=\"{ debounce, showFilter: false}\"/>",
+	}))
+	.add('With strictSelection', () => ({
+		components: { BaseSearchBox },
+		props: getKnob('strictSelection', true),
+		template: "<base-search-box :subProps=\"{ strictSelection, showFilter: false}\"/>",
+	}))
+	.add('Without autosuggest', () => ({
+		components: { BaseSearchBox },
+		props: getKnob('autosuggest', false),
+		template: "<base-search-box :subProps=\"{ autosuggest, showFilter: false}\"/>",
+	}))
+	.add('With fuzziness as a number', () => ({
+		components: { BaseSearchBox },
+		props: getKnob('fuzziness', 1),
+		template: "<base-search-box :subProps=\"{ fuzziness, showFilter: false}\"/>",
+	}))
+	.add('With fuzziness as AUTO', () => ({
+		components: { BaseSearchBox },
+		template: "<base-search-box :subProps=\"{ fuzziness: 'AUTO', showFilter: false}\"/>",
+	}))
+	.add('With highlight', () => ({
+		components: { BaseSearchBox },
+		props: highlight(),
+		template: "<base-search-box :subProps=\"{ highlight, showFilter: false}\"/>",
+	}))
+	.add('With voice search', () => ({
+		components: { BaseSearchBox },
+		props: getKnob('showVoiceSearch', true),
+		template: "<base-search-box :subProps=\"{ showVoiceSearch, showFilter: false}\"/>",
+	}))
+	.add('with iconPosition', () => ({
+		components: { BaseSearchBox },
+		props: getKnob('iconPosition', ['right', 'left'], select, 'right'),
+		template: '<base-search-box :subProps="{ iconPosition, showFilter: false }"/>',
+	}))
+	.add('with defaultValue', () => ({
+		components: { BaseSearchBox },
+		props: defaultValue('Harry Potter'),
+		template: '<base-search-box :subProps="{ defaultValue, showFilter: false }"/>',
+	}))
+	.add('with default Suggestions', () => ({
+		components: { BaseSearchBox },
+		props: getKnob('defaultSuggestions', [
+			{ label: "Sherlock Holmes", value: "Sherlock Holmes" },
+			{ label: "The Lord of the Rings", value: "The Lord of the Rings" }
+		]),
+		template: '<base-search-box :subProps="{ defaultSuggestions, showFilter: false }"/>',
+	}))
+	.add('with Filters', () => ({
+		components: { BaseSearchBox },
+		props: filterLabel('Books Search'),
+		template: '<base-search-box :subProps="{ showFilter, filterLabel }"/>',
+	}))
+	.add('with enablePredictiveSuggestions', () => ({
+		props: getKnob('enablePredictiveSuggestions', true),
+		components: { BaseSearchBox },
+		template: '<base-search-box :subProps="{ enablePredictiveSuggestions }"/>',
+	}))
+	.add('with renderNoSuggestion', () => ({
+		components: { BaseSearchBox },
+		props: getKnob('renderNoSuggestion', 'No Suggestions Found'),
+		template: '<base-search-box :subProps="{ showFilter: true, renderNoSuggestion }"/>',
+	}))
+	.add('with render slot', () => ({
+		components: { SearchBoxWithRenderSlot },
+		template: '<search-box-with-render-slot />'
+	}))
+	.add('with renderItem slot', () => ({
+		components: { SearchBoxWithRenderItemSlot },
+		template: '<search-box-with-render-item-slot />'
+	}))
+	.add('with distinctField prop', () => ({
+		components: { BaseSearchBox },
+		props: {
+			distinctField: {
+				default: text('distinctField', 'authors.keyword'),
+			},
+			distinctFieldConfig: {
+				default: object('distinctFieldConfig', {
+					inner_hits:
+					{
+						name: 'most_recent',
+						size: 5,
+						sort: [{ timestamp: 'asc' }]
+					}
+				})
+			}
+		},
+		template: `<base-search-box :subProps="{ distinctField, size: 3, distinctFieldConfig }"/>`,
+	}))
+	.add('with index prop', () => ({
+		components: { SearchBoxWithIndexProp },
+		template: '<search-box-with-index-prop />',
+	}))
+	.add('with autoFocus', () => ({
+		components: { BaseSearchBox },
+		props: getKnob('autoFocus', true),
+		template: '<base-search-box :subProps="{ autoFocus }"/>',
+	}))
+	.add('with focusShortcuts', () => ({
+		components: { BaseSearchBox },
+		props: getKnob('focusShortcuts', ['/', 'r', 'b']),
+		template: '<base-search-box :subProps="{ focusShortcuts }"/>',
+	}))
+	.add('with addonBefore', () => ({
+		components: { SearchBoxWithAddonBeforeSlot },
+		template: '<search-box-with-addon-before-slot/>',
+	}))
+	.add('with addonAfter', () => ({
+		components: { SearchBoxWithAddonAfterSlot },
+		template: '<search-box-with-addon-after-slot/>',
+	}))
+	.add('with addonBefore & addonAfter', () => ({
+		components: { SearchBoxWithAddonBeforeAfterSlots },
+		template: '<search-box-with-addon-before-after-slots/>',
+	}))
+	.add('with expandSuggestionsContainer', () => ({
+		components: { SearchBoxWithAddonBeforeAfterSlots },
+		props: getKnob('expandSuggestionsContainer', false),
+		template:
+			'<search-box-with-addon-before-after-slots :subProps="{ expandSuggestionsContainer }"/>',
+	}))
+	.add('with enableRecentSuggestions & recentSuggestionsConfig', () => ({
+		components: { BaseSearchBox },
+		props: Object.assign({},
+			getKnob('enableRecentSuggestions', true),
+			getKnob('recentSuggestionsConfig', {
+				size: 3,
+				minChars: 3,
+				minHits: 2,
+				index: 'good-books-ds'
+			})
+		),
+		template:
+			'<base-search-box :subProps="{ enableRecentSuggestions, recentSuggestionsConfig }"/>',
+	}))
+	.add('with enablePopularSuggestions & popularSuggestionsConfig', () => ({
+		components: { BaseSearchBox },
+		props: Object.assign({},
+			getKnob('enablePopularSuggestions', true),
+			getKnob('popularSuggestionsConfig', {
+				size: 3,
+				minChars: 3,
+				index: 'good-books-ds',
+				showGlobal: false
+			})
+		),
+		template:
+			'<base-search-box :subProps="{ enablePopularSuggestions, popularSuggestionsConfig }"/>',
+	}))
+	;
 
 storiesOf('Result Components/Reactive List', module)
 	.addParameters({
