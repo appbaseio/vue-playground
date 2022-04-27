@@ -8,7 +8,7 @@
       <div class="col">
         <SingleList
           componentId="BookSensor"
-          data-field="original_series.keyword"
+          data-field="test.keyword"
           :renderNoResults="renderNoResults"
         />
       </div>
@@ -62,7 +62,7 @@ export default {
     name: 'SingleListWithRenderNoResultsSlot',
     methods: {
         renderNoResults() {
-            return 'No Results';
+            return 'No Results Found!';
         }
     }
 };

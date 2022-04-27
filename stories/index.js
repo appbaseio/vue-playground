@@ -29,9 +29,13 @@ import DataSearchWithRenderSlot from './DataSearchWithRenderSlot.vue';
 import SearchBoxWithRenderSlot from './SearchBoxWithRenderSlot.vue';
 import SearchBoxWithRenderItemSlot from './SearchBoxWithRenderItemSlot.vue';
 import SingleListWithRenderSlot from './SingleListWithRenderSlot';
+import SingleListWithRenderItemSlot from './SingleListWithRenderItemSlot.vue';
 import MultiListWithRenderSlot from './MultiListWithRenderSlot';
+import MultiListWithRenderItemSlot from './MultiListWithRenderItemSlot.vue';
 import SingleDropdownListWithRenderSlot from './SingleDropdownListWithRenderSlot';
+import SingleDropdownListWithRenderItemSlot from './SingleDropdownListWithRenderItemSlot.vue';
 import MultiDropdownListWithRenderSlot from './MultiDropdownListWithRenderSlot';
+import MultiDropdownListWithRenderItemSlot from './MultiDropdownListWithRenderItemSlot.vue';
 import DataSearchWithRenderQuerySuggestionsSlot from './DataSearchWithRenderQuerySuggestionsSlot';
 import SingleListWithRenderNoResultsSlot from "./SingleListWithRenderNoResultsSlot.vue";
 import SingleDropdownListWithRenderNoResultsSlot from "./SingleDropdownListWithRenderNoResultsSlot";
@@ -50,6 +54,9 @@ import SearchBoxWithAddonBeforeAfterSlots from './SearchBoxWithAddonBeforeAfterS
 import DataSearchWithAddonAfterSlot from './DataSearchWithAddonAfterSlot.vue';
 import DataSearchWithAddonBeforeAfterSlots from './DataSearchWithAddonBeforeAfterSlots.vue';
 import BaseRangeInput from './BaseRangeInput.vue';
+import ReactiveListWithNoResultsSlot from './ReactiveListWithNoResultsSlot.vue';
+import ReactiveListWithCustomResultStatsSlot from './ReactiveListWithCustomResultStatsSlot.vue';
+import BaseReactiveListCardLayout from './BaseReactiveListCardLayout.vue';
 import './styles.css';
 
 // List Components
@@ -111,12 +118,15 @@ const showRadio = (value = true) => getKnob('showRadio', value);
 const sortBy = (value = { ascending: 'asc', descending: 'desc', count: 'count' }, defaultValue = 'asc') => getKnob('sortBy', value, select, defaultValue, String);
 const URLParams = (value = false) => getKnob('URLParams', value);
 const dataField = (value = ['original_series.keyword', 'authors.keyword', 'language_code.keyword'], defaultValue = 'original_series.keyword') => getKnob('dataField', value, select, defaultValue);
-const paginationAt = (value = ['top', 'bottom', 'both'], defaultValue = 'bottom') => getKnob('paginationAt', value, select, defaultValue);
+const paginationAt = (value = ['top', 'bottom', 'both'], defaultValue = 'top') => getKnob('paginationAt', value, select, defaultValue);
 const selectAllLabel = (value) => getKnob('selectAllLabel', value);
 const showCount = (value = true) => getKnob('showCount', value);
+const showSearch = (value = true) => getKnob('showSearch', value);
 const showClear = (value = true) => getKnob('showClear', value);
 const highlight = (value = true) => getKnob('highlight', value);
 const showCheckbox = (value = true) => getKnob('showCheckbox', value);
+const rangeLabels = (value) => getKnob('rangeLabels', value);
+const showTooltip = (value) => getKnob('showTooltip', value, select, false);
 
 function removeFirstLine(str, number = 12) {
   while (number--) {
@@ -212,7 +222,7 @@ storiesOf('Range Components/RangeSlider', module)
     template: '<base-range-slider :subProps="{ showFilter: false }"/>',
   }))
   .add('with title', () => ({
-		props: titleKnob('RangeSlider: Ratings'),
+	props: titleKnob('RangeSlider: Ratings'),
     components: { BaseRangeSlider },
     template: '<base-range-slider :subProps="{ title}"/>',
   }))
@@ -221,6 +231,25 @@ storiesOf('Range Components/RangeSlider', module)
 		props: defaultValue({ start: 3000, end: 9000 }),
     template: '<base-range-slider :subProps="{ defaultValue, showFilter: false}"/>',
 	}))
+   .add('with range Labels', () => ({
+	components: { BaseRangeSlider },
+	   props: rangeLabels(
+		   {
+                start: '3K',
+				end: '50K',
+		}),
+    template: '<base-range-slider :subProps="{ rangeLabels }"/>',
+	}))	
+   .add('without tooltip', () => ({
+	components: { BaseRangeSlider },
+	   props: showTooltip(
+		   {
+                false: 'none',
+				true: 'always',
+				
+		}),
+    template: '<base-range-slider :subProps="{ sliderOptions: { tooltip: showTooltip } }"/>',
+	}))		
 
 storiesOf('Range Components/RangeInput', module)
 	.addParameters({
@@ -243,6 +272,15 @@ storiesOf('Range Components/RangeInput', module)
 	props: defaultValue({ start: 3000, end: 9000 }),
     template: '<base-range-input :subProps="{ defaultValue, showFilter: false}"/>',
 	}))
+   .add('with range Labels', () => ({
+	components: { BaseRangeInput },
+	   props: rangeLabels(
+		   {
+                start: '3K',
+				end: '50K',
+		}),
+    template: '<base-range-input :subProps="{ rangeLabels }"/>',
+	}))
 
 storiesOf('Range Components/DynamicRangeSlider', module)
 	.addParameters({
@@ -264,6 +302,16 @@ storiesOf('Range Components/DynamicRangeSlider', module)
 		components: { BaseDynamicRangeSlider },
 		template: '<base-dynamic-range-slider :subProps="{ defaultValue: function(min, max){ return { start: min + 1000, end: max - 1000} }, showFilter: false}"/>',
 	}))
+   .add('without tooltip', () => ({
+	components: { BaseDynamicRangeSlider },
+	   props: showTooltip(
+		   {
+                false: 'none',
+				true: 'always',
+				
+		}),
+    template: '<base-dynamic-range-slider :subProps="{ sliderOptions: { tooltip: showTooltip } }"/>',
+	}))			
 
 storiesOf('List Components/SingleList', module)
 	.addParameters({
@@ -320,6 +368,10 @@ storiesOf('List Components/SingleList', module)
 	components: { SingleListWithRenderSlot },
 	template: '<single-list-with-render-slot />'
   }))
+  .add('with renderItem slot', () => ({
+	components: { SingleListWithRenderItemSlot },
+	template: '<single-list-with-render-item-slot />'
+  }))	
   .add('with renderNoResults', () => ({
 	components: { SingleListWithRenderNoResultsSlot },
 	template: '<single-list-with-render-no-results-slot />'
@@ -396,6 +448,10 @@ storiesOf('List Components/MulitList', module)
 	components: { MultiListWithRenderSlot },
 	template: '<multi-list-with-render-slot />'
   }))
+  .add('with renderItem slot', () => ({
+    components: { MultiListWithRenderItemSlot },
+    template: '<multi-list-with-render-item-slot />',
+  }))	
   .add('with renderNoResults', () => ({
 	components: { MultiListWithRenderNoResultsSlot },
 	template: '<multi-list-with-render-no-results-slot />'
@@ -446,8 +502,13 @@ storiesOf('List Components/SingleDropdownList', module)
 		props: showCount(false),
     template: '<base-single-dropdown-list :subProps="{ showCount, showFilter: false}"/>',
   }))
+    .add('with search', () => ({
+		components: { BaseSingleDropdownList },
+		props: showSearch(false),
+    template: '<base-single-dropdown-list :subProps="{ showSearch, showFilter: false}"/>',
+  }))  
     .add('with defaultValue', () => ({
-		props: defaultValue('Artemis Fowl'),
+		props: defaultValue('Discworld'),
     components: { BaseSingleDropdownList },
     template: '<base-single-dropdown-list :subProps="{ defaultValue, showFilter: false}"/>',
   }))
@@ -463,8 +524,10 @@ storiesOf('List Components/SingleDropdownList', module)
     	components: { BaseSingleDropdownList },
     	template: '<base-single-dropdown-list :subProps="{ showClear, showSearch: true}"/>',
 	}))
-
-
+	.add('with renderItem slot', () => ({
+		components: { SingleDropdownListWithRenderItemSlot },
+		template: '<single-dropdown-list-with-render-item-slot />'
+	}))	
     .add('Playground', () => ({
 		components: { BaseSingleDropdownList },
 		props: Object.keys(
@@ -534,14 +597,17 @@ storiesOf('List Components/MultiDropdownList ', module)
 		components: { BaseMultiDropdownList },
 		props: showCount(false),
     template: '<base-multi-dropdown-list :subProps="{ showCount, showFilter: false}"/>',
-  }))
-
+  	}))
+    .add('with search', () => ({
+		components: { BaseMultiDropdownList },
+		props: showSearch(true),
+    template: '<base-multi-dropdown-list :subProps="{ showSearch, showFilter: false}"/>',
+  	}))
     .add('With Select All', () => ({
 		components: { BaseMultiDropdownList },
 		props: selectAllLabel('All Books'),
     template: '<base-multi-dropdown-list :subProps="{ selectAllLabel, showFilter: false}"/>',
-  }))
-
+  	}))
     .add('with defaultValue', () => ({
     components: { BaseMultiDropdownList },
 		props: defaultValue([
@@ -584,6 +650,10 @@ storiesOf('List Components/MultiDropdownList ', module)
 		components: { MultiDropdownListWithRenderSlot },
 		template: '<multi-dropdown-list-with-render-slot />'
 	}))
+	.add('with renderItem slot', () => ({
+		components: { MultiDropdownListWithRenderItemSlot },
+		template: '<multi-dropdown-list-with-render-item-slot />'
+	}))	
 	.add('with renderNoResults', () => ({
 		components: { MultiDropdownListWithRenderNoResultsSlot },
 		template: '<multi-dropdown-list-with-render-no-results-slot />'
@@ -934,59 +1004,73 @@ storiesOf('Result Components/Reactive List', module)
 			sidebar: removeFirstLine(ReactiveListReadme),
 		},
 	})
-  .addDecorator(withKnobs)
-  .add('Basic', () => ({
-    components: { BaseReactiveList },
-    template: '<base-reactive-list/>',
-  }))
-  .add('With pagination', () => ({
+	.addDecorator(withKnobs)
+	.add('Basic', () => ({
+		components: { BaseReactiveList },
+		template: '<base-reactive-list/>',
+	}))
+	.add('With pagination', () => ({
 		components: { BaseReactiveList },
 		props: getKnob('pagination', true),
-    template: '<base-reactive-list :subProps="{ pagination }"/>',
-  }))
-  .add('With Infinite Loading', () => ({
-    components: { BaseReactiveList },
-    template: '<base-reactive-list/>',
-  }))
-  .add('with custom sort', () => ({
+		template: '<base-reactive-list :subProps="{ pagination }"/>',
+	}))
+	.add('With Infinite Loading', () => ({
+		components: { BaseReactiveList },
+		template: '<base-reactive-list/>',
+	}))
+	.add('with custom sort', () => ({
 		components: { BaseReactiveList },
 		props: sortBy({ ascending: 'asc', descending: 'desc' }, 'asc'),
-    template: '<base-reactive-list :subProps="{ sortBy }"/>',
-  }))
-  .add('With pagination at top', () => ({
+		template: '<base-reactive-list :subProps="{ sortBy }"/>',
+	}))
+	.add('With pagination at top', () => ({
 		components: { BaseReactiveList },
 		props: paginationAt(),
-    template: '<base-reactive-list :subProps="{ pagination: true, paginationAt }"/>',
-  }))
-  .add('Without resultStats', () => ({
+		template: '<base-reactive-list :subProps="{ pagination: true, paginationAt }"/>',
+	}))
+	.add('Without resultStats', () => ({
 		components: { BaseReactiveList },
 		props: getKnob('showResultStats', false),
-    template: '<base-reactive-list :subProps="{ showResultStats }"/>',
-  }))
-  .add('With custom number of pages', () => ({
+		template: '<base-reactive-list :subProps="{ showResultStats }"/>',
+	}))
+	.add('With custom number of pages', () => ({
 		components: { BaseReactiveList },
 		props: getKnob('currentPage', 10),
-    template: '<base-reactive-list :subProps="{ pagination: true, currentPage }"/>',
-  }))
-  .add('with distinctField prop', () => ({
-	components: { BaseReactiveList },
-	props: {
-		distinctField: {
-			default: text('distinctField', 'authors.keyword'),
+		template: '<base-reactive-list :subProps="{ pagination: true, currentPage }"/>',
+	}))
+	.add('with distinctField prop', () => ({
+		components: { BaseReactiveList },
+		props: {
+			distinctField: {
+				default: text('distinctField', 'authors.keyword'),
+			},
+			distinctFieldConfig: {
+				default: object('distinctFieldConfig', {
+					inner_hits: {
+						name: 'most_recent',
+						size: 5,
+						sort: [{ timestamp: 'asc' }],
+					},
+				}),
+			},
 		},
-		distinctFieldConfig: {
-			default: object('distinctFieldConfig', {
-				inner_hits:
-				{
-					name:'most_recent',
-					size:5,
-					sort:[{timestamp:'asc'}]
-				}
-			})
-		}
-	},
-	template: `<base-reactive-list :subProps="{ distinctField, size: 3, distinctFieldConfig }"/>`,
-}));
+		template: `<base-reactive-list :subProps="{ distinctField, size: 3, distinctFieldConfig }"/>`,
+	}))
+	.add('with renderNoResults prop', () => ({
+		components: { ReactiveListWithNoResultsSlot },
+		props: getKnob('renderNoResults', 'No Results Found!'),
+		template: `<reactive-list-with-no-results-slot :subProps="{ renderNoResults }"/>`,
+	}))
+	.add('With custom result stats message', () => ({
+		components: { ReactiveListWithCustomResultStatsSlot },
+		template: '<reactive-list-with-custom-result-stats-slot />',
+	}))
+	.add('With card layout', () => ({
+		components: { BaseReactiveListCardLayout },
+		template: '<base-reactive-list-card-layout />',
+	}));
+
+
 storiesOf('Result Components/ResultList', module)
 	.addParameters({
 		readme: {
@@ -1021,8 +1105,8 @@ storiesOf('Result Components/ResultList', module)
 	.add('With custom number of pages', () => ({
 		components: { BaseResultList },
 		props: getKnob('pages', 2),
-    template: '<base-result-list :subProps="{ pagination: true, pages }"/>',
-  }));
+		template: '<base-result-list :subProps="{ pagination: true, pages }"/>',
+	}));
 
 storiesOf('Result Components/ResultCard', module)
 	.addParameters({
