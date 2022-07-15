@@ -128,6 +128,7 @@ const showCheckbox = (value = true) => getKnob('showCheckbox', value);
 const rangeLabels = (value) => getKnob('rangeLabels', value);
 const showTooltip = (value) => getKnob('showTooltip', value, select, false);
 
+
 function removeFirstLine(str, number = 12) {
   while (number--) {
     str = str.substring(str.indexOf("\n") + 1);
@@ -669,6 +670,11 @@ storiesOf('Search Components/DataSearch', module)
   .add('Basic', () => ({
     components: { BaseDataSearch },
     template: '<base-data-search :subProps="{ showFilter: false }"/>',
+  }))
+  .add('with tag-mode', () => ({
+	components: { BaseDataSearch },
+	props: getKnob('mode', ['select', 'tag'], select, 'tag'),
+	template: '<base-data-search :subProps="{ mode }"/>',
   }))
   .add('with title', () => ({
 		props: titleKnob('Book Store'),
