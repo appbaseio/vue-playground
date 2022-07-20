@@ -829,6 +829,11 @@ storiesOf('Search Components/SearchBox', module)
 		components: { BaseSearchBox },
 		template: '<base-search-box :subProps="{ showFilter: false }"/>',
 	}))
+	.add('with mode prop', () => ({
+		components: { BaseSearchBox },
+		props: getKnob('mode', ['select', 'tag'], select, 'tag'),
+		template: '<base-search-box :subProps="{ mode }"/>',
+	}))
 	.add('with title', () => ({
 		props: titleKnob('Book Store'),
 		components: { BaseSearchBox },
