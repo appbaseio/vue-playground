@@ -839,6 +839,11 @@ storiesOf('Search Components/SearchBox', module)
 		components: { BaseSearchBox },
 		template: "<base-search-box :subProps=\"{ iconPosition: 'right', title, showFilter: false}\"/>",
 	}))
+	.add('with categoryField', () => ({
+		props: titleKnob('Book Store'),
+		components: { BaseSearchBox },
+		template: "<base-search-box :subProps=\"{ iconPosition: 'right', categoryField, showFilter: false}\"/>",
+	}))
 	.add('without search icon', () => ({
 		props: getKnob('showIcon', false),
 		components: { BaseSearchBox },
