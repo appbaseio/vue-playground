@@ -128,6 +128,7 @@ const showCheckbox = (value = true) => getKnob('showCheckbox', value);
 const rangeLabels = (value) => getKnob('rangeLabels', value);
 const showTooltip = (value) => getKnob('showTooltip', value, select, false);
 
+
 function removeFirstLine(str, number = 12) {
   while (number--) {
     str = str.substring(str.indexOf("\n") + 1);
@@ -239,17 +240,17 @@ storiesOf('Range Components/RangeSlider', module)
 				end: '50K',
 		}),
     template: '<base-range-slider :subProps="{ rangeLabels }"/>',
-	}))	
+	}))
    .add('without tooltip', () => ({
 	components: { BaseRangeSlider },
 	   props: showTooltip(
 		   {
                 false: 'none',
 				true: 'always',
-				
+
 		}),
     template: '<base-range-slider :subProps="{ sliderOptions: { tooltip: showTooltip } }"/>',
-	}))		
+	}))
 
 storiesOf('Range Components/RangeInput', module)
 	.addParameters({
@@ -308,10 +309,10 @@ storiesOf('Range Components/DynamicRangeSlider', module)
 		   {
                 false: 'none',
 				true: 'always',
-				
+
 		}),
     template: '<base-dynamic-range-slider :subProps="{ sliderOptions: { tooltip: showTooltip } }"/>',
-	}))			
+	}))
 
 storiesOf('List Components/SingleList', module)
 	.addParameters({
@@ -371,7 +372,7 @@ storiesOf('List Components/SingleList', module)
   .add('with renderItem slot', () => ({
 	components: { SingleListWithRenderItemSlot },
 	template: '<single-list-with-render-item-slot />'
-  }))	
+  }))
   .add('with renderNoResults', () => ({
 	components: { SingleListWithRenderNoResultsSlot },
 	template: '<single-list-with-render-no-results-slot />'
@@ -451,7 +452,7 @@ storiesOf('List Components/MulitList', module)
   .add('with renderItem slot', () => ({
     components: { MultiListWithRenderItemSlot },
     template: '<multi-list-with-render-item-slot />',
-  }))	
+  }))
   .add('with renderNoResults', () => ({
 	components: { MultiListWithRenderNoResultsSlot },
 	template: '<multi-list-with-render-no-results-slot />'
@@ -506,7 +507,7 @@ storiesOf('List Components/SingleDropdownList', module)
 		components: { BaseSingleDropdownList },
 		props: showSearch(false),
     template: '<base-single-dropdown-list :subProps="{ showSearch, showFilter: false}"/>',
-  }))  
+  }))
     .add('with defaultValue', () => ({
 		props: defaultValue('Discworld'),
     components: { BaseSingleDropdownList },
@@ -527,7 +528,7 @@ storiesOf('List Components/SingleDropdownList', module)
 	.add('with renderItem slot', () => ({
 		components: { SingleDropdownListWithRenderItemSlot },
 		template: '<single-dropdown-list-with-render-item-slot />'
-	}))	
+	}))
     .add('Playground', () => ({
 		components: { BaseSingleDropdownList },
 		props: Object.keys(
@@ -653,7 +654,7 @@ storiesOf('List Components/MultiDropdownList ', module)
 	.add('with renderItem slot', () => ({
 		components: { MultiDropdownListWithRenderItemSlot },
 		template: '<multi-dropdown-list-with-render-item-slot />'
-	}))	
+	}))
 	.add('with renderNoResults', () => ({
 		components: { MultiDropdownListWithRenderNoResultsSlot },
 		template: '<multi-dropdown-list-with-render-no-results-slot />'
@@ -669,6 +670,11 @@ storiesOf('Search Components/DataSearch', module)
   .add('Basic', () => ({
     components: { BaseDataSearch },
     template: '<base-data-search :subProps="{ showFilter: false }"/>',
+  }))
+  .add('with mode prop', () => ({
+	components: { BaseDataSearch },
+	props: getKnob('mode', ['select', 'tag'], select, 'tag'),
+	template: '<base-data-search :subProps="{ mode }"/>',
   }))
   .add('with title', () => ({
 		props: titleKnob('Book Store'),
@@ -823,10 +829,20 @@ storiesOf('Search Components/SearchBox', module)
 		components: { BaseSearchBox },
 		template: '<base-search-box :subProps="{ showFilter: false }"/>',
 	}))
+	.add('with mode prop', () => ({
+		components: { BaseSearchBox },
+		props: getKnob('mode', ['select', 'tag'], select, 'tag'),
+		template: '<base-search-box :subProps="{ mode }"/>',
+	}))
 	.add('with title', () => ({
 		props: titleKnob('Book Store'),
 		components: { BaseSearchBox },
 		template: "<base-search-box :subProps=\"{ iconPosition: 'right', title, showFilter: false}\"/>",
+	}))
+	.add('with categoryField', () => ({
+		props: titleKnob('Book Store'),
+		components: { BaseSearchBox },
+		template: "<base-search-box :subProps=\"{ iconPosition: 'right', categoryField, showFilter: false}\"/>",
 	}))
 	.add('without search icon', () => ({
 		props: getKnob('showIcon', false),
