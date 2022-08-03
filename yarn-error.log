@@ -1,0 +1,65 @@
+Arguments: 
+  /usr/local/bin/node /usr/local/bin/yarn
+
+PATH: 
+  /Users/mohdashraf/.gvm/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/Library/Apple/usr/bin
+
+Yarn version: 
+  1.22.10
+
+Node version: 
+  14.17.1
+
+Platform: 
+  darwin x64
+
+Trace: 
+  Error: https://registry.yarnpkg.com/@babel/traverse/-/traverse-7.16.8.tgz: ENOENT: no such file or directory, open '/Users/mohdashraf/Library/Caches/Yarn/v6/npm-@babel-traverse-7.16.8-bab2f2b09a5fe8a8d9cad22cbfe3ba1d126fef9c-integrity/node_modules/@babel/traverse/.yarn-tarball.tgz'
+
+npm manifest: 
+  {
+      "name": "vue-playground",
+      "version": "1.0.0",
+      "description": "Reactive<x> storybook playground",
+      "main": "index.js",
+      "scripts": {
+          "storybook": "start-storybook -p 9001 -c .storybook",
+          "build-storybook": "build-storybook",
+          "deploy-storybook": "storybook-to-ghpages"
+      },
+      "repository": {
+          "type": "git",
+          "url": "git+https://github.com/appbaseio/vue-playground.git"
+      },
+      "author": "Kuldeep Saxena <kuldepsaxena155@gmail.com>",
+      "license": "Apache-2.0",
+      "bugs": {
+          "url": "https://github.com/appbaseio/vue-playground/issues"
+      },
+      "homepage": "https://github.com/appbaseio/vue-playground#readme",
+      "devDependencies": {
+          "@babel/core": "^7.14.6",
+          "@storybook/addon-knobs": "^5.1.9",
+          "@storybook/vue": "^5.1.9",
+          "babel-loader": "7",
+          "storybook-readme": "5.0.5",
+          "vue-loader": "15.9.7",
+          "vue-template-compiler": "^2.6.10",
+          "webpack": "4.38.0"
+      },
+      "dependencies": {
+          "@appbaseio/docs": "git://github.com/appbaseio/Docs",
+          "@appbaseio/reactivesearch-vue": "1.25.0",
+          "@storybook/theming": "5.1.9",
+          "vue": "^2.6.10"
+      },
+      "engines": {
+          "node": ">=14.17.1"
+      }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

@@ -8,7 +8,7 @@
       <div class="col">
         <MultiList
           componentId="BookSensor"
-          data-field="authors.keyword"
+          data-field="test.keyword"
           :renderNoResults="renderNoResults"
         />
       </div>
@@ -62,7 +62,7 @@ export default {
     name: 'MultiListWithRenderNoResultsSlot',
     methods: {
         renderNoResults() {
-            return 'No Results';
+            return 'No Results found';
         }
     }
 };

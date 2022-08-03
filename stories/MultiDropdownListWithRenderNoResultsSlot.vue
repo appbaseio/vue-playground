@@ -8,7 +8,7 @@
       <div class="col">
         <MultiDropdownList
           componentId="BookSensor"
-          data-field="original_series.keyword"
+          data-field="test.keyword"
           :renderNoResults="renderNoResults"
         />
       </div>

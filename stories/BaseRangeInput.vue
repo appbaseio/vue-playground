@@ -14,10 +14,6 @@
                             start: 3000,
                             end: 50000,
                         }"
-                        :rangeLabels="{
-                            start: '3K',
-                            end: '50K',
-                        }"
                         :componentStyle="{
                             margin: '10px'
                         }"

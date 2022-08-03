@@ -12,6 +12,7 @@ import {
 
 import BaseReactiveList from './BaseReactiveList.vue';
 import BaseDataSearch from './BaseDataSearch.vue';
+import BaseSearchBox from './BaseSearchBox.vue';
 import BaseMultiList from './BaseMultiList.vue';
 import BaseSingleList from './BaseSingleList.vue';
 import BaseSingleRange from './BaseSingleRange.vue';
@@ -24,25 +25,39 @@ import BaseDynamicRangeSlider from './BaseDynamicRangeSlider.vue';
 import BaseResultList from './BaseResultList.vue';
 import BaseResultCard from './BaseResultCard.vue';
 import BaseToggleButton from './BaseToggleButton.vue';
-import DataSearchWithRenderSlot from './DataSearchWithRenderSlot';
+import DataSearchWithRenderSlot from './DataSearchWithRenderSlot.vue';
+import SearchBoxWithRenderSlot from './SearchBoxWithRenderSlot.vue';
+import SearchBoxWithRenderItemSlot from './SearchBoxWithRenderItemSlot.vue';
 import SingleListWithRenderSlot from './SingleListWithRenderSlot';
+import SingleListWithRenderItemSlot from './SingleListWithRenderItemSlot.vue';
 import MultiListWithRenderSlot from './MultiListWithRenderSlot';
+import MultiListWithRenderItemSlot from './MultiListWithRenderItemSlot.vue';
 import SingleDropdownListWithRenderSlot from './SingleDropdownListWithRenderSlot';
+import SingleDropdownListWithRenderItemSlot from './SingleDropdownListWithRenderItemSlot.vue';
 import MultiDropdownListWithRenderSlot from './MultiDropdownListWithRenderSlot';
+import MultiDropdownListWithRenderItemSlot from './MultiDropdownListWithRenderItemSlot.vue';
 import DataSearchWithRenderQuerySuggestionsSlot from './DataSearchWithRenderQuerySuggestionsSlot';
 import SingleListWithRenderNoResultsSlot from "./SingleListWithRenderNoResultsSlot.vue";
 import SingleDropdownListWithRenderNoResultsSlot from "./SingleDropdownListWithRenderNoResultsSlot";
 import MultiListWithRenderNoResultsSlot from "./MultiListWithRenderNoResultsSlot.vue";
 import MultiDropdownListWithRenderNoResultsSlot from "./MultiDropdownListWithRenderNoResultsSlot";
 import DataSearchWithCustomSuggestionIcons from './DataSearchWithCustomSuggestionIcons.vue';
+import SearchBoxWithCustomSuggestionIcons from './SearchBoxWithCustomSuggestionIcons.vue';
 import ReactiveComponentWithDistinctFieldProp from './ReactiveComponentWithDistinctFieldProp.vue';
 import DataSearchWithIndexProp from './DataSearchWithIndexProp.vue';
+import SearchBoxWithIndexProp from './SearchBoxWithIndexProp.vue';
 import MultiListWithIndexProp from './MultiListWithIndexProp.vue';
 import DataSearchWithAddonBeforeSlot from './DataSearchWithAddonBeforeSlot.vue';
+import SearchBoxWithAddonBeforeSlot from './SearchBoxWithAddonBeforeSlot.vue';
+import SearchBoxWithAddonAfterSlot from './SearchBoxWithAddonAfterSlot.vue';
+import SearchBoxWithAddonBeforeAfterSlots from './SearchBoxWithAddonBeforeAfterSlots.vue';
 import DataSearchWithAddonAfterSlot from './DataSearchWithAddonAfterSlot.vue';
 import DataSearchWithAddonBeforeAfterSlots from './DataSearchWithAddonBeforeAfterSlots.vue';
 import BaseRangeInput from './BaseRangeInput.vue';
 import BaseReactiveGoogleMap from './reactivemaps/BaseReactiveGoogleMap.vue';
+import ReactiveListWithNoResultsSlot from './ReactiveListWithNoResultsSlot.vue';
+import ReactiveListWithCustomResultStatsSlot from './ReactiveListWithCustomResultStatsSlot.vue';
+import BaseReactiveListCardLayout from './BaseReactiveListCardLayout.vue';
 import './styles.css';
 
 // List Components
@@ -104,12 +119,16 @@ const showRadio = (value = true) => getKnob('showRadio', value);
 const sortBy = (value = { ascending: 'asc', descending: 'desc', count: 'count' }, defaultValue = 'asc') => getKnob('sortBy', value, select, defaultValue, String);
 const URLParams = (value = false) => getKnob('URLParams', value);
 const dataField = (value = ['original_series.keyword', 'authors.keyword', 'language_code.keyword'], defaultValue = 'original_series.keyword') => getKnob('dataField', value, select, defaultValue);
-const paginationAt = (value = ['top', 'bottom', 'both'], defaultValue = 'bottom') => getKnob('paginationAt', value, select, defaultValue);
+const paginationAt = (value = ['top', 'bottom', 'both'], defaultValue = 'top') => getKnob('paginationAt', value, select, defaultValue);
 const selectAllLabel = (value) => getKnob('selectAllLabel', value);
 const showCount = (value = true) => getKnob('showCount', value);
+const showSearch = (value = true) => getKnob('showSearch', value);
 const showClear = (value = true) => getKnob('showClear', value);
 const highlight = (value = true) => getKnob('highlight', value);
 const showCheckbox = (value = true) => getKnob('showCheckbox', value);
+const rangeLabels = (value) => getKnob('rangeLabels', value);
+const showTooltip = (value) => getKnob('showTooltip', value, select, false);
+
 
 function removeFirstLine(str, number = 12) {
   while (number--) {
@@ -205,7 +224,7 @@ storiesOf('Range Components/RangeSlider', module)
     template: '<base-range-slider :subProps="{ showFilter: false }"/>',
   }))
   .add('with title', () => ({
-		props: titleKnob('RangeSlider: Ratings'),
+	props: titleKnob('RangeSlider: Ratings'),
     components: { BaseRangeSlider },
     template: '<base-range-slider :subProps="{ title}"/>',
   }))
@@ -213,6 +232,25 @@ storiesOf('Range Components/RangeSlider', module)
 		components: { BaseRangeSlider },
 		props: defaultValue({ start: 3000, end: 9000 }),
     template: '<base-range-slider :subProps="{ defaultValue, showFilter: false}"/>',
+	}))
+   .add('with range Labels', () => ({
+	components: { BaseRangeSlider },
+	   props: rangeLabels(
+		   {
+                start: '3K',
+				end: '50K',
+		}),
+    template: '<base-range-slider :subProps="{ rangeLabels }"/>',
+	}))
+   .add('without tooltip', () => ({
+	components: { BaseRangeSlider },
+	   props: showTooltip(
+		   {
+                false: 'none',
+				true: 'always',
+
+		}),
+    template: '<base-range-slider :subProps="{ sliderOptions: { tooltip: showTooltip } }"/>',
 	}))
 
 storiesOf('Range Components/RangeInput', module)
@@ -236,6 +274,15 @@ storiesOf('Range Components/RangeInput', module)
 	props: defaultValue({ start: 3000, end: 9000 }),
     template: '<base-range-input :subProps="{ defaultValue, showFilter: false}"/>',
 	}))
+   .add('with range Labels', () => ({
+	components: { BaseRangeInput },
+	   props: rangeLabels(
+		   {
+                start: '3K',
+				end: '50K',
+		}),
+    template: '<base-range-input :subProps="{ rangeLabels }"/>',
+	}))
 
 storiesOf('Range Components/DynamicRangeSlider', module)
 	.addParameters({
@@ -256,6 +303,16 @@ storiesOf('Range Components/DynamicRangeSlider', module)
 	.add('with defaultValue', () => ({
 		components: { BaseDynamicRangeSlider },
 		template: '<base-dynamic-range-slider :subProps="{ defaultValue: function(min, max){ return { start: min + 1000, end: max - 1000} }, showFilter: false}"/>',
+	}))
+   .add('without tooltip', () => ({
+	components: { BaseDynamicRangeSlider },
+	   props: showTooltip(
+		   {
+                false: 'none',
+				true: 'always',
+
+		}),
+    template: '<base-dynamic-range-slider :subProps="{ sliderOptions: { tooltip: showTooltip } }"/>',
 	}))
 
 storiesOf('List Components/SingleList', module)
@@ -312,6 +369,10 @@ storiesOf('List Components/SingleList', module)
   .add('with render slot', () => ({
 	components: { SingleListWithRenderSlot },
 	template: '<single-list-with-render-slot />'
+  }))
+  .add('with renderItem slot', () => ({
+	components: { SingleListWithRenderItemSlot },
+	template: '<single-list-with-render-item-slot />'
   }))
   .add('with renderNoResults', () => ({
 	components: { SingleListWithRenderNoResultsSlot },
@@ -389,6 +450,10 @@ storiesOf('List Components/MulitList', module)
 	components: { MultiListWithRenderSlot },
 	template: '<multi-list-with-render-slot />'
   }))
+  .add('with renderItem slot', () => ({
+    components: { MultiListWithRenderItemSlot },
+    template: '<multi-list-with-render-item-slot />',
+  }))
   .add('with renderNoResults', () => ({
 	components: { MultiListWithRenderNoResultsSlot },
 	template: '<multi-list-with-render-no-results-slot />'
@@ -439,8 +504,13 @@ storiesOf('List Components/SingleDropdownList', module)
 		props: showCount(false),
     template: '<base-single-dropdown-list :subProps="{ showCount, showFilter: false}"/>',
   }))
+    .add('with search', () => ({
+		components: { BaseSingleDropdownList },
+		props: showSearch(false),
+    template: '<base-single-dropdown-list :subProps="{ showSearch, showFilter: false}"/>',
+  }))
     .add('with defaultValue', () => ({
-		props: defaultValue('Artemis Fowl'),
+		props: defaultValue('Discworld'),
     components: { BaseSingleDropdownList },
     template: '<base-single-dropdown-list :subProps="{ defaultValue, showFilter: false}"/>',
   }))
@@ -449,8 +519,17 @@ storiesOf('List Components/SingleDropdownList', module)
 		props: URLParams(),
     components: { BaseSingleDropdownList },
     template: '<base-single-dropdown-list :subProps="{ URLParams, showFilter: false}"/>',
-  }))
+	}))
 
+    .add('With show search and clear icon', () => ({
+		props: getKnob('showClear', true),
+    	components: { BaseSingleDropdownList },
+    	template: '<base-single-dropdown-list :subProps="{ showClear, showSearch: true}"/>',
+	}))
+	.add('with renderItem slot', () => ({
+		components: { SingleDropdownListWithRenderItemSlot },
+		template: '<single-dropdown-list-with-render-item-slot />'
+	}))
     .add('Playground', () => ({
 		components: { BaseSingleDropdownList },
 		props: Object.keys(
@@ -462,12 +541,13 @@ storiesOf('List Components/SingleDropdownList', module)
 			filterLabel('Books Filter'),
 			sortBy(),
 			getKnob('showSearch', false),
+			getKnob('showClear', true),
 			getKnob('showCount', false),
 			getKnob('selectAllLabel', 'All Books'),
 			defaultValue('Artemis Fowl'),
 			URLParams()
 		),
-    template: '<base-single-dropdown-list :subProps="{ title, dataField, size, filterLabel, showFilter, sortBy, showCount, showSearch, selectAllLabel, defaultValue, URLParams, placeholder }"/>',
+    template: '<base-single-dropdown-list :subProps="{ title, dataField, size, filterLabel, showFilter, sortBy, showCount, showSearch, showClear, selectAllLabel, defaultValue, URLParams, placeholder }"/>',
   }))
 	.add('with render slot', () => ({
 		components: { SingleDropdownListWithRenderSlot },
@@ -519,14 +599,17 @@ storiesOf('List Components/MultiDropdownList ', module)
 		components: { BaseMultiDropdownList },
 		props: showCount(false),
     template: '<base-multi-dropdown-list :subProps="{ showCount, showFilter: false}"/>',
-  }))
-
+  	}))
+    .add('with search', () => ({
+		components: { BaseMultiDropdownList },
+		props: showSearch(true),
+    template: '<base-multi-dropdown-list :subProps="{ showSearch, showFilter: false}"/>',
+  	}))
     .add('With Select All', () => ({
 		components: { BaseMultiDropdownList },
 		props: selectAllLabel('All Books'),
     template: '<base-multi-dropdown-list :subProps="{ selectAllLabel, showFilter: false}"/>',
-  }))
-
+  	}))
     .add('with defaultValue', () => ({
     components: { BaseMultiDropdownList },
 		props: defaultValue([
@@ -542,6 +625,11 @@ storiesOf('List Components/MultiDropdownList ', module)
     template: '<base-multi-dropdown-list :subProps="{ URLParams, showFilter: false}"/>',
   }))
 
+    .add('With show search and clear icon', () => ({
+		props: getKnob('showClear', true),
+    	components: { BaseMultiDropdownList },
+    	template: '<base-multi-dropdown-list :subProps="{ showClear, showSearch: true}"/>',
+	}))
     .add('Playground', () => ({
     components: { BaseMultiDropdownList },
 		props: Object.keys(
@@ -552,16 +640,21 @@ storiesOf('List Components/MultiDropdownList ', module)
 			filterLabel('Books Filter'),
 			sortBy(),
 			getKnob('showSearch', false),
+			getKnob('showClear', true),
 			getKnob('showCount', false),
 			selectAllLabel('All Books'),
 			defaultValue('Artemis Fowl'),
 			URLParams()
 		),
-    template: '<base-multi-dropdown-list :subProps="{ title, dataField, size, filterLabel, showFilter, sortBy, showCount, showSearch, selectAllLabel, defaultValue, URLParams, placeholder }"/>',
+    template: '<base-multi-dropdown-list :subProps="{ title, dataField, size, filterLabel, showFilter, sortBy, showCount, showSearch, showClear, selectAllLabel, defaultValue, URLParams, placeholder }"/>',
   }))
 	.add('with render slot', () => ({
 		components: { MultiDropdownListWithRenderSlot },
 		template: '<multi-dropdown-list-with-render-slot />'
+	}))
+	.add('with renderItem slot', () => ({
+		components: { MultiDropdownListWithRenderItemSlot },
+		template: '<multi-dropdown-list-with-render-item-slot />'
 	}))
 	.add('with renderNoResults', () => ({
 		components: { MultiDropdownListWithRenderNoResultsSlot },
@@ -578,6 +671,11 @@ storiesOf('Search Components/DataSearch', module)
   .add('Basic', () => ({
     components: { BaseDataSearch },
     template: '<base-data-search :subProps="{ showFilter: false }"/>',
+  }))
+  .add('with mode prop', () => ({
+	components: { BaseDataSearch },
+	props: getKnob('mode', ['select', 'tag'], select, 'tag'),
+	template: '<base-data-search :subProps="{ mode }"/>',
   }))
   .add('with title', () => ({
 		props: titleKnob('Book Store'),
@@ -721,65 +819,275 @@ storiesOf('Search Components/DataSearch', module)
 			'<data-search-with-addon-before-after-slots :subProps="{ expandSuggestionsContainer }"/>',
 	}));
 
+storiesOf('Search Components/SearchBox', module)
+	.addParameters({
+		readme: {
+			sidebar: removeFirstLine(DataSearchReadme),
+		},
+	})
+	.addDecorator(withKnobs)
+	.add('Basic', () => ({
+		components: { BaseSearchBox },
+		template: '<base-search-box :subProps="{ showFilter: false }"/>',
+	}))
+	.add('with mode prop', () => ({
+		components: { BaseSearchBox },
+		props: getKnob('mode', ['select', 'tag'], select, 'tag'),
+		template: '<base-search-box :subProps="{ mode }"/>',
+	}))
+	.add('with title', () => ({
+		props: titleKnob('Book Store'),
+		components: { BaseSearchBox },
+		template: "<base-search-box :subProps=\"{ iconPosition: 'right', title, showFilter: false}\"/>",
+	}))
+	.add('with categoryField', () => ({
+		props: titleKnob('Book Store'),
+		components: { BaseSearchBox },
+		template: "<base-search-box :subProps=\"{ iconPosition: 'right', categoryField, showFilter: false}\"/>",
+	}))
+	.add('without search icon', () => ({
+		props: getKnob('showIcon', false),
+		components: { BaseSearchBox },
+		template: "<base-search-box :subProps=\"{ showIcon, showFilter: false}\"/>",
+	}))
+	.add('with show clear', () => ({
+		components: { BaseSearchBox },
+		props: showClear(false),
+		template: "<base-search-box :subProps=\"{ showClear, showFilter: false}\"/>",
+	}))
+	.add('with custom suggestion icons', () => ({
+		components: { SearchBoxWithCustomSuggestionIcons },
+		template: "<search-box-with-custom-suggestion-icons/>",
+	}))
+	.add('with debounce', () => ({
+		components: { BaseSearchBox },
+		props: getKnob('debounce', 300),
+		template: "<base-search-box :subProps=\"{ debounce, showFilter: false}\"/>",
+	}))
+	.add('With strictSelection', () => ({
+		components: { BaseSearchBox },
+		props: getKnob('strictSelection', true),
+		template: "<base-search-box :subProps=\"{ strictSelection, showFilter: false}\"/>",
+	}))
+	.add('Without autosuggest', () => ({
+		components: { BaseSearchBox },
+		props: getKnob('autosuggest', false),
+		template: "<base-search-box :subProps=\"{ autosuggest, showFilter: false}\"/>",
+	}))
+	.add('With fuzziness as a number', () => ({
+		components: { BaseSearchBox },
+		props: getKnob('fuzziness', 1),
+		template: "<base-search-box :subProps=\"{ fuzziness, showFilter: false}\"/>",
+	}))
+	.add('With fuzziness as AUTO', () => ({
+		components: { BaseSearchBox },
+		template: "<base-search-box :subProps=\"{ fuzziness: 'AUTO', showFilter: false}\"/>",
+	}))
+	.add('With highlight', () => ({
+		components: { BaseSearchBox },
+		props: highlight(),
+		template: "<base-search-box :subProps=\"{ highlight, showFilter: false}\"/>",
+	}))
+	.add('With voice search', () => ({
+		components: { BaseSearchBox },
+		props: getKnob('showVoiceSearch', true),
+		template: "<base-search-box :subProps=\"{ showVoiceSearch, showFilter: false}\"/>",
+	}))
+	.add('with iconPosition', () => ({
+		components: { BaseSearchBox },
+		props: getKnob('iconPosition', ['right', 'left'], select, 'right'),
+		template: '<base-search-box :subProps="{ iconPosition, showFilter: false }"/>',
+	}))
+	.add('with defaultValue', () => ({
+		components: { BaseSearchBox },
+		props: defaultValue('Harry Potter'),
+		template: '<base-search-box :subProps="{ defaultValue, showFilter: false }"/>',
+	}))
+	.add('with default Suggestions', () => ({
+		components: { BaseSearchBox },
+		props: getKnob('defaultSuggestions', [
+			{ label: "Sherlock Holmes", value: "Sherlock Holmes" },
+			{ label: "The Lord of the Rings", value: "The Lord of the Rings" }
+		]),
+		template: '<base-search-box :subProps="{ defaultSuggestions, showFilter: false }"/>',
+	}))
+	.add('with Filters', () => ({
+		components: { BaseSearchBox },
+		props: filterLabel('Books Search'),
+		template: '<base-search-box :subProps="{ showFilter, filterLabel }"/>',
+	}))
+	.add('with enablePredictiveSuggestions', () => ({
+		props: getKnob('enablePredictiveSuggestions', true),
+		components: { BaseSearchBox },
+		template: '<base-search-box :subProps="{ enablePredictiveSuggestions }"/>',
+	}))
+	.add('with renderNoSuggestion', () => ({
+		components: { BaseSearchBox },
+		props: getKnob('renderNoSuggestion', 'No Suggestions Found'),
+		template: '<base-search-box :subProps="{ showFilter: true, renderNoSuggestion }"/>',
+	}))
+	.add('with render slot', () => ({
+		components: { SearchBoxWithRenderSlot },
+		template: '<search-box-with-render-slot />'
+	}))
+	.add('with renderItem slot', () => ({
+		components: { SearchBoxWithRenderItemSlot },
+		template: '<search-box-with-render-item-slot />'
+	}))
+	.add('with distinctField prop', () => ({
+		components: { BaseSearchBox },
+		props: {
+			distinctField: {
+				default: text('distinctField', 'authors.keyword'),
+			},
+			distinctFieldConfig: {
+				default: object('distinctFieldConfig', {
+					inner_hits:
+					{
+						name: 'most_recent',
+						size: 5,
+						sort: [{ timestamp: 'asc' }]
+					}
+				})
+			}
+		},
+		template: `<base-search-box :subProps="{ distinctField, size: 3, distinctFieldConfig }"/>`,
+	}))
+	.add('with index prop', () => ({
+		components: { SearchBoxWithIndexProp },
+		template: '<search-box-with-index-prop />',
+	}))
+	.add('with autoFocus', () => ({
+		components: { BaseSearchBox },
+		props: getKnob('autoFocus', true),
+		template: '<base-search-box :subProps="{ autoFocus }"/>',
+	}))
+	.add('with focusShortcuts', () => ({
+		components: { BaseSearchBox },
+		props: getKnob('focusShortcuts', ['/', 'r', 'b']),
+		template: '<base-search-box :subProps="{ focusShortcuts }"/>',
+	}))
+	.add('with addonBefore', () => ({
+		components: { SearchBoxWithAddonBeforeSlot },
+		template: '<search-box-with-addon-before-slot/>',
+	}))
+	.add('with addonAfter', () => ({
+		components: { SearchBoxWithAddonAfterSlot },
+		template: '<search-box-with-addon-after-slot/>',
+	}))
+	.add('with addonBefore & addonAfter', () => ({
+		components: { SearchBoxWithAddonBeforeAfterSlots },
+		template: '<search-box-with-addon-before-after-slots/>',
+	}))
+	.add('with expandSuggestionsContainer', () => ({
+		components: { SearchBoxWithAddonBeforeAfterSlots },
+		props: getKnob('expandSuggestionsContainer', false),
+		template:
+			'<search-box-with-addon-before-after-slots :subProps="{ expandSuggestionsContainer }"/>',
+	}))
+	.add('with enableRecentSuggestions & recentSuggestionsConfig', () => ({
+		components: { BaseSearchBox },
+		props: Object.assign({},
+			getKnob('enableRecentSuggestions', true),
+			getKnob('recentSuggestionsConfig', {
+				size: 3,
+				minChars: 3,
+				minHits: 2,
+				index: 'good-books-ds'
+			})
+		),
+		template:
+			'<base-search-box :subProps="{ enableRecentSuggestions, recentSuggestionsConfig }"/>',
+	}))
+	.add('with enablePopularSuggestions & popularSuggestionsConfig', () => ({
+		components: { BaseSearchBox },
+		props: Object.assign({},
+			getKnob('enablePopularSuggestions', true),
+			getKnob('popularSuggestionsConfig', {
+				size: 3,
+				minChars: 3,
+				index: 'good-books-ds',
+				showGlobal: false
+			})
+		),
+		template:
+			'<base-search-box :subProps="{ enablePopularSuggestions, popularSuggestionsConfig }"/>',
+	}))
+	;
+
 storiesOf('Result Components/Reactive List', module)
 	.addParameters({
 		readme: {
 			sidebar: removeFirstLine(ReactiveListReadme),
 		},
 	})
-  .addDecorator(withKnobs)
-  .add('Basic', () => ({
-    components: { BaseReactiveList },
-    template: '<base-reactive-list/>',
-  }))
-  .add('With pagination', () => ({
+	.addDecorator(withKnobs)
+	.add('Basic', () => ({
+		components: { BaseReactiveList },
+		template: '<base-reactive-list/>',
+	}))
+	.add('With pagination', () => ({
 		components: { BaseReactiveList },
 		props: getKnob('pagination', true),
-    template: '<base-reactive-list :subProps="{ pagination }"/>',
-  }))
-  .add('With Infinite Loading', () => ({
-    components: { BaseReactiveList },
-    template: '<base-reactive-list/>',
-  }))
-  .add('with custom sort', () => ({
+		template: '<base-reactive-list :subProps="{ pagination }"/>',
+	}))
+	.add('With Infinite Loading', () => ({
+		components: { BaseReactiveList },
+		template: '<base-reactive-list/>',
+	}))
+	.add('with custom sort', () => ({
 		components: { BaseReactiveList },
 		props: sortBy({ ascending: 'asc', descending: 'desc' }, 'asc'),
-    template: '<base-reactive-list :subProps="{ sortBy }"/>',
-  }))
-  .add('With pagination at top', () => ({
+		template: '<base-reactive-list :subProps="{ sortBy }"/>',
+	}))
+	.add('With pagination at top', () => ({
 		components: { BaseReactiveList },
 		props: paginationAt(),
-    template: '<base-reactive-list :subProps="{ pagination: true, paginationAt }"/>',
-  }))
-  .add('Without resultStats', () => ({
+		template: '<base-reactive-list :subProps="{ pagination: true, paginationAt }"/>',
+	}))
+	.add('Without resultStats', () => ({
 		components: { BaseReactiveList },
 		props: getKnob('showResultStats', false),
-    template: '<base-reactive-list :subProps="{ showResultStats }"/>',
-  }))
-  .add('With custom number of pages', () => ({
+		template: '<base-reactive-list :subProps="{ showResultStats }"/>',
+	}))
+	.add('With custom number of pages', () => ({
 		components: { BaseReactiveList },
 		props: getKnob('currentPage', 10),
-    template: '<base-reactive-list :subProps="{ pagination: true, currentPage }"/>',
-  }))
-  .add('with distinctField prop', () => ({
-	components: { BaseReactiveList },
-	props: {
-		distinctField: {
-			default: text('distinctField', 'authors.keyword'),
+		template: '<base-reactive-list :subProps="{ pagination: true, currentPage }"/>',
+	}))
+	.add('with distinctField prop', () => ({
+		components: { BaseReactiveList },
+		props: {
+			distinctField: {
+				default: text('distinctField', 'authors.keyword'),
+			},
+			distinctFieldConfig: {
+				default: object('distinctFieldConfig', {
+					inner_hits: {
+						name: 'most_recent',
+						size: 5,
+						sort: [{ timestamp: 'asc' }],
+					},
+				}),
+			},
 		},
-		distinctFieldConfig: {
-			default: object('distinctFieldConfig', {
-				inner_hits:
-				{
-					name:'most_recent',
-					size:5,
-					sort:[{timestamp:'asc'}]
-				}
-			})
-		}
-	},
-	template: `<base-reactive-list :subProps="{ distinctField, size: 3, distinctFieldConfig }"/>`,
-}));
+		template: `<base-reactive-list :subProps="{ distinctField, size: 3, distinctFieldConfig }"/>`,
+	}))
+	.add('with renderNoResults prop', () => ({
+		components: { ReactiveListWithNoResultsSlot },
+		props: getKnob('renderNoResults', 'No Results Found!'),
+		template: `<reactive-list-with-no-results-slot :subProps="{ renderNoResults }"/>`,
+	}))
+	.add('With custom result stats message', () => ({
+		components: { ReactiveListWithCustomResultStatsSlot },
+		template: '<reactive-list-with-custom-result-stats-slot />',
+	}))
+	.add('With card layout', () => ({
+		components: { BaseReactiveListCardLayout },
+		template: '<base-reactive-list-card-layout />',
+	}));
+
+
 storiesOf('Result Components/ResultList', module)
 	.addParameters({
 		readme: {
@@ -814,8 +1122,8 @@ storiesOf('Result Components/ResultList', module)
 	.add('With custom number of pages', () => ({
 		components: { BaseResultList },
 		props: getKnob('pages', 2),
-    template: '<base-result-list :subProps="{ pagination: true, pages }"/>',
-  }));
+		template: '<base-result-list :subProps="{ pagination: true, pages }"/>',
+	}));
 
 storiesOf('Result Components/ResultCard', module)
 	.addParameters({
