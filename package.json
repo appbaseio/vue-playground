@@ -26,7 +26,8 @@
         "storybook-readme": "5.0.5",
         "vue-loader": "15.9.7",
         "vue-template-compiler": "^2.6.10",
-        "webpack": "4.38.0"
+        "webpack": "4.38.0",
+        "babel-core": "^6.26.3"
     },
     "dependencies": {
         "@appbaseio/reactivesearch-vue": "1.32.0",
