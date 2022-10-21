@@ -30,7 +30,7 @@
         "babel-core": "^6.26.3"
     },
     "dependencies": {
-        "@appbaseio/reactivesearch-vue": "1.32.1",
+        "@appbaseio/reactivesearch-vue": "1.32.3",
         "@appbaseio/docs": "appbaseio/Docs#dev",
         "@storybook/theming": "5.1.9",
         "vue": "^2.6.10"
