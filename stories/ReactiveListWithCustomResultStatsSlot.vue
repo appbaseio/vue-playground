@@ -13,11 +13,15 @@
 			:react="{ and: ['BookSensor'] }"
 			v-bind="subProps"
 			v-on="subEvents"
-			><div slot="renderResultStats" slot-scope="{ numberOfResults, time, displayedResults }">
-				Custom: Showing {{ displayedResults }} of total {{ numberOfResults }} in {{ time }} ms
-			</div>
+		>
+			<template #renderResultStats="{ numberOfResults, time, displayedResults }">
+				<div>
+					Custom: Showing {{ displayedResults }} of total {{ numberOfResults }} in
+					{{ time }} ms
+				</div>
+			</template>
 
-			<div slot="renderItem" slot-scope="{ item }">
+			<template #renderItem="{ item }">
 				<div class="flex book-content" key="item._id">
 					<img :src="item.image" alt="Book Cover" class="book-image" />
 					<div class="flex column justify-center ml20">
@@ -48,7 +52,7 @@
 						</div>
 					</div>
 				</div>
-			</div>
+			</template>
 		</ReactiveList>
 	</ReactiveBase>
 </template>
