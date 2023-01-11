@@ -5,7 +5,7 @@ module.exports = {
 		// '@storybook/addon-essentials',
 		// '@storybook/addon-interactions',
 		'@storybook/addon-knobs',
-		'storybook-readme',
+		'@appbaseio/storybook-readme',
 	],
 	framework: '@storybook/vue3',
 	core: {

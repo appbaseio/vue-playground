@@ -1,6 +1,5 @@
 // eslint-disable-next-line
 import { storiesOf } from '@storybook/vue3';
-
 import { withKnobs, text, boolean, object, number, select, array } from '@storybook/addon-knobs';
 
 // List Components
@@ -17,7 +16,7 @@ import RangeSliderReadme from '@appbaseio/docs/content/docs/reactivesearch/vue/r
 import DynamicRangeSliderReadme from '@appbaseio/docs/content/docs/reactivesearch/vue/range/DynamicRangeSlider.md';
 import RangeInputReadme from '@appbaseio/docs/content/docs/reactivesearch/vue/range/RangeInput.md';
 // Search Components
-import DataSearchReadme from '@appbaseio/docs/content/docs/reactivesearch/vue/search/DataSearch.md';
+import DataSearchReadme from '@appbaseio/docs/content/docs/reactivesearch/vue/search/SearchBox.md';
 
 // Result Components
 import ResultCardReadme from '@appbaseio/docs/content/docs/reactivesearch/vue/result/ResultCard.md';
@@ -652,7 +651,6 @@ storiesOf('List Components/MultiDropdownList ', module)
 		components: { MultiDropdownListWithRenderNoResultsSlot },
 		template: '<multi-dropdown-list-with-render-no-results-slot />',
 	}));
-
 
 storiesOf('Search Components/SearchBox', module)
 	.addParameters({

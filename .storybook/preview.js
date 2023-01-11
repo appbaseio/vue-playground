@@ -1,11 +1,12 @@
 import { app } from '@storybook/vue3';
+import Vuex from 'vuex';
 import VueRS from '@appbaseio/reactivesearch-vue';
 import { ReactiveGoogleMap } from '@appbaseio/reactivesearch-vue';
-// import { addDecorator } from '@storybook/vue3';
-// import { addReadme } from 'storybook-readme/vue';
+import { addReadme } from '@appbaseio/storybook-readme/vue';
+
 import addons from './mixin.js';
 
-// addDecorator(addReadme);
+app.use(Vuex);
 
 app.use(VueRS);
 
@@ -14,6 +15,8 @@ app.use(ReactiveGoogleMap, {
 });
 
 app.mixin(addons);
+
+export const decorators = [addReadme];
 
 export const parameters = {
 	actions: { argTypesRegex: '^on[A-Z].*' },
