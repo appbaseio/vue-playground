@@ -151,9 +151,9 @@ storiesOf('List components/TreeList', module)
 		template: '<base-tree-list :subProps="{ title, showFilter: false}"/>',
 	}))
 	.add('with mode selection', () => ({
-		props: titleKnob('TreeList Facet'),
+		props: modeKnob(),
 		components: { BaseTreeList },
-		template: '<base-tree-list :subProps="{ title, showFilter: false}"/>',
+		template: '<base-tree-list :subProps="{ mode, showFilter: false}"/>',
 	}));
 
 storiesOf('Range Components/SingleRange', module)
