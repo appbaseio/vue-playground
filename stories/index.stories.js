@@ -154,6 +154,11 @@ storiesOf('List components/TreeList', module)
 		props: modeKnob(),
 		components: { BaseTreeList },
 		template: '<base-tree-list :subProps="{ mode, showFilter: false}"/>',
+	}))
+	.add('with showCount', () => ({
+		props: showCount(true),
+		components: { BaseTreeList },
+		template: '<base-tree-list :subProps="{ showCount, showFilter: false}"/>',
 	}));
 
 storiesOf('Range Components/SingleRange', module)
