@@ -35,6 +35,7 @@ import BaseSearchBox from './BaseSearchBox.vue';
 import BaseMultiList from './BaseMultiList.vue';
 import BaseTreeList from './BaseTreeList.vue';
 import TreeListCustomRenders from './TreeListCustomRenders.vue';
+import TreeListRenderItem from './TreeListRenderItem.vue';
 import BaseSingleList from './BaseSingleList.vue';
 import BaseSingleRange from './BaseSingleRange.vue';
 import BaseReactiveComponent from './BaseReactiveComponent.vue';
@@ -211,6 +212,10 @@ storiesOf('List components/TreeList', module)
 	.add('With custom switcherIcon', () => ({
 		components: { TreeListCustomRenders },
 		template: '<tree-list-custom-renders />',
+	}))
+	.add('With renderItem', () => ({
+		components: { TreeListRenderItem },
+		template: '<tree-list-render-item />',
 	}));
 
 storiesOf('Range Components/SingleRange', module)
