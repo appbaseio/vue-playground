@@ -34,6 +34,7 @@ import BaseReactiveList from './BaseReactiveList.vue';
 import BaseSearchBox from './BaseSearchBox.vue';
 import BaseMultiList from './BaseMultiList.vue';
 import BaseTreeList from './BaseTreeList.vue';
+import TreeListCustomRenders from './TreeListCustomRenders.vue';
 import BaseSingleList from './BaseSingleList.vue';
 import BaseSingleRange from './BaseSingleRange.vue';
 import BaseReactiveComponent from './BaseReactiveComponent.vue';
@@ -198,6 +199,10 @@ storiesOf('List components/TreeList', module)
 		props: showSearch(),
 		components: { BaseTreeList },
 		template: '<base-tree-list :subProps="{ showSearch, showFilter: false}"/>',
+	}))
+	.add('With custom icon(non-leaf nodes)', () => ({
+		components: { TreeListCustomRenders },
+		template: '<tree-list-custom-renders :subProps="{ showIcon: true, showFilter: false,  }"/>',
 	}));
 
 storiesOf('Range Components/SingleRange', module)
