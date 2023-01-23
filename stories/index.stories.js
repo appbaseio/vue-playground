@@ -124,6 +124,9 @@ const showCheckbox = (value = true) => getKnob('showCheckbox', value);
 const rangeLabels = value => getKnob('rangeLabels', value);
 const showTooltip = value => getKnob('showTooltip', value, select, false);
 // eslint-disable-next-line no-shadow
+const modeKnob = (value = ['single', 'multiple'], defaultValue = 'multiple') =>
+	getKnob('mode', value, select, defaultValue);
+// eslint-disable-next-line no-shadow
 function removeFirstLine(str, number = 12) {
 	// eslint-disable-next-line no-plusplus, no-param-reassign
 	while (number--) {
@@ -141,6 +144,16 @@ storiesOf('List components/TreeList', module)
 	.add('Basic', () => ({
 		components: { BaseTreeList },
 		template: '<base-tree-list :subProps="{ showFilter: false }"/>',
+	}))
+	.add('with title', () => ({
+		props: titleKnob('TreeList Facet'),
+		components: { BaseTreeList },
+		template: '<base-tree-list :subProps="{ title, showFilter: false}"/>',
+	}))
+	.add('with mode selection', () => ({
+		props: titleKnob('TreeList Facet'),
+		components: { BaseTreeList },
+		template: '<base-tree-list :subProps="{ title, showFilter: false}"/>',
 	}));
 
 storiesOf('Range Components/SingleRange', module)
