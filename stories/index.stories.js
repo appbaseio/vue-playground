@@ -16,7 +16,7 @@ import RangeSliderReadme from '@appbaseio/docs/content/docs/reactivesearch/vue/r
 import DynamicRangeSliderReadme from '@appbaseio/docs/content/docs/reactivesearch/vue/range/DynamicRangeSlider.md';
 import RangeInputReadme from '@appbaseio/docs/content/docs/reactivesearch/vue/range/RangeInput.md';
 // Search Components
-import DataSearchReadme from '@appbaseio/docs/content/docs/reactivesearch/vue/search/SearchBox.md';
+import SearchBoxReadme from '@appbaseio/docs/content/docs/reactivesearch/vue/search/SearchBox.md';
 
 // Result Components
 import ResultCardReadme from '@appbaseio/docs/content/docs/reactivesearch/vue/result/ResultCard.md';
@@ -33,6 +33,7 @@ import './styles.css';
 import BaseReactiveList from './BaseReactiveList.vue';
 import BaseSearchBox from './BaseSearchBox.vue';
 import BaseMultiList from './BaseMultiList.vue';
+import BaseTreeList from './BaseTreeList.vue';
 import BaseSingleList from './BaseSingleList.vue';
 import BaseSingleRange from './BaseSingleRange.vue';
 import BaseReactiveComponent from './BaseReactiveComponent.vue';
@@ -70,6 +71,8 @@ import ReactiveListWithNoResultsSlot from './ReactiveListWithNoResultsSlot.vue';
 import ReactiveListWithCustomResultStatsSlot from './ReactiveListWithCustomResultStatsSlot.vue';
 import BaseReactiveListCardLayout from './BaseReactiveListCardLayout.vue';
 
+const TreeListReadme = ToggleButtonReadme;
+
 const getKnobType = (value) => {
 	switch (typeof value) {
 		case 'object':
@@ -100,13 +103,16 @@ const filterLabel = value =>
 const showRadio = (value = true) => getKnob('showRadio', value);
 const sortBy = (
 	value = { ascending: 'asc', descending: 'desc', count: 'count' },
+	// eslint-disable-next-line no-shadow
 	defaultValue = 'asc',
 ) => getKnob('sortBy', value, select, defaultValue, String);
 const URLParams = (value = false) => getKnob('URLParams', value);
 const dataField = (
 	value = ['original_series.keyword', 'authors.keyword', 'language_code.keyword'],
+	// eslint-disable-next-line no-shadow
 	defaultValue = 'original_series.keyword',
 ) => getKnob('dataField', value, select, defaultValue);
+// eslint-disable-next-line no-shadow
 const paginationAt = (value = ['top', 'bottom', 'both'], defaultValue = 'top') =>
 	getKnob('paginationAt', value, select, defaultValue);
 const selectAllLabel = value => getKnob('selectAllLabel', value);
@@ -117,13 +123,25 @@ const highlight = (value = true) => getKnob('highlight', value);
 const showCheckbox = (value = true) => getKnob('showCheckbox', value);
 const rangeLabels = value => getKnob('rangeLabels', value);
 const showTooltip = value => getKnob('showTooltip', value, select, false);
-
+// eslint-disable-next-line no-shadow
 function removeFirstLine(str, number = 12) {
+	// eslint-disable-next-line no-plusplus, no-param-reassign
 	while (number--) {
 		str = str.substring(str.indexOf('\n') + 1);
 	}
 	return str;
 }
+storiesOf('List components/TreeList', module)
+	.addParameters({
+		readme: {
+			sidebar: removeFirstLine(TreeListReadme),
+		},
+	})
+	.addDecorator(withKnobs)
+	.add('Basic', () => ({
+		components: { BaseTreeList },
+		template: '<base-tree-list :subProps="{ showFilter: false }"/>',
+	}));
 
 storiesOf('Range Components/SingleRange', module)
 	.addParameters({
@@ -655,7 +673,7 @@ storiesOf('List Components/MultiDropdownList ', module)
 storiesOf('Search Components/SearchBox', module)
 	.addParameters({
 		readme: {
-			sidebar: removeFirstLine(DataSearchReadme),
+			sidebar: removeFirstLine(SearchBoxReadme),
 		},
 	})
 	.addDecorator(withKnobs)
