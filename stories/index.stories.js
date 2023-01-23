@@ -148,66 +148,69 @@ storiesOf('List components/TreeList', module)
 	.addDecorator(withKnobs)
 	.add('Basic', () => ({
 		components: { BaseTreeList },
-		template: '<base-tree-list :subProps="{ showFilter: false }"/>',
+		template: '<base-tree-list :subProps="{  }"/>',
 	}))
 	.add('with title', () => ({
 		props: titleKnob('TreeList Facet'),
 		components: { BaseTreeList },
-		template: '<base-tree-list :subProps="{ title, showFilter: false}"/>',
+		template: '<base-tree-list :subProps="{ title }"/>',
 	}))
 	.add('with mode selection', () => ({
 		props: modeKnob(),
 		components: { BaseTreeList },
-		template: '<base-tree-list :subProps="{ mode, showFilter: false}"/>',
+		template: '<base-tree-list :subProps="{ mode }"/>',
 	}))
 	.add('with showCount', () => ({
 		props: showCount(true),
 		components: { BaseTreeList },
-		template: '<base-tree-list :subProps="{ showCount, showFilter: false}"/>',
+		template: '<base-tree-list :subProps="{ showCount }"/>',
 	}))
 	.add('with showRadio', () => ({
 		props: showRadio(),
 		components: { BaseTreeList },
-		template: '<base-tree-list :subProps="{ showRadio, showFilter: false}"/>',
+		template: '<base-tree-list :subProps="{ showRadio }"/>',
 	}))
 	.add('with showCheckbox', () => ({
 		props: showCheckbox(),
 		components: { BaseTreeList },
-		template: '<base-tree-list :subProps="{ showCheckbox, showFilter: false}"/>',
+		template: '<base-tree-list :subProps="{ showCheckbox }"/>',
 	}))
 	.add('with showIcon', () => ({
 		props: showIcon(),
 		components: { BaseTreeList },
-		template: '<base-tree-list :subProps="{ showIcon, showFilter: false}"/>',
+		template: '<base-tree-list :subProps="{ showIcon }"/>',
 	}))
 	.add('with showLeafIcon', () => ({
 		props: showLeafIcon(),
 		components: { BaseTreeList },
-		template: '<base-tree-list :subProps="{ showLeafIcon, showFilter: false}"/>',
+		template: '<base-tree-list :subProps="{ showLeafIcon }"/>',
 	}))
 	.add('with showSwitcherIcon', () => ({
 		props: showSwitcherIcon(),
 		components: { BaseTreeList },
-		template: '<base-tree-list :subProps="{ showSwitcherIcon, showFilter: false}"/>',
+		template: '<base-tree-list :subProps="{ showSwitcherIcon }"/>',
 	}))
 	.add('with showLine', () => ({
 		props: showLine(),
 		components: { BaseTreeList },
-		template: '<base-tree-list :subProps="{ showLine, showFilter: false}"/>',
+		template: '<base-tree-list :subProps="{ showLine }"/>',
 	}))
 	.add('with showSearch', () => ({
 		props: showSearch(),
 		components: { BaseTreeList },
-		template: '<base-tree-list :subProps="{ showSearch, showFilter: false}"/>',
+		template: '<base-tree-list :subProps="{ showSearch }"/>',
 	}))
 	.add('With custom icon(non-leaf nodes)', () => ({
 		components: { TreeListCustomRenders },
-		template: '<tree-list-custom-renders :subProps="{ showIcon: true, showFilter: false,  }"/>',
+		template: '<tree-list-custom-renders :subProps="{ showIcon: true  }"/>',
 	}))
 	.add('With custom leafIcon', () => ({
 		components: { TreeListCustomRenders },
-		template:
-			'<tree-list-custom-renders :subProps="{ showLeafIcon: true, showFilter: false,  }"/>',
+		template: '<tree-list-custom-renders :subProps="{ showLeafIcon: true   }"/>',
+	}))
+	.add('With custom switcherIcon', () => ({
+		components: { TreeListCustomRenders },
+		template: '<tree-list-custom-renders />',
 	}));
 
 storiesOf('Range Components/SingleRange', module)

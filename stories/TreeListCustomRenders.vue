@@ -8,7 +8,7 @@
 			<div class="col">
 				<TreeList
 					componentId="TreeListComponent"
-					mode="single"
+					mode="multiple"
 					:URLParams="true"
 					:dataField="['class.keyword', 'subclass.keyword']"
 					v-bind="subProps"
@@ -19,6 +19,10 @@
 					</template>
 					<template #leafIcon>
 						<span role="img" aria-label="leaf-icon"> ☘️ </span>
+					</template>
+					<template #switcherIcon="bool">
+						<span v-if="bool">⬇️</span>
+						<span v-else> ➡️</span>
 					</template>
 				</TreeList>
 			</div>
