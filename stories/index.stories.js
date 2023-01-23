@@ -164,6 +164,11 @@ storiesOf('List components/TreeList', module)
 		props: showRadio(),
 		components: { BaseTreeList },
 		template: '<base-tree-list :subProps="{ showRadio, showFilter: false}"/>',
+	}))
+	.add('with showCheckbox', () => ({
+		props: showCheckbox(),
+		components: { BaseTreeList },
+		template: '<base-tree-list :subProps="{ showCheckbox, showFilter: false}"/>',
 	}));
 
 storiesOf('Range Components/SingleRange', module)
