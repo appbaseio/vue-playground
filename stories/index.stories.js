@@ -193,6 +193,11 @@ storiesOf('List components/TreeList', module)
 		props: showLine(),
 		components: { BaseTreeList },
 		template: '<base-tree-list :subProps="{ showLine, showFilter: false}"/>',
+	}))
+	.add('with showSearch', () => ({
+		props: showSearch(),
+		components: { BaseTreeList },
+		template: '<base-tree-list :subProps="{ showSearch, showFilter: false}"/>',
 	}));
 
 storiesOf('Range Components/SingleRange', module)
