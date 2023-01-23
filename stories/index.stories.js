@@ -203,6 +203,11 @@ storiesOf('List components/TreeList', module)
 	.add('With custom icon(non-leaf nodes)', () => ({
 		components: { TreeListCustomRenders },
 		template: '<tree-list-custom-renders :subProps="{ showIcon: true, showFilter: false,  }"/>',
+	}))
+	.add('With custom leafIcon', () => ({
+		components: { TreeListCustomRenders },
+		template:
+			'<tree-list-custom-renders :subProps="{ showLeafIcon: true, showFilter: false,  }"/>',
 	}));
 
 storiesOf('Range Components/SingleRange', module)

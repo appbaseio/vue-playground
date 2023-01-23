@@ -17,6 +17,9 @@
 					<template #icon>
 						<span role="img" aria-label="folder-icon"> 🦷 </span>
 					</template>
+					<template #leafIcon>
+						<span role="img" aria-label="leaf-icon"> ☘️ </span>
+					</template>
 				</TreeList>
 			</div>
 
