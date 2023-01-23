@@ -124,6 +124,7 @@ const showCheckbox = (value = true) => getKnob('showCheckbox', value);
 const showIcon = (value = true) => getKnob('showIcon', value);
 const showLeafIcon = (value = true) => getKnob('showLeafIcon', value);
 const showSwitcherIcon = (value = true) => getKnob('showSwitcherIcon', value);
+const showLine = (value = true) => getKnob('showLine', value);
 const rangeLabels = value => getKnob('rangeLabels', value);
 const showTooltip = value => getKnob('showTooltip', value, select, false);
 // eslint-disable-next-line no-shadow
@@ -187,6 +188,11 @@ storiesOf('List components/TreeList', module)
 		props: showSwitcherIcon(),
 		components: { BaseTreeList },
 		template: '<base-tree-list :subProps="{ showSwitcherIcon, showFilter: false}"/>',
+	}))
+	.add('with showLine', () => ({
+		props: showLine(),
+		components: { BaseTreeList },
+		template: '<base-tree-list :subProps="{ showLine, showFilter: false}"/>',
 	}));
 
 storiesOf('Range Components/SingleRange', module)
