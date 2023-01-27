@@ -12,28 +12,26 @@
 				:URLParams="true"
 				:enablePredictiveSuggestions="false"
 			>
-				<div
-					class="suggestions"
-					slot="render"
-					slot-scope="{
-						error,
-						loading,
-						downshiftProps: { isOpen, highlightedIndex, getItemProps, getItemEvents },
+				<template
+					#render="{
+						downshiftProps: { isOpen, getItemProps, getItemEvents },
 						data: suggestions,
 					}"
 				>
-					<ul v-if="isOpen">
-						<li
-							style="{ background-color: highlightedIndex ? 'grey' : 'transparent' }"
-							v-for="suggestion in suggestions"
-							v-bind="getItemProps({ item: suggestion })"
-							v-on="getItemEvents({ item: suggestion })"
-							:key="suggestion._id"
-						>
-							{{ suggestion.label }}
-						</li>
-					</ul>
-				</div>
+					<div v-if="isOpen" class="suggestions">
+						<ul>
+							<li
+								style="{ background-color: highlightedIndex ? 'grey' : 'transparent' }"
+								v-for="suggestion in suggestions"
+								v-bind="getItemProps({ item: suggestion })"
+								v-on="getItemEvents({ item: suggestion })"
+								:key="suggestion._id"
+							>
+								{{ suggestion.label }}
+							</li>
+						</ul>
+					</div>
+				</template>
 			</SearchBox>
 			<ReactiveList
 				componentId="SearchResult"
@@ -44,7 +42,7 @@
 				:size="5"
 				:react="{ and: ['BookSensor'] }"
 			>
-				<div slot="renderItem" slot-scope="{ item }">
+				<template #renderItem="{ item }">
 					<div class="flex book-content" key="item._id">
 						<img :src="item.image" alt="Book Cover" class="book-image" />
 						<div class="flex column justify-center ml20">
@@ -76,7 +74,7 @@
 							</div>
 						</div>
 					</div>
-				</div>
+				</template>
 			</ReactiveList>
 		</ReactiveBase>
 	</div>

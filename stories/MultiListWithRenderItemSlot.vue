@@ -11,12 +11,14 @@
 					componentId="BookSensor"
 					data-field="original_series.keyword"
 				>
-					<div slot="renderItem" slot-scope="{ label, count }">
-						{{ label }}
-						<span :style="{ marginLeft: 5, color: 'dodgerblue' }">
-							{{ count }}
-						</span>
-					</div>
+					<template #renderItem="{ label, count }">
+						<div>
+							{{ label }}
+							<span :style="{ marginLeft: 5, color: 'dodgerblue' }">
+								{{ count }}
+							</span>
+						</div>
+					</template>
 				</MultiList>
 			</div>
 
@@ -31,7 +33,7 @@
 					:size="5"
 					:react="{ and: ['BookSensor'] }"
 				>
-					<div slot="renderItem" slot-scope="{ item }">
+					<template #renderItem="{ item }">
 						<div class="flex book-content" key="item._id">
 							<img :src="item.image" alt="Book Cover" class="book-image" />
 							<div class="flex column justify-center ml20">
@@ -66,7 +68,7 @@
 								</div>
 							</div>
 						</div>
-					</div>
+					</template>
 				</ReactiveList>
 			</div>
 		</div>

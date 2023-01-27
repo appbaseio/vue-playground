@@ -10,25 +10,28 @@
 					:showSearch="false"
 					componentId="BookSensor"
 					data-field="original_series.keyword"
-					><div class="suggestions" slot="render" slot-scope="{ data, handleChange }">
-						<ul>
-							<li
-								style="{ background-color: highlightedIndex ? 'grey' : 'transparent' }"
-								v-for="suggestion in (data || []).map(s => {
-									return {
-										label: s.key,
-										value: s.key,
-										key: s._id,
-									};
-								})"
-								:key="suggestion._id"
-								v-on:click="handleChange(suggestion.value)"
-							>
-								{{ suggestion.label }}
-							</li>
-						</ul>
-					</div></MultiList
 				>
+					<template #render="{ data, handleChange }">
+						<div class="suggestions">
+							<ul>
+								<li
+									style="{ background-color: highlightedIndex ? 'grey' : 'transparent' }"
+									v-for="suggestion in (data || []).map((s) => {
+										return {
+											label: s.key,
+											value: s.key,
+											key: s._id,
+										};
+									})"
+									:key="suggestion._id"
+									v-on:click="handleChange(suggestion.value)"
+								>
+									{{ suggestion.label }}
+								</li>
+							</ul>
+						</div>
+					</template>
+				</MultiList>
 			</div>
 
 			<div class="col">
@@ -42,7 +45,7 @@
 					:size="5"
 					:react="{ and: ['BookSensor'] }"
 				>
-					<div slot="renderItem" slot-scope="{ item }">
+					<template #renderItem="{ item }">
 						<div class="flex book-content" key="item._id">
 							<img :src="item.image" alt="Book Cover" class="book-image" />
 							<div class="flex column justify-center ml20">
@@ -77,7 +80,7 @@
 								</div>
 							</div>
 						</div>
-					</div>
+					</template>
 				</ReactiveList>
 			</div>
 		</div>

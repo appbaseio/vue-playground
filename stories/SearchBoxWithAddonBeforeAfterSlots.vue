@@ -11,8 +11,12 @@
 			v-bind="subProps"
 			v-on="subEvents"
 		>
-			<h3 slot="addonBefore"> 👋 Before</h3>
-			<h3 slot="addonAfter">After 👋 </h3>
+			<template #addonBefore>
+				<h3>👋 Before</h3>
+			</template>
+			<template #addonAfter>
+				<h3>After 👋</h3>
+			</template>
 		</SearchBox>
 		<SelectedFilters componentId="BookSensor" />
 		<ReactiveList
@@ -24,7 +28,7 @@
 			:size="5"
 			:react="{ and: ['BookSensor'] }"
 		>
-			<div slot="renderItem" slot-scope="{ item }">
+			<template #renderItem="{ item }">
 				<div class="flex book-content" key="item._id">
 					<img :src="item.image" alt="Book Cover" class="book-image" />
 					<div class="flex column justify-center ml20">
@@ -51,7 +55,7 @@
 						</div>
 					</div>
 				</div>
-			</div>
+			</template>
 		</ReactiveList>
 	</ReactiveBase>
 </template>

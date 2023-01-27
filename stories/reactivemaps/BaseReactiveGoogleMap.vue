@@ -4,7 +4,10 @@
 		url="https://a03a1cb71321:75b6603d-9456-4a5a-af6b-a487b309eb61@appbase-demo-ansible-abxiydt-arc.searchbase.io"
 		enableAppbase
 	>
-		<div class="row" style="{ height: 100% }">
+		<div
+			class="row"
+			style="{height: 100%;}"
+		>
 			<div class="col">
 				<div>
 					<SingleList
@@ -20,24 +23,22 @@
 				<ReactiveGoogleMap
 					componentId="map"
 					dataField="location"
-					:style="{ height: 'calc(100vh - 70px)'}"
+					:style="{ height: 'calc(100vh - 70px)' }"
 					:react="{
 						and: ['CitySensor', 'VenueSensor'],
 					}"
-					v-bind="{defaultZoom: 6, ...subProps}"
+					v-bind="{ defaultZoom: 6, ...subProps }"
 					v-on="subEvents"
 				>
-					<div
-						slot="renderPopover"
-						slot-scope="{ place, magnitude, time }"
-						:style="{ margin: 0, maxWidth: '300px', lineHeight: '18px' }"
-					>
-						<p>
-							Earthquake (at) <strong>{{ place }}</strong
-							>&nbsp; of maginutde: <code>{{ magnitude }}</code> in the year
-							{{ time }}.
-						</p>
-					</div>
+					<template #renderPopover="{ item: { place, magnitude, time} }">
+						<div :style="{ margin: 0, maxWidth: '300px', lineHeight: '18px' }">
+							<p>
+								Earthquake (at) <strong>{{ place }}</strong
+								>&nbsp; of maginutde: <code>{{ magnitude }}</code> in the year
+								{{ time }}.
+							</p>
+						</div>
+					</template>
 				</ReactiveGoogleMap>
 			</div>
 		</div>
@@ -52,8 +53,5 @@ export default {
 		subProps: Object,
 		subEvents: Object,
 	},
-	mounted() {
-		console.log("Props", this.subProps)
-	}
 };
 </script>

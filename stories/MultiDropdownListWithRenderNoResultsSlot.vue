@@ -24,7 +24,7 @@
           :size="5"
           :react="{and: ['BookSensor']}"
         >
-          <div slot="renderItem" slot-scope="{ item }">
+          <template #renderItem="{ item }">
             <div class="flex book-content" key="item._id">
               <img :src="item.image" alt="Book Cover" class="book-image">
               <div class="flex column justify-center ml20">
@@ -51,7 +51,7 @@
                 </div>
               </div>
             </div>
-          </div>
+          </template>
         </ReactiveList>
       </div>
     </div>

@@ -14,7 +14,7 @@
 			v-bind="subProps"
 			v-on="subEvents"
 		>
-			<div slot="render" slot-scope="{ data }">
+			<template #render="{ data }">
 				<ResultCardsWrapper>
 					<ResultCard v-bind:key="result._id" :id="result._id" v-for="result in data">
 						<ResultCardImage :src="result.image" />
@@ -53,7 +53,7 @@
 						</ResultCardDescription>
 					</ResultCard>
 				</ResultCardsWrapper>
-			</div>
+			</template>
 		</ReactiveList>
 	</ReactiveBase>
 </template>
