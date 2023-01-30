@@ -24,7 +24,8 @@ import ResultListReadme from '@appbaseio/docs/content/docs/reactivesearch/vue/re
 import ReactiveListReadme from '@appbaseio/docs/content/docs/reactivesearch/vue/result/ReactiveList.md';
 
 // base components
-// import SelectedFiltersReadme from "@appbaseio/reactive-manual-v3/content/docs/base-components/SelectedFilters.md";
+// import SelectedFiltersReadme from
+// "@appbaseio/reactive-manual-v3/content/docs/base-components/SelectedFilters.md";
 // Advanced components
 import ReactiveComponentReadme from '@appbaseio/docs/content/docs/reactivesearch/vue/advanced/ReactiveComponent.md';
 
@@ -36,6 +37,7 @@ import BaseMultiList from './BaseMultiList.vue';
 import BaseTreeList from './BaseTreeList.vue';
 import TreeListCustomRenders from './TreeListCustomRenders.vue';
 import TreeListRenderItem from './TreeListRenderItem.vue';
+import TreeListRenderSlot from './TreeListRenderSlot/index.vue';
 import BaseSingleList from './BaseSingleList.vue';
 import BaseSingleRange from './BaseSingleRange.vue';
 import BaseReactiveComponent from './BaseReactiveComponent.vue';
@@ -136,6 +138,7 @@ const modeKnob = (value = ['single', 'multiple'], defaultValue = 'multiple') =>
 function removeFirstLine(str, number = 12) {
 	// eslint-disable-next-line no-plusplus, no-param-reassign
 	while (number--) {
+		// eslint-disable-next-line no-param-reassign
 		str = str.substring(str.indexOf('\n') + 1);
 	}
 	return str;
@@ -216,6 +219,10 @@ storiesOf('List components/TreeList', module)
 	.add('With renderItem', () => ({
 		components: { TreeListRenderItem },
 		template: '<tree-list-render-item />',
+	}))
+	.add("With custom 'render' slot", () => ({
+		components: { TreeListRenderSlot },
+		template: '<tree-list-render-slot />',
 	}));
 
 storiesOf('Range Components/SingleRange', module)
@@ -582,6 +589,7 @@ storiesOf('List Components/SingleDropdownList', module)
 	.add('with renderLabel', () => ({
 		components: { BaseSingleDropdownList },
 		template:
+			// eslint-disable-next-line no-template-curly-in-string
 			'<base-single-dropdown-list :subProps="{ renderLabel: function(value) {return `hello ${value}`} }" />',
 	}))
 	.add('without count', () => ({
@@ -679,6 +687,7 @@ storiesOf('List Components/MultiDropdownList ', module)
 	.add('with renderLabel', () => ({
 		components: { BaseMultiDropdownList },
 		template:
+			// eslint-disable-next-line no-template-curly-in-string
 			'<base-multi-dropdown-list :subProps="{ renderLabel: function(value) { return Object.keys(value).map(function (item) { return `hello ${item} ` } ) } }" />',
 	}))
 	.add('without count', () => ({
