@@ -16,7 +16,6 @@
 					:showLeafIcon="true"
 				>
 					<template #render="{ data, handleClick, value, PATH_SEPARATOR }">
-						{{ log(value) }}
 						<RenderList
 							:transformedData="data"
 							:handleClick="handleClick"
