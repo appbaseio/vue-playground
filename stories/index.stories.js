@@ -177,7 +177,7 @@ storiesOf('List components/TreeList', module)
 	.add('with showCheckbox', () => ({
 		props: showCheckbox(),
 		components: { BaseTreeList },
-		template: '<base-tree-list :subProps="{ showCheckbox }"/>',
+		template: '<base-tree-list :subProps="{ showCheckbox, mode: \'multiple\' }" />',
 	}))
 	.add('with showIcon', () => ({
 		props: showIcon(),
