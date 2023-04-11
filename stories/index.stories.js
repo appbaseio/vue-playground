@@ -766,7 +766,7 @@ storiesOf('Search Components/AIAnswer', module)
 		components: { BaseAIAnswer },
 		template: '<base-a-i-answer :subProps="{ showFilter: false }"/>',
 	}))
-	.add('Without showVoiceInput', () => ({
+	.add('With showVoiceInput', () => ({
 		components: { BaseAIAnswer },
 		props: getKnob('showVoiceInput', true),
 		template: '<base-a-i-answer :subProps="{ showVoiceInput }"/>',
