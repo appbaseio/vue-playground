@@ -33,6 +33,7 @@ import './styles.css';
 
 import BaseReactiveList from './BaseReactiveList.vue';
 import BaseSearchBox from './BaseSearchBox.vue';
+import BaseAIAnswer from './BaseAIAnswer.vue';
 import BaseMultiList from './BaseMultiList.vue';
 import BaseTreeList from './BaseTreeList.vue';
 import TreeListCustomRenders from './TreeListCustomRenders.vue';
@@ -752,6 +753,71 @@ storiesOf('List Components/MultiDropdownList ', module)
 	.add('with renderNoResults', () => ({
 		components: { MultiDropdownListWithRenderNoResultsSlot },
 		template: '<multi-dropdown-list-with-render-no-results-slot />',
+	}));
+
+storiesOf('Search Components/AIAnswer', module)
+	.addParameters({
+		readme: {
+			sidebar: removeFirstLine(SearchBoxReadme),
+		},
+	})
+	.addDecorator(withKnobs)
+	.add('Basic', () => ({
+		components: { BaseAIAnswer },
+		template: '<base-a-i-answer :subProps="{ showFilter: false }"/>',
+	}))
+	.add('Without showVoiceInput', () => ({
+		components: { BaseAIAnswer },
+		props: getKnob('showVoiceInput', true),
+		template: '<base-a-i-answer :subProps="{ showVoiceInput }"/>',
+	}))
+	.add('With showIcon', () => ({
+		components: { BaseAIAnswer },
+		props: getKnob('showIcon', true),
+		template: '<base-a-i-answer :subProps="{ showIcon }"/>',
+	}))
+	.add('with iconPosition prop', () => ({
+		components: { BaseAIAnswer },
+		props: getKnob('iconPosition', ['left', 'right'], select, 'right'),
+		template: '<base-a-i-answer :subProps="{ iconPosition }"/>',
+	}))
+	.add('with placeholder', () => ({
+		props: getKnob('placeholder', 'Search for Intelligent answers!!'),
+		components: { BaseAIAnswer },
+		template: '<base-a-i-answer :subProps="{ placeholder }"/>',
+	}))
+	.add('With custom icon', () => ({
+		components: { BaseAIAnswer },
+		template: '<base-a-i-answer :subProps="{ showIcon: true}" :showCustomIcon="true"/>',
+	}))
+	.add('With showInput', () => ({
+		components: { BaseAIAnswer },
+		props: getKnob('showInput', true),
+		template: '<base-a-i-answer :subProps="{ showInput }"/>',
+	}))
+	.add('With enterButton', () => ({
+		components: { BaseAIAnswer },
+		props: getKnob('enterButton', false),
+		template: '<base-a-i-answer :subProps="{ enterButton }"/>',
+	}))
+	.add('With custom enterButton', () => ({
+		components: { BaseAIAnswer },
+		template:
+			'<base-a-i-answer :subProps="{ enterButton: true }" :showCustomEnterButton="true"/>',
+	}))
+	.add('with title', () => ({
+		props: titleKnob('Book Store'),
+		components: { BaseAIAnswer },
+		template: '<base-a-i-answer :subProps="{ iconPosition: \'right\', title, }"/>',
+	}))
+	.add('with themePreset', () => ({
+		components: { BaseAIAnswer },
+		props: getKnob('themePreset', ['dark', 'light'], select, 'dark'),
+		template: '<base-a-i-answer :themePreset="themePreset"/>',
+	}))
+	.add('with render slot', () => ({
+		components: { BaseAIAnswer },
+		template: '<base-a-i-answer :showRenderSlot="true"/>',
 	}));
 
 storiesOf('Search Components/SearchBox', module)
