@@ -806,7 +806,7 @@ storiesOf('Search Components/AIAnswer', module)
 			'<base-a-i-answer :subProps="{ enterButton: true }" :showCustomEnterButton="true"/>',
 	}))
 	.add('with title', () => ({
-		props: titleKnob('Book Store'),
+		props: titleKnob('Book Store AI Assistant'),
 		components: { BaseAIAnswer },
 		template: '<base-a-i-answer :subProps="{ iconPosition: \'right\', title, }"/>',
 	}))
