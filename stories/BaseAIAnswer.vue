@@ -101,5 +101,23 @@ export default {
 		showRenderSlot: Boolean,
 	},
 	components: { AIAnswer },
+	methods: {
+		getMessageStyle(message) {
+			const isSender = message.role === 'user';
+			return {
+				backgroundColor: isSender ? '#cce5ff' : '#f8f9fa',
+				padding: '10px',
+				borderRadius: '7px',
+				marginBottom: '10px',
+				maxWidth: '80%',
+				alignSelf: isSender ? 'flex-end' : 'flex-start',
+				display: 'inline-block',
+				border: '1px solid',
+				color: isSender ? '#004085' : '#383d41',
+				position: 'relative',
+				whiteSpace: 'pre-wrap',
+			};
+		},
+	},
 };
 </script>
