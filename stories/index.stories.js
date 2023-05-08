@@ -51,6 +51,7 @@ import BaseResultList from './BaseResultList.vue';
 import BaseResultCard from './BaseResultCard.vue';
 import BaseToggleButton from './BaseToggleButton.vue';
 import SearchBoxWithRenderSlot from './SearchBoxWithRenderSlot.vue';
+import SearchBoxWithCustomAIScreen from './SearchBoxWithCustomAIScreen.vue';
 import SearchBoxWithRenderItemSlot from './SearchBoxWithRenderItemSlot.vue';
 import SingleListWithRenderSlot from './SingleListWithRenderSlot.vue';
 import SingleListWithRenderItemSlot from './SingleListWithRenderItemSlot.vue';
@@ -830,6 +831,15 @@ storiesOf('Search Components/SearchBox', module)
 	.add('Basic', () => ({
 		components: { BaseSearchBox },
 		template: '<base-search-box :subProps="{ showFilter: false }"/>',
+	}))
+	.add('With enableAI', () => ({
+		props: getKnob('enableAI', true),
+		components: { BaseSearchBox },
+		template: '<base-search-box :subProps="{ enableAI, showFilter: false}"/>',
+	}))
+	.add('With renderAIAnswer slot', () => ({
+		components: { SearchBoxWithCustomAIScreen },
+		template: '<search-box-with-custom-a-i-screen />',
 	}))
 	.add('with mode prop', () => ({
 		components: { BaseSearchBox },
