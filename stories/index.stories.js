@@ -822,11 +822,6 @@ storiesOf('Search Components/AIAnswer', module)
 	}));
 
 storiesOf('Search Components/SearchBox', module)
-	.addParameters({
-		readme: {
-			sidebar: removeFirstLine(SearchBoxReadme),
-		},
-	})
 	.addDecorator(withKnobs)
 	.add('Basic', () => ({
 		components: { BaseSearchBox },
@@ -836,6 +831,26 @@ storiesOf('Search Components/SearchBox', module)
 		props: getKnob('enableAI', true),
 		components: { BaseSearchBox },
 		template: '<base-search-box :subProps="{ enableAI, showFilter: false}"/>',
+	}))
+	.add('With enableFAQSuggestions', () => ({
+		props: getKnob('enableFAQSuggestions', true),
+		components: { BaseSearchBox },
+		template: '<base-search-box :subProps="{ enableAI, enableFAQSuggestions, searchboxId: \'rs_docs\', showFilter: false}"/>',
+	}))
+	.add('With FAQSuggestionsConfig', () => ({
+		props: getKnob('enableFAQSuggestions', true),
+		components: { BaseSearchBox },
+		template: '<base-search-box :subProps="{ enableFAQSuggestions, FAQSuggestionsConfig: {size: 1, sectionLabel: \'FAQs\', },searchboxId: \'rs_docs\', showFilter: false}"/>',
+	}))
+	.add('With enableFeaturedSuggestions', () => ({
+		props: getKnob('enableFeaturedSuggestions', true),
+		components: { BaseSearchBox },
+		template: '<base-search-box :subProps="{ enableAI, enableFeaturedSuggestions, searchboxId: \'rs_docs\', showFilter: false}"/>',
+	}))
+	.add('With featuredSuggestionsConfig', () => ({
+		props: getKnob('enableFeaturedSuggestions', true),
+		components: { BaseSearchBox },
+		template: '<base-search-box :subProps="{ enableFeaturedSuggestions, featuredSuggestionsConfig: {size: 2, sectionLabel: \'Featured\'}, searchboxId: \'rs_docs\', showFilter: false}"/>',
 	}))
 	.add('With renderAIAnswer slot', () => ({
 		components: { SearchBoxWithCustomAIScreen },
