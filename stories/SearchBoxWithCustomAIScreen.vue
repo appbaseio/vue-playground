@@ -16,21 +16,23 @@
 				<div style="width: 100%; margin: 0 auto; font-family: Arial, sans-serif">
 					<div style="display: flex; flex-direction: column; padding: 16px">
 						<!-- User message -->
-						<div style="align-self: flex-end; margin-bottom: 8px">
-							<div
-								style="
-									display: inline-block;
-									background-color: #007bff;
-									color: white;
-									border-radius: 16px;
-									padding: 8px 16px;
-									white-space: pre-wrap;
-									word-wrap: break-word;
-								"
-							>
-								{{ slotProps.question }}
-							</div>
-						</div>
+						<template v-if="slotProps.question">
+							<div style="align-self: flex-end; margin-bottom: 8px">
+								<div
+									style="
+										display: inline-block;
+										background-color: #007bff;
+										color: white;
+										border-radius: 16px;
+										padding: 8px 16px;
+										white-space: pre-wrap;
+										word-wrap: break-word;
+									"
+								>
+									{{ slotProps.question }}
+								</div>
+							</div></template
+						>
 
 						<!-- AI message -->
 						<div
@@ -89,8 +91,8 @@
 						</div>
 					</div>
 				</div>
-			</template> </SearchBox
-		>>
+			</template>
+		</SearchBox>
 		<SelectedFilters componentId="BookSensor" />
 		<ReactiveList
 			componentId="SearchResult"
