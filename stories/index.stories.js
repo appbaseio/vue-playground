@@ -852,9 +852,20 @@ storiesOf('Search Components/SearchBox', module)
 		components: { BaseSearchBox },
 		template: '<base-search-box :subProps="{ enableFeaturedSuggestions, featuredSuggestionsConfig: {size: 2, sectionLabel: \'Featured\'}, searchboxId: \'rs_docs\', showFilter: false}"/>',
 	}))
+	.add('With enableAI - askButton', () => ({
+		props: getKnob('askButton', true),
+		components: { BaseSearchBox },
+		template:
+			'<base-search-box :subProps="{ enableAI: true, showFilter: false, AIUIConfig: { askButton }}"/>',
+	}))
 	.add('With renderAIAnswer slot', () => ({
 		components: { SearchBoxWithCustomAIScreen },
 		template: '<search-box-with-custom-a-i-screen />',
+	}))
+	.add('With enterButton', () => ({
+		props: getKnob('enterButton', true),
+		components: { BaseSearchBox },
+		template: '<base-search-box :subProps="{ enterButton, showFilter: false}"/>',
 	}))
 	.add('with mode prop', () => ({
 		components: { BaseSearchBox },
