@@ -137,7 +137,7 @@ const showTooltip = value => getKnob('showTooltip', value, select, false);
 const modeKnob = (value = ['single', 'multiple'], defaultValue = 'multiple') =>
 	getKnob('mode', value, select, defaultValue);
 
-const compoundClauseKnob = () => getKnob('compoundClause', ['filter', 'must', 'invalid'], select, 'filter');
+const compoundClauseKnob = () => getKnob('compoundClause', ['filter', 'must'], select, 'filter');
 // eslint-disable-next-line no-shadow
 function removeFirstLine(str, number = 12) {
 	// eslint-disable-next-line no-plusplus, no-param-reassign
