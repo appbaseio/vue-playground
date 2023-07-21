@@ -836,7 +836,7 @@ storiesOf('Search Components/SearchBox', module)
 	.add('With enableFAQSuggestions', () => ({
 		props: getKnob('enableFAQSuggestions', true),
 		components: { BaseSearchBox },
-		template: '<base-search-box :subProps="{ enableAI, enableFAQSuggestions, searchboxId: \'rs_docs\', showFilter: false}"/>',
+		template: '<base-search-box :subProps="{ enableAI, enableFAQSuggestions, searchboxId: \'rs_docs\'}"/>',
 	}))
 	.add('With FAQSuggestionsConfig', () => ({
 		props: {
@@ -851,7 +851,7 @@ storiesOf('Search Components/SearchBox', module)
 			},
 		},
 		components: { BaseSearchBox },
-		template: '<base-search-box :subProps="{ enableFAQSuggestions, FAQSuggestionsConfig: {size: suggestionSize, sectionLabel },searchboxId: \'rs_docs\', showFilter: false}"/>',
+		template: '<base-search-box :subProps="{ enableFAQSuggestions, FAQSuggestionsConfig: {size: suggestionSize, sectionLabel },searchboxId: \'rs_docs\'}"/>',
 	}))
 	.add('With enableFeaturedSuggestions', () => ({
 		props: getKnob('enableFeaturedSuggestions', true),

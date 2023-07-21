@@ -17,7 +17,7 @@
 					triggerQuery({})
 			}"
 		/>
-		<SelectedFilters componentId="BookSensor" />
+		<SelectedFilters />
 		<ReactiveList
 			componentId="SearchResult"
 			dataField="original_title.keyword"
