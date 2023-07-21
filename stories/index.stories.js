@@ -66,6 +66,7 @@ import SingleDropdownListWithRenderNoResultsSlot from './SingleDropdownListWithR
 import MultiListWithRenderNoResultsSlot from './MultiListWithRenderNoResultsSlot.vue';
 import MultiDropdownListWithRenderNoResultsSlot from './MultiDropdownListWithRenderNoResultsSlot.vue';
 import SearchBoxWithCustomSuggestionIcons from './SearchBoxWithCustomSuggestionIcons.vue';
+import SearchBoxControlledUsage from './SearchBoxControlledUsage.vue';
 import SearchBoxWithIndexProp from './SearchBoxWithIndexProp.vue';
 import MultiListWithIndexProp from './MultiListWithIndexProp.vue';
 import SearchBoxWithAddonBeforeSlot from './SearchBoxWithAddonBeforeSlot.vue';
@@ -838,9 +839,19 @@ storiesOf('Search Components/SearchBox', module)
 		template: '<base-search-box :subProps="{ enableAI, enableFAQSuggestions, searchboxId: \'rs_docs\', showFilter: false}"/>',
 	}))
 	.add('With FAQSuggestionsConfig', () => ({
-		props: getKnob('enableFAQSuggestions', true),
+		props: {
+			enableFAQSuggestions: {
+				default: boolean('enableFAQSuggestions', true),
+			},
+			suggestionSize: {
+				default: number('suggestionSize', 1),
+			},
+			sectionLabel: {
+				default: text('sectionLabel', 'FAQs'),
+			},
+		},
 		components: { BaseSearchBox },
-		template: '<base-search-box :subProps="{ enableFAQSuggestions, FAQSuggestionsConfig: {size: 1, sectionLabel: \'FAQs\', },searchboxId: \'rs_docs\', showFilter: false}"/>',
+		template: '<base-search-box :subProps="{ enableFAQSuggestions, FAQSuggestionsConfig: {size: suggestionSize, sectionLabel },searchboxId: \'rs_docs\', showFilter: false}"/>',
 	}))
 	.add('With enableFeaturedSuggestions', () => ({
 		props: getKnob('enableFeaturedSuggestions', true),
@@ -936,6 +947,27 @@ storiesOf('Search Components/SearchBox', module)
 		components: { BaseSearchBox },
 		props: getKnob('iconPosition', ['right', 'left'], select, 'right'),
 		template: '<base-search-box :subProps="{ iconPosition, showFilter: false }"/>',
+	}))
+	.add('with controlledUsage', () => ({
+		components: { SearchBoxControlledUsage },
+		props: {
+			enableFAQSuggestions: {
+				default: boolean('enableFAQSuggestions', true),
+			},
+			suggestionSize: {
+				default: number('suggestionSize', 1),
+			},
+			sectionLabel: {
+				default: text('sectionLabel', 'FAQs'),
+			},
+			enableAI: {
+				default: boolean('enableAI', true),
+			},
+			shouldTriggerQueryWhileTyping: {
+				default: boolean('shouldTriggerQueryWhileTyping', true),
+			},
+		},
+		template: '<search-box-controlled-usage :subProps="{ enableFAQSuggestions, shouldTriggerQueryWhileTyping, enableAI, FAQSuggestionsConfig: {size: suggestionSize, sectionLabel },searchboxId: \'rs_docs\', showFilter: false}"/>',
 	}))
 	.add('with defaultValue', () => ({
 		components: { BaseSearchBox },
