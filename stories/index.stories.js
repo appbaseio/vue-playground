@@ -66,6 +66,7 @@ import SingleDropdownListWithRenderNoResultsSlot from './SingleDropdownListWithR
 import MultiListWithRenderNoResultsSlot from './MultiListWithRenderNoResultsSlot.vue';
 import MultiDropdownListWithRenderNoResultsSlot from './MultiDropdownListWithRenderNoResultsSlot.vue';
 import SearchBoxWithCustomSuggestionIcons from './SearchBoxWithCustomSuggestionIcons.vue';
+import SearchBoxControlledUsage from './SearchBoxControlledUsage.vue';
 import SearchBoxWithIndexProp from './SearchBoxWithIndexProp.vue';
 import MultiListWithIndexProp from './MultiListWithIndexProp.vue';
 import SearchBoxWithAddonBeforeSlot from './SearchBoxWithAddonBeforeSlot.vue';
@@ -822,11 +823,6 @@ storiesOf('Search Components/AIAnswer', module)
 	}));
 
 storiesOf('Search Components/SearchBox', module)
-	.addParameters({
-		readme: {
-			sidebar: removeFirstLine(SearchBoxReadme),
-		},
-	})
 	.addDecorator(withKnobs)
 	.add('Basic', () => ({
 		components: { BaseSearchBox },
@@ -837,9 +833,50 @@ storiesOf('Search Components/SearchBox', module)
 		components: { BaseSearchBox },
 		template: '<base-search-box :subProps="{ enableAI, showFilter: false}"/>',
 	}))
+	.add('With enableFAQSuggestions', () => ({
+		props: getKnob('enableFAQSuggestions', true),
+		components: { BaseSearchBox },
+		template: '<base-search-box :subProps="{ enableAI, enableFAQSuggestions, searchboxId: \'rs_docs\'}"/>',
+	}))
+	.add('With FAQSuggestionsConfig', () => ({
+		props: {
+			enableFAQSuggestions: {
+				default: boolean('enableFAQSuggestions', true),
+			},
+			suggestionSize: {
+				default: number('suggestionSize', 1),
+			},
+			sectionLabel: {
+				default: text('sectionLabel', 'FAQs'),
+			},
+		},
+		components: { BaseSearchBox },
+		template: '<base-search-box :subProps="{ enableFAQSuggestions, FAQSuggestionsConfig: {size: suggestionSize, sectionLabel },searchboxId: \'rs_docs\'}"/>',
+	}))
+	.add('With enableFeaturedSuggestions', () => ({
+		props: getKnob('enableFeaturedSuggestions', true),
+		components: { BaseSearchBox },
+		template: '<base-search-box :subProps="{ enableAI, enableFeaturedSuggestions, searchboxId: \'rs_docs\', showFilter: false}"/>',
+	}))
+	.add('With featuredSuggestionsConfig', () => ({
+		props: getKnob('enableFeaturedSuggestions', true),
+		components: { BaseSearchBox },
+		template: '<base-search-box :subProps="{ enableFeaturedSuggestions, featuredSuggestionsConfig: {size: 2, sectionLabel: \'Featured\'}, searchboxId: \'rs_docs\', showFilter: false}"/>',
+	}))
+	.add('With enableAI - askButton', () => ({
+		props: getKnob('askButton', true),
+		components: { BaseSearchBox },
+		template:
+			'<base-search-box :subProps="{ enableAI: true, showFilter: false, AIUIConfig: { askButton }}"/>',
+	}))
 	.add('With renderAIAnswer slot', () => ({
 		components: { SearchBoxWithCustomAIScreen },
 		template: '<search-box-with-custom-a-i-screen />',
+	}))
+	.add('With enterButton', () => ({
+		props: getKnob('enterButton', true),
+		components: { BaseSearchBox },
+		template: '<base-search-box :subProps="{ enterButton, showFilter: false}"/>',
 	}))
 	.add('with mode prop', () => ({
 		components: { BaseSearchBox },
@@ -910,6 +947,27 @@ storiesOf('Search Components/SearchBox', module)
 		components: { BaseSearchBox },
 		props: getKnob('iconPosition', ['right', 'left'], select, 'right'),
 		template: '<base-search-box :subProps="{ iconPosition, showFilter: false }"/>',
+	}))
+	.add('with controlledUsage', () => ({
+		components: { SearchBoxControlledUsage },
+		props: {
+			enableFAQSuggestions: {
+				default: boolean('enableFAQSuggestions', true),
+			},
+			suggestionSize: {
+				default: number('suggestionSize', 1),
+			},
+			sectionLabel: {
+				default: text('sectionLabel', 'FAQs'),
+			},
+			enableAI: {
+				default: boolean('enableAI', true),
+			},
+			shouldTriggerQueryWhileTyping: {
+				default: boolean('shouldTriggerQueryWhileTyping', true),
+			},
+		},
+		template: '<search-box-controlled-usage :subProps="{ enableFAQSuggestions, shouldTriggerQueryWhileTyping, enableAI, FAQSuggestionsConfig: {size: suggestionSize, sectionLabel },searchboxId: \'rs_docs\', showFilter: false}"/>',
 	}))
 	.add('with defaultValue', () => ({
 		components: { BaseSearchBox },
