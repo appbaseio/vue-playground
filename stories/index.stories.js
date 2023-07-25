@@ -829,18 +829,18 @@ storiesOf('Search Components/AIAnswer', module)
 	}))
 	.add('With triggerOn - manual', () => ({
 		components: { BaseAIAnswer },
-		template:
-			'<base-a-i-answer :subProps="{ triggerOn: "manual", renderTriggerMessage: "Click to trigger AI answer!!"}" :showCustomTitle="true"/>',
+		template: '<base-a-i-answer :subProps="{ triggerOn: \'manual\'}" :showCustomTitle="true"/>',
 	}))
 	.add('With triggerOn - question', () => ({
 		components: { BaseAIAnswer },
-		template: '<base-a-i-answer :subProps="{ triggerOn: "question"}" :showCustomTitle="true"/>',
+		template:
+			'<base-a-i-answer :subProps="{ triggerOn: \'question\'}" :showCustomTitle="true"/>',
 	}))
 	.add('With renderTriggerMessage', () => ({
 		components: { BaseAIAnswer },
-		props: getKnob('renderTriggerMessage', 'Click to change trigger message', text),
+		props: getKnob('renderTriggerMessage', 'Hit 🔨 🎯 to trigger AI 🤖 '),
 		template:
-			'<base-a-i-answer :subProps="{ triggerOn: "manual", renderTriggerMessage}" :showCustomTitle="true"/>',
+			'<base-a-i-answer :subProps="{ triggerOn: \'manual\', renderTriggerMessage}" :showCustomTitle="true"/>',
 	}))
 	.add('with render slot', () => ({
 		components: { BaseAIAnswer },
