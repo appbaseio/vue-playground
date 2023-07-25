@@ -1096,6 +1096,22 @@ storiesOf('Search Components/SearchBox', module)
 		),
 		template:
 			'<base-search-box :subProps="{ enablePopularSuggestions, popularSuggestionsConfig }"/>',
+	}))
+	.add('With showSourceDocuments', () => ({
+		props: getKnob('triggerOn', ['manual', 'question'], select),
+		components: { BaseSearchBox },
+		template:
+			'<base-search-box :subProps="{ enableAI: true, showFilter: false, AIUIConfig: { triggerOn }}"/>',
+	}))
+	.add('With triggerOn + renderTriggerMessage', () => ({
+		props: Object.assign(
+			{},
+			getKnob('triggerOn', ['manual', 'question'], select),
+			getKnob('renderTriggerMessage', 'Click to trigger AIAnswer 🤖🎯'),
+		),
+		components: { BaseSearchBox },
+		template:
+			'<base-search-box :subProps="{ enableAI: true, showFilter: false, AIUIConfig: { triggerOn, askButton: true, renderTriggerMessage  }}"/>',
 	}));
 
 storiesOf('Result Components/Reactive List', module)
