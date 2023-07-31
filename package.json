@@ -21,14 +21,14 @@
     },
     "dependencies": {
         "@appbaseio/docs": "appbaseio/Docs#dev",
-        "@appbaseio/reactivesearch-vue": "3.0.0-rc.17",
+        "@appbaseio/reactivesearch-vue": "3.0.0-rc.18",
         "@appbaseio/storybook-readme": "5.0.12",
         "@storybook/addon-knobs": "^6.4.0",
         "@storybook/theming": "6.5.15"
     },
     "scripts": {
         "storybook": "start-storybook -s ./public -p 9001",
-        "build-storybook": "build-storybook -s public",
+        "build-storybook": "build-storybook",
         "deploy-storybook": "storybook-to-ghpages"
     }
 }

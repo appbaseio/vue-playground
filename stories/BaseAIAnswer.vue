@@ -17,13 +17,21 @@
 			v-bind="subProps"
 			v-on="subEvents"
 		>
+			<template v-if="showCustomTitle" #title
+				><img
+					src="https://w7.pngwing.com/pngs/287/964/png-transparent-computer-icons-information-online-chat-answer-icon-miscellaneous-text-logo-thumbnail.png"
+					height="30px"
+					alt="ai-chat"
+			/></template>
 			<template v-if="showCustomIcon" #icon>
 				<div>📚</div>
 			</template>
 			<template v-if="showCustomEnterButton" #renderEnterButton="cb">
 				<button :style="{ height: '100%' }" @click="cb">📚</button>
 			</template>
-
+			<template v-if="renderSourceDocumentSlot" #renderSourceDocument="obj">
+				<div>{{ obj.original_title }} 🔍</div>
+			</template>
 			<template v-if="showRenderSlot" v-slot:render="{ loading, data, error }">
 				<div v-if="loading">loading...</div>
 				<pre v-else-if="error">{{ JSON.stringify(error) }}</pre>
@@ -99,6 +107,8 @@ export default {
 		showCustomEnterButton: Boolean,
 		themePreset: String,
 		showRenderSlot: Boolean,
+		renderSourceDocumentSlot: Boolean,
+		showCustomTitle: Boolean,
 	},
 	components: { AIAnswer },
 	methods: {
