@@ -137,6 +137,8 @@ const showTooltip = value => getKnob('showTooltip', value, select, false);
 // eslint-disable-next-line no-shadow
 const modeKnob = (value = ['single', 'multiple'], defaultValue = 'multiple') =>
 	getKnob('mode', value, select, defaultValue);
+
+const compoundClauseKnob = () => getKnob('compoundClause', ['filter', 'must'], select, 'filter');
 // eslint-disable-next-line no-shadow
 function removeFirstLine(str, number = 12) {
 	// eslint-disable-next-line no-plusplus, no-param-reassign
@@ -161,6 +163,11 @@ storiesOf('List components/TreeList', module)
 		props: titleKnob('TreeList Facet'),
 		components: { BaseTreeList },
 		template: '<base-tree-list :subProps="{ title }"/>',
+	}))
+	.add('with compoundClause', () => ({
+		props: compoundClauseKnob(),
+		components: { BaseTreeList },
+		template: '<base-tree-list :subProps="{ compoundClause }"/>',
 	}))
 	.add('with mode selection', () => ({
 		props: modeKnob(),
@@ -244,6 +251,11 @@ storiesOf('Range Components/SingleRange', module)
 		components: { BaseSingleRange },
 		template: '<base-single-range :subProps="{ title, showFilter: false}"/>',
 	}))
+	.add('with compoundClause', () => ({
+		props: compoundClauseKnob(),
+		components: { BaseSingleRange },
+		template: '<base-single-range :subProps="{ compoundClause }"/>',
+	}))
 	.add(
 		'with defaultValue',
 		() => ({
@@ -284,6 +296,11 @@ storiesOf('Range Components/MultiRange', module)
 		components: { BaseMultiRange },
 		props: titleKnob('Books Filter'),
 		template: '<base-multi-range :subProps="{ title, showFilter: false}"/>',
+	}))
+	.add('with compoundClause', () => ({
+		components: { BaseMultiRange },
+		props: compoundClauseKnob(),
+		template: '<base-multi-range :subProps="{ compoundClause }"/>',
 	}))
 	.add(
 		'with defaultValue',
@@ -326,6 +343,11 @@ storiesOf('Range Components/RangeSlider', module)
 		components: { BaseRangeSlider },
 		template: '<base-range-slider :subProps="{ title}"/>',
 	}))
+	.add('with compoundClause', () => ({
+		props: compoundClauseKnob(),
+		components: { BaseRangeSlider },
+		template: '<base-range-slider :subProps="{ compoundClause }"/>',
+	}))
 	.add('with defaultValue', () => ({
 		components: { BaseRangeSlider },
 		props: defaultValue({ start: 3000, end: 9000 }),
@@ -364,6 +386,11 @@ storiesOf('Range Components/RangeInput', module)
 		components: { BaseRangeInput },
 		template: '<base-range-input :subProps="{ title}"/>',
 	}))
+	.add('with compoundClause', () => ({
+		props: compoundClauseKnob(),
+		components: { BaseRangeInput },
+		template: '<base-range-input :subProps="{ compoundClause }"/>',
+	}))
 	.add('with defaultValue', () => ({
 		components: { BaseRangeInput },
 		props: defaultValue({ start: 3000, end: 9000 }),
@@ -393,6 +420,11 @@ storiesOf('Range Components/DynamicRangeSlider', module)
 		props: titleKnob('DynamicRangeSlider: Ratings'),
 		components: { BaseDynamicRangeSlider },
 		template: '<base-dynamic-range-slider :subProps="{ title }"/>',
+	}))
+	.add('with compoundClause', () => ({
+		props: compoundClauseKnob(),
+		components: { BaseDynamicRangeSlider },
+		template: '<base-dynamic-range-slider :subProps="{ compoundClause }"/>',
 	}))
 	.add('with defaultValue', () => ({
 		components: { BaseDynamicRangeSlider },
@@ -424,6 +456,11 @@ storiesOf('List Components/SingleList', module)
 		props: titleKnob('Authors Search'),
 		components: { BaseSingleList },
 		template: '<base-single-list :subProps="{ title }"/>',
+	}))
+	.add('with compoundClause', () => ({
+		props: compoundClauseKnob(),
+		components: { BaseSingleList },
+		template: '<base-single-list :subProps="{ compoundClause }"/>',
 	}))
 	.add('with size', () => ({
 		props: size(),
@@ -493,6 +530,11 @@ storiesOf('List Components/MulitList', module)
 		props: titleKnob('Authors Search'),
 		components: { BaseMultiList },
 		template: '<base-multi-list :subProps="{ title }"/>',
+	}))
+	.add('with compoundClause', () => ({
+		props: compoundClauseKnob(),
+		components: { BaseMultiList },
+		template: '<base-multi-list :subProps="{ compoundClause }"/>',
 	}))
 	.add('with size', () => ({
 		props: size(),
@@ -572,6 +614,11 @@ storiesOf('List Components/SingleDropdownList', module)
 		components: { BaseSingleDropdownList },
 		props: titleKnob('Good Books'),
 		template: '<base-single-dropdown-list :subProps="{title, showFilter: false}"/>',
+	}))
+	.add('with compoundClause', () => ({
+		props: compoundClauseKnob(),
+		components: { BaseSingleDropdownList },
+		template: '<base-single-dropdown-list :subProps="{ compoundClause }"/>',
 	}))
 	.add('with size', () => ({
 		props: size(),
@@ -670,6 +717,11 @@ storiesOf('List Components/MultiDropdownList ', module)
 		props: titleKnob('Good Books'),
 		components: { BaseMultiDropdownList },
 		template: '<base-multi-dropdown-list :subProps="{title, showFilter: false}"/>',
+	}))
+	.add('with compoundClause', () => ({
+		props: compoundClauseKnob(),
+		components: { BaseMultiDropdownList },
+		template: '<base-multi-dropdown-list :subProps="{ compoundClause }"/>',
 	}))
 	.add('with size', () => ({
 		props: size(),
@@ -918,6 +970,11 @@ storiesOf('Search Components/SearchBox', module)
 		template:
 			'<base-search-box :subProps="{ iconPosition: \'right\', title, showFilter: false}"/>',
 	}))
+	.add('with compoundClause', () => ({
+		props: compoundClauseKnob(),
+		components: { BaseSearchBox },
+		template: '<base-search-box :subProps="{ compoundClause, showFilter: false}"/>',
+	}))
 	.add('with categoryField', () => ({
 		props: titleKnob('Book Store'),
 		components: { BaseSearchBox },
@@ -1125,6 +1182,11 @@ storiesOf('Result Components/Reactive List', module)
 		components: { BaseReactiveList },
 		template: '<base-reactive-list/>',
 	}))
+	.add('with compoundClause', () => ({
+		components: { BaseReactiveList },
+		props: compoundClauseKnob(),
+		template: '<base-reactive-list :subProps="{ compoundClause }"/>',
+	}))
 	.add('With pagination', () => ({
 		components: { BaseReactiveList },
 		props: getKnob('pagination', true),
@@ -1275,6 +1337,11 @@ storiesOf('Base components/ToggleButton', module)
 		components: { BaseToggleButton },
 		template: '<base-toggle-button :subProps="{ showFilter: false, title }"/>',
 	}))
+	.add('with compoundClause', () => ({
+		components: { BaseToggleButton },
+		props: compoundClauseKnob(),
+		template: '<base-toggle-button :subProps="{ showFilter: false, compoundClause }"/>',
+	}))
 	.add('with defaultValue', () => ({
 		components: { BaseToggleButton },
 		props: getKnob('defaultValue', ['Music']),
@@ -1306,6 +1373,11 @@ storiesOf('Map components/ReactiveGoogleMap', module)
 	.add('Basic', () => ({
 		components: { BaseReactiveGoogleMap },
 		template: '<base-reactive-google-map />',
+	}))
+	.add('with compoundClause', () => ({
+		components: { BaseReactiveGoogleMap },
+		props: compoundClauseKnob(),
+		template: '<base-reactive-google-map :subProps="{ compoundClause }"/>',
 	}))
 	.add('With defaultPin', () => ({
 		components: { BaseReactiveGoogleMap },
