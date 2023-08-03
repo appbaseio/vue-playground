@@ -24,7 +24,8 @@
         "@appbaseio/reactivesearch-vue": "3.0.0",
         "@appbaseio/storybook-readme": "5.0.12",
         "@storybook/addon-knobs": "^6.4.0",
-        "@storybook/theming": "6.5.15"
+        "@storybook/theming": "6.5.15",
+        "remarkable": "^2.0.1"
     },
     "scripts": {
         "storybook": "start-storybook -s ./public -p 9001",

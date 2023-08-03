@@ -10,7 +10,11 @@
 			:dataField="['original_title', 'original_title.search']"
 			v-bind="subProps"
 			v-on="subEvents"
-		/>
+		>
+			<template #renderSourceDocument="src">
+				<span>❤️ {{ src.original_title }}</span>
+			</template>
+		</SearchBox>
 		<SelectedFilters componentId="BookSensor" />
 		<ReactiveList
 			componentId="SearchResult"
