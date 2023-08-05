@@ -15,7 +15,6 @@
 
 .row > .col:first-child {
   border-right: 1px solid #ccc;
-  max-width: 400px;
 }
 
 .result-list-container {

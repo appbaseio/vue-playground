@@ -846,7 +846,7 @@ storiesOf('Search Components/AIAnswer', module)
 	}))
 	.add('With showInput', () => ({
 		components: { BaseAIAnswer },
-		props: getKnob('showInput', true),
+		props: getKnob('showInput', false),
 		template: '<base-a-i-answer :subProps="{ showInput }"/>',
 	}))
 	.add('With enterButton', () => ({
@@ -905,28 +905,6 @@ storiesOf('Search Components/SearchBox', module)
 		components: { BaseSearchBox },
 		template: '<base-search-box :subProps="{ showFilter: false }"/>',
 	}))
-	.add('With enableFAQSuggestions', () => ({
-		props: getKnob('enableFAQSuggestions', true),
-		components: { BaseSearchBox },
-		template:
-			'<base-search-box :subProps="{ enableAI, enableFAQSuggestions, searchboxId: \'rs_docs\'}"/>',
-	}))
-	.add('With FAQSuggestionsConfig', () => ({
-		props: {
-			enableFAQSuggestions: {
-				default: boolean('enableFAQSuggestions', true),
-			},
-			suggestionSize: {
-				default: number('suggestionSize', 1),
-			},
-			sectionLabel: {
-				default: text('sectionLabel', 'FAQs'),
-			},
-		},
-		components: { BaseSearchBox },
-		template:
-			'<base-search-box :subProps="{ enableFAQSuggestions, FAQSuggestionsConfig: {size: suggestionSize, sectionLabel },searchboxId: \'rs_docs\'}"/>',
-	}))
 	.add('With enableFeaturedSuggestions', () => ({
 		props: getKnob('enableFeaturedSuggestions', true),
 		components: { BaseSearchBox },
@@ -954,11 +932,6 @@ storiesOf('Search Components/SearchBox', module)
 		components: { BaseSearchBox },
 		template:
 			'<base-search-box :subProps="{ iconPosition: \'right\', title, showFilter: false}"/>',
-	}))
-	.add('with compoundClause', () => ({
-		props: compoundClauseKnob(),
-		components: { BaseSearchBox },
-		template: '<base-search-box :subProps="{ compoundClause, showFilter: false}"/>',
 	}))
 	.add('with categoryField', () => ({
 		props: titleKnob('Book Store'),
@@ -1139,6 +1112,28 @@ storiesOf('Search Components/SearchBox', module)
 		template:
 			'<base-search-box :subProps="{ enablePopularSuggestions, popularSuggestionsConfig }"/>',
 	}))
+	.add('With enableFAQSuggestions', () => ({
+		props: getKnob('enableFAQSuggestions', true),
+		components: { BaseSearchBox },
+		template:
+			'<base-search-box :subProps="{ enableAI, enableFAQSuggestions, searchboxId: \'rs_docs\'}"/>',
+	}))
+	.add('With FAQSuggestionsConfig', () => ({
+		props: {
+			enableFAQSuggestions: {
+				default: boolean('enableFAQSuggestions', true),
+			},
+			suggestionSize: {
+				default: number('suggestionSize', 1),
+			},
+			sectionLabel: {
+				default: text('sectionLabel', 'FAQs'),
+			},
+		},
+		components: { BaseSearchBox },
+		template:
+			'<base-search-box :subProps="{ enableFAQSuggestions, FAQSuggestionsConfig: {size: suggestionSize, sectionLabel },searchboxId: \'rs_docs\'}"/>',
+	}))
 	.add('With enableAI', () => ({
 		props: getKnob('enableAI', true),
 		components: { BaseSearchBox },
@@ -1191,6 +1186,11 @@ storiesOf('Search Components/SearchBox', module)
 	.add('With renderAIAnswer slot', () => ({
 		components: { SearchBoxWithCustomAIScreen },
 		template: '<search-box-with-custom-a-i-screen />',
+	}))
+	.add('with compoundClause', () => ({
+		props: compoundClauseKnob(),
+		components: { BaseSearchBox },
+		template: '<base-search-box :subProps="{ compoundClause, showFilter: false}"/>',
 	}));
 
 storiesOf('Result Components/Reactive List', module)
