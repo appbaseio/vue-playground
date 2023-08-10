@@ -10,33 +10,16 @@ import { RESET } from '@storybook/addon-knobs';
 addons.register('suck-it-storybook', (api) => {
 	// There is no other way to access the storybook api except by registering an addon 💩
 	api.on(STORY_CHANGED, () => {
-		const { queryParams, path } = api.getUrlState();
-		const urlParamsToPurge = {};
-		const purifiedUrlSeachParams = { path };
+		const iframeElement = document.querySelector('iframe');
 
-		// Prepare search url params
-		Object.entries(queryParams).forEach(([key, value]) => {
-			// We assign bad url params to be purged from the storybook api
-			if (key.startsWith('knob-')) {
-				Object.assign(urlParamsToPurge, { [key]: undefined });
-			} else {
-				// We keep the good ones to set them to the browser
-				Object.assign(purifiedUrlSeachParams, { [key]: value });
-			}
-		});
+		// Get the current story URL from the Storybook API's getUrlState function
+		const { storyId } = api.getUrlState();
 
-		// Build search query string and push them to the browser history
-		const queryParamsAsString = Object.entries(purifiedUrlSeachParams)
-			.filter(([_, value]) => value)
-			.map(([key, value], index) => (index === 0 ? `?${key}=${value}` : `${key}=${value}`))
-			.join('&');
-		history.pushState(undefined, undefined, queryParamsAsString);
+		const currentStoryUrl = `${window.location.origin}/iframe.html?viewMode=story&id=${storyId}`;
 
-		// Clear the storybook api from any polluted state
-		// We do this by setting bad keys to 'undefined', not to 'null' like the docs suggest
-		api.setQueryParams(urlParamsToPurge);
+		// Update the iframe's src attribute to the current story URL
+		iframeElement.src = currentStoryUrl;
 
-		// We call the reset event emitter channel of the knobs addon to reload the component knobs
 		api.emit(RESET);
 	});
 });
