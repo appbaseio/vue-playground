@@ -100,6 +100,7 @@ export default {
 	background-color: #a8a3a3b1;
 	padding-top: 1rem;
 	border: 1px solid blue;
+	margin-top: 5px;
 }
 ul{
 	list-style: none;
