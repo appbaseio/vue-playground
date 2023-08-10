@@ -97,6 +97,15 @@ export default {
 }
 .suggestions {
 	position: absolute;
-	background-color: #ffffff;
+	background-color: #a8a3a3b1;
+	padding-top: 1rem;
+	border: 1px solid blue;
+}
+ul{
+	list-style: none;
+}
+.suggestions li{
+	cursor: pointer;
+	border-bottom: 1px dashed orange !important;
 }
 </style>

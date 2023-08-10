@@ -16,11 +16,13 @@ addons.register('suck-it-storybook', (api) => {
 		const { storyId } = api.getUrlState();
 
 		const currentStoryUrl = `${window.location.origin}/iframe.html?viewMode=story&id=${storyId}`;
-
+		console.log(iframeElement.src, currentStoryUrl);
 		// Update the iframe's src attribute to the current story URL
-		iframeElement.src = currentStoryUrl;
+		if (iframeElement.src !== currentStoryUrl) {
+			iframeElement.src = currentStoryUrl;
 
-		api.emit(RESET);
+			api.emit(RESET);
+		}
 	});
 });
 
