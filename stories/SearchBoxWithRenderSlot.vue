@@ -97,10 +97,11 @@ export default {
 }
 .suggestions {
 	position: absolute;
-	background-color: #a8a3a3b1;
+	background-color: #ffffff;
 	padding-top: 1rem;
 	border: 1px solid blue;
 	margin-top: 5px;
+	width: 100%;
 }
 ul{
 	list-style: none;

@@ -926,7 +926,7 @@ storiesOf('Search Components/SearchBox', module)
 		components: { BaseSearchBox },
 		template: '<base-search-box :subProps="{ showIcon, showFilter: false}"/>',
 	}))
-	.add('with show clear', () => ({
+	.add('without show clear', () => ({
 		components: { BaseSearchBox },
 		props: showClear(false),
 		template: '<base-search-box :subProps="{ showClear, showFilter: false}"/>',
@@ -1031,11 +1031,11 @@ storiesOf('Search Components/SearchBox', module)
 	.add('with autoFocus', () => ({
 		components: { BaseSearchBox },
 		props: getKnob('autoFocus', true),
-		template: '<base-search-box :subProps="{ autoFocus }"/>',
+		template: '<base-search-box :subProps="{ autoFocus, focusShortcuts: [\'⌘+k\'] }"/>',
 	}))
 	.add('with focusShortcuts', () => ({
 		components: { BaseSearchBox },
-		props: getKnob('focusShortcuts', ['cmd+k', 'r', 'b']),
+		props: getKnob('focusShortcuts', ['⌘+k', 'r', 'b']),
 		template: '<base-search-box :subProps="{ focusShortcuts }"/>',
 	}))
 	.add('with addonBefore', () => ({

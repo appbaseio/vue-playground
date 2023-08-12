@@ -59,7 +59,7 @@
 								display: 'flex',
 								justifyContent: message.role === 'user' ? 'flex-end' : 'flex-start',
 							}">
-								<div :style="getMessageStyle(message)" v-html="getMarkdown(message.content)" />																
+								<div :style="getMessageStyle(message)" v-html="getMarkdown(message.content)" />
 							</div>
 						</div>
 					</template>
@@ -109,7 +109,7 @@ export default {
 				border: '1px solid',
 				color: isSender ? '#004085' : '#383d41',
 				position: 'relative',
-				whiteSpace: 'pre-wrap',
+				whiteSpace: 'anywhere',
 			};
 		},
 		getMarkdown(param) {
