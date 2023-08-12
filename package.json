@@ -21,7 +21,7 @@
     },
     "dependencies": {
         "@appbaseio/docs": "appbaseio/Docs#dev",
-        "@appbaseio/reactivesearch-vue": "3.0.5",
+        "@appbaseio/reactivesearch-vue": "3.0.6",
         "@appbaseio/storybook-readme": "5.0.12",
         "@storybook/addon-knobs": "^6.4.0",
         "@storybook/theming": "6.5.15",
