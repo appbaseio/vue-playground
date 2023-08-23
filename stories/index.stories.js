@@ -828,9 +828,9 @@ storiesOf('Search Components/AIAnswer', module)
 		props: getKnob('showVoiceInput', true),
 		template: '<base-a-i-answer :subProps="{ showVoiceInput }"/>',
 	}))
-	.add('With showIcon', () => ({
+	.add('without showIcon', () => ({
 		components: { BaseAIAnswer },
-		props: getKnob('showIcon', true),
+		props: getKnob('showIcon', false),
 		template: '<base-a-i-answer :subProps="{ showIcon }"/>',
 	}))
 	.add('with iconPosition prop', () => ({
@@ -847,12 +847,12 @@ storiesOf('Search Components/AIAnswer', module)
 		components: { BaseAIAnswer },
 		template: '<base-a-i-answer :subProps="{ showIcon: true}" :showCustomIcon="true"/>',
 	}))
-	.add('With showInput', () => ({
+	.add('without showInput', () => ({
 		components: { BaseAIAnswer },
-		props: getKnob('showInput', true),
+		props: getKnob('showInput', false),
 		template: '<base-a-i-answer :subProps="{ showInput }"/>',
 	}))
-	.add('With enterButton', () => ({
+	.add('without enterButton', () => ({
 		components: { BaseAIAnswer },
 		props: getKnob('enterButton', false),
 		template: '<base-a-i-answer :subProps="{ enterButton }"/>',
@@ -908,55 +908,6 @@ storiesOf('Search Components/SearchBox', module)
 		components: { BaseSearchBox },
 		template: '<base-search-box :subProps="{ showFilter: false }"/>',
 	}))
-	.add('With enableAI', () => ({
-		props: getKnob('enableAI', true),
-		components: { BaseSearchBox },
-		template: '<base-search-box :subProps="{ enableAI, showFilter: false}"/>',
-	}))
-	.add('With enableFAQSuggestions', () => ({
-		props: getKnob('enableFAQSuggestions', true),
-		components: { BaseSearchBox },
-		template:
-			'<base-search-box :subProps="{ enableAI, enableFAQSuggestions, searchboxId: \'rs_docs\'}"/>',
-	}))
-	.add('With FAQSuggestionsConfig', () => ({
-		props: {
-			enableFAQSuggestions: {
-				default: boolean('enableFAQSuggestions', true),
-			},
-			suggestionSize: {
-				default: number('suggestionSize', 1),
-			},
-			sectionLabel: {
-				default: text('sectionLabel', 'FAQs'),
-			},
-		},
-		components: { BaseSearchBox },
-		template:
-			'<base-search-box :subProps="{ enableFAQSuggestions, FAQSuggestionsConfig: {size: suggestionSize, sectionLabel },searchboxId: \'rs_docs\'}"/>',
-	}))
-	.add('With enableFeaturedSuggestions', () => ({
-		props: getKnob('enableFeaturedSuggestions', true),
-		components: { BaseSearchBox },
-		template:
-			'<base-search-box :subProps="{ enableAI, enableFeaturedSuggestions, searchboxId: \'rs_docs\', showFilter: false}"/>',
-	}))
-	.add('With featuredSuggestionsConfig', () => ({
-		props: getKnob('enableFeaturedSuggestions', true),
-		components: { BaseSearchBox },
-		template:
-			"<base-search-box :subProps=\"{ enableFeaturedSuggestions, featuredSuggestionsConfig: {size: 2, sectionLabel: 'Featured'}, searchboxId: 'rs_docs', showFilter: false}\"/>",
-	}))
-	.add('With enableAI - askButton', () => ({
-		props: getKnob('askButton', true),
-		components: { BaseSearchBox },
-		template:
-			'<base-search-box :subProps="{ enableAI: true, showFilter: false, AIUIConfig: { askButton }}"/>',
-	}))
-	.add('With renderAIAnswer slot', () => ({
-		components: { SearchBoxWithCustomAIScreen },
-		template: '<search-box-with-custom-a-i-screen />',
-	}))
 	.add('With enterButton', () => ({
 		props: getKnob('enterButton', true),
 		components: { BaseSearchBox },
@@ -973,23 +924,12 @@ storiesOf('Search Components/SearchBox', module)
 		template:
 			'<base-search-box :subProps="{ iconPosition: \'right\', title, showFilter: false}"/>',
 	}))
-	.add('with compoundClause', () => ({
-		props: compoundClauseKnob(),
-		components: { BaseSearchBox },
-		template: '<base-search-box :subProps="{ compoundClause, showFilter: false}"/>',
-	}))
-	.add('with categoryField', () => ({
-		props: titleKnob('Book Store'),
-		components: { BaseSearchBox },
-		template:
-			'<base-search-box :subProps="{ iconPosition: \'right\', categoryField, showFilter: false}"/>',
-	}))
 	.add('without search icon', () => ({
 		props: getKnob('showIcon', false),
 		components: { BaseSearchBox },
 		template: '<base-search-box :subProps="{ showIcon, showFilter: false}"/>',
 	}))
-	.add('with show clear', () => ({
+	.add('without show clear', () => ({
 		components: { BaseSearchBox },
 		props: showClear(false),
 		template: '<base-search-box :subProps="{ showClear, showFilter: false}"/>',
@@ -1064,14 +1004,6 @@ storiesOf('Search Components/SearchBox', module)
 		props: defaultValue('Harry Potter'),
 		template: '<base-search-box :subProps="{ defaultValue, showFilter: false }"/>',
 	}))
-	.add('with default Suggestions', () => ({
-		components: { BaseSearchBox },
-		props: getKnob('defaultSuggestions', [
-			{ label: 'Sherlock Holmes', value: 'Sherlock Holmes' },
-			{ label: 'The Lord of the Rings', value: 'The Lord of the Rings' },
-		]),
-		template: '<base-search-box :subProps="{ defaultSuggestions, showFilter: false }"/>',
-	}))
 	.add('with Filters', () => ({
 		components: { BaseSearchBox },
 		props: filterLabel('Books Search'),
@@ -1102,11 +1034,11 @@ storiesOf('Search Components/SearchBox', module)
 	.add('with autoFocus', () => ({
 		components: { BaseSearchBox },
 		props: getKnob('autoFocus', true),
-		template: '<base-search-box :subProps="{ autoFocus }"/>',
+		template: '<base-search-box :subProps="{ autoFocus, focusShortcuts: [\'⌘+k\'] }"/>',
 	}))
 	.add('with focusShortcuts', () => ({
 		components: { BaseSearchBox },
-		props: getKnob('focusShortcuts', ['/', 'r', 'b']),
+		props: getKnob('focusShortcuts', ['⌘+k', 'r', 'b']),
 		template: '<base-search-box :subProps="{ focusShortcuts }"/>',
 	}))
 	.add('with addonBefore', () => ({
@@ -1210,21 +1142,97 @@ storiesOf('Search Components/SearchBox', module)
 						documentSuggestionsConfig,
 					}" />`,
 	}))
-	.add('With showSourceDocuments', () => ({
-		props: getKnob('triggerOn', ['manual', 'question'], select),
+	.add('With enableFeaturedSuggestions', () => ({
+		props: getKnob('enableFeaturedSuggestions', true),
 		components: { BaseSearchBox },
 		template:
-			'<base-search-box :subProps="{ enableAI: true, showFilter: false, AIUIConfig: { triggerOn }}"/>',
+			'<base-search-box :subProps="{ enableAI, enableFeaturedSuggestions, searchboxId: \'rs_docs\', showFilter: false}"/>',
 	}))
-	.add('With triggerOn + renderTriggerMessage', () => ({
+	.add('With featuredSuggestionsConfig', () => ({
+		props: getKnob('enableFeaturedSuggestions', true),
+		components: { BaseSearchBox },
+		template:
+			"<base-search-box :subProps=\"{ enableFeaturedSuggestions, featuredSuggestionsConfig: {size: 2, sectionLabel: 'Featured'}, searchboxId: 'rs_docs', showFilter: false}\"/>",
+	}))
+	.add('With enableFAQSuggestions', () => ({
+		props: getKnob('enableFAQSuggestions', true),
+		components: { BaseSearchBox },
+		template:
+			'<base-search-box :subProps="{ enableAI, enableFAQSuggestions, searchboxId: \'rs_docs\'}"/>',
+	}))
+	.add('With FAQSuggestionsConfig', () => ({
+		props: {
+			enableFAQSuggestions: {
+				default: boolean('enableFAQSuggestions', true),
+			},
+			suggestionSize: {
+				default: number('suggestionSize', 1),
+			},
+			sectionLabel: {
+				default: text('sectionLabel', 'FAQs'),
+			},
+		},
+		components: { BaseSearchBox },
+		template:
+			'<base-search-box :subProps="{ enableFAQSuggestions, FAQSuggestionsConfig: {size: suggestionSize, sectionLabel },searchboxId: \'rs_docs\'}"/>',
+	}))
+	.add('With enableAI', () => ({
+		props: getKnob('enableAI', true),
+		components: { BaseSearchBox },
+		template: '<base-search-box :subProps="{ enableAI, showFilter: false}"/>',
+	}))
+	.add('With enableAI & triggerOn', () => ({
 		props: Object.assign(
 			{},
+			getKnob('enableAI', true),
+			getKnob('triggerOn', ['manual', 'question'], select),
+		),
+		components: { BaseSearchBox },
+		template:
+			'<base-search-box :subProps="{ enableAI, showFilter: false, AIUIConfig: { triggerOn }}"/>',
+	}))
+	.add('With enableAI & triggerOn & renderTriggerMessage', () => ({
+		props: Object.assign(
+			{},
+			getKnob('enableAI', true),
 			getKnob('triggerOn', ['manual', 'question'], select),
 			getKnob('renderTriggerMessage', 'Click to trigger AIAnswer 🤖🎯'),
 		),
 		components: { BaseSearchBox },
 		template:
-			'<base-search-box :subProps="{ enableAI: true, showFilter: false, AIUIConfig: { triggerOn, askButton: true, renderTriggerMessage  }}"/>',
+			'<base-search-box :subProps="{ enableAI, showFilter: false, AIUIConfig: { renderTriggerMessage, triggerOn }}"/>',
+	}))
+	.add('With enableAI & askButton & enterButton', () => ({
+		props: Object.assign(
+			{},
+			getKnob('enableAI', true),
+			getKnob('askButton', true),
+			getKnob('enterButton;', true),
+		),
+		components: { BaseSearchBox },
+		template:
+			'<base-search-box :subProps="{ enableAI, enterButton, showFilter: false, AIUIConfig: { askButton }}"/>',
+	}))
+	.add('With enableAI & showSourceDocuments', () => ({
+		props: Object.assign({}, getKnob('enableAI', true), getKnob('showSourceDocuments', true)),
+		components: { BaseSearchBox },
+		template:
+			'<base-search-box :subProps="{ enableAI, showFilter: false, AIUIConfig: { showSourceDocuments }}"/>',
+	}))
+	.add('With enableAI & renderSourceDocument', () => ({
+		props: Object.assign({}, getKnob('enableAI', true)),
+		components: { BaseSearchBox },
+		template:
+			'<base-search-box :subProps="{ enableAI, showFilter: false, AIUIConfig: { showSourceDocuments: true }}"/>',
+	}))
+	.add('With renderAIAnswer slot', () => ({
+		components: { SearchBoxWithCustomAIScreen },
+		template: '<search-box-with-custom-a-i-screen />',
+	}))
+	.add('with compoundClause', () => ({
+		props: compoundClauseKnob(),
+		components: { BaseSearchBox },
+		template: '<base-search-box :subProps="{ compoundClause, showFilter: false}"/>',
 	}));
 
 storiesOf('Result Components/Reactive List', module)

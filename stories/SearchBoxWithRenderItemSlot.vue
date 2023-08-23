@@ -13,7 +13,7 @@
 				:enablePredictiveSuggestions="false"
 			>
 				<template #renderItem="item">
-					<div class="suggestions">👋 &nbsp; {{ item.label }}</div>
+					<div class="renderItem">👋 &nbsp; {{ item.label }}</div>
 				</template>
 			</SearchBox>
 			<ReactiveList
@@ -78,8 +78,7 @@ export default {
 	-moz-osx-font-smoothing: grayscale;
 	color: #2c3e50;
 }
-.suggestions {
-	position: absolute;
-	background-color: #ffffff;
+.renderItem {
+	background-color: transparent;
 }
 </style>
