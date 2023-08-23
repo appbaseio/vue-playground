@@ -73,6 +73,7 @@ import SearchBoxWithAddonBeforeSlot from './SearchBoxWithAddonBeforeSlot.vue';
 import SearchBoxWithAddonAfterSlot from './SearchBoxWithAddonAfterSlot.vue';
 import SearchBoxWithAddonBeforeAfterSlots from './SearchBoxWithAddonBeforeAfterSlots.vue';
 import SearchBoxWithDocumentSuggestions from './SearchBoxWithDocumentSuggestions.vue';
+import SearchBoxWithDocumentSuggestionsRenderItem from './SearchBoxWithDocumentSuggestionsRenderItem.vue';
 import BaseRangeInput from './BaseRangeInput.vue';
 import BaseReactiveGoogleMap from './reactivemaps/BaseReactiveGoogleMap.vue';
 import ReactiveListWithNoResultsSlot from './ReactiveListWithNoResultsSlot.vue';
@@ -959,6 +960,25 @@ storiesOf('Search Components/SearchBox', module)
 		},
 		components: { SearchBoxWithDocumentSuggestions },
 		template: '<search-box-with-document-suggestions :subProps="{enableDocumentSuggestions, documentSuggestionsConfig}" />',
+	}))
+	.add('With documentSuggestions + renderItem', () => ({
+		props: {
+			enableDocumentSuggestions: { default: boolean('enableDocumentSuggestions', true) },
+			documentSuggestionsConfig: {
+				default: {
+					maxChars: number('maxChars', 6), // only return results until value is within maxChars count limit, optional setting where the default value of maxChars is 6
+					from: number('from', 0),
+					size: number('size', 5),
+					sectionLabel: text('sectionLabel', '🕝 Document Suggestions'),
+			  },
+			},
+		},
+		components: { SearchBoxWithDocumentSuggestionsRenderItem },
+		template: `<search-box-with-document-suggestions-render-item
+					:subProps="{
+						enableDocumentSuggestions,
+						documentSuggestionsConfig,
+					}" />`,
 	}))
 	.add('With enableAI - askButton', () => ({
 		props: getKnob('askButton', true),
