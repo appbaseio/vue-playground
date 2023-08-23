@@ -22,10 +22,10 @@
         v-on="subEvents"
     >
       <template #renderItem="suggestion">
-        <div >
+        <a :href="`https://www.google.com/search?q=${suggestion._source.original_title}`" target="_blank" rel="noreferrer">
           <span>{{suggestion._source.original_title}}</span>
           <span v-if="suggestion._suggestion_type === 'document'" :style="{color: 'slategray'}">{{new Date(Number(suggestion._source._timestamp) * 1000).toDateString()}}</span>
-        </div>
+        </a>
       </template>
     </SearchBox>
 		<SelectedFilters componentId="BookSensor" />
@@ -50,7 +50,7 @@
                     v-if="loading"
                     class="results-loader"
                 >
-                Loading...
+                    Loading...
                 </div>
                 <div v-else>
                     <span :style="{ color: '#fff' }">
