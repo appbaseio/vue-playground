@@ -929,6 +929,13 @@ storiesOf('Search Components/SearchBox', module)
 		components: { BaseSearchBox },
 		template: '<base-search-box :subProps="{ showIcon, showFilter: false}"/>',
 	}))
+	.add('with showDistinctSuggestions', () => ({
+		props: {
+			showDistinctSuggestions: boolean('showDistinctSuggestions', true),
+		},
+		components: { BaseSearchBox },
+		template: '<base-search-box :subProps="{ showDistinctSuggestions }"/>',
+	}))
 	.add('without show clear', () => ({
 		components: { BaseSearchBox },
 		props: showClear(false),
