@@ -1,28 +1,40 @@
 <template>
 	<ReactiveBase
         app="movies-store-app"
-		url="https://a03a1cb71321:75b6603d-9456-4a5a-af6b-a487b309eb61@appbase-demo-ansible-abxiydt-arc.searchbase.io"
-		:reactivesearchAPIConfig="{
-			'recordAnalytics': true,
-			'userId': 'test',
-			'enableQueryRules': true,
-			'emptyQuery': true,
-			'suggestionAnalytics': true
-		}"
+        url="https://a03a1cb71321:75b6603d-9456-4a5a-af6b-a487b309eb61@appbase-demo-ansible-abxiydt-arc.searchbase.io"
+        :reactivesearchAPIConfig="{
+          'recordAnalytics': true,
+          'userId': 'test',
+          'enableQueryRules': true,
+          'emptyQuery': true,
+          'suggestionAnalytics': true
+        }"
 	>
 		<SearchBox
-            componentId="BookSensor"
-            dataField="original_title"
-            :includeFields="[
-                'original_title',
-                'original_language',
-                'overview'
-            ]"
-			v-bind="subProps"
-			v-on="subEvents"
-		/>
+        componentId="BookSensor"
+        dataField="original_title"
+        :includeFields="[
+            'original_title',
+            'original_language',
+            'overview'
+        ]"
+        v-bind="subProps"
+        v-on="subEvents"
+    >
+      <template v-if="formatDocumentSuggestions" #renderItem="suggestion">
+        <div >
+          <span>{{suggestion._source.original_title}}</span>
+          <span v-if="suggestion._suggestion_type === 'document'" :style="{color: 'crimson', backgroundColor: 'lightgray', display: 'inline-block', margin: 2, padding: 5, borderRadius: 3}">{{new Date(Number(suggestion._source._timestamp) * 1000).toDateString()}}</span>
+        </div>
+      </template>
+      <template v-if="navigateOnClick" #renderItem="suggestion">
+        <a :href="`https://www.google.com/search?q=${suggestion._source.original_title}`" target="_blank" rel="noreferrer" :style="{width:'100%', height: '100%', display: 'block', textDecoration: 'none', color: 'inherit'}">
+          <span>{{suggestion._source.original_title}}</span>
+        </a>
+      </template>
+    </SearchBox>
 		<SelectedFilters componentId="BookSensor" />
-		<reactive-list
+        <reactive-list
             :size="10"
             :show-result-stats="false"
             :react="{
@@ -43,11 +55,7 @@
                     v-if="loading"
                     class="results-loader"
                 >
-                    <img
-                    class="loader"
-                    src="https://i.pinimg.com/originals/bc/56/b3/bc56b31a50e519be2ed335a47e75bc62.gif"
-                    alt="results loading"
-                    >
+                Loading...
                 </div>
                 <div v-else>
                     <span :style="{ color: '#fff' }">
@@ -71,6 +79,8 @@ export default {
 	props: {
 		subProps: Object,
 		subEvents: Object,
+    formatDocumentSuggestions: Boolean,
+    navigateOnClick: Boolean
 	},
 };
 </script>

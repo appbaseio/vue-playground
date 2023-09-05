@@ -73,8 +73,6 @@ import SearchBoxWithAddonBeforeSlot from './SearchBoxWithAddonBeforeSlot.vue';
 import SearchBoxWithAddonAfterSlot from './SearchBoxWithAddonAfterSlot.vue';
 import SearchBoxWithAddonBeforeAfterSlots from './SearchBoxWithAddonBeforeAfterSlots.vue';
 import SearchBoxWithDocumentSuggestions from './SearchBoxWithDocumentSuggestions.vue';
-import SearchBoxWithDocumentSuggestionsRenderItem from './SearchBoxWithDocumentSuggestionsRenderItem.vue';
-import SearchBoxWithDocumentSuggestionsNavigateOnClick from './SearchBoxWithDocumentSuggestionsNavigateOnClick.vue';
 import BaseRangeInput from './BaseRangeInput.vue';
 import BaseReactiveGoogleMap from './reactivemaps/BaseReactiveGoogleMap.vue';
 import ReactiveListWithNoResultsSlot from './ReactiveListWithNoResultsSlot.vue';
@@ -1096,59 +1094,6 @@ storiesOf('Search Components/SearchBox', module)
 		template:
 			'<base-search-box :subProps="{ enablePopularSuggestions, popularSuggestionsConfig }"/>',
 	}))
-	.add('With documentSuggestions', () => ({
-		props: {
-			enableDocumentSuggestions: { default: boolean('enableDocumentSuggestions', true) },
-			documentSuggestionsConfig: {
-				default: {
-					maxChars: number('maxChars', 6), // only return results until value is within maxChars count limit, optional setting where the default value of maxChars is 6
-					from: number('from', 0),
-					size: number('size', 5),
-					sectionLabel: text('sectionLabel', '🕝 Recent Document Suggestions'),
-			  },
-			},
-		},
-		components: { SearchBoxWithDocumentSuggestions },
-		template: '<search-box-with-document-suggestions :subProps="{enableDocumentSuggestions, documentSuggestionsConfig}" />',
-	}))
-	.add('With documentSuggestions + renderItem', () => ({
-		props: {
-			enableDocumentSuggestions: { default: boolean('enableDocumentSuggestions', true) },
-			documentSuggestionsConfig: {
-				default: {
-					maxChars: number('maxChars', 6), // only return results until value is within maxChars count limit, optional setting where the default value of maxChars is 6
-					from: number('from', 0),
-					size: number('size', 5),
-					sectionLabel: text('sectionLabel', '🕝 Document Suggestions'),
-			  },
-			},
-		},
-		components: { SearchBoxWithDocumentSuggestionsRenderItem },
-		template: `<search-box-with-document-suggestions-render-item
-					:subProps="{
-						enableDocumentSuggestions,
-						documentSuggestionsConfig,
-					}" />`,
-	}))
-	.add('With documentSuggestions + navigate on click', () => ({
-		props: {
-			enableDocumentSuggestions: { default: boolean('enableDocumentSuggestions', true) },
-			documentSuggestionsConfig: {
-				default: {
-					maxChars: number('maxChars', 6), // only return results until value is within maxChars count limit, optional setting where the default value of maxChars is 6
-					from: number('from', 0),
-					size: number('size', 5),
-					sectionLabel: text('sectionLabel', '🕝 Document Suggestions'),
-			  },
-			},
-		},
-		components: { SearchBoxWithDocumentSuggestionsNavigateOnClick },
-		template: `<search-box-with-document-suggestions-navigate-on-click
-					:subProps="{
-						enableDocumentSuggestions,
-						documentSuggestionsConfig,
-					}" />`,
-	}))
 	.add('With enableFeaturedSuggestions', () => ({
 		props: getKnob('enableFeaturedSuggestions', true),
 		components: { BaseSearchBox },
@@ -1240,6 +1185,63 @@ storiesOf('Search Components/SearchBox', module)
 		props: compoundClauseKnob(),
 		components: { BaseSearchBox },
 		template: '<base-search-box :subProps="{ compoundClause, showFilter: false}"/>',
+	}))
+	.add('With documentSuggestions', () => ({
+		props: {
+			enableDocumentSuggestions: { default: boolean('enableDocumentSuggestions', true) },
+			documentSuggestionsConfig: {
+				default: {
+					maxChars: number('maxChars', 6), // only return results until value is within maxChars count limit, optional setting where the default value of maxChars is 6
+					from: number('from', 0),
+					size: number('size', 5),
+					sectionLabel: text('sectionLabel', '🕝 Recent Document Suggestions'),
+			  },
+			},
+		},
+		components: { SearchBoxWithDocumentSuggestions },
+		template: '<search-box-with-document-suggestions :subProps="{enableDocumentSuggestions, documentSuggestionsConfig}"/>',
+	}))
+	.add('With documentSuggestions + renderItem', () => ({
+		props: {
+			enableDocumentSuggestions: { default: boolean('enableDocumentSuggestions', true) },
+			documentSuggestionsConfig: {
+				default: {
+					maxChars: number('maxChars', 6), // only return results until value is within maxChars count limit, optional setting where the default value of maxChars is 6
+					from: number('from', 0),
+					size: number('size', 5),
+					sectionLabel: text('sectionLabel', '🕝 Document Suggestions'),
+			  },
+			},
+		},
+		components: { SearchBoxWithDocumentSuggestions },
+		template: `<search-box-with-document-suggestions
+					:subProps="{
+						enableDocumentSuggestions,
+						documentSuggestionsConfig,
+					}"
+					formatDocumentSuggestions
+					/>`,
+	}))
+	.add('With documentSuggestions + navigate on click', () => ({
+		props: {
+			enableDocumentSuggestions: { default: boolean('enableDocumentSuggestions', true) },
+			documentSuggestionsConfig: {
+				default: {
+					maxChars: number('maxChars', 6), // only return results until value is within maxChars count limit, optional setting where the default value of maxChars is 6
+					from: number('from', 0),
+					size: number('size', 5),
+					sectionLabel: text('sectionLabel', '🕝 Document Suggestions'),
+			  },
+			},
+		},
+		components: { SearchBoxWithDocumentSuggestions },
+		template: `<search-box-with-document-suggestions
+						:subProps="{
+							enableDocumentSuggestions,
+							documentSuggestionsConfig,
+						}"
+						navigateOnClick
+					/>`,
 	}));
 
 storiesOf('Result Components/Reactive List', module)
