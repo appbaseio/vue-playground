@@ -20,7 +20,12 @@
     },
     "dependencies": {
         "@appbaseio/docs": "appbaseio/Docs#dev",
+<<<<<<< Updated upstream
         "@appbaseio/reactivesearch-vue": "1.33.13",
+=======
+        "@appbaseio/reactivesearch-vue": "1.35.2",
+        "@appbaseio/storybook-readme": "5.0.12",
+>>>>>>> Stashed changes
         "@storybook/addon-knobs": "^6.4.0",
         "@storybook/theming": "6.5.15",
         "@appbaseio/storybook-readme": "5.0.12"
