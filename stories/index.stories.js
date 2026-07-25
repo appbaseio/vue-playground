@@ -1406,7 +1406,7 @@ storiesOf('Base components/ToggleButton', module)
 		template: '<base-toggle-button :subProps="{ showFilter: false }"/>',
 	}))
 	.add('With title', () => ({
-		props: titleKnob('ToggleButton: Topics'),
+		props: titleKnob('ToggleButton: Languages'),
 		components: { BaseToggleButton },
 		template: '<base-toggle-button :subProps="{ showFilter: false, title }"/>',
 	}))
@@ -1417,12 +1417,12 @@ storiesOf('Base components/ToggleButton', module)
 	}))
 	.add('with defaultValue', () => ({
 		components: { BaseToggleButton },
-		props: getKnob('defaultValue', ['Music']),
+		props: getKnob('defaultValue', ['eng']),
 		template: '<base-toggle-button :subProps="{ showFilter: false, defaultValue }"/>',
 	}))
 	.add('With filter', () => ({
 		components: { BaseToggleButton },
-		props: filterLabel('Topics filter'),
+		props: filterLabel('Language filter'),
 		template: '<base-toggle-button :subProps="{ showFilter, filterLabel }"/>',
 	}))
 	.add('Without multiSelect', () => ({

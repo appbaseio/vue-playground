@@ -8,13 +8,14 @@
 		<div class="row">
 			<div class="col">
 				<DynamicRangeSlider
-					data-field="books_count"
+					data-field="ratings_count"
 					componentId="BookSensor"
+					title="Ratings count"
 					:rangeLabels="
 						(min, max) => {
 							return {
-								start: min + ' Books',
-								end: max + ' Books',
+								start: min >= 1000 ? Math.round(min / 1000) + 'K' : min,
+								end: max >= 1000 ? Math.round(max / 1000) + 'K' : max,
 							};
 						}
 					"
