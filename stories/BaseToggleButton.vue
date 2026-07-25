@@ -8,7 +8,7 @@
 			<div class="col">
 				<ToggleButton
 					componentId="LanguageSensor"
-					dataField="language_code"
+					dataField="language_code.keyword"
 					:data="[
 						{ label: 'English', value: 'eng' },
 						{ label: 'French', value: 'fre' },
