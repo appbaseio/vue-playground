@@ -995,7 +995,7 @@ storiesOf('Search Components/SearchBox', module)
 				default: text('sectionLabel', 'FAQs'),
 			},
 			enableAI: {
-				default: boolean('enableAI', true),
+				default: boolean('enableAI', false),
 			},
 			shouldTriggerQueryWhileTyping: {
 				default: boolean('shouldTriggerQueryWhileTyping', true),
@@ -1068,7 +1068,7 @@ storiesOf('Search Components/SearchBox', module)
 		components: { BaseSearchBox },
 		props: Object.assign(
 			{},
-			getKnob('enableRecentSuggestions', true),
+			getKnob('enableRecentSuggestions', false),
 			getKnob('recentSuggestionsConfig', {
 				size: 3,
 				minChars: 3,
@@ -1083,7 +1083,7 @@ storiesOf('Search Components/SearchBox', module)
 		components: { BaseSearchBox },
 		props: Object.assign(
 			{},
-			getKnob('enablePopularSuggestions', true),
+			getKnob('enablePopularSuggestions', false),
 			getKnob('popularSuggestionsConfig', {
 				size: 3,
 				minChars: 3,
@@ -1129,14 +1129,14 @@ storiesOf('Search Components/SearchBox', module)
 			'<base-search-box :subProps="{ enableFAQSuggestions, FAQSuggestionsConfig: {size: suggestionSize, sectionLabel },searchboxId: \'rs_docs\'}"/>',
 	}))
 	.add('With enableAI', () => ({
-		props: getKnob('enableAI', true),
+		props: getKnob('enableAI', false),
 		components: { BaseSearchBox },
 		template: '<base-search-box :subProps="{ enableAI, showFilter: false}"/>',
 	}))
 	.add('With enableAI & triggerOn', () => ({
 		props: Object.assign(
 			{},
-			getKnob('enableAI', true),
+			getKnob('enableAI', false),
 			getKnob('triggerOn', ['manual', 'question'], select),
 		),
 		components: { BaseSearchBox },
@@ -1146,7 +1146,7 @@ storiesOf('Search Components/SearchBox', module)
 	.add('With enableAI & triggerOn & renderTriggerMessage', () => ({
 		props: Object.assign(
 			{},
-			getKnob('enableAI', true),
+			getKnob('enableAI', false),
 			getKnob('triggerOn', ['manual', 'question'], select),
 			getKnob('renderTriggerMessage', 'Click to trigger AIAnswer 🤖🎯'),
 		),
@@ -1157,7 +1157,7 @@ storiesOf('Search Components/SearchBox', module)
 	.add('With enableAI & askButton & enterButton', () => ({
 		props: Object.assign(
 			{},
-			getKnob('enableAI', true),
+			getKnob('enableAI', false),
 			getKnob('askButton', true),
 			getKnob('enterButton;', true),
 		),
@@ -1166,13 +1166,13 @@ storiesOf('Search Components/SearchBox', module)
 			'<base-search-box :subProps="{ enableAI, enterButton, showFilter: false, AIUIConfig: { askButton }}"/>',
 	}))
 	.add('With enableAI & showSourceDocuments', () => ({
-		props: Object.assign({}, getKnob('enableAI', true), getKnob('showSourceDocuments', true)),
+		props: Object.assign({}, getKnob('enableAI', false), getKnob('showSourceDocuments', true)),
 		components: { BaseSearchBox },
 		template:
 			'<base-search-box :subProps="{ enableAI, showFilter: false, AIUIConfig: { showSourceDocuments }}"/>',
 	}))
 	.add('With enableAI & renderSourceDocument', () => ({
-		props: Object.assign({}, getKnob('enableAI', true)),
+		props: Object.assign({}, getKnob('enableAI', false)),
 		components: { BaseSearchBox },
 		template:
 			'<base-search-box :subProps="{ enableAI, showFilter: false, AIUIConfig: { showSourceDocuments: true }}"/>',
