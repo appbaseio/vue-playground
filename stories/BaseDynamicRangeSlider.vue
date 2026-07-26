@@ -8,16 +8,14 @@
 		<div class="row">
 			<div class="col">
 				<DynamicRangeSlider
-					data-field="ratings_count"
+					data-field="average_rating"
 					componentId="BookSensor"
-					title="Ratings count"
+					title="Average rating"
 					:rangeLabels="
-						(min, max) => {
-							return {
-								start: min >= 1000 ? Math.round(min / 1000) + 'K' : min,
-								end: max >= 1000 ? Math.round(max / 1000) + 'K' : max,
-							};
-						}
+						(min, max) => ({
+							start: min.toFixed(1),
+							end: max.toFixed(1),
+						})
 					"
 					v-bind="subProps"
 					v-on="subEvents"

@@ -430,7 +430,7 @@ storiesOf('Range Components/DynamicRangeSlider', module)
 	.add('with defaultValue', () => ({
 		components: { BaseDynamicRangeSlider },
 		template:
-			'<base-dynamic-range-slider :subProps="{ defaultValue: function(min, max){ return { start: min + 1000, end: max - 1000} }, showFilter: false}"/>',
+			'<base-dynamic-range-slider :subProps="{ defaultValue: function(min, max){ return { start: min + 0.5, end: max - 0.5} }, showFilter: false}"/>',
 	}))
 	.add('without tooltip', () => ({
 		components: { BaseDynamicRangeSlider },
@@ -1391,7 +1391,7 @@ storiesOf('Base components/ReactiveComponent', module)
 	.add('ReactiveComponent with customQuery', () => ({
 		components: { BaseReactiveComponent },
 		template:
-			'<base-reactive-component :subProps="{ customQuery:function() {return { query: {term: {[`brand.keyword`]: `Ford`}} } } }"/>',
+			'<base-reactive-component :subProps="{ customQuery:function() {return { query: {term: {[`language_code.keyword`]: `eng`}} } } }"/>',
 	}));
 
 storiesOf('Base components/ToggleButton', module)
