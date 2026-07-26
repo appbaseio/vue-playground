@@ -1,7 +1,7 @@
 <template>
     <div v-if="data">
-        <div :style="{ cursor: 'pointer' }" v-for="item in data" v-bind:key="item._id" @click="() => setValue(item.brand)">
-            {{item.brand}}
+        <div :style="{ cursor: 'pointer' }" v-for="item in data" v-bind:key="item._id" @click="() => setValue(item.authors)">
+            {{item.authors}}
         </div>
     </div>
 </template>
@@ -19,7 +19,7 @@ export default {
 		this.$props.setQuery({
 			query: {
 				term: {
-					"brand.keyword": value,
+					"authors.keyword": value,
 				},
 			},
 			value,
