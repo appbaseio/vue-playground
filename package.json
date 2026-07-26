@@ -31,5 +31,8 @@
         "storybook": "start-storybook -s ./public -p 9001",
         "build-storybook": "build-storybook",
         "deploy-storybook": "storybook-to-ghpages"
+    },
+    "engines": {
+        "node": "22.x"
     }
 }

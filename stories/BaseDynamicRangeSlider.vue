@@ -1,21 +1,21 @@
 <template>
 	<ReactiveBase
 		app="good-books-ds"
-		url="https://a03a1cb71321:75b6603d-9456-4a5a-af6b-a487b309eb61@appbase-demo-ansible-abxiydt-arc.searchbase.io"
+		url="https://reactivesearch-api-9-4-0.onrender.com"
+		credentials="d03e6f5f33d5:49124674-554e-4343-9ab2-006b2932f5c0"
 		:enableAppbase="true"
 	>
 		<div class="row">
 			<div class="col">
 				<DynamicRangeSlider
-					data-field="books_count"
+					data-field="average_rating"
 					componentId="BookSensor"
+					title="Average rating"
 					:rangeLabels="
-						(min, max) => {
-							return {
-								start: min + ' Books',
-								end: max + ' Books',
-							};
-						}
+						(min, max) => ({
+							start: min.toFixed(1),
+							end: max.toFixed(1),
+						})
 					"
 					v-bind="subProps"
 					v-on="subEvents"
